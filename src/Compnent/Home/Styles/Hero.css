@@ -1,6 +1,144 @@
 .hero {
   display: grid;
   grid-template-columns: 1fr 0.5fr;
+  padding: 60px 60px;
+  margin: 0;
+  height: 100vh;
+  justify-content: center;
+  align-items: flex-start;
+  justify-self: center;
+  align-self: center;
+  position: relative;
+  /* Ensure positioning context for pseudo-element */
+}
+
+.hero::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: #A7EAFF;
+  clip-path: polygon(20% 0%, 80% 0%, 100% 0, 100% 41%, 66% 61%, 17% 87%, 0 97%, 0 0);
+  z-index: -1;
+  /* Ensure the pseudo-element is behind the content */
+}
+
+/* --------------left_hero */
+.left_hero {
+  color: white;
+  width: 100%;
+  height: 90%;
+  display: flex;
+  align-items: start;
+  flex-direction: column;
+  padding: 20px 60px;
+  border-top-left-radius: 7px;
+  border-bottom-left-radius: 7px;
+  overflow: hidden;
+}
+
+.left_hero h2 {
+  color: #30404D;
+  font-family: Poppins;
+  font-size: 60px;
+  font-style: normal;
+  line-height: 100%;
+  margin-bottom: 20px;
+  font-family: "Luckiest Guy", cursive;
+  font-weight: 400;
+  font-style: normal;
+
+}
+
+.left_hero button {
+  color: #30404D;
+  font-family: Poppins;
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 150%;
+  /* 24px */
+  border: 2px solid #30404D;
+  border-radius: 32px;
+  padding: 8px 30px;
+  margin-bottom: 20px;
+  text-transform: uppercase;
+}
+
+.left_hero p {
+  color: #30404D;
+  font-family: Poppins;
+  font-size: 18px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 150%;
+  /* 27px */
+  max-width: 550px;
+  padding: 10px 0px 40px 0px;
+  text-transform: uppercase;
+
+}
+
+/* -------------- right_hero */
+.right_hero {
+  width: 100%;
+  height: 100%;
+  border-top-right-radius: 7px;
+  border-bottom-right-radius: 7px;
+  position: absolute;
+  right: -35%;
+  bottom: -130px;
+}
+
+.right_hero img {
+  width: 65%;
+  height: 100%;
+}
+
+/* =========== media  */
+@media (max-width: 850px) {
+  .hero {
+    padding: 10px 20px;
+  }
+}
+
+@media (max-width: 678px) {
+  .hero {
+    grid-template-columns: 1fr;
+  }
+
+  .right_hero {
+    display: none;
+  }
+
+  .hero {
+    padding: 10px;
+  }
+}
+
+@media (max-width: 500px) {
+
+  /* .hero{
+    height: 40vh;
+    margin-bottom: 150px;
+  } */
+  .left_hero {
+    padding: 10px 10px;
+  }
+
+  .left_hero {
+    height: 100%;
+    justify-content: flex-start;
+    padding-top: 100px;
+    gap: 20px;
+  }
+}
+
+.hero {
+  display: grid;
+  grid-template-columns: 1fr 0.5fr;
   padding: 10px 60px;
   margin: 0px 0px;
   height: 90vh;

@@ -9,11 +9,10 @@
 /* ------------- top_bottom_header */
 .top_bottom_header {
   display: flex;
-  justify-content: space-between;
+  justify-content: space-around;
   align-items: center;
-  padding: 10px 0px;
-  border-bottom: 1px solid rgba(0, 0, 0, 0.1);
 }
+
 .top_bottom_header h2 {
   color: #F49E3F;
   font-family: "Poppins";
@@ -31,9 +30,10 @@
   font-weight: 400;
   line-height: normal;
 }
+
 .right_bottom_header svg {
   cursor: pointer;
-  background-blend-mode: multiply;
+  background: #FFDAB1;
 }
 
 .right_bottom_header p {
@@ -45,7 +45,7 @@
 }
 
 /* --sercarbox */
-.sercarbox{
+.sercarbox {
   background-color: white;
   position: absolute;
   top: 0;
@@ -61,22 +61,35 @@
   transform: translateY(-150%);
   transition: transform .2s linear;
 }
-.sercarbox input{
+
+.sercarbox input {
   width: 100%;
 }
-.sercarboxhide{
+
+.sercarboxhide {
   transform: translateY(0%);
   transition: transform .2s linear;
 }
+
+/* top-header-img */
+.top-header-img {
+  background: #FFDAB1;
+  padding: 10px;
+  border-bottom-left-radius: 10px;
+  border-bottom-right-radius: 10px;
+  border-top-left-radius: 10px;
+}
+
 /* ========================================== bottom_bottom_header */
-.drop_down_menus{
-   width: 100%;
-   display: flex;
-   justify-content: center;
-   align-items: center;
-   gap: 15px;
+.drop_down_menus {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 15px;
   position: relative;
 }
+
 .bottom_bottom_header {
   padding: 18px 0px;
   display: flex;
@@ -85,7 +98,7 @@
 }
 
 
-.bottom_bottom_header_menus_parent{
+.bottom_bottom_header_menus_parent {
   display: flex;
   justify-content: center;
   align-items: center;
@@ -94,15 +107,16 @@
 
 }
 
-.bottom_bottom_header_menus_parent p:hover ~ svg{
+.bottom_bottom_header_menus_parent p:hover~svg {
   transform: rotate(180deg);
   transition: transform .1s linear;
 }
+
 .bottom_bottom_header_menus_parent .menus {
   position: absolute;
   top: 32px;
-  left: 50%; 
-  transform: translateX(-50%); 
+  left: 50%;
+  transform: translateX(-50%);
   width: 70%;
   height: 230px;
   background-color: white;
@@ -116,7 +130,8 @@
   align-items: start;
 }
 
-.bottom_bottom_header_menus_parent, .sidebar_accordian .menus ul a li {
+.bottom_bottom_header_menus_parent,
+.sidebar_accordian .menus ul a li {
   color: #726e8d;
   font-family: "Poppins";
   font-size: 16px;
@@ -126,7 +141,8 @@
   padding: 5px 10px;
   margin: 5px 0px;
 }
-.sidebar_accordian{
+
+.sidebar_accordian {
   display: none;
   width: 100%;
   padding: 5px 8px;
@@ -135,7 +151,7 @@
 }
 
 /* -------- cross */
-.cross{
+.cross {
   position: absolute;
   top: 20px;
   left: 20px;
@@ -143,27 +159,30 @@
   cursor: pointer;
   display: none;
 }
-.cross_burger{
+
+.cross_burger {
   font-size: 25px;
   cursor: pointer;
   display: none;
 }
 
-@media(max-width : 840px){
-  .bottom_bottom_header .menus ul a li{
+@media(max-width : 840px) {
+  .bottom_bottom_header .menus ul a li {
     font-size: 14px;
   }
-  .bottom_header{
+
+  .bottom_header {
     padding: 5px 10px;
   }
-  
+
 }
 
-@media(max-width : 768px){
-  .drop_down_menus{
+@media(max-width : 768px) {
+  .drop_down_menus {
     flex-direction: column;
   }
-  .bottom_bottom_header{
+
+  .bottom_bottom_header {
     position: fixed;
     top: 0;
     left: 0;
@@ -175,31 +194,37 @@
     transform: translateX(-100%);
     transition: transform .2s linear;
   }
-  .mob_bottom_header{
+
+  .mob_bottom_header {
     transform: translateX(0);
     transition: transform .2s linear;
   }
+
   .bottom_bottom_header_menus_parent {
     grid-template-columns: 1fr;
     display: none;
   }
-  .bottom_bottom_header_menus_parent .menus ul a li{
+
+  .bottom_bottom_header_menus_parent .menus ul a li {
     text-align: left !important;
     width: 200px;
   }
-  .cross{
+
+  .cross {
     display: block;
   }
-  .cross_burger{
+
+  .cross_burger {
     display: block;
   }
-  .sidebar_accordian{
+
+  .sidebar_accordian {
     display: block;
   }
 }
 
-@media(max-width : 768px){
-  .sercarbox{
+@media(max-width : 768px) {
+  .sercarbox {
     padding: 10px 10px;
   }
 }

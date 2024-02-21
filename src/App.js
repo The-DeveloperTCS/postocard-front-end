@@ -76,12 +76,13 @@ const App = () => {
   const dispatch = useDispatch();
 
   useEffect(() => {
-    if (Cookies.get("ApiLoginToken")) {
+    if (Cookies.get("ApiLoginTokenjkhjkhkjh")) {
       dispatch(LogedinUser());
     }
     dispatch(getallproduct());
     dispatch(getallCategoryforuser());
   }, []);
+
   // useEffect(() => {
   //   if (Cookies.get("ApiLoginToken")) {
   //     dispatch(LogedinUser());

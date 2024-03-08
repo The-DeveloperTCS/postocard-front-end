@@ -1,25 +1,20 @@
 import React from "react";
 import "../Styles/Section2.css";
-import ViewMainProduct from "../../Product/ViewMainProduct";
-import { useSelector } from "react-redux"
-import Loading from "../../../Layout/Loading/Loading";
-
-
+import { NavLink } from "react-router-dom";
+import Section2Carousel from "./Section2Carousel";
 
 const Section2 = () => {
-  const allProduct = useSelector((state)=> state.product.allProduct);
-  const isLoading = useSelector((state)=> state.product.isLoading);
-  const sliceProduct = allProduct && allProduct.slice(0,4)
-
   return (
-    <div className="Section2">
-      <h2>WE THINK YOU'LL LOVE THESE</h2>
-      {/* -------------- */}
-      {
-        isLoading ? <Loading/> : <div className="product_card">
-        <ViewMainProduct data={sliceProduct} />
+    <div className="section2-main">
+      <div className="section2-text-btn">
+        <h2>Discounted offer</h2>
+        <NavLink to={"/allcollection/all"}>
+          <button className="rounded-md">View All</button>
+        </NavLink>
       </div>
-      }
+      <div className="for-section2-caroudel">
+        <Section2Carousel />
+      </div>
     </div>
   );
 };

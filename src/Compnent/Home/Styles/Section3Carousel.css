@@ -1,0 +1,48 @@
+.section3-slide1 {
+    margin-bottom: 30px;
+}
+
+
+.slider-1img {
+    border: 2px solid #30404D;
+    ;
+    border-radius: 50%;
+    width: 70% !important;
+    background-color: white;
+    padding: 20px;
+}
+
+.section3-slide1 h2 {
+    font-size: 16px;
+    font-family: "Poppins", sans-serif;
+    color: #30404D;
+    margin-left: 17px;
+}
+
+.section3-slide1 img {
+    width: 100%;
+    margin: auto
+}
+
+.slider-container1 {
+    position: relative;
+}
+
+.prev-arrow1 {
+    position: absolute;
+    right: -10px;
+    border: 2px solid #30404D;
+    border-radius: 50%;
+    padding: 2px;
+    top: -40px;
+
+}
+
+.next-arrow1 {
+    position: absolute;
+    right: 60px;
+    top: -40px;
+    border: 2px solid #30404D;
+    border-radius: 50%;
+    padding: 2px;
+}

@@ -1,26 +1,65 @@
-.Section2 {
-  padding: 30px 60px;
-  margin: 20px 0px;
+.section2-main {
+  width: 100%;
 }
-.Section2 h2 {
-  color: #2a254b;
+
+.section2-text-btn {
+  display: flex;
+  justify-content: space-between;
+  width: 80%;
+  margin: auto;
+  border-bottom: 1px solid #30404D;
+  align-items: center;
+  padding: 30px;
+}
+
+.section2-text-btn h2 {
+  color: #30404D;
   font-family: Poppins;
-  font-size: 32px;
+  font-size: 60px;
+  font-style: normal;
+  line-height: 100%;
+  margin-bottom: 20px;
+  font-family: "Luckiest Guy", cursive;
+  font-weight: 400;
+  font-style: normal;
+
+}
+
+.section2-text-btn button {
+  color: #30404D;
+  font-family: Poppins;
+  font-size: 16px;
   font-style: normal;
   font-weight: 400;
-  line-height: normal;
+  line-height: 150%;
+  /* 24px */
+  border: 2px solid #30404D;
+  border-radius: 32px;
+  padding: 8px 30px;
   margin-bottom: 20px;
+  text-transform: uppercase;
+
 }
+
+
+.for-section2-caroudel {
+  width: 80%;
+  margin: auto;
+  padding: 40px 0px;
+}
+
+
 /* ============== media  */
-@media(max-width : 678px){
-  .Section2{
+@media(max-width : 678px) {
+  .Section2 {
     padding: 30px 20px;
 
   }
 }
-@media(max-width : 50px){
-  .Section2{
+
+@media(max-width : 50px) {
+  .Section2 {
     padding: 10px 20px;
   }
-  
+
 }

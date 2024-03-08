@@ -1,87 +1,118 @@
 .section3 {
-  padding: 30px 60px;
-  margin: 20px 0px;
-}
-.section3 h2 {
-  color: #2a254b;
-  font-family: Poppins;
-  font-size: 32px;
-  font-style: normal;
-  font-weight: 400;
-  line-height: 140%; /* 44.8px */
-  margin-bottom: 20px;
-}
-.section3_product {
   display: flex;
-  justify-content: center;
-  align-items: center;
-  gap: 20px;
-  flex-wrap: wrap;
-}
-.section_big_card {
-  border: 1px solid rgba(184, 182, 182, 0.555);
-  cursor: pointer;
-  border-radius: 10px;
-}
-.section_big_card:hover {
-  box-shadow: 1px 1px 10px 0px rgba(0, 0, 0, 0.5);
-}
-.section_big_card {
-  width: 560px;
-  overflow: hidden;
-}
-.section_big_card img {
-  width: 560px;
-  height: 425px;
-  flex-shrink: 0;
-}
-.section3_content {
-  padding: 15px 10px;
+  width: 100%;
 }
 
-.section3_content h3 {
-  color: var(--Dark-Primary, #2a254b);
+.section3-left {
+  width: 50%;
+}
+
+.section3-left img {
+  width: 100%;
+  height: 100%;
+}
+
+.section3-right {
+  width: 50%;
+  background-color: #fcc79f;
+  padding: 20px 0px 0px 0px;
+}
+
+.section3-right-text {
+  padding: 20px;
+  width: 70%;
+  padding-left: 60px;
+}
+
+.section3-right-text h2 {
+  color: #30404D;
   font-family: Poppins;
-  font-size: 20px;
+  font-size: 60px;
   font-style: normal;
+  line-height: 100%;
+  margin-bottom: 20px;
+  font-family: "Luckiest Guy", cursive;
   font-weight: 400;
-  line-height: 140%; /* 28px */
-  margin-bottom: 7px;
-}
-.section3_content p {
-  color: var(--Dark-Primary, #2a254b);
-  font-family: Poppins;
-  font-size: 20px;
   font-style: normal;
-  font-weight: bold;
-  line-height: 150%; /* 27px */
 }
-.section3 button {
-  display: inline-flex;
-  padding: 16px 32px;
-  justify-content: center;
-  align-items: center;
-  gap: 10px;
-  cursor: pointer;
-  color: #fff;
-  font-family: Poppins;
+
+.section3-right-text p {
   font-size: 16px;
-  font-style: normal;
-  font-weight: 400;
-  line-height: 150%; /* 24px */
-  background: #f49e3f;
-  margin-top: 40px;
-  text-align: center;
+  font-family: "Poppins", sans-serif;
+  color: #30404D;
+
 }
 
-@media (min-width: 1300px) {
-  .section3_product {
-    justify-content: center;
-  }
+/* .section3-cards-data */
+
+.section3-cards-data {
+  width: 50%;
+  margin-left: 60px;
+  padding-top: 40px;
 }
-@media(max-width : 850px){
-  .section3 {
-    padding: 30px 20px;
-    margin: 20px 0px;
-  }
+
+.card-name-nbr {
+  display: flex;
+  justify-content: space-between;
+}
+
+.card-name-nbr h1 {
+  font-size: 20px;
+  font-weight: 500;
+  font-family: "Poppins", sans-serif;
+  color: #30404D;
+}
+
+.card-name-nbr p {
+  font-size: 16px;
+  font-family: "Poppins", sans-serif;
+  color: #30404D;
+  border: 1px solid;
+  border-radius: 30px;
+  padding: 2px 11px;
+}
+
+.sectoion-3-cards-price {
+  display: flex;
+  justify-content: space-between;
+  padding: 20px 0px;
+}
+
+.sectoion-3-cards-price h1 {
+  font-size: 20px;
+  font-weight: 500;
+  font-family: "Poppins", sans-serif;
+  color: #30404D;
+}
+
+.sectoion-3-cards-price p {
+  font-size: 16px;
+  font-family: "Poppins", sans-serif;
+  color: #30404D;
+  border: 1px solid;
+  border-radius: 30px;
+  padding: 2px 25px;
+  display: flex;
+  align-items: center;
+}
+
+.sectoion-3-cards-price svg {
+  color: #ff9900;
+  padding: 0px 5px 0px 0px;
+  font-size: 20px;
+}
+
+.Configure-card {
+  margin-top: 40px;
+
+}
+
+.Configure-card button {
+  border: 1px solid #30404D;
+  font-weight: 500;
+  font-size: 16px;
+  font-family: "Poppins", sans-serif;
+  color: #30404D;
+  border-radius: 30px;
+  padding: 5px 10px;
 }

@@ -64,7 +64,7 @@ function Carousel4() {
         </div>
         <div className="carousel4-main-slider">
           <div className="carousel4-img">
-            <img src={newbd} alt="" />
+            <img src={newbd} alt="" style={{ width: "55%" }} />
           </div>
           <div className="carousel4-text">
             <h2>Wedding Card</h2>
@@ -104,7 +104,7 @@ function Carousel4() {
         </div>
         <div className="carousel4-main-slider">
           <div className="carousel4-img">
-            <img src={newbd} alt="" />
+            <img src={newbd} alt="" style={{ width: "55%" }} />
           </div>
           <div className="carousel4-text">
             <h2>Wedding Card</h2>

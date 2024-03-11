@@ -65,19 +65,25 @@ const Signup = () => {
   return (
     <UserAuth>
       <div className="mt-[20px] mb-[120px] w-full  flex justify-center place-items-center flex-col">
-        <h2 className="text-[28px] font-bold  my-2">Create an account</h2>
+        <h2
+          className="text-[35px]   my-2"
+          style={{ fontFamily: "Luckiest Guy" }}
+        >
+          Create an account
+        </h2>
         <div className="border-[1px] rounded-sm border-[#dbdbdb] py-[15px] px-[7px] w-[550px]">
           <div className="my-2">
             <label
               htmlFor="name"
-              className="block text-[15px] font-bold mb-1 px-[3px]"
+              className="block text-[16px] font-bold mb-1 px-[3px]"
+              style={{ fontFamily: "Poppins" }}
             >
               FullName
             </label>
             <input
               type="text"
               placeholder="Please enter your FullName"
-              className={`w-full border-[1px] border-[#dbdbdb] outline-none px-[5px] py-[8px] ${
+              className={`w-full border-[1px] border-[#dbdbdb] outline-none px-[5px] py-[8px]  text-[14px] ${
                 errors.name && touched.name
                   ? "border-1 border-[red] shake"
                   : null
@@ -85,6 +91,7 @@ const Signup = () => {
               value={values.name}
               onChange={handleChange}
               name="name"
+              style={{ fontFamily: "Poppins" }}
             />
             {errors.name && touched.name ? (
               <p className="text-[red] my-1 mx-1 text-[15px]">{errors.name}</p>
@@ -94,6 +101,7 @@ const Signup = () => {
             <label
               htmlFor="Email"
               className="block text-[15px] font-bold mb-1 px-[3px]"
+              style={{ fontFamily: "Poppins" }}
             >
               Email
             </label>
@@ -108,6 +116,7 @@ const Signup = () => {
               value={values.email}
               onChange={handleChange}
               name="email"
+              style={{ fontFamily: "Poppins" }}
             />
             {errors.email && touched.email ? (
               <p className="text-[red] my-1 mx-1 text-[15px]">{errors.email}</p>
@@ -117,6 +126,7 @@ const Signup = () => {
             <label
               htmlFor="password"
               className="block text-[15px] font-bold mb-1 px-[3px]"
+              style={{ fontFamily: "Poppins" }}
             >
               Password
             </label>
@@ -133,6 +143,7 @@ const Signup = () => {
               name="password"
               onChange={handleChange}
               value={values.password}
+              style={{ fontFamily: "Poppins" }}
             />
             {errors.password && touched.password ? (
               <p className="text-[red] my-1 mx-1 text-[15px]">
@@ -177,12 +188,16 @@ const Signup = () => {
             type="button" // Change this to "submit" if you want a submit button
             onClick={handleSubmit}
             disabled={IsLoading}
-            className="mt-2 w-full disabled:cursor-no-drop disabled:bg-[#f49d3f57] flex justify-center place-items-center rounded-sm text-[16px] px-2 py-2 text-[white] bg-[#F49E3F] cursor-pointer"
+            className="mt-2 w-full disabled:cursor-no-drop disabled:bg-[#f49d3f57] flex justify-center place-items-center rounded-sm text-[16px] px-2 py-2 text-[#000000] bg-[#A7EAFF] cursor-pointer"
+            style={{ fontFamily: "Poppins", fontWeight: "bold" }}
           >
             {IsLoading ? <SpinnerLoading /> : "Sign-Up"}
           </button>
           <NavLink to="/user/login">
-            <p className="mt-4 text-center text-[16px] font-thin cursor-pointer">
+            <p
+              className="mt-4 text-center text-[16px] font-bold cursor-pointer"
+              style={{ fontFamily: "Poppins" }}
+            >
               Already have an account?
             </p>
           </NavLink>

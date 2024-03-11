@@ -13,11 +13,11 @@ const BottomBottomHeader = ({ showheader, setshowheader }) => {
   const allcategory = useSelector((state) => state.category.allcategoryforuser);
   const Occasions = allcategory?.filter((item) => item?.ParentItem === 1);
   const hollidays = allcategory?.filter((item) => item?.ParentItem === 2);
-  // console.log(allcategory);
   const [select, setSlect] = useState(0);
   const [open, setOpen] = React.useState(1);
 
   const handleOpen = (value) => setOpen(open === value ? 0 : value);
+
   return (
     <div
       className={
@@ -28,85 +28,56 @@ const BottomBottomHeader = ({ showheader, setshowheader }) => {
     >
       <RxCross1 className="cross" onClick={() => setshowheader(false)} />
       <div className="drop_down_menus">
-        <div
-          className={`${
-            select === 1
-              ? "showdropdown bottom_bottom_header_menus_parent"
-              : "bottom_bottom_header_menus_parent"
-          }`}
-        >
+        <div className={`bottom_bottom_header_menus_parent`}>
           <p className="cursor-pointer" onMouseEnter={() => setSlect(1)}>
             OCCASIONS
           </p>
           <IoIosArrowDown className="cursor-pointer" />
-          {/* ===== menus  */}
           {select === 1 && (
             <div className="menus flex-wrap" onMouseLeave={() => setSlect(0)}>
-              {Occasions?.map((item, index) => {
-                return (
-                  <ul key={index}>
-                    <NavLink to={`/products/${item.CategoryName}`}>
-                      <li
-                        onClick={() => {
-                          {
-                            setshowheader(false);
-                            setSlect(0);
-                          }
-                        }}
-                      >
-                        {item.CategoryName}
-                      </li>
-                    </NavLink>
-                  </ul>
-                );
-              })}
-              {/* ==== */}
-              {/* <div>
-                   <img src="http://cdn.shopify.com/s/files/1/0002/3317/7140/collections/Special_Occasions100_1200x1200.png?v=1519589612" alt="" />
-     
-                     </div> */}
+              {Occasions?.map((item, index) => (
+                <ul key={index}>
+                  <NavLink to={`/products/${item.CategoryName}`}>
+                    <li
+                      onClick={() => {
+                        setshowheader(false);
+                        setSlect(0);
+                      }}
+                    >
+                      {item.CategoryName}
+                    </li>
+                  </NavLink>
+                </ul>
+              ))}
             </div>
           )}
         </div>
-        {/* ========================= 2 */}
-        <div
-          className={`${
-            select === 1
-              ? "showdropdown bottom_bottom_header_menus_parent"
-              : "bottom_bottom_header_menus_parent"
-          }`}
-        >
+        <div className={`bottom_bottom_header_menus_parent`}>
           <p className="cursor-pointer" onMouseEnter={() => setSlect(2)}>
             Holiday
           </p>
           <IoIosArrowDown className="cursor-pointer" />
-          {/* ===== menus  */}
           {select === 2 && (
-            <div className="menus flex-wrap " onMouseLeave={() => setSlect(0)}>
-              {hollidays?.map((item, index) => {
-                return (
-                  <ul key={index}>
-                    <NavLink to={`/products/${item.CategoryName}`}>
-                      <li
-                        onClick={() => {
-                          {
-                            setshowheader(false);
-                            setSlect(0);
-                          }
-                        }}
-                      >
-                        {item.CategoryName}
-                      </li>
-                    </NavLink>
-                  </ul>
-                );
-              })}
+            <div className="menus flex-wrap" onMouseLeave={() => setSlect(0)}>
+              {hollidays?.map((item, index) => (
+                <ul key={index}>
+                  <NavLink to={`/products/${item.CategoryName}`}>
+                    <li
+                      onClick={() => {
+                        setshowheader(false);
+                        setSlect(0);
+                      }}
+                    >
+                      {item.CategoryName}
+                    </li>
+                  </NavLink>
+                </ul>
+              ))}
             </div>
           )}
         </div>
       </div>
 
-      {/* ==========  */}
       <div className="sidebar_accordian">
         <Accordion open={open === 1} className="my-2 w-[full] ">
           <AccordionHeader
@@ -117,31 +88,27 @@ const BottomBottomHeader = ({ showheader, setshowheader }) => {
           </AccordionHeader>
           <AccordionBody className="py-0">
             <div className="menus flex-wrap">
-              {Occasions?.map((item, index) => {
-                return (
-                  <ul key={index}>
-                    <NavLink to={`/products/${item.CategoryName}`}>
-                      <li
-                        onClick={() => {
-                          {
-                            setshowheader(false);
-                            setSlect(0);
-                          }
-                        }}
-                        className="my-1 border-b-[1px] border-[#d4d4d4]"
-                      >
-                        {item.CategoryName}
-                      </li>
-                    </NavLink>
-                  </ul>
-                );
-              })}
+              {Occasions?.map((item, index) => (
+                <ul key={index}>
+                  <NavLink to={`/products/${item.CategoryName}`}>
+                    <li
+                      onClick={() => {
+                        setshowheader(false);
+                        setSlect(0);
+                      }}
+                      className="my-1 border-b-[1px] border-[#d4d4d4]"
+                    >
+                      {item.CategoryName}
+                    </li>
+                  </NavLink>
+                </ul>
+              ))}
             </div>
           </AccordionBody>
         </Accordion>
         <Accordion
-          className="my-2 border-b-[1px] border-[#8080804b]"
           open={open === 2}
+          className="my-2 border-b-[1px] border-[#8080804b]"
         >
           <AccordionHeader
             onClick={() => handleOpen(2)}
@@ -151,25 +118,21 @@ const BottomBottomHeader = ({ showheader, setshowheader }) => {
           </AccordionHeader>
           <AccordionBody className="py-0">
             <div className="menus flex-wrap">
-              {hollidays?.map((item, index) => {
-                return (
-                  <ul key={index}>
-                    <NavLink to={`/products/${item.CategoryName}`}>
-                      <li
-                        onClick={() => {
-                          {
-                            setshowheader(false);
-                            setSlect(0);
-                          }
-                        }}
-                        className="my-1 border-b-[1px] border-[#d4d4d4]"
-                      >
-                        {item.CategoryName}
-                      </li>
-                    </NavLink>
-                  </ul>
-                );
-              })}
+              {hollidays?.map((item, index) => (
+                <ul key={index}>
+                  <NavLink to={`/products/${item.CategoryName}`}>
+                    <li
+                      onClick={() => {
+                        setshowheader(false);
+                        setSlect(0);
+                      }}
+                      className="my-1 border-b-[1px] border-[#d4d4d4]"
+                    >
+                      {item.CategoryName}
+                    </li>
+                  </NavLink>
+                </ul>
+              ))}
             </div>
           </AccordionBody>
         </Accordion>

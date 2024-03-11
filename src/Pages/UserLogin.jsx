@@ -38,12 +38,18 @@ const UserLogin = () => {
   return (
     <UserAuth>
       <div className="mt-[20px] mb-[120px] w-full  flex justify-center place-items-center flex-col">
-        <h2 className="text-[28px] font-bold  my-2">Login to your account</h2>
+        <h2
+          className="text-[35px]  my-2"
+          style={{ fontFamily: "Luckiest Guy" }}
+        >
+          Login to your account
+        </h2>
         <div className="border-[1px] rounded-sm border-[#dbdbdb] py-[15px] px-[7px] w-[550px]">
           <div className="my-2">
             <label
               htmlFor="Email"
               className="block text-[15px] font-bold mb-1 px-[3px]"
+              style={{ fontFamily: "Poppins" }}
             >
               Email
             </label>
@@ -58,12 +64,14 @@ const UserLogin = () => {
               value={values.email}
               onChange={handleChange}
               name="email"
+              style={{ fontFamily: "Poppins" }}
             />
           </div>
           <div className="">
             <label
               htmlFor="password"
               className="block text-[15px] font-bold mb-1 px-[3px]"
+              style={{ fontFamily: "Poppins" }}
             >
               Password
             </label>
@@ -80,6 +88,7 @@ const UserLogin = () => {
               name="password"
               onChange={handleChange}
               value={values.password}
+              style={{ fontFamily: "Poppins" }}
             />
           </div>
 
@@ -94,21 +103,28 @@ const UserLogin = () => {
                 checked={checkbox}
                 onClick={(e) => setCheckbox(e.target.value)}
               />
-              <span>Rember me</span>
+              <span style={{ fontFamily: "Poppins" }}>Rember me</span>
             </p>
-            <p className="flex justify-start place-items-center gap-1 my-2 text-[15px] cursor-pointer">
+            <p
+              className="flex justify-start place-items-center gap-1 my-2 text-[15px] cursor-pointer"
+              style={{ fontFamily: "Poppins" }}
+            >
               <CiLock className="text-[18px]" /> Forgot Password
             </p>
           </div>
           <button
             onClick={handleSubmit}
             disabled={IsLoading}
-            className="mt-2 w-full flex justify-center place-items-center disabled:cursor-no-drop disabled:bg-[#f49d3f57] rounded-sm text-[16px] px-2 py-2 text-[white] bg-[#F49E3F] cursor-pointer"
+            className="mt-2 w-full flex justify-center place-items-center disabled:cursor-no-drop disabled:bg-[#f49d3f57] rounded-sm text-[16px] px-2 py-2 text-[#000000] bg-[#A7EAFF] cursor-pointer"
+            style={{ fontFamily: "Poppins" }}
           >
             {IsLoading ? <SpinnerLoading /> : "Login"}
           </button>
           <NavLink to="/user/signup">
-            <p className="mt-4 text-center text-[16px] font-thin cursor-pointer">
+            <p
+              className="mt-4 text-center text-[16px] font-bold cursor-pointer"
+              style={{ fontFamily: "Poppins" }}
+            >
               Don't have an account?
             </p>
           </NavLink>

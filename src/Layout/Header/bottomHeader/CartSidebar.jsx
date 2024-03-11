@@ -53,23 +53,23 @@ const CartSidebar = ({ show, setShow }) => {
     dispatch(GetAllCartData(CartCode));
   };
 
-  const cartloading = useSelector((state)=> state.cart.isloading)
-
+  const cartloading = useSelector((state) => state.cart.isloading);
 
   return (
     <div
-    className={
-      show
-        ? "fixed z-20 left-0 top-0 flex h-full w-full items-center justify-center bg-black bg-opacity-50 py-10"
-        : ""
-    }
+      className={
+        show
+          ? "fixed z-20 left-0 top-0 flex h-full w-full items-center justify-center bg-black bg-opacity-50 py-10"
+          : ""
+      }
     >
       <div className={show ? "cartSiebar hide_cart" : "cartSiebar"}>
         <div className="cart_siebar_header flex justify-between place-items-center text-[20px] mb-4">
-          <h2>Your Cart</h2>
+          <h2 style={{ color: "#FCC79F" }}>Your Cart</h2>
           <RxCross1
             className="w-[24px] h-[24] cursor-pointer"
             onClick={() => setShow(false)}
+            style={{ backgroundColor: "#FCC79F" }}
           />
         </div>
         {/* ----- */}
@@ -81,12 +81,16 @@ const CartSidebar = ({ show, setShow }) => {
           {/* -------------- cart box  */}
           <div className="cart_data_overflow">
             {cart?.Items?.length > 0 ? (
-              
               cart &&
               cart.Items &&
               cart.Items.map((item, index) => {
                 return (
-                  <div className={`cart_sidebar_box  ${cartloading ? "opacity-[.3]" : "" }`} key={index}>
+                  <div
+                    className={`cart_sidebar_box  ${
+                      cartloading ? "opacity-[.3]" : ""
+                    }`}
+                    key={index}
+                  >
                     <div className="cart_sidebar_box_image">
                       <img
                         src={`${media}/${item.product_details?.File1}`}
@@ -109,14 +113,14 @@ const CartSidebar = ({ show, setShow }) => {
                           <p className=" !text-[18px]">
                             ${item.product_details?.Price}
                           </p>
-                         {
-                          cartloading ?  <MdDelete
-                          className="text-[25px] text-[#ff000085] cursor-pointer !cursor-not-allowed"
-                        /> :  <MdDelete
-                        className="text-[25px] text-[red] cursor-pointer"
-                        onClick={() => deleteitem(item.id)}
-                      />
-                         }
+                          {cartloading ? (
+                            <MdDelete className="text-[25px] text-[#ff000085] cursor-pointer !cursor-not-allowed" />
+                          ) : (
+                            <MdDelete
+                              className="text-[25px] text-[red] cursor-pointer"
+                              onClick={() => deleteitem(item.id)}
+                            />
+                          )}
                         </div>
                       </div>
                     </div>
@@ -124,7 +128,7 @@ const CartSidebar = ({ show, setShow }) => {
                 );
               })
             ) : (
-              <p className="bg-[#F49E3F] text-2xl p-2 my-3">No Item In Cart</p>
+              <p className="bg-[#FCC79F] text-2xl p-2 my-3">No Item In Cart</p>
             )}
           </div>
         </div>

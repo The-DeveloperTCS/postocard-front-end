@@ -34,7 +34,10 @@ const BottomBottomHeader = ({ showheader, setshowheader }) => {
           </p>
           <IoIosArrowDown className="cursor-pointer" />
           {select === 1 && (
-            <div className="menus flex-wrap" onMouseLeave={() => setSlect(0)}>
+            <div
+              className="menus flex-wrap bigger-dropdown"
+              onMouseLeave={() => setSlect(0)}
+            >
               {Occasions?.map((item, index) => (
                 <ul key={index}>
                   <NavLink to={`/products/${item.CategoryName}`}>
@@ -58,7 +61,10 @@ const BottomBottomHeader = ({ showheader, setshowheader }) => {
           </p>
           <IoIosArrowDown className="cursor-pointer" />
           {select === 2 && (
-            <div className="menus flex-wrap" onMouseLeave={() => setSlect(0)}>
+            <div
+              className="menus flex-wrap bigger-dropdown"
+              onMouseLeave={() => setSlect(0)}
+            >
               {hollidays?.map((item, index) => (
                 <ul key={index}>
                   <NavLink to={`/products/${item.CategoryName}`}>
@@ -87,7 +93,7 @@ const BottomBottomHeader = ({ showheader, setshowheader }) => {
             OCCASIONS <IoIosArrowDown className="cursor-pointer" />
           </AccordionHeader>
           <AccordionBody className="py-0">
-            <div className="menus flex-wrap">
+            <div className="menus flex-wrap bigger-dropdown">
               {Occasions?.map((item, index) => (
                 <ul key={index}>
                   <NavLink to={`/products/${item.CategoryName}`}>
@@ -117,7 +123,7 @@ const BottomBottomHeader = ({ showheader, setshowheader }) => {
             Holiday <IoIosArrowDown className="cursor-pointer" />
           </AccordionHeader>
           <AccordionBody className="py-0">
-            <div className="menus flex-wrap">
+            <div className="menus flex-wrap bigger-dropdown">
               {hollidays?.map((item, index) => (
                 <ul key={index}>
                   <NavLink to={`/products/${item.CategoryName}`}>

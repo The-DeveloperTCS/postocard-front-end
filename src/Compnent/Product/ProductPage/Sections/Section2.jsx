@@ -77,7 +77,7 @@ const Section2 = () => {
   }, [search]);
 
   return (
-    <>
+    <div className="Product_Section2-main">
       {isLoading ? (
         <Loading />
       ) : (
@@ -123,7 +123,7 @@ const Section2 = () => {
           </div>
         </>
       )}
-    </>
+    </div>
   );
 };
 

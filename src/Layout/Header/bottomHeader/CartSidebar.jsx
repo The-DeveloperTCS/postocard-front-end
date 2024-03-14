@@ -14,6 +14,9 @@ import {
   DELETE_CART_PRODUCT_SUCCESS,
 } from "../../../Redux/Variables/CartVariable";
 import { NavLink } from "react-router-dom";
+import productimmg from "../../../Assets/images/Layer 1 1.png";
+import { MdCancel } from "react-icons/md";
+import { ImBin } from "react-icons/im";
 
 const CartSidebar = ({ show, setShow }) => {
   const [count, setCount] = useState(1);
@@ -65,18 +68,34 @@ const CartSidebar = ({ show, setShow }) => {
     >
       <div className={show ? "cartSiebar hide_cart" : "cartSiebar"}>
         <div className="cart_siebar_header flex justify-between place-items-center text-[20px] mb-4">
-          <h2 style={{ color: "#FCC79F" }}>Your Cart</h2>
-          <RxCross1
+          <h2
+            style={{
+              color: "#30404D",
+              fontFamily: "Luckiest Guy",
+              margiTop: "20px",
+            }}
+          >
+            Your Cart
+          </h2>
+          <MdCancel
             className="w-[24px] h-[24] cursor-pointer"
             onClick={() => setShow(false)}
-            style={{ backgroundColor: "#FCC79F" }}
+            style={{ color: "red" }}
           />
         </div>
         {/* ----- */}
         <div className="cart_data">
-          <div className="cart_data_header px-1 flex justify-between place-items-center text-[14px] text-black mb-2">
-            <p>Product</p>
-            <p>Total</p>
+          <div className="cart_data_header px-1 flex justify-between place-items-center text-[14px] text-#30404D mb-2">
+            <h3
+              style={{
+                color: "#30404D",
+                fontFamily: "Luckiest Guy",
+                marginBottom: "20px",
+              }}
+            >
+              Product
+            </h3>
+            {/* <p>Total</p> */}
           </div>
           {/* -------------- cart box  */}
           <div className="cart_data_overflow">
@@ -92,31 +111,41 @@ const CartSidebar = ({ show, setShow }) => {
                     key={index}
                   >
                     <div className="cart_sidebar_box_image">
-                      <img
-                        src={`${media}/${item.product_details?.File1}`}
-                        alt=""
-                      />
+                      <img src={productimmg} alt="" />
                     </div>
+
                     {/* --- */}
                     <div children="cart_sidebar_box_content">
                       <div className="sibar_cart_box_title mb-2 w-[full] gap-[5px] flex-col">
-                        <p className="cart_heading !text-[18px]">
-                          {item.product_details?.ProductName?.slice(0, 80)}{" "}
+                        <p
+                          className="cart_heading !text-[20px]"
+                          style={{ marginTop: "10px" }}
+                        >
+                          {/* {item.product_details?.ProductName?.slice(0, 80)}{" "}
                           {`${
                             item.product_details?.ProductName?.length > 80
                               ? "..."
                               : ""
-                          }`}
+                          }`} */}
+                          Birthday Card
                         </p>
                         <font></font>
-                        <div className="w-full flex justify-between place-items-center">
+                        <div
+                          className="w-full flex justify-between place-items-center"
+                          style={{ marginTop: "40px" }}
+                        >
                           <p className=" !text-[18px]">
                             ${item.product_details?.Price}
                           </p>
                           {cartloading ? (
-                            <MdDelete className="text-[25px] text-[#ff000085] cursor-pointer !cursor-not-allowed" />
-                          ) : (
                             <MdDelete
+                              className="text-[25px] text-[#ff000085] cursor-pointer !cursor-not-allowed"
+                              style={{
+                                marginBottom: "-45px",
+                              }}
+                            />
+                          ) : (
+                            <ImBin
                               className="text-[25px] text-[red] cursor-pointer"
                               onClick={() => deleteitem(item.id)}
                             />
@@ -135,20 +164,20 @@ const CartSidebar = ({ show, setShow }) => {
         <div className="fixed_cart">
           <div className="total_amount">
             <p>
-              <span className="text-[18px]">Subtotal</span>
-              <span className="text-[18px]">
+              <span className="text-[16px]">Subtotal</span>
+              <span className="text-[16px]">
                 ${cart?.CartData?.GrossAmount ? cart?.CartData?.GrossAmount : 0}
               </span>
             </p>
             <p>
-              <span className="text-[18px]">Discount</span>
-              <span className="text-[18px]">
+              <span className="text-[16px]">Discount</span>
+              <span className="text-[16px]">
                 ${cart?.CartData?.Discount ? cart?.CartData?.Discount : 0}
               </span>
             </p>
             <p>
-              <span className="text-[18px]">Total</span>
-              <span className="text-[18px]">
+              <span className="text-[16px]">Total</span>
+              <span className="text-[16px]">
                 ${cart?.CartData?.NetAmount ? cart?.CartData?.NetAmount : 0}
               </span>
             </p>

@@ -1,3 +1,10 @@
+.Product_Section2-main {
+  background-image: url(../../../../Assets/images/product-msin-bg.png);
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
 .Product_Section2 {
   padding: 40px 20px;
   display: grid;

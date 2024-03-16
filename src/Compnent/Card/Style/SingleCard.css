@@ -1,53 +1,68 @@
-.single_card{
-    width: 100% !important;
-    padding: 0px 10px;
-    /* overflow-y: auto; */
+.single_card_main {
     display: flex;
-    justify-content: center;
-    align-items: center;
-    /* margin-top: 60px; */
-    background: aliceblue;
+    flex-direction: row;
+    /* Align children horizontally */
+    justify-content: flex-end;
+    /* Align children to the end of the container */
+    gap: 4rem;
+    /* Adjust gap between elements if needed */
+    border: 2px solid rgb(255, 255, 255);
+    padding: 60px;
+    border-radius: 24px;
+    width: 100%;
 
 }
-.single_card_main{
-    width: 100%;
-}
-.box{
-    border: 1px solid gray;
-}
+
+
+
 
 
 /* ================ flip_card_parent */
 .flip_card_parent {
-        width: 100%;
-        height: 400px;
-        perspective: 1000px; /* Add perspective for 3D effect */
-        position: relative;
-      }
-/* --------- butoon_editing */
-.butoon_editing{
-    margin: 10px 0px;
-    margin-top: 76px;
+    width: 100%;
+    height: 400px;
+    /* Add perspective for 3D effect */
+    position: relative;
+}
 
+/* --------- butoon_editing */
+.butoon_editing {
+    margin: 10px 0px;
+    margin-top: 34px;
     width: 100%;
     display: flex;
-    justify-content: center;
+    justify-content: end;
     align-items: center;
-    gap: 30px;
-    background-color: #F5A852;
+    /* gap: 30px; */
     padding: 5px;
-
 }
-.butoon_editing button{
-    border: 1px solid white;
+
+.butoon_editing button {
     padding: 6px 15px;
-    color: white;
+    color: #30404D;
+    font-family: "Poppins", sans-serif;
+    text-transform: uppercase;
+    font-size: 14px;
+    font-weight: 500;
 }
 
+.btnprev {
+    border: 2px solid #30404D;
+    border-top-left-radius: 20px;
+    border-bottom-left-radius: 20px;
+    border-right: none;
+
+}
+
+.btnnext {
+    border: 2px solid #30404D;
+    border-top-right-radius: 20px;
+    border-bottom-right-radius: 20px;
+}
 
 /* =============== blank_box */
-.blank_box{
-        width: 300px;
-        height: 400px;
-        background-color: purple;
+.blank_box {
+    width: 300px;
+    height: 400px;
+    background-color: purple;
 }

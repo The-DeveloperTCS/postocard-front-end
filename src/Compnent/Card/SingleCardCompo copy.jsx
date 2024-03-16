@@ -4,14 +4,10 @@
 // import "./Style/CardAnimation.css"
 // import "./Style/SingleCard.css";
 
-
 // const SingleCardCompo = () => {
 //   const [img, setImg] = useState("");
 //   const [name, setName] = useState("Name");
 //   const [check, setCXheck] = useState(0);
-
-
-  
 
 //   const imageChange = (e) => {
 //     const file = e.target.files[0];
@@ -24,8 +20,6 @@
 //     reader.readAsDataURL(file);
 //   };
 
-
- 
 //   // ----------------- decrease
 
 //   const decrease = ()=>{
@@ -36,7 +30,6 @@
 //     setCXheck(check -1)
 //     }
 
-
 //   }
 // // -----------increase
 //   const increase = ()=>{
@@ -44,15 +37,9 @@
 //       setCXheck(2)
 //     }else{
 //       setCXheck(check + 1)
-     
+
 //     }
 //   }
-
- 
-
-  
-
-
 
 //   const container = useRef();
 //   const tl = useRef();
@@ -94,7 +81,7 @@
 //         .reverse();
 //       }
 
-//         // ------------------- 
+//         // -------------------
 
 //     }, container); // <- Scope!
 //     return () => ctx.revert(); // <- Cleanup!
@@ -141,8 +128,6 @@
 //             <img src="https://pwcdn.net/pe/1/templates/a5pzw2019015805/thumbs/a5pzw2019015805.jpg" alt="" />
 //           </div> */}
 
-
-
 //           {/* ==================================  */}
 //     {/* <CardAnimation  check={check}  ref={childref}   /> */}
 
@@ -174,7 +159,6 @@
 // };
 
 // export default SingleCardCompo;
-
 
 // ==============================
 
@@ -215,20 +199,16 @@ const SingleCardCompo = () => {
 
   const increase = () => {
     if (check <= 3) {
-      setCXheck(check +1);
+      setCXheck(check + 1);
       console.log(check + "inner");
       toggleTimeline();
     }
   };
 
-  
-
   // console.log(check);
 
   const container = useRef();
   const tl = useRef();
-
-
 
   useEffect(() => {
     const boxes = document.querySelectorAll(".box");
@@ -236,16 +216,20 @@ const SingleCardCompo = () => {
 
     if (check === 0) {
       tl.current
-        .to(boxes[0], { rotationY: -90, duration: 0.99, transformOrigin: 'left' })
-        .to(boxes[0], { duration: 0.01, backgroundImage: "url('https://pwcdn.net/pe/1/templates/a5blm2017003625/thumbs/a5blm2017003625.jpg')" })
-        .to(boxes[0], { rotationY: -180, duration: 1, ease: 'ease.in' }, 1)
+        .to(boxes[0], {
+          rotationY: -90,
+          duration: 0.99,
+          transformOrigin: "left",
+        })
+        .to(boxes[0], {
+          duration: 0.01,
+          backgroundImage:
+            "url('https://pwcdn.net/pe/1/templates/a5blm2017003625/thumbs/a5blm2017003625.jpg')",
+        })
+        .to(boxes[0], { rotationY: -180, duration: 1, ease: "ease.in" }, 1)
         .to(boxes[0], { x: 248, duration: 1 })
         .to(boxes[1], { x: 248, duration: 1 }, 2)
-        .to(
-          boxes[1],
-          { duration: 1, rotateY: 70, transformOrigin: "left" },
-          2
-        )
+        .to(boxes[1], { duration: 1, rotateY: 70, transformOrigin: "left" }, 2)
         .reverse();
     } else if (check === 1) {
       // Add your animation for check === 1 here
@@ -267,13 +251,18 @@ const SingleCardCompo = () => {
     <div className="single_card">
       <div className="single_card_main flex justify-center place-items-center flex-col gap-4">
         <div className="flip_card_parent flex justify-center place-items-center flex-col">
-          {/* =====================  */} 
+          {/* =====================  */}
           <section className="boxes-container" ref={container}>
-           
             <div className="box_main">
-              <div className="box box_1 b" style={{
-                backgroundImage : "https://pwcdn.net/pe/1/templates/a5shu2022087980/thumbs/a5shu2022087980.jpg"
-              }}>Box 1</div>
+              <div
+                className="box box_1 b"
+                style={{
+                  backgroundImage:
+                    "https://pwcdn.net/pe/1/templates/a5shu2022087980/thumbs/a5shu2022087980.jpg",
+                }}
+              >
+                Box 1
+              </div>
               <div className="box box_2">Box 2</div>
               {/* <div className="box box_3">Box 3</div> */}
             </div>

@@ -88,3 +88,167 @@ const ViewMainProduct = ({ data }) => {
 };
 
 export default ViewMainProduct;
+// import React from "react";
+// import Slider from "react-slick";
+// import "slick-carousel/slick/slick.css";
+// import "slick-carousel/slick/slick-theme.css";
+// import { GrNext } from "react-icons/gr";
+// import { MdArrowBackIosNew } from "react-icons/md";
+// import wed from "../../Assets/images/Wedding Card2.png";
+// import newbd from "../../Assets/images/newbdc.png";
+// import "../Styles/Carousel4.css";
+// import "../Product/SingleProduct/Styles/";
+// import { IoStarSharp } from "react-icons/io5";
+
+// function ViewMainProduct() {
+//   const PrevArrow = (props) => {
+//     const { onClick } = props;
+//     return (
+//       <button className="prev-arrow21" onClick={onClick}>
+//         <MdArrowBackIosNew />
+//       </button>
+//     );
+//   };
+
+//   const NextArrow = (props) => {
+//     const { onClick } = props;
+//     return (
+//       <button className="next-arrow21" onClick={onClick}>
+//         <GrNext />
+//       </button>
+//     );
+//   };
+
+//   const settings = {
+//     dots: false,
+//     infinite: true,
+//     speed: 500,
+//     slidesToShow: 3, // Default number of slides to show
+//     slidesToScroll: 1,
+//     arrows: true,
+//     prevArrow: <PrevArrow />,
+//     nextArrow: <NextArrow />,
+//     responsive: [
+//       {
+//         breakpoint: 1024, // Medium devices (tablets, 768px and up)
+//         settings: {
+//           slidesToShow: 2,
+//         },
+//       },
+//       {
+//         breakpoint: 600, // Small devices (landscape phones, 576px and up)
+//         settings: {
+//           slidesToShow: 1,
+//         },
+//       },
+//     ],
+//   };
+//   return (
+//     <div className="slider-container41">
+//       <Slider {...settings}>
+//         <div className="carousel41-main-slider">
+//           <div className="carousel41-img">
+//             <img src={newbd} alt="" style={{ width: "55%" }} />
+//           </div>
+//           <div className="carousel41-text">
+//             <h2>Wedding Card</h2>
+//             <p>15+ stock</p>
+//             <span>
+//               <IoStarSharp /> 4.5
+//             </span>
+//             <div className="carousel41-price-main">
+//               <div className="forcarousel4-price">
+//                 <p>20$</p>
+//               </div>
+//               <div className="Confiqure-care1">
+//                 <p>Confiqure care</p>
+//               </div>
+//             </div>
+//           </div>
+//         </div>
+//         <div className="carousel41-main-slider">
+//           <div className="carousel41-img">
+//             <img src={newbd} alt="" style={{ width: "55%" }} />
+//           </div>
+//           <div className="carousel41-text">
+//             <h2>Wedding Card</h2>
+//             <p>15+ stock</p>
+//             <span>
+//               <IoStarSharp /> 4.5
+//             </span>
+//             <div className="carousel41-price-main">
+//               <div className="forcarousel4-price">
+//                 <p>20$</p>
+//               </div>
+//               <div className="Confiqure-care1">
+//                 <p>Confiqure care</p>
+//               </div>
+//             </div>
+//           </div>
+//         </div>
+//         <div className="carousel41-main-slider">
+//           <div className="carousel41-img">
+//             <img src={wed} alt="" />
+//           </div>
+//           <div className="carousel41-text">
+//             <h2>Wedding Card</h2>
+//             <p>15+ stock</p>
+//             <span>
+//               <IoStarSharp /> 4.5
+//             </span>
+//             <div className="carousel41-price-main">
+//               <div className="forcarousel4-price">
+//                 <p>20$</p>
+//               </div>
+//               <div className="Confiqure-care1">
+//                 <p>Confiqure care</p>
+//               </div>
+//             </div>
+//           </div>
+//         </div>
+//         <div className="carousel41-main-slider">
+//           <div className="carousel41-img">
+//             <img src={newbd} alt="" style={{ width: "55%" }} />
+//           </div>
+//           <div className="carousel41-text">
+//             <h2>Wedding Card</h2>
+//             <p>15+ stock</p>
+//             <span>
+//               <IoStarSharp /> 4.5
+//             </span>
+//             <div className="carousel41-price-main">
+//               <div className="forcarousel4-price">
+//                 <p>20$</p>
+//               </div>
+//               <div className="Confiqure-care1">
+//                 <p>Confiqure care</p>
+//               </div>
+//             </div>
+//           </div>
+//         </div>
+//         <div className="carousel41-main-slider">
+//           <div className="carousel41-img">
+//             <img src={wed} alt="" />
+//           </div>
+//           <div className="carousel41-text">
+//             <h2>Wedding Card</h2>
+//             <p>15+ stock</p>
+//             <span>
+//               <IoStarSharp /> 4.5
+//             </span>
+//             <div className="carousel41-price-main">
+//               <div className="forcarousel41-price">
+//                 <p>20$</p>
+//               </div>
+//               <div className="Confiqure-care1">
+//                 <p>Confiqure care</p>
+//               </div>
+//             </div>
+//           </div>
+//         </div>
+//       </Slider>
+//     </div>
+//   );
+// }
+
+// export default ViewMainProduct;

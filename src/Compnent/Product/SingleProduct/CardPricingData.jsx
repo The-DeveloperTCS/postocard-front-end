@@ -228,22 +228,70 @@ const CardPricingData = ({ active, name, content }) => {
         <p>loading...</p>
       ) : (
         <div className="CardPricingData_parent px-[60px]">
-          <div className="CardPricingData flex justify-between place-items-center gap-[10px] py-2 my-[50px]">
-            <h2>{singleproduct && singleproduct.ProductName}</h2>
-            <div className="price flex justify-between place-items-center gap-2 ">
+          <div className="CardPricingData flex justify-between cardpricingdatanew place-items-center gap-[10px] py-2 my-[50px]">
+            <div
+              className="CardPricingDatafortext"
+              style={{ width: "45%", fontFamily: "Luckiest Guy" }}
+            >
+              <h2>{singleproduct && singleproduct.ProductName}</h2>
               <p>
-                $
-                {singleproduct?.Discount > 0
-                  ? singleproduct?.Price - singleproduct?.Discount
-                  : singleproduct?.Price}
+                Lorem ipsum, dolor sit amet consectetur adipisicing elit. Vel
+                assumenda perferendis tempora a, id ipsum rem qui harum numquam
+                velit iure iusto excepturi culpa cum veritatis deserunt unde
               </p>
+            </div>
+
+            <div
+              className="price flex justify-between place-items-center"
+              style={{ gap: "90px" }}
+            >
+              <div className="centered-text">
+                <span
+                  className="text-with-line"
+                  style={{
+                    fontSize: "16px",
+                    fontWeight: "600",
+                    color: "#30404D",
+                    fontFamily: "Poppins",
+                    textTransform: "uppercase",
+                  }}
+                >
+                  price
+                </span>
+                <p style={{ fontSize: "30px" }}>
+                  $
+                  {singleproduct?.Discount > 0
+                    ? singleproduct?.Price - singleproduct?.Discount
+                    : singleproduct?.Price}
+                </p>
+                <span
+                  className="text-with-line-equal"
+                  style={{
+                    fontSize: "20px",
+                    color: "#9D9292",
+                    fontFamily: "Poppins",
+                  }}
+                >
+                  $80
+                </span>
+              </div>
+
               {singleproduct?.Discount > 0 && (
                 <font className="text-[gray]">
                   $ {singleproduct?.Discount > 0 && singleproduct?.Price}
                 </font>
               )}
 
-              <span className="sold">15+ Sold</span>
+              {/* <span className="sold">15+ Sold</span> */}
+              {cartloading ? (
+                <button className="rounded-sm" disabled>
+                  Add to cart
+                </button>
+              ) : (
+                <button className="rounded-md" onClick={() => setShow(!show)}>
+                  Add to cart
+                </button>
+              )}
             </div>
             {/* ================= */}
             {show && (
@@ -563,15 +611,6 @@ const CardPricingData = ({ active, name, content }) => {
               </div>
             )}
             {/* ============ */}
-            {cartloading ? (
-              <button className="rounded-sm" disabled>
-                Add to cart
-              </button>
-            ) : (
-              <button className="rounded-md" onClick={() => setShow(!show)}>
-                Add to cart
-              </button>
-            )}
           </div>
           {/* --------description  */}
           {active === 1 && (
@@ -597,7 +636,21 @@ const CardPricingData = ({ active, name, content }) => {
             </div>
           )}
           <div className="also_like">
-            <h2>You may also like</h2>
+            <h2 style={{ marginLeft: "50px", fontFamily: "Luckiest Guy" }}>
+              You may also like
+            </h2>
+            <p
+              style={{
+                marginLeft: "53px",
+                width: "40%",
+                fontFamily: "Poppins",
+              }}
+            >
+              Lorem ipsum dolor sit amet consectetur adipisicing elit.
+              Temporibus, magnam accusantium necessitatibus non magni voluptates
+              quas nam facilis saepe sint velit ut eligendi corporis, nobis
+              iste! Esse provident assumenda aperiam!00
+            </p>
           </div>
           {active === 2 && <AddReview />}
           {sliceProduct?.length > 0 ? (

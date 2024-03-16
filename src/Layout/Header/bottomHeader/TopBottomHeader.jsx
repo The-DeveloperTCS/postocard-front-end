@@ -6,7 +6,7 @@ import { IoMenuSharp } from "react-icons/io5";
 import { NavLink, useNavigate } from "react-router-dom";
 import { useSelector } from "react-redux";
 import { toast } from "react-toastify";
-import logo from "../../././../Assets/logo.jpg";
+import logo from "../../././../Assets/logo 1 (2).png";
 import { MdOutlineAccountCircle } from "react-icons/md";
 import SpinnerLoading from "../../Loading/SpinnerLoading.jsx";
 import { RxCross2 } from "react-icons/rx";
@@ -59,14 +59,22 @@ const TopBottomHeader = () => {
   return (
     <div className="top_bottom_header" ref={searchRef}>
       <NavLink to="/">
-        <img src={logo} className="w-[70px] object-contain" alt="logo" />
+        <img
+          src={logo}
+          className="w-[135px] object-contain main-logo"
+          alt="logo"
+        />
       </NavLink>
 
       <div className="flex justify-center place-items-center gap-[8px] ">
-        <IoMenuSharp
-          className="cross_burger text-[23px]"
-          onClick={() => setshowheader(true)}
-        />
+        <div className="">
+          <IoMenuSharp
+            search
+            className="cross_burger text-[23px]"
+            onClick={() => setshowheader(true)}
+          />
+        </div>
+
         <div className="flex justify-start place-items-center">
           <div className={showSearch ? "sercarbox sercarboxhide" : "sercarbox"}>
             <input

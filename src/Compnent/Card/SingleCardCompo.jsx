@@ -1,8 +1,4 @@
-
-
-
-
-// ================================================== 
+// ==================================================
 import React, { useEffect, useState } from "react";
 import { useLayoutEffect, useRef } from "react";
 import { gsap } from "gsap";
@@ -13,7 +9,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { getSingleProduct } from "../../Redux/Action/ProductAction";
 import { GetAllCartData } from "../../Redux/Action/CartAction";
 
-const SingleCardCompo = ({ content ,namedata}) => {
+const SingleCardCompo = ({ content, namedata }) => {
   const [img, setImg] = useState("");
   const [name, setName] = useState("Name");
   const [check, setCXheck] = useState(0);
@@ -31,9 +27,6 @@ const SingleCardCompo = ({ content ,namedata}) => {
   const [image2, setImage2] = useState("");
   const [image3, setImage3] = useState("");
   const [image4, setImage4] = useState("");
-
-
-
 
   useEffect(() => {
     setImage1(singleproduct && singleproduct.File1);
@@ -89,7 +82,7 @@ const SingleCardCompo = ({ content ,namedata}) => {
 
     if (check === 0) {
       tl.current
-      // .to(boxes[1], {})
+        // .to(boxes[1], {})
         .to(boxes[0], {
           rotationY: -90,
           duration: 0.99,
@@ -163,8 +156,8 @@ const SingleCardCompo = ({ content ,namedata}) => {
     const boxes = document.querySelectorAll(".box");
     tl.current = gsap.timeline();
     tl.current.set(boxes[0], { backgroundImage: `url(${image1})` });
-    tl.current.set(boxes[1], { backgroundImage: `url(${image3})`,zIndex : -1})
-  }, [image1,id]); // Listen for changes in the image1 state
+    tl.current.set(boxes[1], { backgroundImage: `url(${image3})`, zIndex: -1 });
+  }, [image1, id]); // Listen for changes in the image1 state
 
   const decrease = () => {
     if (checkDec > 0) {
@@ -197,10 +190,7 @@ const SingleCardCompo = ({ content ,namedata}) => {
             <div className="box_main">
               <div className="box box_1 b"></div>
               <div className="box box_2 p-[20px]">
-                <p
-                  className="text script_decing w-[full]  h-[320px] m-auto bg-[#d4d4d480] overflow-y-auto p-2 text-left text-[15px]"
-                  
-                >
+                <p className="text script_decing w-[full]  h-[320px] m-auto bg-[#d4d4d480] overflow-y-auto p-2 text-left text-[15px]">
                   {content}
                 </p>
                 <p className="name">{namedata}</p>
@@ -210,10 +200,18 @@ const SingleCardCompo = ({ content ,namedata}) => {
           {/* =====================  */}
         </div>
 
-        <div className="butoon_editing">
+        {/* <div className="butoon_editing">
           <button onClick={decrease}>Prev</button>
           <button onClick={increase}>Next</button>
-        </div>
+        </div> */}
+      </div>
+      <div className="butoon_editing">
+        <button className="btnprev" onClick={decrease}>
+          Prev
+        </button>
+        <button className="btnnext" onClick={increase}>
+          Next
+        </button>
       </div>
     </div>
   );

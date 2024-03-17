@@ -2,10 +2,19 @@
   display: none;
 }
 
+.Index-main-div-bg {
+  background-image: url(../../Assets/images/Edit\ your\ cardBackground.png);
+  background-size: cover;
+  /* or "contain" depending on your preference */
+  background-position: bottom;
+  /* Adjust as needed */
+}
+
 @media (max-width: 1000px) {
   .sidebar_profile {
     display: none;
   }
+
   .arrow {
     display: block;
   }
@@ -15,6 +24,7 @@
   .user_profile_content {
     padding: 10px 0px !important;
   }
+
   .parent {
     padding: 10px 10px !important;
   }

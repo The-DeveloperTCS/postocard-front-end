@@ -13,7 +13,7 @@ const UserOrders = () => {
   // console.log(UserOrders);
 
   return (
-    <div className="overflow-x-auto">
+    <div className="overflow-x-auto order-dashboard-main">
       <h2 className="text-[35px] font-medium mb-2">Orders</h2>
       <div className="orders_box">
         <div className="order_box_header">

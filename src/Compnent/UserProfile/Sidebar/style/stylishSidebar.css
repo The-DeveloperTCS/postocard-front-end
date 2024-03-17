@@ -1,0 +1,92 @@
+.dashboard-sidebar11 h2 {
+    color: #30404D;
+    font-family: "Luckiest Guy", cursive;
+    font-size: 20px;
+    padding: 15px 10px;
+
+}
+
+.dashboard-sidebar11 p {
+    color: #30404D;
+    font-size: 16px;
+    font-family: "Poppins", sans-serif;
+    border: 1px solid #30404D;
+    padding: 15px 10px;
+}
+
+
+/* .dashboard-main-div */
+.dashboard-main-div h2 {
+    color: #30404D;
+    font-family: "Luckiest Guy", cursive;
+    font-size: 30px;
+    margin-top: -10px;
+}
+
+.dashboard-main-div p {
+    color: #30404D;
+    font-family: "Poppins", sans-serif;
+    font-size: 16px;
+}
+
+.dashboard-main-div svg {
+    color: #30404D;
+
+}
+
+.user_dash_box {
+    background-color: #FCC79F;
+}
+
+/* UserAddres */
+.UserAddres h2 {
+    color: #30404D;
+    font-family: "Luckiest Guy", cursive;
+    font-size: 30px;
+    margin-top: -10px;
+}
+
+.UserAddres p {
+    color: #30404D;
+    font-family: "Poppins", sans-serif;
+    font-size: 16px;
+    font-weight: 500;
+}
+
+/* accountsDetail-dashboard-main */
+.accountsDetail-dashboard-main h2 {
+    color: #30404D;
+    font-family: "Luckiest Guy", cursive;
+    font-size: 30px;
+    margin-top: -10px;
+}
+
+.accountsDetail-dashboard-main label {
+    color: #30404D;
+    font-family: "Poppins", sans-serif;
+    font-size: 16px;
+    font-weight: 500;
+}
+
+.accountsDetail-dashboard-main input {
+    font-size: 16px;
+    font-weight: 500;
+    padding: 15px 10px;
+    font-family: "Poppins", sans-serif;
+    border-radius: 10px;
+}
+
+
+.accountsDetail-dashboard-main ::placeholder {
+    font-family: "Poppins", sans-serif;
+
+}
+
+.accountsDetail-dashboard-main button {
+    padding: 15px 10px;
+    background-color: #FCC79F;
+    color: #30404D;
+    font-family: "Poppins", sans-serif;
+    border-radius: 10px;
+
+}

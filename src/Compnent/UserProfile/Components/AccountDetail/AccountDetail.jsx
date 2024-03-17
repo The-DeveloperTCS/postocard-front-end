@@ -7,6 +7,7 @@ import {
   UpdateUserPassword,
 } from "../../../../Redux/Action/UserAction";
 import Loading from "../../../../Layout/Loading/Loading";
+import "../../Sidebar/style/stylishSidebar.css";
 
 const AccountDetail = () => {
   const user = useSelector((state) => state.user.user);
@@ -54,7 +55,7 @@ const AccountDetail = () => {
       {loading ? (
         <Loading />
       ) : (
-        <div className="">
+        <div className="accountsDetail-dashboard-main">
           <h2 className="text-[35px] font-medium mb-2">Account Details</h2>
           <div className="box1_account_deatils my-2">
             <div className="flex justify-between place-items-center gap-2">
@@ -148,12 +149,12 @@ const AccountDetail = () => {
               />
               {showPass === "hide" ? (
                 <IoMdEye
-                  className="absolute top-[38px] right-[10px] text-[20px] cursor-pointer"
+                  className="absolute top-[45px] right-[10px] text-[20px] cursor-pointer"
                   onClick={() => setShowPass("show")}
                 />
               ) : (
                 <IoMdEyeOff
-                  className="absolute top-[38px] right-[10px] text-[20px] cursor-pointer"
+                  className="absolute top-[45px] right-[10px] text-[20px] cursor-pointer"
                   onClick={() => setShowPass("hide")}
                 />
               )}
@@ -176,12 +177,12 @@ const AccountDetail = () => {
               />
               {showPass === "hide" ? (
                 <IoMdEye
-                  className="absolute top-[38px] right-[10px] text-[20px] cursor-pointer"
+                  className="absolute top-[45px] right-[10px] text-[20px] cursor-pointer"
                   onClick={() => setShowPass("show")}
                 />
               ) : (
                 <IoMdEyeOff
-                  className="absolute top-[38px] right-[10px] text-[20px] cursor-pointer"
+                  className="absolute top-[45px] right-[10px] text-[20px] cursor-pointer"
                   onClick={() => setShowPass("hide")}
                 />
               )}

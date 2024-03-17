@@ -12,6 +12,7 @@ import { RxCross1 } from "react-icons/rx";
 import { toast } from "react-toastify";
 import Loading from "../../../../Layout/Loading/Loading";
 import { MdDeleteOutline } from "react-icons/md";
+import "../../Sidebar/style/stylishSidebar.css";
 
 const UserAddres = () => {
   const user = useSelector((state) => state.user.user);
@@ -74,7 +75,7 @@ const UserAddres = () => {
     dispatch(getuseraddress());
   }, []);
   return (
-    <div className="">
+    <div className="UserAddres">
       <h2 className="text-[35px] font-medium ">Address</h2>
       <h2 className="text-[20px] font-medium">Billing address</h2>
 
@@ -141,7 +142,10 @@ const UserAddres = () => {
             {/* ------------------  */}
             <div className="">
               {/* --- head  */}
-              <div className="bg-[#F49E3F] mt-2 w-full flex justify-between place-items-center px-2 py-3 rounded-sm">
+              <div
+                className="bg-[#FCC79F] mt-2 w-full flex justify-between place-items-center px-2 py-3 rounded-sm"
+                style={{ padding: "15px 10px", borderRadius: "10px" }}
+              >
                 <p className="text-white text-[20px] font-bold">
                   Name of Address
                 </p>
@@ -182,8 +186,15 @@ const UserAddres = () => {
           </div>
         ))}
       <button
-        className=" bg-[#F49E3F] py-2 px-2 my-3 rounded-sm text-white"
+        className=" bg-[#FCC79F] py-2 px-2 my-3 rounded-sm text-whit"
         onClick={() => setShowMoadl(true)}
+        style={{
+          padding: "15px 10px",
+          color: "#30404D",
+          fontFamily: "Poppins",
+          fontWeight: "500",
+          borderRadius: "10px",
+        }}
       >
         Create New Address
       </button>

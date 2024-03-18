@@ -8,6 +8,7 @@ import { useDispatch, useSelector } from "react-redux";
 import UserAuth from "../Hooks/UserAuth";
 import SpinnerLoading from "../Layout/Loading/SpinnerLoading";
 import { IoMdEye, IoMdEyeOff } from "react-icons/io";
+import "../Layout/Header/Styles/UserLogin.css";
 
 const Schema = Yup.object().shape({
   name: Yup.string().required("Plaese Enter Your name"),
@@ -64,14 +65,14 @@ const Signup = () => {
 
   return (
     <UserAuth>
-      <div className="mt-[20px] mb-[120px] w-full  flex justify-center place-items-center flex-col">
+      <div className="mt-[20px] mb-[120px] w-full  flex justify-center text-[#30404D] place-items-center flex-col">
         <h2
           className="text-[35px]   my-2"
           style={{ fontFamily: "Luckiest Guy" }}
         >
           Create an account
         </h2>
-        <div className="border-[1px] rounded-sm border-[#dbdbdb] py-[15px] px-[7px] w-[550px]">
+        <div className="shadow-lg bg-white py-[15px] px-[7px] w-[550px] user-signup">
           <div className="my-2">
             <label
               htmlFor="name"
@@ -188,14 +189,20 @@ const Signup = () => {
             type="button" // Change this to "submit" if you want a submit button
             onClick={handleSubmit}
             disabled={IsLoading}
-            className="mt-2 w-full disabled:cursor-no-drop disabled:bg-[#f49d3f57] flex justify-center place-items-center rounded-sm text-[16px] px-2 py-2 text-[#000000] bg-[#A7EAFF] cursor-pointer"
-            style={{ fontFamily: "Poppins", fontWeight: "bold" }}
+            className="mt-2 w-full disabled:cursor-no-drop disabled:bg-[#f49d3f57] flex justify-center place-items-center rounded-sm text-[16px] px-2 py-2 text-[#30404D] bg-[#FCC79F] cursor-pointer"
+            style={{
+              fontFamily: "Poppins",
+              fontWeight: "bold",
+              padding: "15px 10px",
+              marginTop: "30px",
+              borderRadius: "10px",
+            }}
           >
             {IsLoading ? <SpinnerLoading /> : "Sign-Up"}
           </button>
           <NavLink to="/user/login">
             <p
-              className="mt-4 text-center text-[16px] font-bold cursor-pointer"
+              className="mt-4 text-center text-[16px] text-[#30404D] font-bold cursor-pointer"
               style={{ fontFamily: "Poppins" }}
             >
               Already have an account?

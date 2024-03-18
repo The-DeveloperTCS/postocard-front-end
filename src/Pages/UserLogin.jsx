@@ -7,6 +7,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { UserLoginAction } from "../Redux/Action/UserAction";
 import SpinnerLoading from "../Layout/Loading/SpinnerLoading";
 import UserAuth from "../Hooks/UserAuth";
+import "../Layout/Header/Styles/UserLogin.css";
 
 const Schema = Yup.object().shape({
   email: Yup.string()
@@ -40,12 +41,13 @@ const UserLogin = () => {
       <div className="mt-[20px] mb-[120px] w-full  flex justify-center place-items-center flex-col">
         <h2
           className="text-[35px]  my-2"
-          style={{ fontFamily: "Luckiest Guy" }}
+          style={{ fontFamily: "Luckiest Guy", color: "#30404D" }}
         >
           Login to your account
         </h2>
-        <div className="border-[1px] rounded-sm border-[#dbdbdb] py-[15px] px-[7px] w-[550px]">
-          <div className="my-2">
+
+        <div className="py-[15px] px-[7px] w-[550px] shadow-lg bg-white user-Login">
+          <div className="my-2 ">
             <label
               htmlFor="Email"
               className="block text-[15px] font-bold mb-1 px-[3px]"
@@ -78,7 +80,7 @@ const UserLogin = () => {
             <input
               type="password"
               placeholder="Please enter your password"
-              className={`w-full border-[1px] border-[#dbdbdb] outline-none px-[5px] py-[8px]
+              className={`w-full border-[1px] border-[#30404D] outline-none px-[5px] py-[8px]
             ${
               errors.password && touched.password
                 ? "border-1 border-[red] shake"
@@ -99,14 +101,19 @@ const UserLogin = () => {
             >
               <input
                 type="checkbox"
-                className="text-[20px] cursor-pointer"
+                className="text-[20px] cursor-pointer text-[#30404D]  border-radius "
                 checked={checkbox}
                 onClick={(e) => setCheckbox(e.target.value)}
+                style={{
+                  fontFamily: "Poppins",
+                  borderRadius: "10px",
+                  padding: "15px 10px",
+                }}
               />
               <span style={{ fontFamily: "Poppins" }}>Rember me</span>
             </p>
             <p
-              className="flex justify-start place-items-center gap-1 my-2 text-[15px] cursor-pointer"
+              className="flex justify-start place-items-center gap-1 my-2 text-[#30404D] text-[16px] cursor-pointer"
               style={{ fontFamily: "Poppins" }}
             >
               <CiLock className="text-[18px]" /> Forgot Password
@@ -115,14 +122,19 @@ const UserLogin = () => {
           <button
             onClick={handleSubmit}
             disabled={IsLoading}
-            className="mt-2 w-full flex justify-center place-items-center disabled:cursor-no-drop disabled:bg-[#f49d3f57] rounded-sm text-[16px] px-2 py-2 text-[#000000] bg-[#A7EAFF] cursor-pointer"
-            style={{ fontFamily: "Poppins" }}
+            className="mt-2 w-full flex justify-center place-items-center disabled:cursor-no-drop disabled:bg-[#f49d3f57]  font-bold rounded-sm text-[16px] px-2 py-2 text-[#30404D] bg-[#FCC79F] cursor-pointer"
+            style={{
+              fontFamily: "Poppins",
+              borderRadius: "10px",
+              padding: "15px 10px",
+              marginTop: "30px",
+            }}
           >
             {IsLoading ? <SpinnerLoading /> : "Login"}
           </button>
           <NavLink to="/user/signup">
             <p
-              className="mt-4 text-center text-[16px] font-bold cursor-pointer"
+              className="mt-4 text-center text-[16px] text-[#30404D] font-bold cursor-pointer"
               style={{ fontFamily: "Poppins" }}
             >
               Don't have an account?

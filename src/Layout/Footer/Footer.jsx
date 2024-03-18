@@ -14,9 +14,9 @@ const Footer = () => {
       <div className="footer-main-inner">
         <div className="footer-logo-text">
           <img src={logo} alt="" />
-          <p>
+          <p style={{ width: "70%" }}>
             Lorem ipsum dolor sit amet, consectetur theithis adipiscing elit.
-            Quis facilisis quam semper urna rutrum egestas ante.{" "}
+            Quis facilisis quam semper urna rutrum egestas ante.
           </p>
         </div>
         <div className="footer-links-left">

@@ -70,6 +70,7 @@ const Allcollection = () => {
         {/* <img src="./data/product/productpage.png" alt="" /> */}
         <img
           src="https://images.pexels.com/photos/9429448/pexels-photo-9429448.jpeg?auto=compress&cs=tinysrgb&w=1260&h=1200&dpr=1"
+          style={{ margin: "auto", width: "100%" }}
           alt=""
         />
       </div>
@@ -80,32 +81,46 @@ const Allcollection = () => {
           <button className="filter_btn" onClick={() => setFilterShow(true)}>
             <p>Filters</p> <AiOutlineFilter className="mx-2" />
           </button>
-          <div className="Product_Section2">
-            <div className="product_section2_sidebar">
-              <Sidebar
-                search={search}
-                setSerach={setSerach}
-                filterdata={filterdata}
-                setshowfilter={setFilterShow}
-                showfilter={filtershow}
-                setprice={setprice}
-                price={price}
-              />
+          <div className="Product_Section2-flex">
+            <div className="abc1">
+              <div className="product_section2_sidebar">
+                <Sidebar
+                  search={search}
+                  setSerach={setSerach}
+                  filterdata={filterdata}
+                  setshowfilter={setFilterShow}
+                  showfilter={filtershow}
+                  setprice={setprice}
+                  price={price}
+                />
+              </div>
             </div>
             {/* -------- */}
-            {slicedata?.length > 0 ? (
-              <div className="pro flex justify-center flex-col place-items-center">
-                <ViewMainProduct data={slicedata} />
-                <button onClick={() => setCount(count + 1)}>Load more</button>
-              </div>
-            ) : (
-              <div className="flex flex-col justify-center place-items-center gap-[10px]">
-                <AnimateLoading SVGGET={SVGGET} />
-                <p className="text-[#14BDA5] rounded-[7px] py-2 px-3  m-2 text-[25px] font-bold">
-                  <span className="text-[28px]">OOPS!</span> No Product Found
-                </p>
-              </div>
-            )}
+            <div className="abc2">
+              {slicedata?.length > 0 ? (
+                // <div className="pro flex justify-center flex-col place-items-center">
+                <div className="also_like11">
+                  {/* {
+                  SliceFilterSubCategory && SliceFilterSubCategory.map((item,index)=>{
+                    return (
+                      <div className="" key={index}>
+                            <p className="text-2xl">{item?.SubCategoryName}</p>
+                        </div>
+                    )
+                  })
+                } */}
+                  <ViewMainProduct data={slicedata} />
+                  {/* <button onClick={() => setCount(count + 1)}>Load more</button> */}
+                </div>
+              ) : (
+                <div className="">
+                  <AnimateLoading SVGGET={SVGGET} />
+                  <p className="text-[#14BDA5] rounded-[7px] py-2 px-3  m-2 text-[25px] font-bold">
+                    <span className="text-[28px]">OOPS!</span> No Product Found
+                  </p>
+                </div>
+              )}
+            </div>
           </div>
         </>
       )}

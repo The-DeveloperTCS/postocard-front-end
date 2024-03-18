@@ -17,6 +17,10 @@ import { MdDelete } from "react-icons/md";
 import PayPalButton from "./PayPalButton";
 import { OrderCreateFunction } from "../../Redux/Action/OrderAction";
 import { useNavigate } from "react-router-dom";
+import Section2Carousel from "../Home/Sections/Section2Carousel";
+import PaymentTopCarousel from "./PaymentTopCarousel";
+import productimg from "../../Assets/images/Wedding Card2.png";
+import PriceDropdown from "./PriceDropdown";
 
 // -------- schema
 const Schema = Yup.object().shape({
@@ -212,183 +216,287 @@ const PaymentCompo = () => {
       ) : null}
       <div className="payment_page">
         {/* ------- left side  */}
+        <div className="product-on-top">
+          <div className="main-product-img">
+            <img src={productimg} alt="" />
+            <div className="border-right"></div>
+          </div>
+          <div className="main-product-price">
+            <h1>wedding card</h1>
+            <h3>
+              Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
+              eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut
+              enim ad minim
+            </h3>
+            <p>$. 30.00</p>
+          </div>
+        </div>
         <div className="left_payment">
-          <h2>Shipping address</h2>
+          <div className="payment-top-Carousel">
+            <h1
+              style={{
+                fontFamily: "Luckiest Guy",
+                fontSize: "35px",
+                color: "#30404D",
+                padding: "0px 50px",
+              }}
+            >
+              add ons
+            </h1>
+            <PaymentTopCarousel />
+          </div>
+          {/* <h2>Shipping address</h2> */}
           <div className="inputs_box">
-            <input
-              type="text"
-              placeholder="First Name"
-              className={errors.fname && touched.fname ? "red first" : "first"}
-              value={values.fname}
-              name=""
-              id="fname"
-              onChange={handleChange}
-            />
-            {errors.fname && touched.fname && (
-              <p className="my-2 px-1 text-[red] font-[Poppins] flex justify-start place-items-center gap-[8px] error_touched">
-                {" "}
-                <BiErrorCircle />
-                {errors.fname}
-              </p>
-            )}
+            <div className="input_box1">
+              <label
+                htmlFor="fname"
+                className="block mb-1 text-[#555] font-[Poppins] font-weight-500 text-[16px]"
+              >
+                First Name
+              </label>
+              <input
+                type="text"
+                placeholder="First Name"
+                className={
+                  errors.fname && touched.fname ? "red first" : "first"
+                }
+                value={values.fname}
+                name="fname"
+                id="fname"
+                onChange={handleChange}
+              />
+              {errors.fname && touched.fname && (
+                <p className="my-2 px-1 text-[red] font-[Poppins] flex justify-start place-items-center gap-[8px] error_touched">
+                  {" "}
+                  <BiErrorCircle />
+                  {errors.fname}
+                </p>
+              )}
 
-            <input
-              type="text"
-              placeholder="Last Name"
-              value={values.lname}
-              name=""
-              id="lname"
-              onChange={handleChange}
-              className={errors.lname && touched.lname ? "red" : null}
-            />
-            {errors.lname && touched.lname && (
-              <p className="my-2 px-1 text-[red] font-[Poppins] flex justify-start place-items-center gap-[8px] error_touched">
-                {" "}
-                <BiErrorCircle />
-                {errors.lname}
-              </p>
-            )}
+              <label
+                htmlFor="lname"
+                className="block mb-1 text-[#555] font-[Poppins] font-weight-500 text-[16px]"
+              >
+                Last Name
+              </label>
+              <input
+                type="text"
+                placeholder="Last Name"
+                value={values.lname}
+                name="lname"
+                id="lname"
+                onChange={handleChange}
+                className={errors.lname && touched.lname ? "red" : null}
+              />
+              {errors.lname && touched.lname && (
+                <p className="my-2 px-1 text-[red] font-[Poppins] flex justify-start place-items-center gap-[8px] error_touched">
+                  {" "}
+                  <BiErrorCircle />
+                  {errors.lname}
+                </p>
+              )}
 
-            <input
-              type="text"
-              placeholder="Country"
-              value={values.country}
-              name=""
-              id="country"
-              onChange={handleChange}
-              className={errors.country && touched.country ? "red" : null}
-            />
-            {errors.country && touched.country && (
-              <p className="my-2 px-1 text-[red] font-[Poppins] flex justify-start place-items-center gap-[8px] error_touched">
-                {" "}
-                <BiErrorCircle />
-                {errors.country}
-              </p>
-            )}
+              <label
+                htmlFor="country"
+                className="block mb-1 text-[#555] font-[Poppins] font-weight-500 text-[16px]"
+              >
+                Country
+              </label>
+              <input
+                type="text"
+                placeholder="Country"
+                value={values.country}
+                name="country"
+                id="country"
+                onChange={handleChange}
+                className={errors.country && touched.country ? "red" : null}
+              />
+              {errors.country && touched.country && (
+                <p className="my-2 px-1 text-[red] font-[Poppins] flex justify-start place-items-center gap-[8px] error_touched">
+                  {" "}
+                  <BiErrorCircle />
+                  {errors.country}
+                </p>
+              )}
 
-            <input
-              type="text"
-              placeholder="Street Adress"
-              value={values.address}
-              id="address"
-              name=""
-              onChange={handleChange}
-              className={errors.address && touched.address ? "red" : null}
-            />
-            {errors.address && touched.address && (
-              <p className="my-2 px-1 text-[red] font-[Poppins] flex justify-start place-items-center gap-[8px] error_touched">
-                {" "}
-                <BiErrorCircle />
-                {errors.address}
-              </p>
-            )}
+              <label
+                htmlFor="address"
+                className="block mb-1 text-[#555] font-[Poppins] font-weight-500 text-[16px]"
+              >
+                Street Adress
+              </label>
+              <input
+                type="text"
+                placeholder="Street Adress"
+                value={values.address}
+                id="address"
+                name="address"
+                onChange={handleChange}
+                className={errors.address && touched.address ? "red" : null}
+              />
+              {errors.address && touched.address && (
+                <p className="my-2 px-1 text-[red] font-[Poppins] flex justify-start place-items-center gap-[8px] error_touched">
+                  {" "}
+                  <BiErrorCircle />
+                  {errors.address}
+                </p>
+              )}
 
-            <input
-              type="text"
-              placeholder="Town"
-              value={values.town}
-              name=""
-              id="town"
-              onChange={handleChange}
-              className={errors.town && touched.town ? "red" : null}
-            />
-            {errors.town && touched.town && (
-              <p className="my-2 px-1 text-[red] font-[Poppins] flex justify-start place-items-center gap-[8px] error_touched">
-                {" "}
-                <BiErrorCircle />
-                {errors.town}
-              </p>
-            )}
-            <input
-              type="text"
-              placeholder="City"
-              value={values.city}
-              name=""
-              id="city"
-              onChange={handleChange}
-              className={errors.city && touched.city ? "red" : null}
-            />
-            {errors.city && touched.city && (
-              <p className="my-2 px-1 text-[red] font-[Poppins] flex justify-start place-items-center gap-[8px] error_touched">
-                {" "}
-                <BiErrorCircle />
-                {errors.town}
-              </p>
-            )}
+              <label
+                htmlFor="town"
+                className="block mb-1 text-[#555] font-[Poppins] font-weight-500 text-[16px]"
+              >
+                Town
+              </label>
+              <input
+                type="text"
+                placeholder="Town"
+                value={values.town}
+                name="town"
+                id="town"
+                onChange={handleChange}
+                className={errors.town && touched.town ? "red" : null}
+              />
+              {errors.town && touched.town && (
+                <p className="my-2 px-1 text-[red] font-[Poppins] flexjustify-start place-items-center gap-[8px] error_touched">
+                  {" "}
+                  <BiErrorCircle />
+                  {errors.town}
+                </p>
+              )}
+            </div>
+            <div className="input_box2">
+              <label
+                htmlFor="city"
+                className="block mb-1 text-[#555] font-[Poppins] font-weight-500 text-[16px]"
+              >
+                City
+              </label>
+              <input
+                type="text"
+                placeholder="City"
+                value={values.city}
+                name="city"
+                id="city"
+                onChange={handleChange}
+                className={errors.city && touched.city ? "red" : null}
+              />
+              {errors.city && touched.city && (
+                <p className="my-2 px-1 text-[red] font-[Poppins] flex justify-start place-items-center gap-[8px] error_touched">
+                  {" "}
+                  <BiErrorCircle />
+                  {errors.city}
+                </p>
+              )}
 
-            <input
-              type="text"
-              placeholder="State"
-              value={values.state}
-              name=""
-              id="state"
-              onChange={handleChange}
-              className={errors.state && touched.state ? "red" : null}
-            />
-            {errors.state && touched.state && (
-              <p className="my-2 px-1 text-[red] font-[Poppins] flex justify-start place-items-center gap-[8px] error_touched">
-                {" "}
-                <BiErrorCircle />
-                {errors.state}
-              </p>
-            )}
+              <label
+                htmlFor="state"
+                className="block mb-1 text-[#555] font-[Poppins] font-weight-500 text-[16px]"
+              >
+                State
+              </label>
+              <input
+                type="text"
+                placeholder="State"
+                value={values.state}
+                name="state"
+                id="state"
+                onChange={handleChange}
+                className={errors.state && touched.state ? "red" : null}
+              />
+              {errors.state && touched.state && (
+                <p className="my-2 px-1 text-[red] font-[Poppins] flex justify-start place-items-center gap-[8px] error_touched">
+                  {" "}
+                  <BiErrorCircle />
+                  {errors.state}
+                </p>
+              )}
 
-            <input
-              type="number"
-              placeholder="Postal Code"
-              value={values.postocode}
-              name=""
-              id="postocode"
-              onChange={handleChange}
-              className={errors.postocode && touched.postocode ? "red" : null}
-            />
-            {errors.postocode && touched.postocode && (
-              <p className="my-2 px-1 text-[red] font-[Poppins] flex justify-start place-items-center gap-[8px] error_touched">
-                {" "}
-                <BiErrorCircle />
-                {errors.postocode}
-              </p>
-            )}
+              <label
+                htmlFor="postocode"
+                className="block mb-1 text-[#555] font-[Poppins] font-weight-500 text-[16px]"
+              >
+                Postal Code
+              </label>
+              <input
+                type="number"
+                placeholder="Postal Code"
+                value={values.postocode}
+                name="postocode"
+                id="postocode"
+                onChange={handleChange}
+                className={errors.postocode && touched.postocode ? "red" : null}
+              />
+              {errors.postocode && touched.postocode && (
+                <p className="my-2 px-1 text-[red] font-[Poppins] flex justify-start place-items-center gap-[8px] error_touched">
+                  {" "}
+                  <BiErrorCircle />
+                  {errors.postocode}
+                </p>
+              )}
 
-            <input
-              type="number"
-              placeholder="Phone"
-              value={values.phone}
-              name=""
-              id="phone"
-              onChange={handleChange}
-              className={errors.phone && touched.phone ? "red" : null}
-            />
-            {errors.phone && touched.phone && (
-              <p className="my-2 px-1 text-[red] font-[Poppins] flex justify-start place-items-center gap-[8px] error_touched">
-                {" "}
-                <BiErrorCircle />
-                {errors.phone}
-              </p>
-            )}
+              <label
+                htmlFor="phone"
+                className="block mb-1 text-[#555] font-[Poppins] font-weight-500 text-[16px]"
+              >
+                Phone
+              </label>
+              <input
+                type="number"
+                placeholder="Phone"
+                value={values.phone}
+                name="phone"
+                id="phone"
+                onChange={handleChange}
+                className={errors.phone && touched.phone ? "red" : null}
+              />
+              {errors.phone && touched.phone && (
+                <p className="my-2 px-1 text-[red] font-[Poppins] flex justify-start place-items-center gap-[8px] error_touched">
+                  {" "}
+                  <BiErrorCircle />
+                  {errors.phone}
+                </p>
+              )}
 
-            <input
-              type="text"
-              placeholder="Email"
-              className={errors.fname && touched.fname ? "red last" : "last"}
-              value={values.email}
-              name=""
-              id="email"
-              onChange={handleChange}
-            />
-            {errors.email && touched.email && (
-              <p className="my-2 px-1 text-[red] font-[Poppins] flex justify-start place-items-center gap-[8px] error_touched">
-                {" "}
-                <BiErrorCircle />
-                {errors.email}
-              </p>
-            )}
+              <label
+                htmlFor="email"
+                className="block mb-1 text-[#555] font-[Poppins] font-weight-500 text-[16px]"
+              >
+                Email
+              </label>
+              <input
+                type="text"
+                placeholder="Email"
+                className={errors.email && touched.email ? "red last" : "last"}
+                value={values.email}
+                name="email"
+                id="email"
+                onChange={handleChange}
+              />
+              {errors.email && touched.email && (
+                <p className="my-2 px-1 text-[red] font-[Poppins] flex justify-start place-items-center gap-[8px] error_touched">
+                  {" "}
+                  <BiErrorCircle />
+                  {errors.email}
+                </p>
+              )}
+            </div>
+          </div>
+          <div
+            className=""
+            style={{
+              width: "100%",
+              margin: "auto",
+              backgroundColor: "#FDECD9",
+            }}
+          >
+            <PriceDropdown />
           </div>
         </div>
         {/* ----------- right  */}
         <div className="right_payment">
-          <h2>Your order</h2>
-          <div
+          {/* ==============product img on checkout page============== */}
+          {/* <div
             className={`cart_item_in_payment h-[128px] overflow-y-auto ${
               cartloading ? "opacity-[.4]" : ""
             }`}
@@ -424,9 +532,9 @@ const PaymentCompo = () => {
                   </div>
                 );
               })}
-          </div>
+          </div> */}
           {/* ------- */}
-          <div className="payment_payment">
+          {/* <div className="payment_payment">
             <p>
               Subtotal
               <span>${cart?.CartData?.GrossAmount}</span>
@@ -438,7 +546,8 @@ const PaymentCompo = () => {
               Total
               <span>${cart?.CartData?.NetAmount}</span>
             </p>
-          </div>
+          </div> */}
+
           {/* ---------------------- payments detail  */}
           <div className="payment_methods">
             {/* ---- */}

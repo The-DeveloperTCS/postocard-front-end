@@ -11,6 +11,8 @@ import Loading from "../../../../Layout/Loading/Loading.jsx";
 import SVGGET from "../../../../Layout/Loading/notfound.json";
 import AnimateLoading from "../../../../Layout/Loading/AnimateLoading.jsx";
 import { getallSubCategory } from "../../../../Redux/Action/CategoryAction.js";
+import Section2Carousel from "../../../Home/Sections/Section2Carousel.jsx";
+import { NavLink } from "react-router-dom";
 
 const Section2 = () => {
   const [filtershow, setFilterShow] = useState(false);
@@ -75,32 +77,37 @@ const Section2 = () => {
       setCopyData(allProduct);
     }
   }, [search]);
-
+  console.log(slicedata, "slicedata");
   return (
     <div className="Product_Section2-main">
       {isLoading ? (
         <Loading />
       ) : (
         <>
-          <button className="filter_btn" onClick={() => setFilterShow(true)}>
+          {/* <button className="filter_btn" onClick={() => setFilterShow(true)}>
             <p>Filters</p> <AiOutlineFilter className="mx-2" />
-          </button>
-          <div className="Product_Section2">
-            <div className="product_section2_sidebar">
-              <Sidebar
-                search={search}
-                setSerach={setSerach}
-                filterdata={filterdata}
-                setshowfilter={setFilterShow}
-                showfilter={filtershow}
-                setprice={setprice}
-                price={price}
-              />
+          </button> */}
+          {/* <div className="Product_Section2"> */}
+          <div className="Product_Section2-flex">
+            <div className="abc1">
+              <div className="product_section2_sidebar">
+                <Sidebar
+                  search={search}
+                  setSerach={setSerach}
+                  filterdata={filterdata}
+                  setshowfilter={setFilterShow}
+                  showfilter={filtershow}
+                  setprice={setprice}
+                  price={price}
+                />
+              </div>
             </div>
             {/* -------- */}
-            {slicedata?.length > 0 ? (
-              <div className="pro flex justify-center flex-col place-items-center">
-                {/* {
+            <div className="abc2">
+              {slicedata?.length > 0 ? (
+                // <div className="pro flex justify-center flex-col place-items-center">
+                <div className="also_like11">
+                  {/* {
                   SliceFilterSubCategory && SliceFilterSubCategory.map((item,index)=>{
                     return (
                       <div className="" key={index}>
@@ -109,18 +116,31 @@ const Section2 = () => {
                     )
                   })
                 } */}
-                <ViewMainProduct data={slicedata} />
-                <button onClick={() => setCount(count + 1)}>Load more</button>
-              </div>
-            ) : (
-              <div className="flex flex-col justify-center place-items-center gap-[10px]">
-                <AnimateLoading SVGGET={SVGGET} />
-                <p className="text-[#14BDA5] rounded-[7px] py-2 px-3  m-2 text-[25px] font-bold">
-                  <span className="text-[28px]">OOPS!</span> No Product Found
-                </p>
-              </div>
-            )}
+                  <ViewMainProduct data={slicedata} />
+                  {/* <button onClick={() => setCount(count + 1)}>Load more</button> */}
+                </div>
+              ) : (
+                <div className="">
+                  <AnimateLoading SVGGET={SVGGET} />
+                  <p className="text-[#14BDA5] rounded-[7px] py-2 px-3  m-2 text-[25px] font-bold">
+                    <span className="text-[28px]">OOPS!</span> No Product Found
+                  </p>
+                </div>
+              )}
+            </div>
           </div>
+          <div className="boottom-carousel">
+            <div className="">
+              <div className="section2-text-btn" style={{ width: "95%" }}>
+                <h2>Discounted offer</h2>
+                <NavLink to={"/allcollection/all"}>
+                  <button className="rounded-md">View All</button>
+                </NavLink>
+              </div>
+            </div>
+            <Section2Carousel />
+          </div>
+          {/* </div> */}
         </>
       )}
     </div>

@@ -1,0 +1,77 @@
+.payment_dropdown {
+    position: relative;
+    width: 92%;
+    margin: auto;
+}
+
+.payment_title {
+    padding: 15px 20px;
+    background-color: transparent;
+    border: 1px solid #30404D;
+    border-radius: 10px;
+    cursor: pointer;
+    position: relative;
+    font-size: 16px;
+    color: #30404D;
+    font-family: "Poppins", sans-serif;
+    margin-top: -70px;
+    font-weight: 700;
+}
+
+.payment_title svg {
+    position: absolute;
+    right: 15px;
+    top: 44%;
+}
+
+.payment_content {
+    width: 100%;
+    position: absolute;
+    top: 56px;
+    left: 0;
+    z-index: 10;
+    background-color: #fff;
+    border: 1px solid #30404D;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    display: none;
+    border-radius: 10px;
+}
+
+.payment_content_inner {
+    margin: 0 auto;
+    max-width: 300px;
+}
+
+.payment_content p {
+    padding: 15px 45px 15px 30px;
+    border-bottom: 1px solid #30404D;
+    font-size: 16px;
+    color: #30404D;
+    font-family: "Poppins", sans-serif;
+    font-weight: 700;
+
+}
+
+.payment_content p:last-child {
+    border-bottom: none;
+}
+
+.payment_content .payment_total {
+    font-weight: bold;
+}
+
+.payment_content span {
+    float: right;
+}
+
+.payment_content _inner p:hover {
+    background-color: #f2f2f2;
+}
+
+.payment_content _inner p:last-child:hover {
+    background-color: transparent;
+}
+
+.payment_dropdown.active .payment_content {
+    display: block;
+}

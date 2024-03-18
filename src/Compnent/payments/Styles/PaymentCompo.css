@@ -1,55 +1,70 @@
 .payment_page {
-  padding: 60px;
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 60px;
+  /* display: grid; */
+  /* grid-template-columns: 1fr 1fr; */
 }
+
 /* -------- left_payment */
-.left_payment {
-}
+.left_payment {}
+
 .left_payment h2 {
   color: var(--color--text, #0b0b0c);
   font-family: "Poppins";
   margin-bottom: 30px;
-  font-size: 35px;
+  /* font-size: 35px; */
   font-style: normal;
   font-weight: 400;
-  line-height: 44px; /* 125.714% */
+  line-height: 44px;
+  /* 125.714% */
   letter-spacing: -0.238px;
   overflow: hidden;
 }
+
 .inputs_box {
-  box-shadow: 0px 0px 5px 0px rgba(0, 0, 0, 0.3);
-  border-radius: 10px;
+  /* box-shadow: 0px 0px 5px 0px rgba(0, 0, 0, 0.3); */
+  /* border-radius: 10px; */
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 40px;
+  background-image: url(../../../Assets/images/ChechOut.png);
+  background-repeat: no-repeat;
+  background-size: cover;
+  width: 100%;
+  padding: 130px 60px 100px 60px;
+
 }
+
 .inputs_box .first {
-  border-radius: 10px 10px 0px 0px;
+  /* border-radius: 10px 10px 0px 0px; */
 }
+
 .inputs_box .last {
-  border-radius: 0px 0px 10px 10px;
+  /* border-radius: 0px 0px 10px 10px; */
 }
 
 .inputs_box input {
   width: 100%;
-  padding: 30px 10px;
+  padding: 15px 10px;
   flex-shrink: 0;
-  border: 1px solid var(--devider-devider, #ebebeb);
-  background: #fff;
+  border: 1px solid #30404D;
+  background: transparent;
   font-family: "Poppins";
   outline: none;
+  border-radius: 10px;
+  margin-bottom: 30px;
 }
 
 /* --------------- right_payment */
-.right_payment {
-}
+.right_payment {}
+
 .right_payment h2 {
-  color: var(--color--text, #0b0b0c);
+  color: #30404D;
   font-family: "Poppins";
   margin-bottom: 30px;
   font-size: 35px;
   font-style: normal;
   font-weight: 400;
-  line-height: 44px; /* 125.714% */
+  line-height: 44px;
+  /* 125.714% */
   letter-spacing: -0.238px;
   overflow: hidden;
 }
@@ -59,8 +74,9 @@
   border-radius: 10px;
   margin-bottom: 20px;
   overflow: auto;
- 
+
 }
+
 .cart_item_in_payment_img {
   display: flex;
   justify-content: space-between;
@@ -71,13 +87,15 @@
   cursor: pointer;
   border-bottom: 1px solid var(--devider-devider, #ebebeb);
 }
+
 .cart_item_in_payment_img p {
   color: var(--color--secondary, #33334f);
   font-family: "Poppins";
   font-size: 17px;
   font-style: normal;
   font-weight: 400;
-  line-height: 24px; /* 160% */
+  line-height: 24px;
+  /* 160% */
   letter-spacing: -0.05px;
 }
 
@@ -105,21 +123,27 @@
 
 /* .------------ payment_methods */
 .payment_methods {
-  border: 1px solid var(--devider-devider, #ebebeb);
-  border-radius: 10px;
   overflow: hidden;
+  justify-content: center;
+  display: flex;
+  width: 100%;
+  background-color: #FDECD9;
+  padding: 40px 0px;
 }
+
 .payment_method_box {
   padding: 13px 15px;
   display: flex;
   justify-content: space-between;
   align-items: center;
 }
+
 .payment_method_box img {
   width: 80px;
   height: 60px;
   object-fit: contain;
 }
+
 .payment_method_box p {
   display: flex;
   justify-content: flex-start;
@@ -130,25 +154,29 @@
   font-size: 17px;
   font-style: normal;
   font-weight: 400;
-  line-height: 24px; /* 160% */
+  line-height: 24px;
+  /* 160% */
   letter-spacing: -0.05px;
   cursor: pointer;
 }
+
 .payment_methods button {
-  background: #f49e3f;
-  width: 100%;
-  padding: 13px 15px;
-  color: #fff;
+  background: #FCC79F;
+  width: 92%;
+  padding: 15px 15px;
+  color: #30404D;
   text-align: center;
   font-family: "Poppins";
   margin-top: 10px;
   font-size: 15px;
   font-style: normal;
-  font-weight: 500;
+  font-weight: 600;
   line-height: normal;
   letter-spacing: -0.18px;
   text-transform: uppercase;
+  border-radius: 10px;
 }
+
 .red {
   border: 2px solid red !important;
 }
@@ -156,11 +184,81 @@
 .err {
   font-family: "Poppins" !important;
 }
+
+/* ============.payment-top-Carousel========== */
+.payment-top-Carousel {
+  width: 90%;
+  margin: auto;
+  padding: 30px 10px 60px 10px;
+}
+
+/*============ product-disply-main======= */
+.product-on-top {
+  width: 60%;
+  margin: auto;
+  padding: 40px 0px;
+  margin-top: 30px;
+  display: flex;
+  justify-content: space-between;
+}
+
+
+
+.main-product-img {
+  width: 30%;
+  position: relative;
+}
+
+.main-product-img .border-right::after {
+  content: "";
+  position: absolute;
+  right: -32px;
+  top: 35px;
+  height: 180px;
+  border-right: 2px solid #30404D;
+}
+
+.main-product-img img {
+  width: 100%;
+}
+
+.main-product-price {
+  width: 70%;
+  padding: 50px;
+  margin-left: 35px;
+}
+
+.main-product-price h1 {
+  color: #30404D;
+  /* font-family: Poppins; */
+  font-size: 35px;
+  font-style: normal;
+  line-height: 100%;
+  font-family: "Luckiest Guy", cursive;
+  font-style: normal;
+}
+
+.main-product-price h3 {
+  font-size: 16px;
+  color: #30404D;
+  font-family: "Poppins", sans-serif;
+  padding: 15px 50px 0px 0px;
+}
+
+.main-product-price p {
+  font-size: 30px;
+  color: #30404D;
+  font-family: "Poppins", sans-serif;
+  font-weight: 700;
+  padding-top: 15px;
+}
+
 /* ----------- error_touched_div */
 .error_touched_div {
   margin: 10px 60px;
   background-color: #a1e5db;
 }
+
 .error_touched_div .error_touched {
   color: red;
   padding: 10px;
@@ -170,25 +268,52 @@
   align-items: center;
   gap: 10px;
 }
+
 .error_touched svg {
   font-size: 25px;
 }
 
 /* ===================================== */
 
+.input_box1 label {
+  font-size: 16px;
+  font-family: "Poppins", sans-serif;
+  color: #30404D;
+}
+
+.input_box1 ::placeholder {
+  color: transparent;
+}
+
+.input_box1 label input {
+  border-radius: 10px;
+  border: 1px solid;
+}
+
+.input_box2 label {
+  font-size: 16px;
+  font-family: "Poppins", sans-serif;
+  color: #30404D;
+}
+
+.input_box2 ::placeholder {
+  color: transparent;
+}
+
+
 /* class="paypal-button-row paypal-button-number-1 paypal-button-layout-vertical paypal-button-shape-rect paypal-button-number-multiple paypal-button-env-sandbox paypal-button-color-gold paypal-button-text-color-black paypal-logo-color-blue   " */
 
 
 /* ============ media  */
-@media(max-width : 850px){
+@media(max-width : 850px) {
   .payment_page {
     padding: 20px 20px;
     gap: 10px;
   }
 }
 
-@media(max-width : 768px){
-  .payment_page{
+@media(max-width : 768px) {
+  .payment_page {
     grid-template-columns: 1fr;
     gap: 20px;
   }

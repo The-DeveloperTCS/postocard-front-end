@@ -43,9 +43,11 @@ const Sidebar = ({
       </div>
       {/* ------------------ filter by ctegory- */}
       <div className="sidebar_filter_by_category">
-        <h2>Category</h2>
-
         <ul>
+          <li>View All</li>
+          <li>E-Cards</li>
+          <li>Birthday Cards</li>
+          <li>Wedding</li>
           <li>View All</li>
           <li>E-Cards</li>
           <li>Birthday Cards</li>
@@ -71,9 +73,9 @@ const Sidebar = ({
           </div>
         </div>
       </div> */}
-      <button className="filter" onClick={filterdataset}>
+      {/* <button className="filter" onClick={filterdataset}>
         Filter
-      </button>
+      </button> */}
     </div>
   );
 };

@@ -1,7 +1,6 @@
 .footer-main {
   background-color: #fcc79f;
   width: 100%;
-  padding: 20px 00px;
 }
 
 .footer-main-inner {
@@ -10,12 +9,16 @@
   width: 90%;
   margin: auto;
   padding-bottom: 30px;
+  position: relative;
+  padding: 30px 55px;
+
 }
 
 .footer-logo-text {
-  width: 40%;
-  font-family: Poppins;
+  width: 45%;
+  font-family: "Poppins", sans-serif;
   color: #30404D;
+  padding: 0px 40px 0px 0px;
 }
 
 .footer-logo-text img {
@@ -23,7 +26,7 @@
 }
 
 .footer-links-left {
-  width: 10%;
+  width: 20%;
 }
 
 .footer-links-left ul {
@@ -35,7 +38,7 @@
 }
 
 .footer-links-right {
-  width: 10%;
+  width: 20%;
 }
 
 .footer-links-right h2 {
@@ -61,7 +64,7 @@
 }
 
 .footer-media {
-  width: 10%;
+  width: 15%;
   display: flex;
   align-items: flex-end;
   gap: 5px;
@@ -72,8 +75,10 @@
 }
 
 .vl {
-  border-left: 1px solid #30404D;
+  border-left: 2px solid #30404D;
   height: 200px;
+  position: absolute;
+  left: 61%;
 }
 
 .footer-bootm {
@@ -87,4 +92,24 @@
   font-size: 16px;
   margin-top: 15px;
   color: #30404D;
+}
+
+@media (max-width: 768px) {
+  .footer-main-inner {
+    width: 100%;
+    padding: 20px 10px;
+    /* Adjust padding */
+  }
+
+  .footer-logo-text img {
+    width: 60%;
+    /* Adjust logo size */
+  }
+
+  .footer-links-left,
+  .footer-links-right,
+  .footer-media {
+    width: 50%;
+    /* Half width on small screens */
+  }
 }

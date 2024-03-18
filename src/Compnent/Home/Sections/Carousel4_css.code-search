@@ -1,0 +1,9 @@
+# Query: Carousel4.css
+# ContextLines: 1
+
+1 result - 1 file
+
+src\Compnent\Home\Sections\Carousel4.jsx:
+  8  import newbd from "../../../Assets/images/newbdc.png";
+  9: import "../Styles/Carousel4.css";
+  10  import { IoStarSharp } from "react-icons/io5";

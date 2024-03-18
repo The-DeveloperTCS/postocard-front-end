@@ -218,10 +218,13 @@ const CardPricingData = ({ active, name, content }) => {
     setSelectedCities(event.target.value);
   };
 
-  // console.log(NewAddress);
-  console.log(selectedCountry);
-  console.log(selectedStates);
-  console.log(selectedCities);
+  // // console.log(NewAddress);
+  // console.log(selectedCountry);
+  // console.log(selectedStates);
+  // console.log(selectedCities);
+
+  console.log(sliceProduct, "sliceProduct");
+
   return (
     <div className="cardpricing-parent">
       {isLoading ? (

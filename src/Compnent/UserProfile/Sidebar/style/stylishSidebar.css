@@ -90,3 +90,32 @@
     border-radius: 10px;
 
 }
+
+/* ===========.label-input-styling=============== */
+.label-input-styling ::placeholder {
+    font-size: 16px;
+    color: #30404D;
+    font-family: "Poppins", sans-serif;
+    padding: 15px 10px;
+    border: 1px solid #30404D;
+    border-radius: 10px;
+
+}
+
+.label-input-styling input {
+    font-size: 16px;
+    color: #30404D;
+    font-family: "Poppins", sans-serif;
+    padding: 15px 10px;
+    border: 1px solid #30404D;
+    border-radius: 10px;
+
+}
+
+.label-input-styling label {
+    font-size: 16px;
+    color: #30404D;
+    font-family: "Poppins", sans-serif;
+    font-weight: 500;
+
+}

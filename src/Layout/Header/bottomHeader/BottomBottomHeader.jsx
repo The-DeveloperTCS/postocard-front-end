@@ -14,7 +14,7 @@ const BottomBottomHeader = ({ showheader, setshowheader }) => {
   const Occasions = allcategory?.filter((item) => item?.ParentItem === 1);
   const hollidays = allcategory?.filter((item) => item?.ParentItem === 2);
   const [select, setSlect] = useState(0);
-  const [open, setOpen] = React.useState(1);
+  const [open, setOpen] = React.useState(0); // Change the initial state to 0
 
   const handleOpen = (value) => setOpen(open === value ? 0 : value);
 
@@ -29,15 +29,12 @@ const BottomBottomHeader = ({ showheader, setshowheader }) => {
       <RxCross1 className="cross" onClick={() => setshowheader(false)} />
       <div className="drop_down_menus">
         <div className={`bottom_bottom_header_menus_parent`}>
-          <p className="cursor-pointer" onMouseEnter={() => setSlect(1)}>
+          <p className="cursor-pointer" onClick={() => handleOpen(1)}>
             OCCASIONS
           </p>
           <IoIosArrowDown className="cursor-pointer" />
-          {select === 1 && (
-            <div
-              className="menus flex-wrap bigger-dropdown"
-              onMouseLeave={() => setSlect(0)}
-            >
+          {open === 1 && (
+            <div className="menus flex-wrap bigger-dropdown">
               {Occasions?.map((item, index) => (
                 <ul key={index}>
                   <NavLink to={`/products/${item.CategoryName}`}>
@@ -56,15 +53,12 @@ const BottomBottomHeader = ({ showheader, setshowheader }) => {
           )}
         </div>
         <div className={`bottom_bottom_header_menus_parent`}>
-          <p className="cursor-pointer" onMouseEnter={() => setSlect(2)}>
+          <p className="cursor-pointer" onClick={() => handleOpen(2)}>
             Holiday
           </p>
           <IoIosArrowDown className="cursor-pointer" />
-          {select === 2 && (
-            <div
-              className="menus flex-wrap bigger-dropdown"
-              onMouseLeave={() => setSlect(0)}
-            >
+          {open === 2 && (
+            <div className="menus flex-wrap bigger-dropdown">
               {hollidays?.map((item, index) => (
                 <ul key={index}>
                   <NavLink to={`/products/${item.CategoryName}`}>

@@ -1,0 +1,33 @@
+.user-Login input {
+    border-radius: 10px;
+    font-family: "Poppins", sans-serif;
+    color: #30404D;
+    border: 1px solid #30404D;
+    padding: 15px 10px;
+}
+
+.user-Login {
+    border: 1px solid #30404D;
+    border-radius: 10px;
+}
+
+.user-signup label {
+    color: #30404D;
+}
+
+.user-signup input {
+    border-radius: 10px;
+    font-family: "Poppins", sans-serif;
+    color: #30404D;
+    border: 1px solid #30404D;
+    padding: 15px 10px;
+}
+
+.user-Login label {
+    color: #30404D;
+}
+
+.user-signup {
+    border: 1px solid #30404D;
+    border-radius: 10px;
+}

@@ -16,7 +16,7 @@ const Index = () => {
     <ProfileAuth>
       <div
         className="w-full relative parent min-h-[100vh]  flex justify-start place-items-start gap-2 my-3 px-[30px] "
-        style={{ marginTop: "50px" }}
+        style={{ marginTop: "90px" }}
       >
         <div className="arrow absolute top-[-10px] left-1">
           {active !== 1 && (

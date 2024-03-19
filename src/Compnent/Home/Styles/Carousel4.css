@@ -98,3 +98,32 @@
     padding: 5px;
     font-weight: 500;
 }
+
+
+@media screen and (max-width: 768px) {
+    .prev-arrow2 {
+        display: none;
+
+    }
+
+    .next-arrow2 {
+
+        display: none;
+    }
+}
+
+@media only screen and (max-width: 992px) {}
+
+@media only screen and (max-width: 1400px) {
+    .next-arrow2 {
+
+        left: 0;
+    }
+
+    .prev-arrow2 {
+        left: 120px;
+    }
+
+}
+
+@media only screen and (max-width: 1600px) {}

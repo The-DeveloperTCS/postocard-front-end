@@ -50,16 +50,37 @@
 
 
 /* ============== media  */
-@media(max-width : 678px) {
-  .Section2 {
-    padding: 30px 20px;
+
+@media only screen and (max-width: 1080px) {
+  .section2-text-btn h2 {
+    font-size: 30px;
 
   }
+
+  .section2-text-btn {
+    width: 100%;
+    padding: 20px;
+    display: block;
+    /* align-items: center; */
+    text-align: center;
+  }
+
+
 }
 
-@media(max-width : 50px) {
-  .Section2 {
-    padding: 10px 20px;
-  }
 
+
+/* Medium tablets and laptops (992px and up) */
+@media only screen and (max-width: 992px) {
+  /* Styles for medium tablets and laptops */
+}
+
+/* Large tablets, laptops and desktops (1200px and up) */
+@media only screen and (max-width: 1200px) {
+  /* Styles for large tablets, laptops and desktops */
+}
+
+/* Extra large desktops (1600px and up) */
+@media only screen and (max-width: 1600px) {
+  /* Styles for extra large desktops */
 }

@@ -116,3 +116,57 @@
   border-radius: 30px;
   padding: 5px 10px;
 }
+
+
+
+
+
+
+@media only screen and (max-width: 1080px) {
+  .section3 {
+    display: block;
+  }
+
+  .section3-left {
+    width: 100%;
+  }
+
+  .section3-right {
+    width: 100%;
+  }
+
+  .section3-right-text h2 {
+    font-size: 30px;
+  }
+
+  .section3-right-text {
+    width: 100%;
+    padding: 20px;
+  }
+
+  .section3-cards-data {
+    padding: 20px;
+    width: 100%;
+    margin: 0px;
+  }
+}
+
+/* Small tablets (768px and up) */
+@media only screen and (min-width: 768px) {
+  /* Styles for small tablets */
+}
+
+/* Medium tablets and laptops (992px and up) */
+@media only screen and (min-width: 992px) {
+  /* Styles for medium tablets and laptops */
+}
+
+/* Large tablets, laptops and desktops (1200px and up) */
+@media only screen and (min-width: 1200px) {
+  /* Styles for large tablets, laptops and desktops */
+}
+
+/* Extra large desktops (1600px and up) */
+@media only screen and (min-width: 1600px) {
+  /* Styles for extra large desktops */
+}

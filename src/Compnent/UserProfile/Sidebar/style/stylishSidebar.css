@@ -119,3 +119,14 @@
     font-weight: 500;
 
 }
+
+
+@media screen and (max-width: 1080px) {
+    .accountsDetail-dashboard-main {
+        padding: 0px 20px;
+    }
+
+    .accountsDetail-dashboard-main-text h2 {
+        padding-top: 40px;
+    }
+}

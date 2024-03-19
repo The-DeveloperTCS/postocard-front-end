@@ -91,3 +91,29 @@
     height: 1px;
     background-color: #C4BBB2;
 }
+
+
+
+
+/* Small tablets (768px and up) */
+@media only screen and (max-width: 1080) {
+
+    .slide1-text h2 {
+        font-size: 15px;
+        font-weight: 600;
+    }
+
+    .slide1-text h1 {
+        font-size: 20px;
+
+    }
+
+    .Discounted-slide1-main {
+
+        height: auto;
+    }
+
+    .slide1-img img {
+        width: auto;
+    }
+}

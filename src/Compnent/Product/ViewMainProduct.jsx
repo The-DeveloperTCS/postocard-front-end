@@ -131,7 +131,7 @@ function ViewMainProduct() {
       {
         breakpoint: 1024, // Medium devices (tablets, 768px and up)
         settings: {
-          slidesToShow: 2,
+          slidesToShow: 1,
         },
       },
       {

@@ -9,6 +9,7 @@ import { IoStarSharp } from "react-icons/io5";
 import wedimg from "../../../Assets/images/Wedding Card.png";
 import bdimg from "../../../Assets/images/Birthday Card.png";
 import crisimg from "../../../Assets/images/christmas Card.png";
+import "../Styles/Section2.css";
 
 function Section2Carousel() {
   const PrevArrow = (props) => {
@@ -33,12 +34,32 @@ function Section2Carousel() {
     dots: false,
     infinite: true,
     speed: 500,
-    slidesToShow: 3,
-    slidesToScroll: 3,
     arrows: true,
-    // autoplay: true,
     prevArrow: <PrevArrow />,
     nextArrow: <NextArrow />,
+    responsive: [
+      {
+        breakpoint: 1980,
+        settings: {
+          slidesToShow: 3,
+          slidesToScroll: 3,
+        },
+      },
+      {
+        breakpoint: 1080,
+        settings: {
+          slidesToShow: 1,
+          slidesToScroll: 1,
+        },
+      },
+      {
+        breakpoint: 480,
+        settings: {
+          slidesToShow: 1,
+          slidesToScroll: 1,
+        },
+      },
+    ],
   };
 
   return (

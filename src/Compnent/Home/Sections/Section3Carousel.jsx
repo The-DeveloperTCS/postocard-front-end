@@ -37,6 +37,15 @@ function Section3Carousel() {
     slidesPerRow: 2,
     prevArrow: <PrevArrow />,
     nextArrow: <NextArrow />,
+    responsive: [
+      {
+        breakpoint: 768,
+        settings: {
+          slidesToShow: 1,
+          slidesPerRow: 2,
+        },
+      },
+    ],
   };
   return (
     <div className="slider-container1">

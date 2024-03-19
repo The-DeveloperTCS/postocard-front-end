@@ -58,6 +58,13 @@ const TopBottomHeader = () => {
 
   return (
     <div className="top_bottom_header" ref={searchRef}>
+      <div className="mobile-header">
+        <IoMenuSharp
+          search
+          className="cross_burger text-[23px]"
+          onClick={() => setshowheader(true)}
+        />
+      </div>
       <NavLink to="/">
         <img
           src={logo}
@@ -66,15 +73,7 @@ const TopBottomHeader = () => {
         />
       </NavLink>
 
-      <div className="flex justify-center place-items-center gap-[8px] ">
-        <div className="">
-          <IoMenuSharp
-            search
-            className="cross_burger text-[23px]"
-            onClick={() => setshowheader(true)}
-          />
-        </div>
-
+      <div className="flex justify-center place-items-center gap-[8px]  ">
         <div className="flex justify-start place-items-center">
           <div className={showSearch ? "sercarbox sercarboxhide" : "sercarbox"}>
             <input

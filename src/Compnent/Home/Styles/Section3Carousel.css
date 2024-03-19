@@ -46,3 +46,34 @@
     border-radius: 50%;
     padding: 2px;
 }
+
+
+
+
+
+@media screen and (max-width: 768px) {
+    .next-arrow1 {
+        display: none;
+    }
+
+    .prev-arrow1 {
+        display: none;
+    }
+}
+
+
+
+/* Medium tablets and laptops (992px and up) */
+@media only screen and (max-width: 992px) {
+    /* Styles for medium tablets and laptops */
+}
+
+/* Large tablets, laptops and desktops (1200px and up) */
+@media only screen and (max-width: 1200px) {
+    /* Styles for large tablets, laptops and desktops */
+}
+
+/* Extra large desktops (1600px and up) */
+@media only screen and (max-width: 1600px) {
+    /* Styles for extra large desktops */
+}

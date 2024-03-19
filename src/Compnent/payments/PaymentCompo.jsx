@@ -21,6 +21,7 @@ import Section2Carousel from "../Home/Sections/Section2Carousel";
 import PaymentTopCarousel from "./PaymentTopCarousel";
 import productimg from "../../Assets/images/Wedding Card2.png";
 import PriceDropdown from "./PriceDropdown";
+import "../payments/Styles/PriceDropdown.css";
 
 // -------- schema
 const Schema = Yup.object().shape({
@@ -233,16 +234,7 @@ const PaymentCompo = () => {
         </div>
         <div className="left_payment">
           <div className="payment-top-Carousel">
-            <h1
-              style={{
-                fontFamily: "Luckiest Guy",
-                fontSize: "35px",
-                color: "#30404D",
-                padding: "0px 50px",
-              }}
-            >
-              add ons
-            </h1>
+            <h1>add ons</h1>
             <PaymentTopCarousel />
           </div>
           {/* <h2>Shipping address</h2> */}

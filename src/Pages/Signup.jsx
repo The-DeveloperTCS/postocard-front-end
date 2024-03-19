@@ -66,12 +66,10 @@ const Signup = () => {
   return (
     <UserAuth>
       <div className="mt-[20px] mb-[120px] w-full  flex justify-center text-[#30404D] place-items-center flex-col">
-        <h2
-          className="text-[35px]   my-2"
-          style={{ fontFamily: "Luckiest Guy" }}
-        >
-          Create an account
-        </h2>
+        <div className="login-h2-text ">
+          <h2 className="text-[35px]   my-2">Create an account</h2>
+        </div>
+
         <div className="shadow-lg bg-white py-[15px] px-[7px] w-[550px] user-signup">
           <div className="my-2">
             <label

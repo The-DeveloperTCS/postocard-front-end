@@ -32,11 +32,27 @@ function Carousel4() {
     dots: false,
     infinite: true,
     speed: 500,
-    slidesToShow: 2,
-    slidesToScroll: 3,
+    slidesToShow: 2, // Show 3 slides initially
+    slidesToScroll: 1, // Scroll one slide at a time
     arrows: true,
     prevArrow: <PrevArrow />,
     nextArrow: <NextArrow />,
+    responsive: [
+      {
+        breakpoint: 1200, // Adjust the breakpoint as needed
+        settings: {
+          slidesToShow: 2, // Show 2 slides on tablets
+          slidesToScroll: 1,
+        },
+      },
+      {
+        breakpoint: 768, // Adjust the breakpoint as needed
+        settings: {
+          slidesToShow: 1, // Show 1 slide on mobile devices
+          slidesToScroll: 1,
+        },
+      },
+    ],
   };
 
   return (

@@ -27,7 +27,83 @@
     color: #30404D;
 }
 
+
+
+
 .user-signup {
     border: 1px solid #30404D;
     border-radius: 10px;
+}
+
+
+.login-container {
+    max-width: 100%;
+    padding: 0 20px;
+    box-sizing: border-box;
+}
+
+.user-Login {
+    max-width: 550px;
+    /* Limit width for larger screens */
+    width: 100%;
+    /* Make it fluid */
+}
+
+.login-h2-text h2 {
+    font-family: "Luckiest Guy";
+    color: #30404D;
+}
+
+
+
+@media only screen and (max-width: 1080) {
+
+    .login-h2-text h2 {
+        font-family: "Luckiest Guy";
+        color: #30404D;
+        font-size: 30px;
+        padding-top: 60px;
+    }
+
+    .user-Login {
+        max-width: 400px;
+    }
+
+}
+
+/* Default styles */
+
+@media screen and (max-width: 1080px) {
+    .user-signup {
+        width: 90%;
+        /* Adjust width for smaller screens */
+        max-width: none;
+        /* Remove max-width for smaller screens */
+        padding: 20px;
+        /* Add more padding for smaller screens */
+    }
+
+    .text-35px {
+        font-size: 28px;
+        /* Decrease font size for heading */
+    }
+
+    .text-16px {
+        font-size: 14px;
+        /* Decrease font size for labels and text */
+    }
+
+    .top-38px {
+        top: 30px;
+        /* Adjust position of eye icons */
+    }
+
+    .login-h2-text h2 {
+        font-family: "Luckiest Guy";
+        color: #30404D;
+        font-size: 30px;
+        padding-top: 60px;
+    }
+
+    /* You can add more adjustments as needed */
 }

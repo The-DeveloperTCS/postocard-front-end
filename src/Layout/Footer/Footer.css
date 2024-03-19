@@ -94,22 +94,85 @@
   color: #30404D;
 }
 
-@media (max-width: 768px) {
+.footer-logo-text p {
+  width: 70%;
+}
+
+
+
+@media only screen and (max-width: 1080px) {
   .footer-main-inner {
+    display: block;
+    padding: 20px;
+  }
+
+  .footer-logo-text {
     width: 100%;
-    padding: 20px 10px;
-    /* Adjust padding */
+    padding: 20px 0px;
+    text-align: center;
   }
 
   .footer-logo-text img {
-    width: 60%;
-    /* Adjust logo size */
+    width: auto;
+    margin: auto;
+    padding: 20px 0px;
   }
 
-  .footer-links-left,
-  .footer-links-right,
-  .footer-media {
-    width: 50%;
-    /* Half width on small screens */
+  .footer-logo-text p {
+    width: 100%;
   }
+
+  .footer-links-left {
+    width: 100%;
+    text-align: center;
+    padding: 20px 0px;
+  }
+
+  .footer-media {
+    width: 60%;
+    margin: auto;
+    display: flex;
+    justify-content: center;
+  }
+
+  .footer-links-right {
+    width: 100%;
+    text-align: center;
+    padding: 20px 0px;
+  }
+
+  .vl {
+    display: none;
+  }
+
+  .footer-links-right h2 {
+    font-size: 20px;
+  }
+
+  .footer-links-left h2 {
+    font-size: 20px;
+  }
+
+  .footer-bootm p {
+    font-family: Poppins;
+    font-size: 16px;
+    margin-top: 2px;
+    color: #30404D;
+    padding: 15px 10px;
+  }
+}
+
+/* Medium tablets and laptops (992px and up) */
+@media only screen and (max-width: 992px) {
+  /* Styles for medium tablets and laptops */
+}
+
+/* Large tablets, laptops and desktops (1200px and up) */
+@media only screen and (max-width: 1200px) {
+  /* Styles for large tablets, laptops and desktops */
+}
+
+/* Extra large desktops (1600px and up) */
+@media only screen and (max-width: 1600px) {
+  /* Styles for extra large desktops */
 }

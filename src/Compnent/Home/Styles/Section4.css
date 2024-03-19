@@ -2,7 +2,7 @@
   display: flex;
   width: 100%;
   background-color: #fdecd9;
-  padding: 80px 60px;
+  padding: 100px 60px;
 }
 
 .section-4left {
@@ -42,4 +42,72 @@
   width: 50%;
   margin: auto;
 
+}
+
+
+
+
+
+@media screen and (max-width: 768px) {
+  .section1 {
+    height: auto;
+    display: block;
+    background-position: right;
+  }
+
+  .section1-box-main {
+    position: static;
+    display: block;
+  }
+
+  .section1-box1 {
+    width: 100%;
+    height: 235px;
+  }
+}
+
+/* Small tablets (768px and up) */
+@media only screen and (max-width: 1080px) {
+  .section4 {
+    display: block;
+    padding: 20px;
+  }
+
+  .section-4left {
+    width: 100%;
+    padding: 30px 0px;
+  }
+
+  .section-4left h1 {
+    font-size: 30px;
+
+  }
+
+  .section-4right {
+    width: 100%;
+    padding: 20px 0px;
+
+  }
+
+  .slider-container4 {
+    margin-left: 20px;
+
+  }
+
+  /* Styles for small tablets */
+}
+
+/* Medium tablets and laptops (992px and up) */
+@media only screen and (max-width: 992px) {
+  /* Styles for medium tablets and laptops */
+}
+
+/* Large tablets, laptops and desktops (1200px and up) */
+@media only screen and (max-width: 1200px) {
+  /* Styles for large tablets, laptops and desktops */
+}
+
+/* Extra large desktops (1600px and up) */
+@media only screen and (max-width: 1600px) {
+  /* Styles for extra large desktops */
 }

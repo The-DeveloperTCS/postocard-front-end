@@ -253,6 +253,14 @@
   .sidebar_accordian {
     display: block;
   }
+
+  .main-logo {
+    left: 19%;
+  }
+
+  svg.text-\[\#2A254B\].text-\[20px\].cursor-pointer {
+    margin-left: 40px;
+  }
 }
 
 @media(max-width : 768px) {

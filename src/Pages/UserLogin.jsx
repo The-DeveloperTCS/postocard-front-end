@@ -38,13 +38,13 @@ const UserLogin = () => {
   const { errors, values, touched, handleChange, handleSubmit } = formik;
   return (
     <UserAuth>
-      <div className="mt-[20px] mb-[120px] w-full  flex justify-center place-items-center flex-col">
-        <h2
-          className="text-[35px]  my-2"
-          style={{ fontFamily: "Luckiest Guy", color: "#30404D" }}
-        >
-          Login to your account
-        </h2>
+      <div
+        className="mt-[20px] mb-[120px] w-full  flex justify-center place-items-center flex-col  "
+        style={{ padding: "20px" }}
+      >
+        <div className="login-h2-text">
+          <h2 className="text-[35px]  my-2 t">Login to your account</h2>
+        </div>
 
         <div className="py-[15px] px-[7px] w-[550px] shadow-lg bg-white user-Login">
           <div className="my-2 ">

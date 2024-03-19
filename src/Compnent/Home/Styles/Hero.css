@@ -1,11 +1,10 @@
 .hero {
-  display: flex;
-  grid-template-columns: 1fr 0.5fr;
+  /* display: flex; */
+  /* grid-template-columns: 1fr 0.5fr; */
   padding: 60px 60px;
   margin: 0;
   width: 100%;
-  border: 1px solid #30404D;
-  height: 100vh;
+  /* height: 100vh; */
   justify-content: center;
   align-items: flex-start;
   justify-self: center;
@@ -14,7 +13,7 @@
   /* Ensure positioning context for pseudo-element */
 }
 
-.hero::before {
+.left_hero::before {
   content: "";
   position: absolute;
   top: 0;
@@ -30,21 +29,21 @@
 /* --------------left_hero */
 .left_hero {
   color: white;
-  width: 100%;
-  height: 90%;
+  width: 45%;
   display: flex;
   align-items: start;
   flex-direction: column;
-  padding: 20px 60px;
+  padding: 30px 0px;
   border-top-left-radius: 7px;
   border-bottom-left-radius: 7px;
   overflow: hidden;
+  height: 350px;
+
 }
 
 .left_hero h2 {
   color: #30404D;
-  font-family: Poppins;
-  font-size: 60px;
+  font-size: 50px;
   font-style: normal;
   line-height: 100%;
   margin-bottom: 20px;
@@ -56,7 +55,7 @@
 
 .left_hero button {
   color: #30404D;
-  font-family: Poppins;
+  font-family: "Poppins", sans-serif;
   font-size: 16px;
   font-style: normal;
   font-weight: 400;
@@ -71,40 +70,89 @@
 
 .left_hero p {
   color: #30404D;
-  font-family: Poppins;
-  font-size: 18px;
+  font-family: "Poppins", sans-serif;
+  font-size: 16px;
   font-style: normal;
   font-weight: 400;
   line-height: 150%;
   /* 27px */
   max-width: 550px;
   padding: 10px 0px 40px 0px;
-  text-transform: uppercase;
-
 }
 
 /* -------------- right_hero */
 .right_hero {
   width: 100%;
-  height: 100%;
+  /* height: 100%; */
   border-top-right-radius: 7px;
   border-bottom-right-radius: 7px;
-  position: absolute;
-  right: -35%;
-  bottom: -130px;
+  /* position: absolute; */
+  /* position: relative; */
+  display: flex;
+  justify-content: center;
 }
 
 .right_hero img {
-  width: 65%;
+  width: 60%;
   height: 100%;
+  margin-top: -165px;
+  margin-left: 135px;
 }
 
 /* =========== media  */
-@media (max-width: 850px) {
+/* Mobile devices (phones, 320px and up) */
+@media only screen and (max-width:1080px) {
   .hero {
-    padding: 10px 20px;
+    display: block;
+    height: auto;
+    padding: 60px 20px 10px 20px;
+
+  }
+
+  .left_hero {
+    width: 100%;
+  }
+
+  .right_hero {
+    width: 100%;
+  }
+
+  .left_hero h2 {
+    font-size: 35px;
+  }
+
+  .right_hero img {
+    width: 100%;
+    margin-top: 0px;
+    margin-left: 0px;
   }
 }
+
+/* Small tablets (768px and up) */
+@media only screen and (min-width: 768px) {
+  /* Styles for small tablets */
+}
+
+/* Medium tablets and laptops (992px and up) */
+@media only screen and (min-width: 992px) {
+  /* Styles for medium tablets and laptops */
+}
+
+/* Large tablets, laptops and desktops (1200px and up) */
+@media only screen and (min-width: 1200px) {
+  /* Styles for large tablets, laptops and desktops */
+}
+
+/* Extra large desktops (1600px and up) */
+@media only screen and (min-width: 1600px) {
+  /* Styles for extra large desktops */
+}
+
+
+
+
+/* 
+@media (max-width: 850px) {}
 
 @media (max-width: 678px) {
   .hero {
@@ -122,10 +170,7 @@
 
 @media (max-width: 500px) {
 
-  /* .hero{
-    height: 40vh;
-    margin-bottom: 150px;
-  } */
+
   .left_hero {
     padding: 10px 10px;
   }
@@ -136,4 +181,4 @@
     padding-top: 100px;
     gap: 20px;
   }
-}
+} */

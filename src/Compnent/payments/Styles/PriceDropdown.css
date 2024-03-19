@@ -1,7 +1,8 @@
 .payment_dropdown {
     position: relative;
-    width: 92%;
+    width: 100%;
     margin: auto;
+    padding: 0px 61px;
 }
 
 .payment_title {
@@ -74,4 +75,24 @@
 
 .payment_dropdown.active .payment_content {
     display: block;
+}
+
+
+
+
+
+
+
+
+/* Small tablets (768px and up) */
+@media only screen and (max-width: 768px) {
+
+    /* Styles for small tablets */
+    .inputs_box {
+        display: block;
+    }
+
+    .payment_dropdown {
+        width: 70%;
+    }
 }

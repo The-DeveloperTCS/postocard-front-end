@@ -203,7 +203,10 @@ const UserAddres = () => {
       {showmoadl && (
         <div>
           <div className="fixed left-0 top-0 flex h-full w-full items-center justify-center bg-black bg-opacity-50 ">
-            <div className="max-h-full relative w-full max-w-3xl overflow-y-auto sm:rounded-2xl bg-white">
+            <div
+              className="max-h-full relative w-full max-w-3xl overflow-y-auto sm:rounded-2xl bg-white"
+              style={{ padding: "0px 20px" }}
+            >
               <div className="w-full">
                 <RxCross1
                   className="absolute top-3 right-3 text-[23px] cursor-pointer "
@@ -213,7 +216,7 @@ const UserAddres = () => {
                 <div className="m-1 my-20 max-w-[700px] mx-auto">
                   <div className="">
                     <div className="flex flex-wrap -mx-2">
-                      <div className="w-1/2 px-2 my-2 label-input-styling">
+                      <div className="w-full sm:w-1/2 px-2 my-2 label-input-styling">
                         <label
                           htmlFor=""
                           className="block my-1 px-1 text-[16px] font-bold"
@@ -231,7 +234,7 @@ const UserAddres = () => {
                           className="w-full outline-none py-2 px-2 text-[16px] border-[1px] border-[#80808046]"
                         />
                       </div>
-                      <div className="w-1/2 px-2 my-2 label-input-styling">
+                      <div className="w-full sm:w-1/2 px-2 my-2 label-input-styling">
                         <label
                           htmlFor=""
                           className="block my-1 px-1 text-[15px] font-bold"
@@ -247,8 +250,8 @@ const UserAddres = () => {
                         />
                       </div>
                     </div>
-                    <div className="flex flex-wrap -mx-2 label-input-styling">
-                      <div className="w-1/2 px-2 my-2">
+                    <div className="flex flex-wrap -mx-2">
+                      <div className="w-full sm:w-1/2 px-2 my-2 label-input-styling">
                         <label
                           htmlFor=""
                           className="block my-1 px-1 text-[15px] font-bold"
@@ -263,7 +266,7 @@ const UserAddres = () => {
                           className="w-full outline-none py-2 px-2 text-[16px] border-[1px] border-[#80808046]"
                         />
                       </div>
-                      <div className="w-1/2 px-2 my-2">
+                      <div className="w-full sm:w-1/2 px-2 my-2 label-input-styling">
                         <label
                           htmlFor=""
                           className="block my-1 px-1 text-[15px] font-bold"
@@ -294,8 +297,8 @@ const UserAddres = () => {
                         className="w-full outline-none py-2 px-2 text-[16px] border-[1px] border-[#80808046]"
                       />
                     </div>
-                    <div className="flex flex-wrap -mx-2 label-input-styling">
-                      <div className="w-1/2 px-2 my-2">
+                    <div className="flex flex-wrap -mx-2">
+                      <div className="w-full sm:w-1/2 px-2 my-2 label-input-styling">
                         <label
                           htmlFor=""
                           className="block my-1 px-1 text-[15px] font-bold"
@@ -310,7 +313,7 @@ const UserAddres = () => {
                           className="w-full outline-none py-2 px-2 text-[16px] border-[1px] border-[#80808046]"
                         />
                       </div>
-                      <div className="w-1/2 px-2 my-2">
+                      <div className="w-full sm:w-1/2 px-2 my-2 label-input-styling">
                         <label
                           htmlFor=""
                           className="block my-1 px-1 text-[15px] font-bold"

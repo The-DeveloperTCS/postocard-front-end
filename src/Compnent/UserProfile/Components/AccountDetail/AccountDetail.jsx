@@ -56,7 +56,10 @@ const AccountDetail = () => {
         <Loading />
       ) : (
         <div className="accountsDetail-dashboard-main">
-          <h2 className="text-[35px] font-medium mb-2">Account Details</h2>
+          <div className=" accountsDetail-dashboard-main-text">
+            {" "}
+            <h2 className="text-[35px] font-medium mb-2">Account Details</h2>
+          </div>
           <div className="box1_account_deatils my-2">
             <div className="flex justify-between place-items-center gap-2">
               <div className="my-2 w-full">

@@ -29,7 +29,7 @@
 }
 
 .right_bottom_header p {
-  color: #726e8d;
+  color: #30404D;
   font-family: "Poppins";
   font-size: 16px;
   font-style: normal;
@@ -69,6 +69,7 @@
 
 .sercarbox input {
   width: 100%;
+  font-family: "Poppins";
 }
 
 .sercarboxhide {
@@ -268,7 +269,7 @@
   }
 
   svg.text-\[\#2A254B\].text-\[20px\].cursor-pointer {
-    margin-left: 40px;
+    margin-left: 100px;
   }
 }
 

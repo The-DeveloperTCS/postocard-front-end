@@ -57,6 +57,11 @@
     padding: 7px 10px;
     font-size: 15px;
   }
+
+  .order_box_header {
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+    /* Two columns for small screens */
+  }
 }
 
 @media (max-width: 1000px) {
@@ -67,5 +72,19 @@
 
   .orders_box {
     min-width: 900px;
+  }
+
+  .order_box_header {
+    grid-template-columns: 1fr;
+    /* Two columns for small screens */
+  }
+
+  .order-dashboard-main h2 {
+    padding-top: 40px;
+  }
+
+  .order_box_header p {
+
+    padding: 10px 0px;
   }
 }

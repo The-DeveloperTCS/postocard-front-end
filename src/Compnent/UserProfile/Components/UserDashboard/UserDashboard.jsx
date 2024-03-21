@@ -14,7 +14,7 @@ const UserDashboard = ({ active, setActive }) => {
   return (
     <div className="dashboard-main-div">
       <h2 className="text-[35px] font-medium mb-2">Dashboard</h2>
-      <p className="text-[16px] text-[gray] mb-1" style={{ width: "60%" }}>
+      <p className="text-[16px] text-[gray] mb-1">
         From your account dashboard you can view your recent orders, manage your
         shipping and billing addresses, and edit your password and account
         details.

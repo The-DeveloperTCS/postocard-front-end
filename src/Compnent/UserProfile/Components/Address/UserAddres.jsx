@@ -76,8 +76,11 @@ const UserAddres = () => {
   }, []);
   return (
     <div className="UserAddres">
-      <h2 className="text-[35px] font-medium ">Address</h2>
-      <h2 className="text-[20px] font-medium">Billing address</h2>
+      <h2 className="text-[35px] font-medium ">
+        Address <br />
+        Billing address
+      </h2>
+      {/* <h2 className="text-[20px] font-medium">Billing address</h2> */}
 
       {/* ----- address  */}
       {activeaddress === 1 && (

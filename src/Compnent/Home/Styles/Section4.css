@@ -2,7 +2,7 @@
   display: flex;
   width: 100%;
   background-color: #fdecd9;
-  padding: 100px 60px;
+  padding: 130px 60px;
 }
 
 .section-4left {
@@ -70,7 +70,7 @@
 @media only screen and (max-width: 1080px) {
   .section4 {
     display: block;
-    padding: 20px;
+    padding: 40px 20px;
   }
 
   .section-4left {

@@ -120,6 +120,7 @@
 
 }
 
+.userDashboard_box {}
 
 @media screen and (max-width: 1080px) {
     .accountsDetail-dashboard-main {
@@ -127,6 +128,19 @@
     }
 
     .accountsDetail-dashboard-main-text h2 {
+        padding-top: 40px;
+    }
+
+    .dashboard-main-div h2 {
+
+        padding-top: 40px;
+    }
+
+    .userDashboard_box {
+        padding: 20px;
+    }
+
+    .UserAddres h2 {
         padding-top: 40px;
     }
 }

@@ -286,6 +286,7 @@
   color: white;
   border-radius: 5px;
   opacity: 0;
+  display: none;
 }
 
 /* =====================  */
@@ -303,6 +304,10 @@
 
 
   } */
+
+  .sidebar_search_bar {
+    width: 90%;
+  }
 
   .show_filter {
     transform: translateX(0%);
@@ -329,7 +334,7 @@
 
   .Product_Section2-flex {
     display: block;
-    padding: 100px 20px;
+    padding: 165px 20px;
     background-position: inherit;
   }
 

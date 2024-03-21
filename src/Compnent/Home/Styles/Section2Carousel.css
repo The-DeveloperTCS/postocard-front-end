@@ -88,8 +88,17 @@
 }
 
 
-@media only screen and (min-width: 320px) {
+@media only screen and (max-width: 1080px) {
     .Discounted-slide1-main {
         width: 100% !important;
+    }
+
+    .prev-arrow svg {
+        display: none;
+    }
+
+    .next-arrow svg {
+        display: none;
+
     }
 }

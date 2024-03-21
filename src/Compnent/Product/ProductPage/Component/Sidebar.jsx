@@ -25,13 +25,13 @@ const Sidebar = ({
           : "product_section2_sidebar_box"
       }
     >
-      <div className="flex justify-between place-items-center">
+      {/* <div className="flex justify-between place-items-center">
         <h3>Filter :</h3>
         <RxCross1
           className="filter_cross"
           onClick={() => setshowfilter(false)}
         />
-      </div>
+      </div> */}
       <div className="sidebar_search_bar">
         <AiOutlineSearch />
         <input

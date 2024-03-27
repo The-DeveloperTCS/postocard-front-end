@@ -8,6 +8,7 @@ import {
   AccordionHeader,
   AccordionBody,
 } from "@material-tailwind/react";
+import YourComponent from "./PostoCardDropdown";
 
 const BottomBottomHeader = ({ showheader, setshowheader }) => {
   const allcategory = useSelector((state) => state.category.allcategoryforuser);
@@ -29,7 +30,7 @@ const BottomBottomHeader = ({ showheader, setshowheader }) => {
       <RxCross1 className="cross" onClick={() => setshowheader(false)} />
       <div className="drop_down_menus">
         <div className={`bottom_bottom_header_menus_parent`}>
-          <p className="cursor-pointer" onClick={() => handleOpen(1)}>
+          {/* <p className="cursor-pointer" onClick={() => handleOpen(1)}>
             OCCASIONS
           </p>
           <IoIosArrowDown className="cursor-pointer" />
@@ -50,9 +51,9 @@ const BottomBottomHeader = ({ showheader, setshowheader }) => {
                 </ul>
               ))}
             </div>
-          )}
+          )} */}
         </div>
-        <div className={`bottom_bottom_header_menus_parent`}>
+        {/* <div className={`bottom_bottom_header_menus_parent`}>
           <p className="cursor-pointer" onClick={() => handleOpen(2)}>
             Holiday
           </p>
@@ -75,7 +76,9 @@ const BottomBottomHeader = ({ showheader, setshowheader }) => {
               ))}
             </div>
           )}
-        </div>
+        </div> */}
+        {/* =========NEW COde ==================*/}
+        <YourComponent />
       </div>
 
       <div className="sidebar_accordian">

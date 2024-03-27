@@ -1,0 +1,84 @@
+/* PostoCardDropdown.css */
+
+/* Main container */
+.Header-dropdown-main {
+    display: flex;
+    align-items: flex-start;
+}
+
+/* Dropdown parent container */
+.bottom_bottom_header_menus_parent {
+    position: relative;
+    margin-bottom: 10px;
+}
+
+/* Dropdown toggle */
+.cursor-pointer {
+    cursor: pointer;
+    margin-right: 10px;
+}
+
+/* Arrow icon */
+.cursor-pointer svg {
+    font-size: 24px;
+}
+
+/* Dropdown menu */
+.menus {
+    position: absolute;
+    top: calc(100% + 5px);
+    left: 0;
+    background-color: #fff;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    padding: 10px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+/* Submenu */
+.menus ul {
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+}
+
+/* Submenu items */
+.menus ul li {
+    padding: 5px 0;
+}
+
+/* Hover effect for options */
+.menus ul li:hover {
+    background-color: #FDECD9;
+    /* Change to your preferred color */
+    border-radius: 10px;
+
+}
+
+/* Hover effect for subcategories */
+.menus ul li ul li:hover {
+    background-color: #FFDAB1;
+    /* Change to your preferred color */
+    border-radius: 10px;
+}
+
+.for-options-font {
+    font-weight: 500;
+    text-transform: capitalize;
+    color: #30404D;
+}
+
+/* Responsive styles */
+@media screen and (max-width: 768px) {
+
+    /* Adjust the menu position for smaller screens */
+    .menus {
+        top: 100%;
+        left: 0;
+        width: 100%;
+        max-height: 200px;
+        overflow-y: auto;
+    }
+}
+
+/* Optional: Add additional styling as needed */

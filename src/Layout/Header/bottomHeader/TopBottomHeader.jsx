@@ -78,7 +78,7 @@ const TopBottomHeader = () => {
           <div className={showSearch ? "sercarbox sercarboxhide" : "sercarbox"}>
             <input
               type="text"
-              placeholder="Search."
+              placeholder="Search"
               value={search}
               onChange={(e) => setSearch(e.target.value)}
               onKeyDown={handleKeyPress}
@@ -87,16 +87,19 @@ const TopBottomHeader = () => {
             />
 
             <AiOutlineSearch
-              className="text-[#2A254B] text-[23px] cursor-pointer"
+              className="text-[#30404D
+              ] text-[23px] cursor-pointer"
               onClick={navigatetosearch}
             />
             <RxCross2
-              className="text-[#2A254B] text-[23px] cursor-pointer mx-3"
+              className="text-[#30404D
+              ] text-[23px] cursor-pointer mx-3"
               onClick={() => setShowSearch(false)}
             />
           </div>
           <AiOutlineSearch
-            className="text-[#2A254B] text-[20px] cursor-pointer"
+            className="text-[#30404D
+            ] text-[20px] cursor-pointer"
             onClick={() => setShowSearch(true)}
           />
         </div>

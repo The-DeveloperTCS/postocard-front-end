@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { IoIosArrowDown } from "react-icons/io";
 import "../Styles/PostoCardDropdown.css";
 
-const YourComponent = () => {
+const DropDwonComponent = () => {
   const [openIndex, setOpenIndex] = useState(null);
   const [hoveredOption, setHoveredOption] = useState(-1);
 
@@ -159,4 +159,4 @@ const YourComponent = () => {
   );
 };
 
-export default YourComponent;
+export default DropDwonComponent;

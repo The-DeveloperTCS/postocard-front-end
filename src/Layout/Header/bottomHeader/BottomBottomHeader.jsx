@@ -8,7 +8,7 @@ import {
   AccordionHeader,
   AccordionBody,
 } from "@material-tailwind/react";
-import YourComponent from "./PostoCardDropdown";
+import DropDwonComponent from "./PostoCardDropdown";
 
 const BottomBottomHeader = ({ showheader, setshowheader }) => {
   const allcategory = useSelector((state) => state.category.allcategoryforuser);
@@ -78,7 +78,7 @@ const BottomBottomHeader = ({ showheader, setshowheader }) => {
           )}
         </div> */}
         {/* =========NEW COde ==================*/}
-        <YourComponent />
+        <DropDwonComponent />
       </div>
 
       <div className="sidebar_accordian">

@@ -111,6 +111,13 @@ const App = () => {
         <Route path="/singleCard/:id" element={<SingleCard />} />
         <Route path="/allcollection/:all" element={<Allcollection />} />
 
+        {/* ============ user route  */}
+        <Route path="/user/Login" element={<UserLogin />} />
+        <Route path="/user/signup" element={<Signup />} />
+        <Route path="/user/profile" element={<Profile />} />
+        <Route path="/user/order/details/:id" element={<UserOrderDetails />} />
+
+
         {/* ----------admin Route  */}
         <Route path="/admin/dashboard" element={<AdminPrivateRoute />}>
           <Route path="/admin/dashboard" element={<DashBoardIndex />} />
@@ -188,11 +195,6 @@ const App = () => {
         <Route exact path="/conformOrder" element={<ConformOrder />} />
         {/* ===== page not found  */}
         <Route path="/*" element={<NotFound />} />
-        {/* ============ user route  */}
-        <Route path="/user/Login" element={<UserLogin />} />
-        <Route path="/user/signup" element={<Signup />} />
-        <Route path="/user/profile" element={<Profile />} />
-        <Route path="/user/order/details/:id" element={<UserOrderDetails />} />
 
         {/* ========================== vendor system  routes */}
 

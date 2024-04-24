@@ -9,7 +9,7 @@ const PayPalButton = ({
   setpaypalbtn,
   setShowScess,
   CreateOrderFunctiontobackend,
-  amount
+  amount,
 }) => {
   const navigate = useNavigate();
   const [orderId, setOrderId] = useState(null); // State to store order ID
@@ -21,7 +21,7 @@ const PayPalButton = ({
         <div className="w-full ">
           <div className="m-8 my-20 max-w-[400px] mx-auto">
             <RxCross1
-              className="text-2xl cursor-pointer absolute top-[20px] right-[20px]"
+              className="text-2xl cursor-pointer  absolute top-[20px] right-[20px]"
               onClick={() => {
                 setpaypalbtn(false);
               }}
@@ -39,7 +39,7 @@ const PayPalButton = ({
                       {
                         amount: {
                           currency_code: "USD",
-                          value:  amount, // Set the payment amount here
+                          value: amount, // Set the payment amount here
                         },
                       },
                     ],

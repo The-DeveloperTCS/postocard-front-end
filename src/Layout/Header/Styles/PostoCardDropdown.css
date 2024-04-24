@@ -79,6 +79,10 @@
         max-height: 200px;
         overflow-y: auto;
     }
+
+    .cursor-pointer2 {
+        margin-left: 150px;
+    }
 }
 
 /* Optional: Add additional styling as needed */

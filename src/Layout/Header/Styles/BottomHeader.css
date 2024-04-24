@@ -229,6 +229,7 @@
 
   .top_bottom_header {
     justify-content: space-between;
+    padding-top: 10px;
   }
 
 }

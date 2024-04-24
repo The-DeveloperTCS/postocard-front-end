@@ -4,13 +4,11 @@ import { useDispatch } from "react-redux";
 import { GetAllCartData } from "../../Redux/Action/CartAction";
 
 const CartCompo = () => {
-
-
   return (
     <div className="CartCompo">
       {/* ---------- head  */}
       <div className="cart_com_header_page">
-        <p>Items</p>
+        <p className="item-name">Items</p>
         <p className="p">Quantity</p>
         <p className="p">Total</p>
       </div>

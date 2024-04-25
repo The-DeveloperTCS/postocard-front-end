@@ -44,11 +44,11 @@ const Content = () => {
 
   return (
     <>
-      {loading  ? (
+      {loading ? (
         <loading />
       ) : (
-        
-          loadingallorder || loadingproduct ? <Loading/> : <>
+
+        loadingallorder || loadingproduct ? <Loading /> : <>
           <div className="dash_main_header">
             <div>
               <div className="dash_main_header_box inner_box1">
@@ -80,12 +80,12 @@ const Content = () => {
             <LineChart />
             <PaymentChart />
           </div>
-        <div className="flex justify-between place-items-center gap-[20px]">
-        <DonetChart/>
-        <DonetChartCategory/>
-        </div>
+          <div className="flex justify-between place-items-center gap-[20px]">
+            <DonetChart />
+            <DonetChartCategory />
+          </div>
         </>
-        
+
       )}
     </>
   );
@@ -143,32 +143,32 @@ const LineChart = () => {
         groupedData[intervalKey] = (groupedData[intervalKey] || 0) + 1;
       } else if (interval === "week") {
         const currentMonth = moment().format("MM");
-      const orderMonth = timestamp.format("MM");
+        const orderMonth = timestamp.format("MM");
 
-      if (currentMonth === orderMonth) {
-        const startOfMonth = moment(timestamp).startOf("month");
-        const endOfMonth = moment(timestamp).endOf("month");
-        let currentDate = startOfMonth.clone();
-        let weekNumber = 1;
+        if (currentMonth === orderMonth) {
+          const startOfMonth = moment(timestamp).startOf("month");
+          const endOfMonth = moment(timestamp).endOf("month");
+          let currentDate = startOfMonth.clone();
+          let weekNumber = 1;
 
-        while (currentDate.isSameOrBefore(endOfMonth)) {
-          const weekStart = currentDate.clone();
-          const weekEnd = currentDate.clone().endOf("week");
-          const weekLabel = `${currentMonthName.slice(0,3)} - Week ${weekNumber}`;
+          while (currentDate.isSameOrBefore(endOfMonth)) {
+            const weekStart = currentDate.clone();
+            const weekEnd = currentDate.clone().endOf("week");
+            const weekLabel = `${currentMonthName.slice(0, 3)} - Week ${weekNumber}`;
 
-          if (!(weekLabel in groupedData)) {
-            groupedData[weekLabel] = 0;
+            if (!(weekLabel in groupedData)) {
+              groupedData[weekLabel] = 0;
+            }
+            const orderDate = moment(order?.created_at);
+
+            // Check if the order date is in the same week
+            if (orderDate.isBetween(weekStart, weekEnd, null, "[]")) {
+              groupedData[weekLabel]++;
+            }
+            currentDate.add(1, "week");
+            weekNumber++;
           }
-          const orderDate = moment(order?.created_at);
-
-          // Check if the order date is in the same week
-          if (orderDate.isBetween(weekStart, weekEnd, null, "[]")) {
-            groupedData[weekLabel]++;
-          }
-          currentDate.add(1, "week");
-          weekNumber++;
         }
-      }
       } else if (interval === "day") {
         const today = moment();
         const last7Days = [0, 1, 2, 3, 4, 5, 6]
@@ -205,7 +205,7 @@ const LineChart = () => {
 
   // const orderCounts = labels.map((label) => {
   //   if (selectedInterval === "day") {
-      
+
   //     const dayData = dataByInterval[label];
   //     return dayData || 0;
   //   }
@@ -219,7 +219,7 @@ const LineChart = () => {
     }
     return Array.isArray(dataByInterval[label]) ? dataByInterval[label].slice() : dataByInterval[label] !== undefined ? dataByInterval[label] : [0];
   });
-  
+
 
 
 
@@ -234,7 +234,7 @@ const LineChart = () => {
       },
     ],
   };
-
+ 
   return (
     <div className="w-[100%] mx-[20px] my-[20px]">
       <h2 className="text-[22px] font-bold mb-2">
@@ -314,16 +314,16 @@ const PaymentChart = () => {
           const endOfMonth = moment(timestamp).endOf("month");
           let currentDate = startOfMonth.clone();
           let weekNumber = 1;
-  
+
           while (currentDate.isSameOrBefore(endOfMonth)) {
             const weekStart = currentDate.clone();
             const weekEnd = currentDate.clone().endOf("week");
-            const weekLabel = `${paymentMonth.slice(0,3)} - Week ${weekNumber}`;
+            const weekLabel = `${paymentMonth.slice(0, 3)} - Week ${weekNumber}`;
             if (!(weekLabel in groupedData)) {
               groupedData[weekLabel] = 0;
             }
             const paymentDate = moment(payment.created_at);
-  
+
             // Check if the payment date is in the same week
             if (paymentDate.isBetween(weekStart, weekEnd, null, "[]")) {
               groupedData[weekLabel] += payment.NetAmount;
@@ -384,7 +384,7 @@ const PaymentChart = () => {
         data: orderCounts.flat(),
         borderColor: "#6E6EEF",
         borderWidth: 2,
-        fill: true, 
+        fill: true,
         backgroundColor: "rgba(110, 110, 239, 0.2)",
       },
     ],
@@ -432,55 +432,55 @@ const DonetChart = () => {
   }, 0);
 
   const data = {
-    labels : ["Active Product", "InActive Product"],
-    datasets : [
+    labels: ["Active Product", "InActive Product"],
+    datasets: [
       {
-        label : "Product",
-        data : [active , inActive],
+        label: "Product",
+        data: [active, inActive],
         backgroundColor: ["green", "red"],
-        borderWidth : 1
+        borderWidth: 1
       }
     ]
   }
 
 
   return (
-      <div className="px-[20px] w-full mx-auto  my-[20px]">
-        <h2 className="text-[22px] font-bold mb-2">
-          Products Deatils
-        </h2>
-       <div className="" style={{width : "350px"}}>
-       <Doughnut  data={data}/>
-       </div>
+    <div className="px-[20px] w-full mx-auto  my-[20px]">
+      <h2 className="text-[22px] font-bold mb-2">
+        Products Deatils
+      </h2>
+      <div className="" style={{ width: "350px" }}>
+        <Doughnut data={data} />
       </div>
+    </div>
   );
 };
 // ========= donet chart
 const DonetChartCategory = () => {
-  const allcategory = useSelector((state)=> state.category.allcategory)
-  const allsubcategory = useSelector((state)=> state.category.allsubcategory)
+  const allcategory = useSelector((state) => state.category.allcategory)
+  const allsubcategory = useSelector((state) => state.category.allsubcategory)
   const data = {
-    labels : ["Category", "Subcategory"],
-    datasets : [
+    labels: ["Category", "Subcategory"],
+    datasets: [
       {
-        label : "Total",
-        data : [allcategory?.length , allsubcategory?.length],
+        label: "Total",
+        data: [allcategory?.length, allsubcategory?.length],
         backgroundColor: ["#6E6EEF", "#EF6E6E"],
-        borderWidth : 1
+        borderWidth: 1
       }
     ]
   }
 
   // 
- 
+
   return (
-      <div className="px-[20px] w-full mx-auto  my-[20px]">
-        <h2 className="text-[22px] font-bold mb-2">
-          Category Deatils
-        </h2>
-       <div className="" style={{width : "350px"}}>
-       <Doughnut  data={data}/>
-       </div>
+    <div className="px-[20px] w-full mx-auto  my-[20px]">
+      <h2 className="text-[22px] font-bold mb-2">
+        Category Deatils
+      </h2>
+      <div className="" style={{ width: "350px" }}>
+        <Doughnut data={data} />
       </div>
+    </div>
   );
 };

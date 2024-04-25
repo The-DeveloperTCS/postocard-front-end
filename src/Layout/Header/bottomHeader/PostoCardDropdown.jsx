@@ -98,7 +98,7 @@ const DropDwonComponent = () => {
         {openIndex === 1 && (
           <div className="menus flex-wrap bigger-dropdown">
             <ul>
-              <li
+              {/* <li
                 onMouseEnter={() => handleHover(0)}
                 onMouseLeave={handleLeave}
               >
@@ -110,10 +110,10 @@ const DropDwonComponent = () => {
                     <li>Subcategory 2</li>
                   </ul>
                 )}
-              </li>
+              </li> */}
               {/* Other options and subcategories */}
               {/* Other options and subcategories */}
-              <li
+              {/* <li
                 onMouseEnter={() => handleHover(1)}
                 onMouseLeave={handleLeave}
               >
@@ -124,9 +124,9 @@ const DropDwonComponent = () => {
                     <li>Subcategory 2</li>
                   </ul>
                 )}
-              </li>
+              </li> */}
               {/* Other options and subcategories */}
-              <li
+              {/* <li
                 onMouseEnter={() => handleHover(2)}
                 onMouseLeave={handleLeave}
               >
@@ -137,9 +137,9 @@ const DropDwonComponent = () => {
                     <li>Subcategory 2</li>
                   </ul>
                 )}
-              </li>
+              </li> */}
               {/* Other options and subcategories */}
-              {/* <li
+              <li
                 onMouseEnter={() => handleHover(3)}
                 onMouseLeave={handleLeave}
               >
@@ -150,7 +150,7 @@ const DropDwonComponent = () => {
                     <li>Subcategory 2</li>
                   </ul>
                 )}
-              </li> */}
+              </li>
             </ul>
           </div>
         )}

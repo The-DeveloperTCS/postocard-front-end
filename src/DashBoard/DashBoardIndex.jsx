@@ -12,10 +12,6 @@ import {
 import { getallproductforAdmin } from "../Redux/Action/ProductAction";
 
 const DashBoardIndex = () => {
-  // --------- redux
-  // const user = useSelector((state)=> state.user.user)
-  // const isAuthantication = useSelector((state)=> state.user.isAuthantication)
-
   const dispatch = useDispatch();
   useEffect(() => {
     dispatch(GetAllOrdersFunc());

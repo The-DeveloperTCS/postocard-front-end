@@ -329,3 +329,14 @@
   padding: 5px;
   font-weight: 500;
 }
+
+@media only screen and (max-width: 786px) {
+  .next-arrow21 {
+    display: none;
+  }
+
+  .prev-arrow21 {
+    display: none;
+
+  }
+}

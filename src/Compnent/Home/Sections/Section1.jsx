@@ -8,7 +8,6 @@ import unbeatable from "../../../Assets/images/unbeatable.svg";
 const Section1 = () => {
   return (
     <div className="section1">
-      \
       <div className="">
         {" "}
         <h2>What makes us different</h2>

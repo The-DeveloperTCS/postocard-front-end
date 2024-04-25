@@ -88,18 +88,18 @@ const TopBottomHeader = () => {
 
             <AiOutlineSearch
               className="text-[#30404D
-              ] text-[23px] cursor-pointer"
+              ] text-[23px] cursor-pointer cursor-pointer2"
               onClick={navigatetosearch}
             />
             <RxCross2
               className="text-[#30404D
-              ] text-[23px] cursor-pointer mx-3"
+              ] text-[23px] cursor-pointer cursor-pointer2 mx-3"
               onClick={() => setShowSearch(false)}
             />
           </div>
           <AiOutlineSearch
             className="text-[#30404D
-            ] text-[20px] cursor-pointer"
+            ] text-[20px] cursor-pointer cursor-pointer2"
             onClick={() => setShowSearch(true)}
           />
         </div>

@@ -35,7 +35,7 @@
 }
 
 .slide1-img img {
-    width: 75%;
+    width: 65%;
     margin: auto 0px auto auto;
 }
 
@@ -96,6 +96,8 @@
 
 
 /* Small tablets (768px and up) */
+@media only screen and (max-width: 786) {}
+
 @media only screen and (max-width: 1080) {
 
     .slide1-text h2 {
@@ -114,6 +116,7 @@
     }
 
     .slide1-img img {
-        width: auto;
+        width: 126px;
+        margin: auto 0px auto auto;
     }
 }

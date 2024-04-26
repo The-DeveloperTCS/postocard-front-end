@@ -37,8 +37,8 @@ const Sidebar = ({ show, setShow }) => {
               <NavLink to="/admin/products">
                 <li onClick={dataallproductget}>Product list</li>
               </NavLink>
-              <NavLink to="/admin/category/list">
-                <li>Category List</li>
+              <NavLink to="/admin/parent-category/list">
+                <li>Parent Category List</li>
               </NavLink>
               <NavLink to="/admin/subcategory/list">
                 <li>Subcategory List</li>

@@ -32,6 +32,10 @@ import {
   GET_SUB_CATEGORY_FAIL,
   GET_SUB_CATEGORY_REQUEST,
   GET_SUB_CATEGORY_SUCCESS,
+  GET_PARENT_CATEGORY_REQUEST,
+  GET_PARENT_CATEGORY_FAIL,
+  GET_PARENT_CATEGORY_ERROR,
+  GET_PARENT_CATEGORY_SUCCESS,
 } from "../Variables/UserVariables";
 
 const initialState = {
@@ -39,6 +43,7 @@ const initialState = {
   allcategory: [],
   allcategoryforuser: [],
   allsubcategory: [],
+  allParentCategory: [],
 };
 
 export const CategoryReducer = createReducer(initialState, (builder) => {
@@ -101,7 +106,23 @@ export const CategoryReducer = createReducer(initialState, (builder) => {
       state.isLoading = false;
       state.ERROR = action.payload;
     })
-
+     // -------------------------------------
+    // ===========================================
+    // parent category
+    .addCase(GET_PARENT_CATEGORY_REQUEST, (state, action) => {
+      state.isLoading = true;
+    })
+    .addCase(GET_PARENT_CATEGORY_FAIL, (state, action) => {
+      state.isLoading = false;
+    })
+    .addCase(GET_PARENT_CATEGORY_SUCCESS, (state, action) => {
+      state.isLoading = false;
+      state.allParentCategory = action.payload;
+    })
+    .addCase(GET_PARENT_CATEGORY_ERROR, (state, action) => {
+      state.isLoading = false;
+      state.ERROR = action.payload;
+    })
     // -------------------------------------
     // ===========================================
     // sub category

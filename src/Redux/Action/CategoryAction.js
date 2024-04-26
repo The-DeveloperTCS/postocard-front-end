@@ -16,6 +16,11 @@ import {
   GET_SUB_CATEGORY_FAIL,
   GET_SUB_CATEGORY_REQUEST,
   GET_SUB_CATEGORY_SUCCESS,
+
+  GET_PARENT_CATEGORY_REQUEST,
+  GET_PARENT_CATEGORY_FAIL,
+  GET_PARENT_CATEGORY_ERROR,
+  GET_PARENT_CATEGORY_SUCCESS,
   GET_CATEGORY_FOR_USER_REQUEST,
   GET_CATEGORY_FOR_USER_FAIL,
   GET_CATEGORY_FOR_USER_SUCCESS,
@@ -141,6 +146,33 @@ export const getallCategoryforuser = () => async (dispatch) => {
     dispatch({ type: GET_CATEGORY_FOR_USER_ERROR, payload: error.message });
   }
 };
+
+
+// ============== get all parent category
+export const getallParentCategory = (categoryName) => async (dispatch) => {
+  try {
+    dispatch({ type: GET_PARENT_CATEGORY_REQUEST });
+    const res = await fetch(`${server}/parentcategoryListWithSearch?name=${categoryName}`, {
+      method: "GET",
+      headers: {
+        "Content-Type": "application/json",
+        Authorization: "Bearer " + Cookies.get("ApiLoginToken"),
+      },
+    });
+    dispatch({ type: GET_PARENT_CATEGORY_FAIL });
+    const data = await res.json();
+    if (!data || res.status === 401) {
+      return;
+    } else if (res.status === 500) {
+      return alert("Internel Server Error new");
+    } else {
+      dispatch({ type: GET_PARENT_CATEGORY_SUCCESS, payload: data.data });
+    }
+  } catch (error) {
+    dispatch({ type: GET_PARENT_CATEGORY_ERROR, payload: error.message });
+  }
+};
+
 
 // ============== get all sub category
 export const getallSubCategory = () => async (dispatch) => {

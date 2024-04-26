@@ -101,7 +101,7 @@ console.log(selectRow);
                         <BiSolidCategory />
                       </div>
                       <h6 class="text-xl mb-1 font-semibold">Sub-Category</h6>
-                      <p class="mb-4 text-blueGray-500">{selectRow[0]?.SubCateogry}</p>
+                      <p class="mb-4 text-blueGray-500">{selectRow[0]?.sub_category_details.SubCategoryName}</p>
                     </div>
                   </div>
                 </div>
@@ -112,7 +112,7 @@ console.log(selectRow);
                         <TbProgressHelp />
                       </div>
                       <h6 class="text-xl mb-1 font-semibold">Product Status</h6>
-                      <p class="mb-4 text-blueGray-500">{selectRow[0]?.SubCateogry}</p>
+                      <p class="mb-4 text-blueGray-500">{selectRow[0]?.IsActive}</p>
                     </div>
                   </div>
                   <div class="relative flex flex-col mt-4">

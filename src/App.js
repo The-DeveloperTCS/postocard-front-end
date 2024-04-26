@@ -12,7 +12,7 @@ import AdminLogin from "./DashBoard/Accounts/AdminLogin";
 import { useDispatch, useSelector } from "react-redux";
 import { LogedinUser } from "./Redux/Action/UserAction";
 import CreateProduct from "./DashBoard/Pages/CreateProduct";
-import CategoryList from "./DashBoard/Pages/CategoryList";
+import ParentCategoryList from "./DashBoard/Pages/ParentCategoryList";
 import Home from "./Pages/Home";
 import SubCategoryList from "./DashBoard/Pages/SubCategoryList";
 import SingleCard from "./Pages/SingleCard";
@@ -157,8 +157,8 @@ const App = () => {
         </Route>
         {/* ----------- category list  */}
 
-        <Route path="/admin/category/list" element={<AdminPrivateRoute />}>
-          <Route path="/admin/category/list" element={<CategoryList />} />
+        <Route path="/admin/parent-category/list" element={<AdminPrivateRoute />}>
+          <Route path="/admin/parent-category/list" element={<ParentCategoryList />} />
         </Route>
 
         {/* ------- sub category  */}

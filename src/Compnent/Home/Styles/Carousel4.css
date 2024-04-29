@@ -110,6 +110,12 @@
 
         display: none;
     }
+    .carousel4-main-slider {
+        border: 1px solid gray;
+        width: 98% !important;
+        background-color: white;
+        border-radius: 6px;
+    }
 
 }
 

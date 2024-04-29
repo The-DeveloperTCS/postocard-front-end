@@ -1,5 +1,5 @@
 .SingleCardSidebar {
-  width: 450px;
+  width: 500px;
   /* border-right: 1px solid rgba(128, 128, 128, 0.507); */
   height: 550px;
   margin-top: 75px;
@@ -87,9 +87,24 @@
 
 }
 
-@media(max-width : 600px) {
+@media(max-width : 1000px) {
   .SingleCardSidebar {
     width: 100%;
-    order: 2;
+ 
   }
+.SingleCardSidebar{
+  display: flex;
+  flex-direction: column;
+align-items: center;
+}
+.SingleCardSidebar_inputs {
+  width: 100%; /* Adjust the width as needed */
+  margin: 0 auto; /* Center the element horizontally */
+}
+
+.flip_card_parent {
+  width: 100%;
+  height: auto;
+  position: relative;
+}
 }

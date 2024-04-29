@@ -3,11 +3,11 @@
 }
 
 .cardpricingdatanew {
-  margin-top: 0px;
-  position: absolute;
-  top: -390px;
-  width: 89%;
-  padding: 0px 55px;
+  margin-top: 0;
+  position: relative; /* Change position to relative */
+  top: -440px; /* Remove the top offset */
+  width: 100%;
+  padding: 10% 0; /* Adjust padding for responsiveness */
 }
 
 .CardPricingData h2 {
@@ -30,14 +30,33 @@
   padding: 0px 0px
 }
 
+/* edit-prodcut-ad */
+.edit-prodcut-ad span{
+  font-size: 16px;
+  font-weight: 600;
+  color: #30404D;
+  font-family: "Poppins", sans-serif;
+  text-transform: uppercase;
+}
+.edit-prodcut-ad p{
+  font-size: 30px;
+}
+.CardPricingDatafortext-main{
+display: flex;
+justify-content: space-around;
+width: 100%;
+padding: 0px 137px 0px 52px;
+}
+.CardPricingDatafortext{
+  width: 50%;
+}
 .CardPricingDatafortext p {
   color: #30404D;
   font-size: 16px;
   font-family: "Poppins", sans-serif;
   font-weight: 400;
   text-transform: lowercase;
-
-
+  margin-left: -8px;
 }
 
 .price font {
@@ -94,7 +113,6 @@
   border-radius: 24px;
   margin-bottom: -50px;
   font-family: "Poppins", sans-serif;
-  margin-right: 13px;
   text-transform: uppercase;
 }
 
@@ -141,6 +159,23 @@
 /* --------- also_like */
 .also_like {
   margin: 65px 75px;
+  }
+
+.also_likenew {
+  margin: 65px 0px;
+  display: flex;
+  flex-direction: column;
+  margin-top: -300px;
+}
+.also_likenew  p{
+  width: 50%;
+}
+
+.also_likenew  h2 {
+  /* margin-left: 50px; */
+  font-size: 35px;
+  font-family: "Luckiest Guy", cursive;
+  color: #30404D;
 }
 
 .also_like h2 {
@@ -152,22 +187,77 @@
   margin-bottom: 12px;
 }
 
-@media(max-width : 850px) {
-  .CardPricingData_parent {
-    padding: 10px 20px !important;
-  }
+/* product-id-button */
+.product-id-button{
+  width: 100%;
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  padding: 0px;
 }
 
-@media(max-width : 700px) {
-  .CardPricingData {
+@media(max-width: 1250px) {
+
+  .CardPricingDatafortext-main {
+      display: flex;
+      justify-content: space-around;
+      width: 100%;
+      padding: 0px 16px 0px 25px;
+  }
+
+}
+
+
+@media(max-width : 1000px) {
+  /* .CardPricingData {
     flex-direction: column;
     gap: 25px;
     justify-content: flex-start;
     align-items: flex-start;
+  } */
+  .cardpricingdatanew {
+    top: -360px;
+    width: 100%;
+    padding: 0px 61px 0px 0px;
+    gap: 25px;
+
   }
+  .CardPricingDatafortext-main{
+    flex-direction: column;
+    }
+    .CardPricingDatafortext{
+      width: 100%;
+    }
+    .also_likenew  p{
+      width: 100%;
+    }
+    .also_likenew  h2 {
+      margin-left: 0px;
+    
+    }
+    .also_likenew{
+margin-top: -200px;
+    }
 }
 
+@media(max-width : 786px) {
+  .CardPricingData_parent {
+    padding: 10px 20px !important;
+  }
+  .cardpricingdatanew {
+    top: -360px;
+    width: 100%;
+    padding: 0px 0px 0px 0px;
+    gap: 25px;
 
+  }
+  .CardPricingDatafortext-main {
+    display: flex;
+    justify-content: space-around;
+    width: 100%;
+    padding: 0px 10px 0px 0px;
+}
+}
 .cardpricing-parent select {
   width: 100%;
   padding: 30px 10px !important;
@@ -177,7 +267,9 @@
   font-family: "Poppins";
   outline: none;
 }
-
+.edit-prodcut-ad {
+  width: 50%;
+}
 .centered-text {
   position: relative;
   text-align: end;
@@ -204,3 +296,14 @@
   margin-left: auto;
   margin-right: auto;
 }
+
+
+@media(max-width : 1000px) {
+  .edit-prodcut-ad {
+    width: 100%;
+    display: flex;
+    margin-top: 10px;
+    align-items: center;
+}
+}
+

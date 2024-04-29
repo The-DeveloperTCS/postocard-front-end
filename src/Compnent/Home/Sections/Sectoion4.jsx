@@ -23,7 +23,8 @@ const Sectoion4 = () => {
         </button>
       </div>
       <div className="section-4right">
-        <Carousel4 />
+      <Carousel4 slidesToShow={2} />
+
       </div>
     </div>
   );

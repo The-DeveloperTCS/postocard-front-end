@@ -14,6 +14,7 @@ import { getuseraddress } from "../../../Redux/Action/UserAction";
 import SpinnerLoading from "../../../Layout/Loading/SpinnerLoading";
 import axios from "axios";
 import "../SingleProduct/Styles/CardPricingData.css"
+import Carousel5 from "../../Home/Sections/Carousel5";
 
 const CardPricingData = ({ active, name, content }) => {
   const allProduct = useSelector((state) => state.product.allProduct);
@@ -649,6 +650,7 @@ const CardPricingData = ({ active, name, content }) => {
               iste! Esse provident assumenda aperiam!00
             </p>
           </div>
+          <Carousel5 />
           {active === 2 && <AddReview />}
           {sliceProduct?.length > 0 ? (
             <div className="also_like">
@@ -663,7 +665,8 @@ const CardPricingData = ({ active, name, content }) => {
                   fontSize: "18px",
                   width: "100%",
                   padding: "15px 5px",
-                  color: "#30404D"
+                  color: "#30404D",
+                  marginTop:"100px"
                 }}>
                 No products match.
               </h2>

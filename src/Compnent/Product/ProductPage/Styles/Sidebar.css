@@ -306,7 +306,8 @@
   } */
 
   .sidebar_search_bar {
-    width: 90%;
+    width: 300px;
+    padding: 12px 15px ;
   }
 
   .show_filter {

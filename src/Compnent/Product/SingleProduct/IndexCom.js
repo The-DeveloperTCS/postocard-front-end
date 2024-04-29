@@ -17,11 +17,11 @@ const IndexCom = () => {
   const [name, setName] = useState("");
   const isLoading = useSelector((state) => state.product.singleProductLoad);
   return (
-    //  <>
-    //  {
-    //   isLoading ? <Loading/> :
+      <>
+    {/* //  { */}
+    {/* //   isLoading ? <Loading/> : */}
 
-    <div>
+    {/* <div> */}
       <div className="IndexCom_cartSidebar">
         <SingleCardSidebar setContenttext={setContent} setName={setName} />
         <SingleCardCompo content={content} namedata={name} />
@@ -33,9 +33,9 @@ const IndexCom = () => {
       <CardPricingData active={active} name={name} content={content} />
       {/* ------ Join the club */}
       <Jointheclub />
-    </div>
-    //  }
-    //  </>
+    {/* </div> */}
+    {/* //  } */}
+     </>
   );
 };
 

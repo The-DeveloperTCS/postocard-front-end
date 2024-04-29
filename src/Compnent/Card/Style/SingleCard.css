@@ -66,3 +66,16 @@
     height: 400px;
     background-color: purple;
 }
+
+@media(max-width: 1000px) {
+    .single_card{
+     width: 100%;
+     margin-top: -190px;
+    }
+    .single_card_main{
+        padding: 20px;
+    }
+    .butoon_editing button{
+        display: none;
+    }
+}

@@ -1,23 +1,32 @@
 .IndexCom_cartSidebar {
-    padding: 50px 0px 320px 0px;
+    padding: 50px 190px 320px 100px;
     display: flex;
-    justify-content: space-around;
+    justify-content: space-between;
     align-items: flex-start;
     background-image: url(../../../../Assets/images/Edit\ your\ cardBackground.png);
-    background-size: cover;
     background-repeat: no-repeat;
-    margin-left: -95px;
-    margin-left: -61px;
-    overflow: hidden;
-    background-size: 100% 100%;
-
+    background-size: cover;
+    background-position: bottom;
+width: 100%;
 
 }
 
-@media(max-width: 600px) {
+@media(max-width: 1000px) {
     .IndexCom_cartSidebar {
         flex-direction: column;
-        gap: 20px;
+        margin-left: 0px;
+        align-items: center;
+        padding: 47px 10px 340px 10px;
     }
+
+}
+
+@media(max-width: 1250px) {
+    .IndexCom_cartSidebar {
+        padding: 47px 10px 340px 10px;
+        justify-content: space-around;
+        gap: 30px;
+    }
+ 
 
 }

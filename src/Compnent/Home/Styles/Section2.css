@@ -70,8 +70,13 @@
 
 
 /* Medium tablets and laptops (992px and up) */
-@media only screen and (max-width: 992px) {
-  /* Styles for medium tablets and laptops */
+@media only screen and (max-width: 786px) {
+  .for-section2-caroudel {
+    width: 100%;
+    margin: auto;
+    padding: 40px 0px;
+    margin-left: -16px;
+  }
 }
 
 /* Large tablets, laptops and desktops (1200px and up) */

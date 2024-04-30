@@ -23,7 +23,7 @@ const PriceDropdown = ({ cart }) => {
           <span>$120{cart?.CartData?.GrossAmount} </span>
         </p>
         <IoChevronDown />
-      </div>
+     
       <div className="payment_content">
         {/* <p>
           Subtotal
@@ -37,6 +37,7 @@ const PriceDropdown = ({ cart }) => {
           Total
           <span>$100{cart?.CartData?.NetAmount}</span>
         </p>
+      </div>
       </div>
     </div>
   );

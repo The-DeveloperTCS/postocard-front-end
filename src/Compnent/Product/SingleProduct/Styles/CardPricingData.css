@@ -166,6 +166,7 @@ padding: 0px 137px 0px 52px;
   display: flex;
   flex-direction: column;
   margin-top: -300px;
+  padding: 0px 53px;
 }
 .also_likenew  p{
   width: 50%;

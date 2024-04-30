@@ -37,7 +37,9 @@
     display: none;
     border-radius: 10px;
 }
-
+.payment_content-extrta{
+    padding: 0px 30px;
+}
 .payment_content_inner {
     margin: 0 auto;
     max-width: 300px;
@@ -90,9 +92,16 @@
     /* Styles for small tablets */
     .inputs_box {
         display: block;
+        padding: 130px 10px 100px 10px;
     }
 
     .payment_dropdown {
-        width: 70%;
+        width: 100%;
+        padding: 0px 10px;
+    }
+
+    .payment_content{
+        width: 90%;
+        left: 19px;
     }
 }

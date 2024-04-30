@@ -2,7 +2,8 @@
     background-color: #FCC79F;
     width: 95% !important;
     padding: 10px;
-    height: 22dvh;
+    height: 25dvh;
+    border-radius: 10px;
 }
 
 .next-arrow svg {
@@ -34,10 +35,10 @@
     width: 50%;
 }
 
-.slide1-img img {
-    width: 65%;
+/* .slide1-img img {
+    width: 172px;
     margin: auto 0px auto auto;
-}
+} */
 
 .slide1-inner {
     display: flex;
@@ -49,6 +50,7 @@
     font-weight: 500;
     font-family: "Poppins", sans-serif;
     color: #30404D;
+    padding: 10px 0px;
 
 }
 
@@ -58,7 +60,7 @@
     font-family: "Poppins", sans-serif;
     text-transform: uppercase;
     color: #30404D;
-
+padding: 10px 0px;
 }
 
 .slide1-text h3 {
@@ -96,7 +98,6 @@
 
 
 /* Small tablets (768px and up) */
-@media only screen and (max-width: 786) {}
 
 @media only screen and (max-width: 1080) {
 
@@ -114,12 +115,32 @@
         background-color: #FCC79F;
         width: 100% !important;
         padding: 10px;
-        height: 20dvh;
+        height: auto;
     }
     
+}
 
-    .slide1-img img {
-        width: 126px;
-        margin: auto 0px auto auto;
+@media only screen and (max-width: 786) {
+    
+    .slide1-text h2 {
+        font-size: 16px;
+        font-weight: 600;
+    }
+    .slide1-text h1 {
+        font-size: 18px;
+   
+    }
+    .slide1-text {
+        width: 50%;
+        align-items: baseline;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+    .Discounted-slide1-main {
+        background-color: #FCC79F;
+        width: 100% !important;
+        padding: 10px;
+        height: 27dvh;
     }
 }

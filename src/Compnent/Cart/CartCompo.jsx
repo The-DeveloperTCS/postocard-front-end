@@ -2,46 +2,52 @@ import React, { useEffect } from "react";
 import "./Style/CartCompo.css";
 import { useDispatch } from "react-redux";
 import { GetAllCartData } from "../../Redux/Action/CartAction";
+import cartimg from "../../Assets/cartLayer 1 1.png"
+import { RiDeleteBin5Line } from "react-icons/ri";
 
 const CartCompo = () => {
   return (
-    <div className="CartCompo">
-      {/* ---------- head  */}
-      <div className="cart_com_header_page">
-        <p className="item-name">Items</p>
-        <p className="p">Quantity</p>
-        <p className="p">Total</p>
+  <div className="cartcomponenet-main">
+    {/* <div className="for-cross-cart"></div> */}
+    <div className="main-text-cart">
+      <h1>your cart</h1>
+    </div>
+    <div className="cart-comp-img-text-main">
+      <div className="for-cart-p-img">
+        <img src={cartimg} alt="Product-img" />
       </div>
-      {/* ------------ cart-content */}
-      <div className="main_cart_data_page">
-        <div className="cart_data_page">
-          <div className="cart_data_image">
-            <img src="./data/product/image4.png" alt="" />
-            <div className="cart_data_img_content">
-              <h2>Eid Card</h2>
-              <p>A timeless ceramic vase with a tri color grey glaze.</p>
-              <span>$8</span>
-            </div>
-          </div>
-          <p className="p">1</p>
-          <p className="p">$8</p>
+      <div className="for-cart-price">
+        <div className="Product-total-text">
+          <p>Product</p>
+          <p>Total</p>
+        </div>
+        <div className="prodcut-name-cart">
+          <h1>Birthday Card</h1>
+        </div>
+        <div className="cart-delet">
+          <p>$. 30.00</p>
+          <RiDeleteBin5Line />
+        </div>
+        <div className="Subtotal-cart-main">
+        <div className="Subtotal-cart1">
+        <p>Subtotal</p>
+        <p>$30</p>
+        </div>
+        <div className="Subtotal-cart1">
+        <p>Discount cupon</p>
+        <p>$00</p>
+        </div>
+        <div className="Subtotal-cart1">
+        <p>Total</p>
+        <p>$30</p>
         </div>
       </div>
-
-      {/* ------------------------- button area  */}
-      <div className="cart_btn_area">
-        <div className="cart_subtotal">
-          <p>Taxes and shipping are calculated at checkout</p>
-          <div className="sub_cart">
-            <p>Subtotal</p>
-            <p className="p">$20</p>
-          </div>
-        </div>
-        <div className="text-right">
-          <button>Go to checkout</button>
-        </div>
       </div>
     </div>
+    <div className="cart-btn-out">
+      <button>Check out</button>
+    </div>
+  </div>
   );
 };
 

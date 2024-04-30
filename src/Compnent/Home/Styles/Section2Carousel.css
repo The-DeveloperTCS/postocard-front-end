@@ -34,7 +34,7 @@
 }
 
 .slide1-img img {
-    width: 75%;
+    width: 135px;
     margin: auto 0px auto auto;
 }
 
@@ -100,4 +100,22 @@
         display: none;
 
     }
+   
 }
+
+@media only screen and (max-width: 786px) {
+    .slide1-img img {
+        width: 135px;
+        margin: auto 0px auto auto;
+    }
+    .slide1-text h1 {
+        font-size: 18px;
+    }
+    
+    .slide1-text h2 {
+        font-size: 18px;
+ 
+    }
+    
+}
+

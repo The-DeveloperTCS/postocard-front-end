@@ -40,14 +40,21 @@ function PaymentTopCarousel() {
     nextArrow: <NextArrow />,
     responsive: [
       {
-        breakpoint: 1224,
+        breakpoint: 1024, // for large screens
+        settings: {
+          slidesToShow: 2,
+          slidesToScroll: 2,
+        },
+      },
+      {
+        breakpoint: 768, // for tablets
         settings: {
           slidesToShow: 1,
           slidesToScroll: 1,
         },
       },
       {
-        breakpoint: 900,
+        breakpoint: 480, // for mobile devices
         settings: {
           slidesToShow: 1,
           slidesToScroll: 1,

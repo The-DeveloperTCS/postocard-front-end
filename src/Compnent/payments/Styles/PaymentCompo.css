@@ -364,12 +364,33 @@
   .payment-top-Carousel h1 {
     font-size: 20px;
   }
+  .payment-top-Carousel {
+    width: 100%;
+    margin: auto;
+    padding: 30px 10px 60px 10px;
+  }
+  }
 
-}
 
 /* Medium tablets and laptops (992px and up) */
-@media only screen and (max-width: 992px) {
+@media only screen and (max-width: 786px) {
   /* Styles for medium tablets and laptops */
+  .main-product-img img {
+    width: 100%;
+  }
+  .main-product-price {
+    width: 100%;
+    text-align: start;
+}
+.product-on-top{
+  padding: 30px 10px;
+}
+.payment-top-Carousel {
+  width: 100%;
+  margin: auto;
+  padding: 0px 0px 0px 0px;
+  margin-left: -16px;
+}
 }
 
 /* Large tablets, laptops and desktops (1200px and up) */

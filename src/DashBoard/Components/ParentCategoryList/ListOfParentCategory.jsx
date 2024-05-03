@@ -11,7 +11,7 @@ const ListOfParentCategory = ({ }) => {
   const dispatch = useDispatch();
   const allParentCategory = useSelector((state) => state.category.allParentCategory)
   const [categoryName, setCategoryName] = useState("");
-
+  console.log(allParentCategory, 'allParentCategory')
   useEffect(() => {
     getParentCategories()
   }, [])
@@ -54,30 +54,30 @@ const ListOfParentCategory = ({ }) => {
                     >
                       <p>{item.id}</p>
                       <h2>
-                        {(item.CategoryName && item.CategoryName) ||
-                          (item.SubCategoryName && item.SubCategoryName)}
+                        {item.name}
                       </h2>
-                      {item.category_details && (
-                        <h2>
-                          {item.category_details &&
-                            item.category_details.CategoryName}
-                        </h2>
-                      )}
+
                       <h2
                       // onClick={() => {
                       //   setCid(item.id);
                       //   updateactive(item.id);
                       // }}
                       >
-                        <AiOutlineDelete className="text-[23px] cursor-pointer text-[red]" />
+                        <p className="flex justify-start place-items-center gap-3 relative">
+                          <FaRegEdit
+                            className="text-[green] cursor-pointer text-[20px]"
+                          // onClick={() => editproduct(item.id)}
+                          />
+                          <AiOutlineDelete className="text-[23px] cursor-pointer text-[red]" />
+                        </p>
                       </h2>
-                      <p className="flex justify-start place-items-center gap-3 relative">
+                      {/* <p className="flex justify-start place-items-center gap-3 relative">
                         <FaRegEdit
                           className="text-[green] cursor-pointer text-[20px]"
                         // onClick={() => editproduct(item.id)}
-                        />
+                        /> */}
 
-                      </p>
+                      {/* </p> */}
                     </div>
                   );
                 })}

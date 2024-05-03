@@ -19,28 +19,28 @@ const SubCategoryModal = ({setModal}) => {
 
     const dispatch = useDispatch()
     useEffect(()=>{
-        dispatch(getallCategory())
+        // dispatch(getallCategory())
      },[]);
      
-     useEffect(() => {
-         const filteredCategories = allcategory && allcategory.filter(item =>
-            item.CategoryName.toLowerCase().includes(parentCategory.toLowerCase())
-            );
-            setCopyCategory(filteredCategories);
-        }, [parentCategory, allcategory]);
+    //  useEffect(() => {
+    //      const filteredCategories = allcategory && allcategory?.filter(item =>
+    //         item.CategoryName.toLowerCase().includes(parentCategory.toLowerCase())
+    //         );
+    //         setCopyCategory(filteredCategories);
+    //     }, [parentCategory, allcategory]);
         
-        // -------------- copycategoryoff
-        const copycategoryoff = (id,name)=>{
-              setCategoryID(id)
-              setParentcategory(name)
-              setShowCategory(false)
-        }
+    //     // -------------- copycategoryoff
+    //     const copycategoryoff = (id,name)=>{
+    //           setCategoryID(id)
+    //           setParentcategory(name)
+    //           setShowCategory(false)
+    //     }
         
         
-        // -----createsubcategory
-    const createsubcategory =()=>{
-      dispatch(CreateSubCategoryFunc(categoryID,subCategory))
-    }
+    //     // -----createsubcategory
+    // const createsubcategory =()=>{
+    //   dispatch(CreateSubCategoryFunc(categoryID,subCategory))
+    // }
 
   return (
     <div>

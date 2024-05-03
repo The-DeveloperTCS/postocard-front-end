@@ -31,7 +31,7 @@ import SingleOrder from "./DashBoard/Pages/SingleOrder";
 import Vindor from "./DashBoard/Pages/Vindor";
 import CreateVendor from "./DashBoard/Pages/CreateVendor";
 import ConformOrder from "./DashBoard/Pages/ConformOrder";
-import { getallCategoryforuser } from "./Redux/Action/CategoryAction";
+// import { getallCategoryforuser } from "./Redux/Action/CategoryAction";
 import SingleVendor from "./DashBoard/Pages/SingleVendor";
 import NotFound from "./Layout/NotFoundPage/NotFound";
 import Cookies from "js-cookie";
@@ -49,6 +49,8 @@ import UserAnalytics from "./DashBoard/Pages/UserAnalytics";
 import Discounts from "./DashBoard/Pages/Discounts";
 import UserOrderDetails from "./Pages/UserOrderDetails";
 import CreatePackage from "./DashBoard/Pages/CreatePackage";
+import CreateParentCategiory from "./DashBoard/Pages/CreateParentCategory";
+
 import VendorDashBoard from "./DashboardVendor/Views/VendorDashBoard";
 import VendorLogin from "./DashboardVendor/Pages/VendorLogin";
 import VendorAuth from "./Hooks/VendorAuth";
@@ -80,7 +82,7 @@ const App = () => {
       dispatch(LogedinUser());
     }
     dispatch(getallproduct());
-    dispatch(getallCategoryforuser());
+    // dispatch(getallCategoryforuser());
   }, []);
 
   // useEffect(() => {
@@ -117,6 +119,18 @@ const App = () => {
         <Route path="/user/profile" element={<Profile />} />
         <Route path="/user/order/details/:id" element={<UserOrderDetails />} />
 
+        {/* -------- product Page  */}
+        <Route exact path="/products/:category" element={<Product />} />
+        <Route exact path="/product/:id" element={<SingleProduct />} />
+        <Route exact path="/cart" element={<Cart />} />
+        <Route exact path="/payment" element={<Payment />} />
+        <Route exact path="/conformOrder" element={<ConformOrder />} />
+        {/* ===== page not found  */}
+        <Route path="/*" element={<NotFound />} />
+
+        {/* Admin Portal Routes */}
+        {/* ---------- login  */}
+        <Route path="/login" element={<AdminLogin />} />
 
         {/* ----------admin Route  */}
         <Route path="/admin/dashboard" element={<AdminPrivateRoute />}>
@@ -130,27 +144,7 @@ const App = () => {
         <Route path="/admin/products/view/:id" element={<AdminPrivateRoute />}>
           <Route path="/admin/products/view/:id" element={<ProductView />} />
         </Route>
-        <Route path="/admin/allusers" element={<AdminPrivateRoute />}>
-          <Route path="/admin/allusers" element={<AllUsers />} />
-        </Route>
-        <Route path="/admin/artists" element={<AdminPrivateRoute />}>
-          <Route path="/admin/artists" element={<Artists />} />
-        </Route>
-        <Route path="/admin/user/Analytics" element={<AdminPrivateRoute />}>
-          <Route path="/admin/user/Analytics" element={<UserAnalytics />} />
-        </Route>
-        <Route path="/admin/product/discount" element={<AdminPrivateRoute />}>
-          <Route path="/admin/product/discount" element={<Discounts />} />
-        </Route>
-        <Route path="/admin/create/package" element={<AdminPrivateRoute />}>
-          <Route path="/admin/create/package" element={<CreatePackage />} />
-        </Route>
-        <Route path="/admin/edit/package/:id" element={<AdminPrivateRoute />}>
-          <Route path="/admin/edit/package/:id" element={<EditPackage />} />
-        </Route>
 
-        {/* ---------- login  */}
-        <Route path="/login" element={<AdminLogin />} />
         {/* ------------- admin/create/product  */}
         <Route path="/admin/create/product" element={<AdminPrivateRoute />}>
           <Route path="/admin/create/product" element={<CreateProduct />} />
@@ -161,44 +155,70 @@ const App = () => {
           <Route path="/admin/parent-category/list" element={<ParentCategoryList />} />
         </Route>
 
+
+        {/* Create Parent categor */}
+
+        <Route path="/admin/create/parent-category" element={<AdminPrivateRoute />}>
+          <Route path="/admin/create/parent-category" element={<CreateParentCategiory />} />
+        </Route>
+
         {/* ------- sub category  */}
 
-        <Route path="/admin/subcategory/list" element={<AdminPrivateRoute />}>
+        {/* <Route path="/admin/subcategory/list" element={<AdminPrivateRoute />}>
           <Route path="/admin/subcategory/list" element={<SubCategoryList />} />
-        </Route>
+        </Route> */}
         {/* ------- order list  */}
-        <Route path="/admin/orderlist" element={<AdminPrivateRoute />}>
+        {/* <Route path="/admin/orderlist" element={<AdminPrivateRoute />}>
           <Route path="/admin/orderlist" element={<OrderList />} />
-        </Route>
+        </Route> */}
+
 
         {/* -------- single order deatail  */}
-        <Route path="/admin/order/:id" element={<AdminPrivateRoute />}>
+        {/* <Route path="/admin/order/:id" element={<AdminPrivateRoute />}>
           <Route path="/admin/order/:id" element={<SingleOrder />} />
-        </Route>
+        </Route> */}
         {/* -------- vindor list  */}
-        <Route path="/admin/vendor" element={<AdminPrivateRoute />}>
+        {/* <Route path="/admin/vendor" element={<AdminPrivateRoute />}>
           <Route path="/admin/vendor" element={<Vindor />} />
-        </Route>
+        </Route> */}
         {/* -------- createvindor list  */}
-        <Route path="/admin/create/vendor" element={<AdminPrivateRoute />}>
+        {/* <Route path="/admin/create/vendor" element={<AdminPrivateRoute />}>
           <Route path="/admin/create/vendor" element={<CreateVendor />} />
-        </Route>
+        </Route> */}
         {/* ------- vendor single list  */}
-        <Route path="/admin/vendor/detail/:id" element={<AdminPrivateRoute />}>
+        {/* <Route path="/admin/vendor/detail/:id" element={<AdminPrivateRoute />}>
           <Route path="/admin/vendor/detail/:id" element={<SingleVendor />} />
+        </Route> */}
+
+        {/* <Route path="/admin/allusers" element={<AdminPrivateRoute />}>
+          <Route path="/admin/allusers" element={<AllUsers />} />
         </Route>
-        {/* -------- product Page  */}
-        <Route exact path="/products/:category" element={<Product />} />
-        <Route exact path="/product/:id" element={<SingleProduct />} />
-        <Route exact path="/cart" element={<Cart />} />
-        <Route exact path="/payment" element={<Payment />} />
-        <Route exact path="/conformOrder" element={<ConformOrder />} />
-        {/* ===== page not found  */}
-        <Route path="/*" element={<NotFound />} />
 
-        {/* ========================== vendor system  routes */}
+        <Route path="/admin/artists" element={<AdminPrivateRoute />}>
+          <Route path="/admin/artists" element={<Artists />} />
+        </Route>
 
-        <Route path="/vendor/login" element={<VendorLogin />} />
+        <Route path="/admin/user/Analytics" element={<AdminPrivateRoute />}>
+          <Route path="/admin/user/Analytics" element={<UserAnalytics />} />
+        </Route>
+
+        <Route path="/admin/product/discount" element={<AdminPrivateRoute />}>
+          <Route path="/admin/product/discount" element={<Discounts />} />
+        </Route>
+
+        <Route path="/admin/create/package" element={<AdminPrivateRoute />}>
+          <Route path="/admin/create/package" element={<CreatePackage />} />
+        </Route>
+        <Route path="/admin/edit/package/:id" element={<AdminPrivateRoute />}>
+          <Route path="/admin/edit/package/:id" element={<EditPackage />} />
+        </Route> */}
+
+
+
+
+        {/* ========================== vendor Dasboard  routes */}
+
+        {/* <Route path="/vendor/login" element={<VendorLogin />} />
 
         <Route path="/vendor/orders" element={<Orders />} />
         <Route path="/vendor/pendingorders" element={<PendingOrders />} />
@@ -214,7 +234,9 @@ const App = () => {
               <VendorDashBoard />{" "}
             </VendorAuth>
           }
-        />
+        /> */}
+
+
       </Routes>
       {/* =============== */}
       <Footer />

@@ -4,7 +4,7 @@ import { RxCross1 } from "react-icons/rx";
 import { MdDelete } from "react-icons/md";
 import { AiOutlineMinus, AiOutlinePlus } from "react-icons/ai";
 import { useDispatch, useSelector } from "react-redux";
-import { GetAllCartData } from "../../../Redux/Action/CartAction";
+// import { GetAllCartData } from "../../../Redux/Action/CartAction";
 import { media } from "../../../Setting/GlobalVariable";
 import { CommonPOSTCall } from "../../../Redux/Action/DeleteCommonFunction";
 import {
@@ -23,7 +23,7 @@ const CartSidebar = ({ show, setShow }) => {
   const dispatch = useDispatch();
   useEffect(() => {
     const CartCode = localStorage.getItem("cartcode");
-    dispatch(GetAllCartData(CartCode));
+    // dispatch(GetAllCartData(CartCode));
   }, []);
 
   const decriment = () => {
@@ -53,7 +53,7 @@ const CartSidebar = ({ show, setShow }) => {
     const url = "cart/delete";
     const CartCode = localStorage.getItem("cartcode");
     await dispatch(CommonPOSTCall(v1, v2, v3, v4, bodydata, url));
-    dispatch(GetAllCartData(CartCode));
+    // dispatch(GetAllCartData(CartCode));
   };
 
   const cartloading = useSelector((state) => state.cart.isloading);

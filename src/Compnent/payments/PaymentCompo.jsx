@@ -5,7 +5,7 @@ import * as Yup from "yup";
 import { BiErrorCircle } from "react-icons/bi";
 import { useDispatch, useSelector } from "react-redux";
 import { media } from "../../Setting/GlobalVariable";
-import { GetAllCartData } from "../../Redux/Action/CartAction";
+// import { GetAllCartData } from "../../Redux/Action/CartAction";
 import {
   DELETE_CART_PRODUCT_ERROR,
   DELETE_CART_PRODUCT_REQUEST,
@@ -71,7 +71,7 @@ const PaymentCompo = () => {
   const dispatch = useDispatch();
   useEffect(() => {
     const CartCode = localStorage.getItem("cartcode");
-    dispatch(GetAllCartData(CartCode));
+    // dispatch(GetAllCartData(CartCode));
   }, []);
 
   const v1 = DELETE_CART_PRODUCT_REQUEST;
@@ -87,7 +87,7 @@ const PaymentCompo = () => {
     const url = "cart/delete";
     const CartCode = localStorage.getItem("cartcode");
     await dispatch(CommonPOSTCall(v1, v2, v3, v4, bodydata, url));
-    dispatch(GetAllCartData(CartCode));
+    // dispatch(GetAllCartData(CartCode));
   };
 
   // ==============
@@ -154,7 +154,7 @@ const PaymentCompo = () => {
           };
           await dispatch(OrderCreateFunction(data, userUrl, navigate));
           const CartCode = localStorage.getItem("CartCode");
-          dispatch(GetAllCartData(CartCode));
+          // dispatch(GetAllCartData(CartCode));
         } else {
           setIsPayPalButtonShown(true);
           const payPalButton = document.querySelector(
@@ -203,7 +203,7 @@ const PaymentCompo = () => {
     };
     await dispatch(OrderCreateFunction(data, userUrl, navigate));
     const CartCode = localStorage.getItem("CartCode");
-    dispatch(GetAllCartData(CartCode));
+    // dispatch(GetAllCartData(CartCode));
   };
 
   const cartloading = useSelector((state) => state.cart.isloading);

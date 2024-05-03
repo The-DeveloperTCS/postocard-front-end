@@ -13,6 +13,8 @@ import { BiErrorCircle } from "react-icons/bi";
 import { getuseraddress } from "../../../Redux/Action/UserAction";
 import SpinnerLoading from "../../../Layout/Loading/SpinnerLoading";
 import axios from "axios";
+import "../SingleProduct/Styles/CardPricingData.css"
+import Carousel5 from "../../Home/Sections/Carousel5";
 
 const CardPricingData = ({ active, name, content }) => {
   const allProduct = useSelector((state) => state.product.allProduct);
@@ -79,7 +81,7 @@ const CardPricingData = ({ active, name, content }) => {
       email: "",
     },
     validationSchema: Schema,
-    onSubmit: (values) => {},
+    onSubmit: (values) => { },
   });
 
   // ---- get the single address
@@ -231,70 +233,65 @@ const CardPricingData = ({ active, name, content }) => {
         <p>loading...</p>
       ) : (
         <div className="CardPricingData_parent px-[60px]">
-          <div className="CardPricingData flex justify-between cardpricingdatanew place-items-center gap-[10px] py-2 my-[50px]">
-            <div
-              className="CardPricingDatafortext"
-              style={{ width: "45%", fontFamily: "Luckiest Guy" }}
-            >
-              <h2>{singleproduct && singleproduct.ProductName}</h2>
-              <p>
-                Lorem ipsum, dolor sit amet consectetur adipisicing elit. Vel
-                assumenda perferendis tempora a, id ipsum rem qui harum numquam
-                velit iure iusto excepturi culpa cum veritatis deserunt unde
-              </p>
-            </div>
+          <div className="CardPricingData  cardpricingdatanew ">
+            <div className="CardPricingDatafortext-main">
+              <div
+                className="CardPricingDatafortext"
 
-            <div
-              className="price flex justify-between place-items-center"
-              style={{ gap: "90px" }}
-            >
-              <div className="centered-text">
-                <span
-                  className="text-with-line"
-                  style={{
-                    fontSize: "16px",
-                    fontWeight: "600",
-                    color: "#30404D",
-                    fontFamily: "Poppins",
-                    textTransform: "uppercase",
-                  }}
-                >
-                  price
-                </span>
-                <p style={{ fontSize: "30px" }}>
-                  $
-                  {singleproduct?.Discount > 0
-                    ? singleproduct?.Price - singleproduct?.Discount
-                    : singleproduct?.Price}
+              >
+                <h2>{singleproduct && singleproduct.ProductName}</h2>
+                <p>
+                  Lorem ipsum, dolor sit amet consectetur adipisicing elit. Vel
+                  assumenda perferendis tempora a, id ipsum rem qui harum numquam
+                  velit iure iusto excepturi culpa cum veritatis deserunt unde
                 </p>
-                <span
-                  className="text-with-line-equal"
-                  style={{
-                    fontSize: "20px",
-                    color: "#9D9292",
-                    fontFamily: "Poppins",
-                  }}
-                >
-                  $80
-                </span>
               </div>
 
-              {singleproduct?.Discount > 0 && (
-                <font className="text-[gray]">
-                  $ {singleproduct?.Discount > 0 && singleproduct?.Price}
-                </font>
-              )}
+              <div
+                className="edit-prodcut-ad"
+                style={{ gap: "90px" }}
+              >
+                <div className="centered-text ">
+                  <span
+                  >
+                    price
+                  </span>
+                  <p>
+                    60$
+                    {singleproduct?.Discount > 0
+                      ? singleproduct?.Price - singleproduct?.Discount
+                      : singleproduct?.Price}
+                  </p>
+                  <span
+                    className="text-with-line-equal"
+                    style={{
+                      fontSize: "20px",
+                      color: "#9D9292",
+                      fontFamily: "Poppins",
+                    }}
+                  >
+                    $80
+                  </span>
+                </div>
+                <div className="product-id-button">
+                {singleproduct?.Discount > 0 && (
+                  <font className="text-[gray]">
+                    $ {singleproduct?.Discount > 0 && singleproduct?.Price}
+                  </font>
+                )}
 
-              {/* <span className="sold">15+ Sold</span> */}
-              {cartloading ? (
-                <button className="rounded-sm" disabled>
-                  Add to cart
-                </button>
-              ) : (
-                <button className="rounded-md" onClick={() => setShow(!show)}>
-                  Add to cart
-                </button>
-              )}
+                {/* <span className="sold">15+ Sold</span> */}
+                {cartloading ? (
+                  <button className="rounded-sm" disabled>
+                    Add to cart
+                  </button>
+                ) : (
+                  <button className="rounded-md" onClick={() => setShow(!show)}>
+                    Add to cart
+                  </button>
+                )}
+                </div>
+              </div>
             </div>
             {/* ================= */}
             {show && (
@@ -315,7 +312,7 @@ const CardPricingData = ({ active, name, content }) => {
                             type="checkbox"
                             checked={checkbox === 1}
                             onClick={() => setcheckbox(1)}
-                            onChange={() => {}}
+                            onChange={() => { }}
                             className="w-[20px] h-[20px]"
                           />
                           <span
@@ -331,7 +328,7 @@ const CardPricingData = ({ active, name, content }) => {
                           <input
                             type="checkbox"
                             checked={checkbox === 2}
-                            onChange={() => {}}
+                            onChange={() => { }}
                             onClick={() => setcheckbox(2)}
                             className="w-[20px] h-[20px]"
                           />
@@ -506,13 +503,13 @@ const CardPricingData = ({ active, name, content }) => {
                                 states.map((countryStates) =>
                                   selectedCountry === countryStates.name
                                     ? countryStates.states.map((state) => (
-                                        <option
-                                          key={state.name}
-                                          value={state.name}
-                                        >
-                                          {state.name}
-                                        </option>
-                                      ))
+                                      <option
+                                        key={state.name}
+                                        value={state.name}
+                                      >
+                                        {state.name}
+                                      </option>
+                                    ))
                                     : null
                                 )}
                             </select>
@@ -638,14 +635,12 @@ const CardPricingData = ({ active, name, content }) => {
               </p> */}
             </div>
           )}
-          <div className="also_like">
-            <h2 style={{ marginLeft: "50px", fontFamily: "Luckiest Guy" }}>
+          <div className=" also_likenew " >
+            <h2 >
               You may also like
             </h2>
             <p
               style={{
-                marginLeft: "53px",
-                width: "40%",
                 fontFamily: "Poppins",
               }}
             >
@@ -655,6 +650,7 @@ const CardPricingData = ({ active, name, content }) => {
               iste! Esse provident assumenda aperiam!00
             </p>
           </div>
+          <Carousel5 />
           {active === 2 && <AddReview />}
           {sliceProduct?.length > 0 ? (
             <div className="also_like">
@@ -662,7 +658,16 @@ const CardPricingData = ({ active, name, content }) => {
             </div>
           ) : (
             <div>
-              <h2 className="p-3 my-2 text-[18px]  bg-[#80808079]">
+              <h2 className=" "
+                style={{
+                  fontFamily: "Poppins",
+                  backgroundColor: "#FFDAB1",
+                  fontSize: "18px",
+                  width: "100%",
+                  padding: "15px 5px",
+                  color: "#30404D",
+                  marginTop:"100px"
+                }}>
                 No products match.
               </h2>
             </div>

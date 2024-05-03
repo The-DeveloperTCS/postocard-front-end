@@ -48,12 +48,12 @@ function Section2Carousel() {
       {
         breakpoint: 1080,
         settings: {
-          slidesToShow: 1,
+          slidesToShow: 2,
           slidesToScroll: 1,
         },
       },
       {
-        breakpoint: 480,
+        breakpoint: 880,
         settings: {
           slidesToShow: 1,
           slidesToScroll: 1,

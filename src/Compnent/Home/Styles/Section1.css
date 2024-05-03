@@ -1,12 +1,11 @@
 /* ------------ section1 */
 .section1 {
-  padding: 80px 0px;
+  padding: 80px 0px 300px 0px;
   font-family: 'Poppins' !important;
   background-image: url(../../../Assets/images/make-diff.png);
-  background-position: center;
   background-size: cover;
-  height: 100dvh;
   position: relative;
+  margin-top: -130px;
 }
 
 .section1 h2 {
@@ -33,7 +32,7 @@
   position: absolute;
   left: 0;
   right: 0;
-  bottom: 10%;
+  bottom: -10%;
 }
 
 .section1-box1 {
@@ -66,11 +65,7 @@
 }
 
 /* ------------ section1 */
-.section1 {
-  padding: 80px 0px;
-  font-family: 'Poppins' !important;
 
-}
 
 .section1 h2 {
   /* color: var(--Dark-Primary, #2a254b);
@@ -149,6 +144,8 @@
     height: auto;
     display: block;
     background-position: right;
+    padding: 57px 0px 3px 0px;
+
   }
 
   .section1-box-main {

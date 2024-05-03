@@ -1,7 +1,7 @@
 import React from 'react'
 import Sidebar from '../Layout/Sidebar'
 import Navebar from '../Layout/Navebar'
-import Categorylistcom from '../Components/CategoryList/Categorylistcom'
+import Categorylistcom from '../Components/ParentCategoryList/ParentCategorylistcom'
 
 const CategoryList = () => {
   return (

@@ -7,6 +7,6 @@
 // export const media = "http://192.168.1.172/CardImages";
 // export const download = "http://192.168.1.172";
 
-export const server = "http://api.postocard.com/api";
-export const media = "http://api.postocard.com/api/CardImages";
-export const download = "http://api.postocard.com/api";
+export const server = "http://newserver.postocard.com/api";
+export const media = "http://newserver.postocard.com/api/CardImages";
+export const download = "http://newserver.postocard.com/api";

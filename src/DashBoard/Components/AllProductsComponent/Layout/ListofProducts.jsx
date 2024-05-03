@@ -2,7 +2,6 @@ import React, { useEffect, useState } from "react";
 import "../Styles/admin_ListofProducts.css";
 import { FilterCategory } from "../StaticData/CategoryFilter";
 import { PriceFilter } from "../StaticData/PriceFilter";
-import { GoFilter } from "react-icons/go";
 import { FaRegEdit } from "react-icons/fa";
 import { useDispatch, useSelector } from "react-redux";
 import {
@@ -15,6 +14,7 @@ import Loading from "../../../../Layout/Loading/Loading";
 import { AiOutlineDelete } from "react-icons/ai";
 import { LuMoreVertical } from "react-icons/lu";
 import { Link } from "react-router-dom";
+import Select from "react-select";
 
 const ListofProducts = ({
   name1,
@@ -50,6 +50,10 @@ const ListofProducts = ({
   const subCategoryData = useSelector((state) => state.category.allsubcategory);
   const [CopyCategory, setCopyCategory] = useState(subCategoryData);
   const [id, setid] = useState(null);
+  const [productNameFilter, setProductNameFilter] = useState("");
+  const [categoryName, setCategoryName] = useState("");
+  const [priceFilter, setPriceFilter] = useState("");
+
   useEffect(() => {
     setProductName(
       singleproduct && singleproduct.length > 0
@@ -65,9 +69,9 @@ const ListofProducts = ({
     setSubCategorysearch(
       singleproduct && singleproduct.length > 0
         ? singleproduct[0]?.sub_category_details?.SubCategoryName?.slice(
-            0,
-            singleproduct[0]?.sub_category_details?.SubCategoryName?.length - 3
-          )
+          0,
+          singleproduct[0]?.sub_category_details?.SubCategoryName?.length - 3
+        )
         : ""
     );
   }, [singleproduct]);
@@ -114,7 +118,7 @@ const ListofProducts = ({
       IsActive: checkbox,
     };
     await dispatch(UpdateproductFunc(Cdata));
-    dispatch(getallproductforAdmin());
+    dispatch(getallproductforAdmin(productNameFilter, categoryName, priceFilter));
   };
 
   const isLoading = useSelector((state) => state.category.isLoading);
@@ -225,21 +229,25 @@ const ListofProducts = ({
               </div>
             </div>
           )}
-          <FilterHeader />
+          <FilterHeader
+            setProductNameFilter={setProductNameFilter}
+            setCategoryName={setCategoryName}
+            setPriceFilter={setPriceFilter}
+
+
+          />
           {/* ============== list of product  */}
           <div className="list_product_admin">
             <div
-              className={`product_list_header grid ${
-                category === true && clo2 === true
+              className={`product_list_header grid ${category === true && clo2 === true
                   ? "grid-cols-2"
                   : "grid-cols-3"
-              } ${
-                category === false
+                } ${category === false
                   ? "grid-cols-6"
                   : category === true && clo2
-                  ? "grid-cols-4"
-                  : "grid-cols-6"
-              } font-bold py-3 border-b-2 border-b-[gray]`}
+                    ? "grid-cols-4"
+                    : "grid-cols-6"
+                } font-bold py-3 border-b-2 border-b-[gray]`}
             >
               {name1 && <h2>{name1}</h2>}
               {name2 && <p>{name2}</p>}
@@ -258,11 +266,10 @@ const ListofProducts = ({
                     return (
                       <div
                         key={index}
-                        className={`product_list_main grid ${
-                          category === true && clo2
+                        className={`product_list_main grid ${category === true && clo2
                             ? "grid-cols-4"
                             : "grid-cols-5"
-                        }  py-3 border-b-2`}
+                          }  py-3 border-b-2`}
                       >
                         <p>{item.id}</p>
                         <h2>
@@ -304,14 +311,14 @@ const ListofProducts = ({
                         className="product_list_main grid grid-cols-6 py-3 border-b-2 justify-center items-center"
                       >
                         <Link to={`/admin/products/view/${item.id}`}>
-                        <h2 className="flex justify-start place-items-center gap-1 ">
-                          <img
-                            src={item?.File1}
-                            alt=""
-                            className="w-[50px] h-[50px] border-[1px] border-[gray] rounded-full"
-                          />
-                          {item?.ProductName}
-                        </h2>
+                          <h2 className="flex justify-start place-items-center gap-1 ">
+                            <img
+                              src={item?.File1}
+                              alt=""
+                              className="w-[50px] h-[50px] border-[1px] border-[gray] rounded-full"
+                            />
+                            {item?.ProductName}
+                          </h2>
                         </Link>
                         <p>{item?.Price}$</p>
                         <p>{item?.artist?.name}</p>
@@ -357,14 +364,16 @@ const ListofProducts = ({
 export default ListofProducts;
 
 // ========================= haeder
-const FilterHeader = () => {
+const FilterHeader = (setPriceFilter, setCategoryName, setProductNameFilter) => {
   return (
     <div className="filter_header flex justify-between place-items-center">
       {/* ------------- name  */}
       <div className="filter_inputs flex justify-between place-items-center gap-2">
         <input type="text" placeholder="Name" />
         {/* ------------- category  */}
-        <select>
+        <select
+        
+        >
           <option value="">Filter By Category</option>
           {FilterCategory &&
             FilterCategory.map((item) => {
@@ -385,10 +394,10 @@ const FilterHeader = () => {
         </select>
       </div>
       {/* ============== filter button  */}
-      <div className="flex justify-center place-items-center text-[#6C6CEB] bg-[#2e2ec727] py-[7px] gap-1 rounded-[7px] px-4">
+      {/* <div className="flex justify-center place-items-center text-[#6C6CEB] bg-[#2e2ec727] py-[7px] gap-1 rounded-[7px] px-4">
         <GoFilter />
         <button>Filters</button>
-      </div>
+      </div> */}
     </div>
   );
 };

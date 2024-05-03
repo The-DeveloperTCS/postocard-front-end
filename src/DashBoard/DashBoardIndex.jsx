@@ -16,7 +16,7 @@ const DashBoardIndex = () => {
   useEffect(() => {
     dispatch(GetAllOrdersFunc());
     dispatch(getallproductforAdmin());
-    dispatch(getallCategory());
+    // dispatch(getallCategory());
     dispatch(getallSubCategory());
     dispatch(getTranscations());
   }, []);

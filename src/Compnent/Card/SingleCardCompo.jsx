@@ -7,7 +7,7 @@ import "./Style/SingleCard.css";
 import { useParams } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { getSingleProduct } from "../../Redux/Action/ProductAction";
-import { GetAllCartData } from "../../Redux/Action/CartAction";
+// import { GetAllCartData } from "../../Redux/Action/CartAction";
 
 const SingleCardCompo = ({ content, namedata }) => {
   const [img, setImg] = useState("");

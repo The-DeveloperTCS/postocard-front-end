@@ -1,5 +1,23 @@
 import { server } from "../../Setting/GlobalVariable";
 import {
+
+  GET_PARENT_CATEGORY_REQUEST,
+  GET_PARENT_CATEGORY_FAIL,
+  GET_PARENT_CATEGORY_ERROR,
+  GET_PARENT_CATEGORY_SUCCESS,
+  PARENT_CATEGORY_CREATE_REQUEST,
+  PARENT_CATEGORY_CREATE_FAIL,
+  PARENT_CATEGORY_CREATE_ERROR,
+  PARENT_CATEGORY_CREATE_SUCCESS,
+  PARENT_CATEGORY_UPDATE_REQUEST,
+  PARENT_CATEGORY_UPDATE_FAIL,
+  PARENT_CATEGORY_UPDATE_ERROR,
+  PARENT_CATEGORY_UPDATE_SUCCESS,
+  PARENT_CATEGORY_DELETE_REQUEST,
+  PARENT_CATEGORY_DELETE_FAIL,
+  PARENT_CATEGORY_DELETE_ERROR,
+  PARENT_CATEGORY_DELETE_SUCCESS,
+
   CREATE_CATEGORY_ERROR,
   CREATE_CATEGORY_FAIL,
   CREATE_CATEGORY_REQUEST,
@@ -16,6 +34,9 @@ import {
   GET_SUB_CATEGORY_FAIL,
   GET_SUB_CATEGORY_REQUEST,
   GET_SUB_CATEGORY_SUCCESS,
+
+ 
+
   GET_CATEGORY_FOR_USER_REQUEST,
   GET_CATEGORY_FOR_USER_FAIL,
   GET_CATEGORY_FOR_USER_SUCCESS,
@@ -35,6 +56,63 @@ import {
 } from "../Variables/UserVariables";
 import Cookies from "js-cookie";
 import { toast } from "react-toastify";
+
+
+
+  // ========= create Parent Category =================================
+  export const ParentCategoryCreateFunc = (parentCategoryData) => async (dispatch) => {
+    try {
+      dispatch({ type: PARENT_CATEGORY_CREATE_REQUEST });
+      const res = await fetch(`${server}/parentcategory/create`, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          Authorization: "Bearer " + Cookies.get("ApiLoginToken"),
+        },
+        body: JSON.stringify(parentCategoryData),
+      });
+      dispatch({ type: PARENT_CATEGORY_CREATE_FAIL });
+      const data = await res.json();
+      if (!data || res.status === 400) {
+        return toast.error(data.message);
+      } else {
+        toast.success(data.message);
+        dispatch({ type: PARENT_CATEGORY_CREATE_SUCCESS });
+      }
+    } catch (error) {
+      dispatch({ type: PARENT_CATEGORY_CREATE_ERROR });
+    }
+  };
+
+
+// ============== get all parent category
+export const getallParentCategory = (categoryName) => async (dispatch) => {
+  try {
+    dispatch({ type: GET_PARENT_CATEGORY_REQUEST });
+    const res = await fetch(`${server}/parentcategoryListWithSearch?name=${categoryName}`, {
+      method: "GET",
+      headers: {
+        "Content-Type": "application/json",
+        Authorization: "Bearer " + Cookies.get("ApiLoginToken"),
+      },
+    });
+    dispatch({ type: GET_PARENT_CATEGORY_FAIL });
+    const data = await res.json();
+    console.log(data , 'data')
+    if (!data || res.status === 401) {
+      return;
+    } else if (res.status === 500) {
+      return alert("Internel Server Error new");
+    } else {
+      dispatch({ type: GET_PARENT_CATEGORY_SUCCESS, payload: data.data.data
+      });
+    }
+  } catch (error) {
+    dispatch({ type: GET_PARENT_CATEGORY_ERROR, payload: error.message });
+  }
+};
+
+
 
 export const CreateProductFunc =
   (CategoryName, ParentItem, navigate) => async (dispatch) => {
@@ -63,6 +141,7 @@ export const CreateProductFunc =
       dispatch({ type: CREATE_CATEGORY_ERROR, payload: error.message });
     }
   };
+
 // ======== update product
 export const UpdateproductFunc =
   (categorydata, navigate) => async (dispatch) => {
@@ -93,6 +172,10 @@ export const UpdateproductFunc =
       dispatch({ type: EDIT_PRODUCT_ERROR, payload: error.message });
     }
   };
+
+
+
+
 
 //  =============== get all getallCategory
 
@@ -141,6 +224,8 @@ export const getallCategoryforuser = () => async (dispatch) => {
     dispatch({ type: GET_CATEGORY_FOR_USER_ERROR, payload: error.message });
   }
 };
+
+
 
 // ============== get all sub category
 export const getallSubCategory = () => async (dispatch) => {

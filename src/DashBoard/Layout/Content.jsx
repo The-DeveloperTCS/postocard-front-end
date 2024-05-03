@@ -36,11 +36,11 @@ const Content = () => {
   const loadingproduct = useSelector((state) => state.product.isLoading);
   const loadingallorder = useSelector((state) => state.order.loading);
   const allProduct = useSelector((state) => state.product.allproductforAdmin);
-  const allorder = useSelector((state) => state.order.allorder);
+  // const allorder = useSelector((state) => state.order.allorder);
 
-  const totalAmount = allorder?.reduce((total, product) => {
-    return total + product.NetAmount;
-  }, 0);
+  // const totalAmount = allorder?.reduce((total, product) => {
+  //   return total + product.NetAmount;
+  // }, 0);
 
   return (
     <>
@@ -64,14 +64,14 @@ const Content = () => {
               <div className="inner_box ">
                 <h2>Total Orders</h2>
 
-                <span>{allorder?.length}</span>
+                {/* <span>{allorder?.length}</span> */}
               </div>
             </div>
             <div className="dash_main_header_box inner_box3">
               <AiFillBank />
               <div className="inner_box ">
                 <h2>Total Income</h2>
-                <span>{totalAmount && totalAmount}$</span>
+                {/* <span>{totalAmount && totalAmount}$</span> */}
               </div>
             </div>
           </div>
@@ -96,7 +96,7 @@ export default Content;
 // ====================================================
 
 const LineChart = () => {
-  const allorder = useSelector((state) => state.order.allorder);
+  // const allorder = useSelector((state) => state.order.allorder);
   const [selectedInterval, setSelectedInterval] = useState("month"); // Initialize with "month"
   // Calculate the current year and create an array of 12 months for the current year
   const currentYear = moment().format("YYYY");
@@ -135,57 +135,57 @@ const LineChart = () => {
   const groupOrdersByInterval = (interval) => {
     const groupedData = {};
 
-    allorder?.forEach((order) => {
-      const timestamp = moment(order?.created_at);
+    // allorder?.forEach((order) => {
+    //   const timestamp = moment(order?.created_at);
 
-      if (interval === "month") {
-        const intervalKey = timestamp.format("YYYY-MM");
-        groupedData[intervalKey] = (groupedData[intervalKey] || 0) + 1;
-      } else if (interval === "week") {
-        const currentMonth = moment().format("MM");
-        const orderMonth = timestamp.format("MM");
+    //   if (interval === "month") {
+    //     const intervalKey = timestamp.format("YYYY-MM");
+    //     groupedData[intervalKey] = (groupedData[intervalKey] || 0) + 1;
+    //   } else if (interval === "week") {
+    //     const currentMonth = moment().format("MM");
+    //     const orderMonth = timestamp.format("MM");
 
-        if (currentMonth === orderMonth) {
-          const startOfMonth = moment(timestamp).startOf("month");
-          const endOfMonth = moment(timestamp).endOf("month");
-          let currentDate = startOfMonth.clone();
-          let weekNumber = 1;
+    //     if (currentMonth === orderMonth) {
+    //       const startOfMonth = moment(timestamp).startOf("month");
+    //       const endOfMonth = moment(timestamp).endOf("month");
+    //       let currentDate = startOfMonth.clone();
+    //       let weekNumber = 1;
 
-          while (currentDate.isSameOrBefore(endOfMonth)) {
-            const weekStart = currentDate.clone();
-            const weekEnd = currentDate.clone().endOf("week");
-            const weekLabel = `${currentMonthName.slice(0, 3)} - Week ${weekNumber}`;
+    //       while (currentDate.isSameOrBefore(endOfMonth)) {
+    //         const weekStart = currentDate.clone();
+    //         const weekEnd = currentDate.clone().endOf("week");
+    //         const weekLabel = `${currentMonthName.slice(0, 3)} - Week ${weekNumber}`;
 
-            if (!(weekLabel in groupedData)) {
-              groupedData[weekLabel] = 0;
-            }
-            const orderDate = moment(order?.created_at);
+    //         if (!(weekLabel in groupedData)) {
+    //           groupedData[weekLabel] = 0;
+    //         }
+    //         const orderDate = moment(order?.created_at);
 
-            // Check if the order date is in the same week
-            if (orderDate.isBetween(weekStart, weekEnd, null, "[]")) {
-              groupedData[weekLabel]++;
-            }
-            currentDate.add(1, "week");
-            weekNumber++;
-          }
-        }
-      } else if (interval === "day") {
-        const today = moment();
-        const last7Days = [0, 1, 2, 3, 4, 5, 6]
-          .map((i) => today.clone().subtract(i, "days").format("YYYY-MM-DD"))
-          .reverse();
+    //         // Check if the order date is in the same week
+    //         if (orderDate.isBetween(weekStart, weekEnd, null, "[]")) {
+    //           groupedData[weekLabel]++;
+    //         }
+    //         currentDate.add(1, "week");
+    //         weekNumber++;
+    //       }
+    //     }
+    //   } else if (interval === "day") {
+    //     const today = moment();
+    //     const last7Days = [0, 1, 2, 3, 4, 5, 6]
+    //       .map((i) => today.clone().subtract(i, "days").format("YYYY-MM-DD"))
+    //       .reverse();
 
-        // Initialize data for all last 7 days, even if no orders exist
-        last7Days.forEach((day) => {
-          groupedData[day] = groupedData[day] || 0;
-        });
-        const orderDate = timestamp.format("YYYY-MM-DD");
+    //     // Initialize data for all last 7 days, even if no orders exist
+    //     last7Days.forEach((day) => {
+    //       groupedData[day] = groupedData[day] || 0;
+    //     });
+    //     const orderDate = timestamp.format("YYYY-MM-DD");
 
-        if (last7Days.includes(orderDate)) {
-          groupedData[orderDate]++;
-        }
-      }
-    });
+    //     if (last7Days.includes(orderDate)) {
+    //       groupedData[orderDate]++;
+    //     }
+    //   }
+    // });
 
     return groupedData;
   };
@@ -263,9 +263,9 @@ const LineChart = () => {
 // ====================
 
 const PaymentChart = () => {
-  const paymentData = useSelector((state) =>
-    state.order.allorder
-  );
+  // const paymentData = useSelector((state) =>
+  //   state.order.allorder
+  // );
   const [selectedInterval, setSelectedInterval] = useState("month");
 
   const currentYear = moment().format("YYYY");
@@ -298,61 +298,61 @@ const PaymentChart = () => {
   const groupPaymentsByInterval = (interval) => {
     const groupedData = {};
 
-    paymentData?.forEach((payment) => {
-      const timestamp = moment(payment.created_at);
+    // paymentData?.forEach((payment) => {
+    //   const timestamp = moment(payment.created_at);
 
-      if (interval === "month") {
-        const intervalKey = timestamp.format("YYYY-MM");
-        groupedData[intervalKey] =
-          (groupedData[intervalKey] || 0) + payment.NetAmount;
-      } else if (interval === "week") {
-        const paymentMonth = timestamp.format("MMMM");
-        const currentMonth = moment().format("MMMM");
+    //   if (interval === "month") {
+    //     const intervalKey = timestamp.format("YYYY-MM");
+    //     groupedData[intervalKey] =
+    //       (groupedData[intervalKey] || 0) + payment.NetAmount;
+    //   } else if (interval === "week") {
+    //     const paymentMonth = timestamp.format("MMMM");
+    //     const currentMonth = moment().format("MMMM");
 
-        if (currentMonth === paymentMonth) {
-          const startOfMonth = moment(timestamp).startOf("month");
-          const endOfMonth = moment(timestamp).endOf("month");
-          let currentDate = startOfMonth.clone();
-          let weekNumber = 1;
+    //     if (currentMonth === paymentMonth) {
+    //       const startOfMonth = moment(timestamp).startOf("month");
+    //       const endOfMonth = moment(timestamp).endOf("month");
+    //       let currentDate = startOfMonth.clone();
+    //       let weekNumber = 1;
 
-          while (currentDate.isSameOrBefore(endOfMonth)) {
-            const weekStart = currentDate.clone();
-            const weekEnd = currentDate.clone().endOf("week");
-            const weekLabel = `${paymentMonth.slice(0, 3)} - Week ${weekNumber}`;
-            if (!(weekLabel in groupedData)) {
-              groupedData[weekLabel] = 0;
-            }
-            const paymentDate = moment(payment.created_at);
+    //       while (currentDate.isSameOrBefore(endOfMonth)) {
+    //         const weekStart = currentDate.clone();
+    //         const weekEnd = currentDate.clone().endOf("week");
+    //         const weekLabel = `${paymentMonth.slice(0, 3)} - Week ${weekNumber}`;
+    //         if (!(weekLabel in groupedData)) {
+    //           groupedData[weekLabel] = 0;
+    //         }
+    //         const paymentDate = moment(payment.created_at);
 
-            // Check if the payment date is in the same week
-            if (paymentDate.isBetween(weekStart, weekEnd, null, "[]")) {
-              groupedData[weekLabel] += payment.NetAmount;
-            }
-            currentDate.add(1, "week");
-            weekNumber++;
-          }
-        }
-      } else if (interval === "day") {
-        const today = moment();
-        const last7Days = [0, 1, 2, 3, 4, 5, 6]
-          .map((i) => today.clone().subtract(i, "days").format("YYYY-MM-DD"))
-          .reverse();
+    //         // Check if the payment date is in the same week
+    //         if (paymentDate.isBetween(weekStart, weekEnd, null, "[]")) {
+    //           groupedData[weekLabel] += payment.NetAmount;
+    //         }
+    //         currentDate.add(1, "week");
+    //         weekNumber++;
+    //       }
+    //     }
+    //   } else if (interval === "day") {
+    //     const today = moment();
+    //     const last7Days = [0, 1, 2, 3, 4, 5, 6]
+    //       .map((i) => today.clone().subtract(i, "days").format("YYYY-MM-DD"))
+    //       .reverse();
 
-        // Initialize data for all last 7 days, even if no payments exist
-        last7Days.forEach((day) => {
-          groupedData[day] = 0; // Initialize to 0 for all days
-        });
+    //     // Initialize data for all last 7 days, even if no payments exist
+    //     last7Days.forEach((day) => {
+    //       groupedData[day] = 0; // Initialize to 0 for all days
+    //     });
 
-        paymentData.forEach((payment) => {
-          const timestamp = moment(payment.created_at);
-          const paymentDate = timestamp.format("YYYY-MM-DD");
+    //     paymentData.forEach((payment) => {
+    //       const timestamp = moment(payment.created_at);
+    //       const paymentDate = timestamp.format("YYYY-MM-DD");
 
-          if (last7Days.includes(paymentDate)) {
-            groupedData[paymentDate] += payment.NetAmount; // Accumulate NetAmount for each day
-          }
-        });
-      }
-    });
+    //       if (last7Days.includes(paymentDate)) {
+    //         groupedData[paymentDate] += payment.NetAmount; // Accumulate NetAmount for each day
+    //       }
+    //     });
+    //   }
+    // });
 
     return groupedData;
   };
@@ -417,26 +417,26 @@ const PaymentChart = () => {
 
 // ========= donet chart
 const DonetChart = () => {
-  const allProduct = useSelector((state) => state.product.allproductforAdmin);
-  const active = allProduct?.reduce((acc, item) => {
-    if (item.IsActive === 1) {
-      return acc + 1;
-    }
-    return acc;
-  }, 0);
-  const inActive = allProduct?.reduce((acc, item) => {
-    if (item.IsActive === 0) {
-      return acc + 1;
-    }
-    return acc;
-  }, 0);
+  // const allProduct = useSelector((state) => state.product.allproductforAdmin);
+  // const active = allProduct?.reduce((acc, item) => {
+  //   if (item.IsActive === 1) {
+  //     return acc + 1;
+  //   }
+  //   return acc;
+  // }, 0);
+  // const inActive = allProduct?.reduce((acc, item) => {
+  //   if (item.IsActive === 0) {
+  //     return acc + 1;
+  //   }
+  //   return acc;
+  // }, 0);
 
   const data = {
     labels: ["Active Product", "InActive Product"],
     datasets: [
       {
         label: "Product",
-        data: [active, inActive],
+        // data: [active, inActive],
         backgroundColor: ["green", "red"],
         borderWidth: 1
       }
@@ -457,7 +457,7 @@ const DonetChart = () => {
 };
 // ========= donet chart
 const DonetChartCategory = () => {
-  const allcategory = useSelector((state) => state.category.allcategory)
+  const allcategory = useSelector((state) => state.category?.allcategory)
   const allsubcategory = useSelector((state) => state.category.allsubcategory)
   const data = {
     labels: ["Category", "Subcategory"],

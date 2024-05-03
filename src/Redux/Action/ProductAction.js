@@ -96,10 +96,10 @@ export const getallproduct = () => async (dispatch) => {
 };
 // =============== get all product  for admin
 
-export const getallproductforAdmin = () => async (dispatch) => {
+export const getallproductforAdmin = (productName, price, categoryName) => async (dispatch) => {
   try {
     dispatch({ type: GET_ADMIN_PRODUCT_REQUEST });
-    const res = await fetch(`${server}/product/adminlist`, {
+    const res = await fetch(`${server}/product/adminlist?ProductName=${productName}&&Price=${price}&&CategoryName=${categoryName}`, {
       method: "GET",
       headers: {
         "Content-Type": "application/json",

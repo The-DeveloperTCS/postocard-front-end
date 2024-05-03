@@ -1,6 +1,7 @@
 import React, { useEffect } from "react";
 import "./Style/CartCompo.css";
 import { useDispatch } from "react-redux";
+// import { GetAllCartData } from "../../Redux/Action/CartAction";
 import { GetAllCartData } from "../../Redux/Action/CartAction";
 import cartimg from "../../Assets/cartLayer 1 1.png"
 import { RiDeleteBin5Line } from "react-icons/ri";

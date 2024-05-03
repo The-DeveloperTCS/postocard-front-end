@@ -9,7 +9,7 @@ import {
 
 const SubCategoryModal = ({ setModal }) => {
   // ------- allcategory
-  const allcategory = useSelector((state) => state.category.allcategory);
+  const allcategory = useSelector((state) => state.category?.allcategory);
 
   const [subCategory, setSubCategory] = useState("");
   const [parentCategory, setParentcategory] = useState("");
@@ -19,17 +19,17 @@ const SubCategoryModal = ({ setModal }) => {
 
   const dispatch = useDispatch();
   useEffect(() => {
-    dispatch(getallCategory());
+    // dispatch(getallCategory());
   }, []);
 
-  useEffect(() => {
-    const filteredCategories =
-      allcategory &&
-      allcategory.filter((item) =>
-        item.CategoryName.toLowerCase().includes(parentCategory.toLowerCase())
-      );
-    setCopyCategory(filteredCategories);
-  }, [parentCategory, allcategory]);
+  // useEffect(() => {
+  //   const filteredCategories =
+  //     allcategory &&
+  //     allcategory?.filter((item) =>
+  //       item.CategoryName.toLowerCase().includes(parentCategory.toLowerCase())
+  //     );
+  //   setCopyCategory(filteredCategories);
+  // }, [parentCategory, allcategory]);
 
   // -------------- copycategoryoff
   const copycategoryoff = (selectedId) => {
@@ -96,7 +96,7 @@ const SubCategoryModal = ({ setModal }) => {
                 )} */}
                   <div className="create_product_input form-group my-2">
                   <label htmlFor="productname">Select Category</label>
-                    <select className="form-control" onChange={(e) => copycategoryoff(e.target.value)}>
+                    {/* <select className="form-control" onChange={(e) => copycategoryoff(e.target.value)}>
                       {allcategory &&
                         allcategory.map((item, index) => (
                           <option
@@ -109,7 +109,7 @@ const SubCategoryModal = ({ setModal }) => {
                             {item.CategoryName}
                           </option>
                         ))}
-                    </select>
+                    </select> */}
                   </div>
                 </div>
                 <button

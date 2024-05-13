@@ -13,11 +13,11 @@ const ParentCategoreyComponent = () => {
     if (!ParentCategoryName) {
       return toast.error("Please fill in the field");
     }
-    const packageData = {
+    const parentCategoryData = {
       CategoryName: ParentCategoryName,
 
     };
-    dispatch(ParentCategoryCreateFunc(packageData));
+    dispatch(ParentCategoryCreateFunc(parentCategoryData));
 
     setParentCategoryName("");
   };

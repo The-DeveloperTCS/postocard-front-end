@@ -6,15 +6,24 @@ import {
   Route,
   Routes,
 } from "react-router-dom";
+import "react-toastify/dist/ReactToastify.css";
+import { useDispatch, useSelector } from "react-redux";
+import { ToastContainer } from "react-toastify";
+import { getallproduct } from "./Redux/Action/ProductAction";
+import { ScrollToTop } from "react-router-scroll-to-top";
+import { LogedinUser } from "./Redux/Action/UserAction";
 import DashBoardIndex from "./DashBoard/DashBoardIndex";
 import AllProducts from "./DashBoard/Pages/AllProducts";
 import AdminLogin from "./DashBoard/Accounts/AdminLogin";
-import { useDispatch, useSelector } from "react-redux";
-import { LogedinUser } from "./Redux/Action/UserAction";
-import CreateProduct from "./DashBoard/Pages/CreateProduct";
-import ParentCategoryList from "./DashBoard/Pages/ParentCategoryList";
 import Home from "./Pages/Home";
+import CreateProduct from "./DashBoard/Pages/CreateProduct";
+import ProductView from "./DashBoard/Pages/ProductView";
+import ParentCategoryList from "./DashBoard/Pages/ParentCategoryList";
+import CreateParentCategory from "./DashBoard/Pages/CreateParentCategory";
+import EditParentCategory from "./DashBoard/Pages/EditCreateParentCategory";
+
 import SubCategoryList from "./DashBoard/Pages/SubCategoryList";
+
 import SingleCard from "./Pages/SingleCard";
 import Index from "./Layout/Index";
 import Footer from "./Layout/Footer/Footer";
@@ -22,17 +31,14 @@ import Product from "./Pages/Product";
 import SingleProduct from "./Pages/SingleProduct";
 import Cart from "./Pages/Cart";
 import Payment from "./Pages/Payment";
-import { ToastContainer } from "react-toastify";
-import "react-toastify/dist/ReactToastify.css";
-import { getallproduct } from "./Redux/Action/ProductAction";
-import { ScrollToTop } from "react-router-scroll-to-top";
 import OrderList from "./DashBoard/Pages/OrderList";
 import SingleOrder from "./DashBoard/Pages/SingleOrder";
+import ConformOrder from "./DashBoard/Pages/ConformOrder";
+import UserOrderDetails from "./Pages/UserOrderDetails";
 import Vindor from "./DashBoard/Pages/Vindor";
 import CreateVendor from "./DashBoard/Pages/CreateVendor";
-import ConformOrder from "./DashBoard/Pages/ConformOrder";
-// import { getallCategoryforuser } from "./Redux/Action/CategoryAction";
 import SingleVendor from "./DashBoard/Pages/SingleVendor";
+// import { getallCategoryforuser } from "./Redux/Action/CategoryAction";
 import NotFound from "./Layout/NotFoundPage/NotFound";
 import Cookies from "js-cookie";
 import Allcollection from "./Pages/Allcollection";
@@ -47,9 +53,7 @@ import Profile from "./Pages/Profile";
 import AllUsers from "./DashBoard/Pages/AllUsers";
 import UserAnalytics from "./DashBoard/Pages/UserAnalytics";
 import Discounts from "./DashBoard/Pages/Discounts";
-import UserOrderDetails from "./Pages/UserOrderDetails";
 import CreatePackage from "./DashBoard/Pages/CreatePackage";
-import CreateParentCategiory from "./DashBoard/Pages/CreateParentCategory";
 
 import VendorDashBoard from "./DashboardVendor/Views/VendorDashBoard";
 import VendorLogin from "./DashboardVendor/Pages/VendorLogin";
@@ -59,7 +63,6 @@ import PendingOrders from "./DashboardVendor/Views/PendingOrders";
 import CompletedOrders from "./DashboardVendor/Views/CompletedOrders";
 import RejectedOrders from "./DashboardVendor/Views/RejectedOrders";
 import EditPackage from "./DashBoard/Pages/EditPackage";
-import ProductView from "./DashBoard/Pages/ProductView";
 import Artists from "./DashBoard/Pages/Artists";
 
 const App = () => {
@@ -156,10 +159,16 @@ const App = () => {
         </Route>
 
 
-        {/* Create Parent categor */}
+        {/* Create Parent category */}
 
         <Route path="/admin/create/parent-category" element={<AdminPrivateRoute />}>
-          <Route path="/admin/create/parent-category" element={<CreateParentCategiory />} />
+          <Route path="/admin/create/parent-category" element={<CreateParentCategory />} />
+        </Route>
+
+        {/* Update Parent category */}
+
+        <Route path="/admin/parent-category/:id" element={<AdminPrivateRoute />}>
+          <Route path="/admin/parent-category/:id" element={<EditParentCategory />} />
         </Route>
 
         {/* ------- sub category  */}

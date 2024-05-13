@@ -2,16 +2,20 @@ import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import {
   getallParentCategory,
+  ParentCategoryDeleteFunc
 } from "../../../Redux/Action/CategoryAction";
 import Loading from "../../../Layout/Loading/Loading";
 import { AiOutlineDelete } from "react-icons/ai";
 import { FaRegEdit } from "react-icons/fa";
+import { Link } from "react-router-dom";
 
 const ListOfParentCategory = ({ }) => {
   const dispatch = useDispatch();
+  const isLoading = useSelector((state) => state.category.isLoading);
+  const isLoadingp = useSelector((state) => state.product.isLoading);
   const allParentCategory = useSelector((state) => state.category.allParentCategory)
   const [categoryName, setCategoryName] = useState("");
-  console.log(allParentCategory, 'allParentCategory')
+
   useEffect(() => {
     getParentCategories()
   }, [])
@@ -20,8 +24,10 @@ const ListOfParentCategory = ({ }) => {
     dispatch(getallParentCategory(categoryName));
   }
 
-  const isLoading = useSelector((state) => state.category.isLoading);
-  const isLoadingp = useSelector((state) => state.product.isLoading);
+
+  const onDelete = (item) => {
+    dispatch(ParentCategoryDeleteFunc(item))
+  }
 
   return (
     <>
@@ -57,27 +63,16 @@ const ListOfParentCategory = ({ }) => {
                         {item.name}
                       </h2>
 
-                      <h2
-                      // onClick={() => {
-                      //   setCid(item.id);
-                      //   updateactive(item.id);
-                      // }}
-                      >
+                      <h2>
                         <p className="flex justify-start place-items-center gap-3 relative">
-                          <FaRegEdit
-                            className="text-[green] cursor-pointer text-[20px]"
-                          // onClick={() => editproduct(item.id)}
-                          />
-                          <AiOutlineDelete className="text-[23px] cursor-pointer text-[red]" />
+                          <Link to={`/admin/parent-category/${item.id}`} >
+                            <FaRegEdit
+                              className="text-[green] cursor-pointer text-[20px]"
+                            />
+                          </Link>
+                          <AiOutlineDelete className="text-[23px] cursor-pointer text-[red]" onClick={() => onDelete(item)} />
                         </p>
                       </h2>
-                      {/* <p className="flex justify-start place-items-center gap-3 relative">
-                        <FaRegEdit
-                          className="text-[green] cursor-pointer text-[20px]"
-                        // onClick={() => editproduct(item.id)}
-                        /> */}
-
-                      {/* </p> */}
                     </div>
                   );
                 })}

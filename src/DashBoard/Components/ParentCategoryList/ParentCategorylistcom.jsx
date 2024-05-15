@@ -9,7 +9,7 @@ const ParentCategorylistcom = () => {
   return (
     <div className='AllProductscomp_admin'>
       <Header
-        title={"Add Category"}
+        title={"Add Parent Category"}
         link={"/admin/create/parent-category"}
       />
       <ListOfParentCategory />

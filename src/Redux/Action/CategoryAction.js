@@ -134,7 +134,7 @@ export const getSpecificParentCategory = (id) => async (dispatch) => {
 };
 
 // ========= create Parent Category =================================
-export const ParentCategoryCreateFunc = (parentCategoryData) => async (dispatch) => {
+export const ParentCategoryCreateFunc = (parentCategoryData, navigate) => async (dispatch) => {
   try {
     dispatch({ type: PARENT_CATEGORY_CREATE_REQUEST });
     const res = await fetch(`${server}/parentcategory/create`, {
@@ -152,6 +152,7 @@ export const ParentCategoryCreateFunc = (parentCategoryData) => async (dispatch)
     } else {
       toast.success(data.message);
       dispatch({ type: PARENT_CATEGORY_CREATE_SUCCESS });
+      navigate("/admin/parent-category/list");
     }
   } catch (error) {
     dispatch({ type: PARENT_CATEGORY_CREATE_ERROR });
@@ -203,9 +204,8 @@ export const ParentCategoryDeleteFunc = (parentCategoryData) => async (dispatch)
       return toast.error(data.message);
     } else {
       toast.success(data.message);
+      dispatch(getallParentCategory(""))
       dispatch({ type: PARENT_CATEGORY_DELETE_SUCCESS });
-      getallParentCategory("")
-
     }
   } catch (error) {
     dispatch({ type: PARENT_CATEGORY_DELETE_ERROR });

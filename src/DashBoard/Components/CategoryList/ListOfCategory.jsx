@@ -10,7 +10,7 @@ import { FaRegEdit } from "react-icons/fa";
 import { Link } from "react-router-dom";
 import SweetAlert from "react-bootstrap-sweetalert";
 
-const ListOfParentCategory = ({ }) => {
+const ListOfCategory = ({ }) => {
   const dispatch = useDispatch();
   const isLoading = useSelector((state) => state.category.isLoading);
   const isLoadingp = useSelector((state) => state.product.isLoading);
@@ -114,7 +114,7 @@ const ListOfParentCategory = ({ }) => {
   );
 };
 
-export default ListOfParentCategory;
+export default ListOfCategory;
 
 
 // ========================= haeder

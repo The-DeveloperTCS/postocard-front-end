@@ -1,7 +1,7 @@
 import React from 'react'
 import Sidebar from '../Layout/Sidebar'
 import Navebar from '../Layout/Navebar'
-import SubCategoryList from '../Components/SubCategoryList/SubCategorylistcom'
+import Categorylistcom from '../Components/CategoryList/Categorylistcom'
 
 const CategoryList = () => {
   return (
@@ -16,7 +16,7 @@ const CategoryList = () => {
         <Navebar/>
         {/* =================== content  */}
         <div className='content_dashboard'>
-          <SubCategoryList/>
+          <Categorylistcom/>
         </div>
     </div>
 

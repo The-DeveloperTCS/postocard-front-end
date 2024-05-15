@@ -60,6 +60,7 @@ import {
   DELETE_SUB_CATEGORY_FAIL,
   DELETE_SUB_CATEGORY_SUCCESS,
   DELETE_SUB_CATEGORY_ERROR,
+  REQUEST_LODER,
 
 
 
@@ -85,6 +86,9 @@ const initialState = {
 export const CategoryReducer = createReducer(initialState, (builder) => {
   builder
     // parent category
+    .addCase(REQUEST_LODER, (state, action) => {
+      state.isLoading = true;
+    })
     .addCase(GET_PARENT_CATEGORY_REQUEST, (state, action) => {
       state.isLoading = true;
     })

@@ -16,6 +16,8 @@ export const LOGOUT_USER_FAIL = "LOGOUT_user_fail";
 export const LOGOUT_USER_SUCCESS = "LOGOUT_user_success";
 export const LOGOUT_USER_ERROR = "LOGOUT_user_error";
 
+export const REQUEST_LODER = "REQUEST_LODER";
+
 // ============================= user verification
 
 export const VALID_USER_REQUEST = "VALID_User_Request";

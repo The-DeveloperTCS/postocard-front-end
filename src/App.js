@@ -9,20 +9,33 @@ import {
 import "react-toastify/dist/ReactToastify.css";
 import { useDispatch, useSelector } from "react-redux";
 import { ToastContainer } from "react-toastify";
-import { getallproduct } from "./Redux/Action/ProductAction";
 import { ScrollToTop } from "react-router-scroll-to-top";
+
 import { LogedinUser } from "./Redux/Action/UserAction";
-import DashBoardIndex from "./DashBoard/DashBoardIndex";
-import AllProducts from "./DashBoard/Pages/AllProducts";
 import AdminLogin from "./DashBoard/Accounts/AdminLogin";
+
+import DashBoardIndex from "./DashBoard/DashBoardIndex";
+
+import ParentCategoryList from "./DashBoard/Pages/ParentCategoryList";
+import CreateParentCategory from "./DashBoard/Pages/CreateParentCategory";
+import EditParentCategory from "./DashBoard/Pages/EditParentCategory";
+
+import CategoryList from "./DashBoard/Pages/CategoryList";
+import CreateCategory from "./DashBoard/Pages/CreateCategory";
+import EditCreateCategory from "./DashBoard/Pages/EditCategory";
+
+import SubCategoryList from "./DashBoard/Pages/SubCategoryList";
+import CreateSubCategory from "./DashBoard/Pages/CreateSubCategory";
+import EditSubCategory from "./DashBoard/Pages/EditSubCategory";
+
+
+import { getallproduct } from "./Redux/Action/ProductAction";
+import AllProducts from "./DashBoard/Pages/AllProducts";
 import Home from "./Pages/Home";
 import CreateProduct from "./DashBoard/Pages/CreateProduct";
 import ProductView from "./DashBoard/Pages/ProductView";
-import ParentCategoryList from "./DashBoard/Pages/ParentCategoryList";
-import CreateParentCategory from "./DashBoard/Pages/CreateParentCategory";
-import EditParentCategory from "./DashBoard/Pages/EditCreateParentCategory";
 
-import SubCategoryList from "./DashBoard/Pages/SubCategoryList";
+
 
 import SingleCard from "./Pages/SingleCard";
 import Index from "./Layout/Index";
@@ -139,6 +152,59 @@ const App = () => {
         <Route path="/admin/dashboard" element={<AdminPrivateRoute />}>
           <Route path="/admin/dashboard" element={<DashBoardIndex />} />
         </Route>
+
+        {/* ----------- Parent Category List  */}
+        <Route path="/admin/parent-category/list" element={<AdminPrivateRoute />}>
+          <Route path="/admin/parent-category/list" element={<ParentCategoryList />} />
+        </Route>
+
+        {/* Create Parent Category */}
+        <Route path="/admin/create/parent-category" element={<AdminPrivateRoute />}>
+          <Route path="/admin/create/parent-category" element={<CreateParentCategory />} />
+        </Route>
+
+        {/* Update Parent Category */}
+        <Route path="/admin/parent-category/:id" element={<AdminPrivateRoute />}>
+          <Route path="/admin/parent-category/:id" element={<EditParentCategory />} />
+        </Route>
+
+        {/* ----------- Category List  */}
+        <Route path="/admin/category/list" element={<AdminPrivateRoute />}>
+          <Route path="/admin/category/list" element={<CategoryList />} />
+        </Route>
+
+        {/* Create Category */}
+        <Route path="/admin/create/category" element={<AdminPrivateRoute />}>
+          <Route path="/admin/create/category" element={<CreateCategory />} />
+        </Route>
+
+        {/* Update Category */}
+        <Route path="/admin/category/:id" element={<AdminPrivateRoute />}>
+          <Route path="/admin/category/:id" element={<EditCreateCategory />} />
+        </Route>
+
+        {/* ----------- Sub Category List  */}
+        <Route path="/admin/sub-category/list" element={<AdminPrivateRoute />}>
+          <Route path="/admin/sub-category/list" element={<SubCategoryList />} />
+        </Route>
+
+        {/* Create Sub Category */}
+        <Route path="/admin/create/sub-category" element={<AdminPrivateRoute />}>
+          <Route path="/admin/create/sub-category" element={<CreateSubCategory />} />
+        </Route>
+
+        {/* Update Sub Category */}
+        <Route path="/admin/sub-category/:id" element={<AdminPrivateRoute />}>
+          <Route path="/admin/sub-category/:id" element={<EditSubCategory />} />
+        </Route>
+
+
+
+
+
+
+
+
         {/* ------- all product */}
         <Route path="/admin/products" element={<AdminPrivateRoute />}>
           <Route path="/admin/products" element={<AllProducts />} />
@@ -151,24 +217,6 @@ const App = () => {
         {/* ------------- admin/create/product  */}
         <Route path="/admin/create/product" element={<AdminPrivateRoute />}>
           <Route path="/admin/create/product" element={<CreateProduct />} />
-        </Route>
-        {/* ----------- category list  */}
-
-        <Route path="/admin/parent-category/list" element={<AdminPrivateRoute />}>
-          <Route path="/admin/parent-category/list" element={<ParentCategoryList />} />
-        </Route>
-
-
-        {/* Create Parent category */}
-
-        <Route path="/admin/create/parent-category" element={<AdminPrivateRoute />}>
-          <Route path="/admin/create/parent-category" element={<CreateParentCategory />} />
-        </Route>
-
-        {/* Update Parent category */}
-
-        <Route path="/admin/parent-category/:id" element={<AdminPrivateRoute />}>
-          <Route path="/admin/parent-category/:id" element={<EditParentCategory />} />
         </Route>
 
         {/* ------- sub category  */}

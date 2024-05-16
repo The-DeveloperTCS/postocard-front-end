@@ -1,7 +1,8 @@
 import React, { useEffect, useState } from "react";
-import { useParams } from "react-router-dom";
+import { useParams, useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
 import { useDispatch, useSelector } from "react-redux";
+import { Button, Spinner } from "react-bootstrap";
 import {
   ParentCategoryUpdateFunc,
   getSpecificParentCategory
@@ -9,10 +10,12 @@ import {
 
 const EditParentCategoryComponent = () => {
   const dispatch = useDispatch();
+  const navigate = useNavigate();
+
   const params = useParams();
   const parentCategorySpecific = useSelector((state) => state.category.parentCategorySpecific)
   const [ParentCategoryName, setParentCategoryName] = useState();
-  console.log(parentCategorySpecific, 'parentCategorySpecific')
+  const [isLoading, setIsLoading]= useState(false);
   useEffect(() => {
     getDetails()
   }, [])
@@ -30,15 +33,16 @@ const EditParentCategoryComponent = () => {
   }, [parentCategorySpecific])
 
   const updateParentCategoryHandler = () => {
+    setIsLoading(true)
+
     if (!ParentCategoryName.CategoryName) {
+      setIsLoading(false)
       return toast.error("Please fill in the field");
     }
     const parentCategoryData = {
       CategoryName: ParentCategoryName.CategoryName,
     };
-    dispatch(ParentCategoryUpdateFunc(parentCategoryData, ParentCategoryName.id));
-
-    setParentCategoryName("");
+    dispatch(ParentCategoryUpdateFunc(parentCategoryData, ParentCategoryName.id, navigate));
   };
 
 
@@ -61,12 +65,14 @@ const EditParentCategoryComponent = () => {
               className="w-full border-[1px] border-[#8080803b] rounded-sm px-2 py-1 my-1 text-[17px] outline-none bg-[#8080803a]"
             />
           </div>
-          <button
-            className="w-full px-3 py-2 bg-[#6E6EEF] text-[white] my-3 rounded-sm"
+          <Button
+            disabled={isLoading}
             onClick={updateParentCategoryHandler}
+            className="w-full px-3 py-2 bg-[#6E6EEF] text-[white] my-3 rounded-sm"
           >
-            Update
-          </button>
+            {isLoading && <Spinner as="span" animation="grow" />}
+            {isLoading ? "Loading" : "Update"}
+          </Button>
         </div>
       </div>
     </>

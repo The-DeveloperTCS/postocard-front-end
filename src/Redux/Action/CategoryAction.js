@@ -160,7 +160,7 @@ export const ParentCategoryCreateFunc = (parentCategoryData, navigate) => async 
 };
 
 // ========= Update Parent Category =================================
-export const ParentCategoryUpdateFunc = (parentCategoryData, id) => async (dispatch) => {
+export const ParentCategoryUpdateFunc = (parentCategoryData, id, navigate) => async (dispatch) => {
   console.log(parentCategoryData, 'parentCategoryData')
   try {
     dispatch({ type: PARENT_CATEGORY_UPDATE_REQUEST });
@@ -180,6 +180,7 @@ export const ParentCategoryUpdateFunc = (parentCategoryData, id) => async (dispa
     } else {
       toast.success(data.message);
       dispatch({ type: PARENT_CATEGORY_UPDATE_SUCCESS });
+      navigate("/admin/parent-category/list");
     }
   } catch (error) {
     dispatch({ type: PARENT_CATEGORY_UPDATE_ERROR });

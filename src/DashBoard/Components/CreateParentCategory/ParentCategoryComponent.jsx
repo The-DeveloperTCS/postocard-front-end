@@ -5,9 +5,6 @@ import {
   ParentCategoryCreateFunc,
 } from "../../../Redux/Action/CategoryAction";
 import { useNavigate } from "react-router-dom";
-import {
-  REQUEST_LODER
-} from "../../../Redux/Variables/UserVariables";
 import { Button, Spinner } from "react-bootstrap";
 
 const ParentCategoreyComponent = () => {

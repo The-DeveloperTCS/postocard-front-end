@@ -30,7 +30,6 @@ const ListofProducts = ({
   updateactive,
 }) => {
   const [singleproduct, setSingleProduct] = useState([]);
-  console.log(allProduct);
 
   const [edit, setedit] = useState(false);
   const [checkbox, setCheckbox] = useState(

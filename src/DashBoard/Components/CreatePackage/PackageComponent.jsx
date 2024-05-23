@@ -65,7 +65,6 @@ const PackageComponent = () => {
       });
 
       const data = await res.json();
-      console.log(data);
       if (!data || res.status === 400) {
         return toast.error(data.message);
       } else {
@@ -135,7 +134,6 @@ const PackageComponent = () => {
       });
 
       setGetPackages(response.data.data);
-      console.log(response.data, "packagesget");
     } catch (error) {
       console.log(error.message);
     }
@@ -160,7 +158,6 @@ const PackageComponent = () => {
     }
   };
 
-  console.log(getPackages);
   return (
     <>
       <div className="flex justify-center place-items-center h-[90vh]">

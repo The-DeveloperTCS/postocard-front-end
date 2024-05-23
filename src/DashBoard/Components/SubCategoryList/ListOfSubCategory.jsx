@@ -2,7 +2,8 @@ import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import {
   getallParentCategory,
-  ParentCategoryDeleteFunc
+  getallSubCategory,
+  subCategoryDeleteFunc
 } from "../../../Redux/Action/CategoryAction";
 import Loading from "../../../Layout/Loading/Loading";
 import { AiOutlineDelete } from "react-icons/ai";
@@ -15,22 +16,32 @@ const ListOfSubCategory = ({ }) => {
   const isLoading = useSelector((state) => state.category.isLoading);
   const isLoadingp = useSelector((state) => state.product.isLoading);
   const allParentCategory = useSelector((state) => state.category.allParentCategory)
+  const allsubcategory = useSelector((state) => state.category.allsubcategory)
   const [categoryName, setCategoryName] = useState("");
   const [selectedItem, setSelectedItem] = useState(null)
   const [showConfirm, setShowConfirm] = useState(false);
 
   useEffect(() => {
-    getParentCategories()
+    getSubCategories()
   }, [])
 
-  const getParentCategories = () => {
-    dispatch(getallParentCategory(categoryName));
-  }
+  const getSubCategories = () => {
+    dispatch(getallSubCategory(categoryName));
+    dispatch(getallParentCategory(""));
 
+  }
 
   const onDelete = (item) => {
     setShowConfirm(true)
     setSelectedItem(item)
+  }
+
+  const getParentCategoryName = (id)=>{
+    if (id !== null) {
+      const parentCategory = allParentCategory.filter((pc) => pc.id === id);
+      return parentCategory[0]?.name;
+    }
+    return "";
   }
 
   return (
@@ -42,7 +53,7 @@ const ListOfSubCategory = ({ }) => {
           <FilterHeader
             categoryName={categoryName}
             setCategoryName={setCategoryName}
-            getParentCategories={getParentCategories}
+            getSubCategories={getSubCategories}
           />
           {/* ============== list of category  */}
           <div className="list_product_admin">
@@ -61,7 +72,7 @@ const ListOfSubCategory = ({ }) => {
               focusCancelBtn
               onConfirm={() => {
                 setShowConfirm(!showConfirm);
-                dispatch(ParentCategoryDeleteFunc(selectedItem))
+                dispatch(subCategoryDeleteFunc(selectedItem.id))
 
               }}
               onCancel={() => {
@@ -72,29 +83,37 @@ const ListOfSubCategory = ({ }) => {
               </b>
             </SweetAlert>
             <div
-              className={`product_list_header grid grid-cols-3 font-bold py-3 border-b-2 border-b-[gray]`}
+              className={`product_list_header grid grid-cols-5 font-bold py-3 border-b-2 border-b-[gray]`}
             >
-              <h2>ID</h2>
+              <h2>Sr. No</h2>
+              <h2>Parent Category</h2>
+              <h2>Category</h2>
               <h2>Category Name</h2>
               <h2>Action</h2>
             </div>
             {/* ---------- category  */}
             <div className="list_main_box">
-              {allParentCategory &&
-                allParentCategory?.map((item, index) => {
+              {allsubcategory &&
+                allsubcategory?.map((item, index) => {
                   return (
                     <div
                       key={index}
-                      className={`product_list_main grid grid-cols-3 py-3 border-b-2`}
+                      className={`product_list_main grid grid-cols-5 py-3 border-b-2`}
                     >
-                      <p>{item.id}</p>
+                      <p>{index + 1}</p>
                       <h2>
-                        {item.name}
+                        {/* {getParentCategoryName(item.category_details?.ParentItem)} */}
+                        {item.category_details?.parent_category?.name}
                       </h2>
-
+                      <h2>
+                        {item.category_details?.CategoryName}
+                      </h2>
+                      <h2>
+                        {item.SubCategoryName}
+                      </h2>
                       <h2>
                         <p className="flex justify-start place-items-center gap-3 relative">
-                          <Link to={`/admin/parent-category/${item.id}`} >
+                          <Link to={`/admin/sub-category/${item.id}`} >
                             <FaRegEdit
                               className="text-[green] cursor-pointer text-[20px]"
                             />
@@ -118,7 +137,7 @@ export default ListOfSubCategory;
 
 
 // ========================= haeder
-const FilterHeader = ({ categoryName, setCategoryName, getParentCategories }) => {
+const FilterHeader = ({ categoryName, setCategoryName, getSubCategories }) => {
   return (
     <div className="filter_header flex justify-between place-items-center">
       {/* ------------- name  */}
@@ -131,9 +150,8 @@ const FilterHeader = ({ categoryName, setCategoryName, getParentCategories }) =>
             setCategoryName(e.target.value)
           }
           onKeyPress={(e) => {
-            console.log(e.key)
             if (e.key === 'Enter') {
-              getParentCategories(categoryName)
+              getSubCategories(categoryName)
             }
           }}
         />

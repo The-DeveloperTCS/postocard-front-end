@@ -10,7 +10,6 @@ const UserOrders = () => {
     dispatch(GetUserOrder());
   }, []);
   const UserOrders = useSelector((state) => state.order.UserOrders);
-  // console.log(UserOrders);
 
   return (
     <div className="overflow-x-auto order-dashboard-main">

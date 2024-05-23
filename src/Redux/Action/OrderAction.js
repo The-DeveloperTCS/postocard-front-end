@@ -38,8 +38,6 @@ export const OrderCreateFunction = (orderdata, url, navigate) => async (dispatch
   try {
     
     dispatch({ type: CREATE_ORDER_REQUEST });
-    // console.log(orderdata, "ok");
-    console.log("ok3");
     const res = await fetch(`${server}/${url}`, {
       method: "POST",
       headers: {
@@ -50,16 +48,12 @@ export const OrderCreateFunction = (orderdata, url, navigate) => async (dispatch
     });
     dispatch({ type: CREATE_ORDER_REQUEST_FAIL });
     const data = await res.json();
-    console.log(data);
-    console.log(res.status, "this");
     if (!data || res.status === 400) {
       dispatch({ type: ORDER_FAIL });
       toast.error(data.message);
       if(url === "guest/cart/order/success"){
         navigate("/conformOrder");
       }
-      console.log(res.status, "this");
-      console.log(url, "this");
       return 
     } else {
       dispatch({ type: CREATE_ORDER_SUCCESS });
@@ -89,8 +83,6 @@ export const SubscriptionInPackages =
     try {
       dispatch({ type: ORDER_REQUEST });
 
-      console.log(orderid);
-
       const response = await fetch(
         `${server}/cart/paypal/order/PaymentVerified/${orderid}`,
         {
@@ -115,8 +107,6 @@ export const SubscriptionInPackages =
         }
       }
 
-      console.log(responseData, "verify response");
-
       // Additional logic based on the response status, if needed
       // if (response.status === 200) {
       //   // Additional actions
@@ -130,7 +120,6 @@ export const SubscriptionInPackages =
 const createSubscription = async (GetId, GetPrice) => {
   try {
     const token = Cookies.get("ApiLoginToken");
-    console.log("call");
     if (!GetId || !GetPrice) {
       return toast.error("An Error accured.");
     } else {
@@ -147,7 +136,6 @@ const createSubscription = async (GetId, GetPrice) => {
 
       // Assuming you want to parse the JSON response
       const responseData = await response.json();
-      console.log(responseData, "response");
       if (response.status === 400) {
         return toast.error(responseData.message);
       } else {
@@ -173,7 +161,6 @@ export const GetAllOrdersFunc = () => async (dispatch) => {
     });
     dispatch({ type: GET_ALL_ORDER_REQUEST_FAIL });
     const data = await res.json();
-    console.log(data, "orders")
     if (!data || res.status === 400) {
       return;
     } else {
@@ -230,7 +217,6 @@ export const downloadfileFunc = (CardOrderId) => async (dispatch) => {
       toast.success(data.message);
       const file1 = download + files?.image1;
       const file2 = download + files?.image2;
-      console.log(files);
       const downloadFile2 = async () => {
         if (file2) {
           await initiateDownload(file2, "image2.jpg");
@@ -297,7 +283,6 @@ export const UpdateOrderStatusFunc =
       });
       dispatch({ type: DOWNLOAD_FILE_REQUEST_FAIL });
       const data = await res.json();
-      console.log(data);
       if (!data || res.status === 400) {
         return toast.error(data.message);
       } else {
@@ -321,7 +306,6 @@ export const GetUserOrder = () => async (dispatch) => {
     });
     dispatch({ type: GET_ORDERS_USER_FAIL });
     const data = await res.json();
-    console.log(data);
     if (!data || res.status === 400) {
       return;
     } else {
@@ -345,7 +329,6 @@ export const getTranscations = () => async (dispatch) => {
     });
     dispatch({ type: TRANSCATION_REQUEST_FAIL });
     const data = await res.json();
-    console.log(data);
     if (!data || res.status === 400) {
       return;
     } else {

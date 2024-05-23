@@ -33,7 +33,6 @@ const EditPackageComponent = () => {
       });
 
       const data = await res.json();
-      console.log(data, "get specific data");
 
       if (!data || res.status === 400) {
         return toast.error(data.message);
@@ -90,7 +89,6 @@ const EditPackageComponent = () => {
       });
 
       const data = await res.json();
-      console.log(data);
 
       if (!data || res.status === 400) {
         return toast.error(data.message);
@@ -115,7 +113,6 @@ const EditPackageComponent = () => {
     setdetails([]);
   };
 
-  console.log(getPackages);
   return (
     <>
       <div className="flex justify-center place-items-center h-[90vh]">

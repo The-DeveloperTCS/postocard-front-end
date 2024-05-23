@@ -101,7 +101,6 @@ const CardPricingData = ({ active, name, content }) => {
     if (content === "") {
       return toast.error("Please enter your description");
     }
-    // console.log(userAddress);
     if ((savedAddress && checkbox === 0) || checkbox === null) {
       var CartCode = localStorage.getItem("cartcode");
       var FullName = singleAddress[0]?.full_name;
@@ -150,7 +149,6 @@ const CardPricingData = ({ active, name, content }) => {
         const res = await axios.get(
           "https://countriesnow.space/api/v0.1/countries"
         );
-        console.log(res.data.data);
         const specificCountries = res.data.data.filter(
           (item) =>
             item.country === "United States" || item.country === "Canada"
@@ -175,7 +173,6 @@ const CardPricingData = ({ active, name, content }) => {
 
           //  });
           setStates(response.data.data);
-          console.log(response.data.data);
         }
       } catch (error) {
         console.log("Error fetching states:", error);
@@ -219,13 +216,6 @@ const CardPricingData = ({ active, name, content }) => {
   const handleCityChange = (event) => {
     setSelectedCities(event.target.value);
   };
-
-  // // console.log(NewAddress);
-  // console.log(selectedCountry);
-  // console.log(selectedStates);
-  // console.log(selectedCities);
-
-  console.log(sliceProduct, "sliceProduct");
 
   return (
     <div className="cardpricing-parent">

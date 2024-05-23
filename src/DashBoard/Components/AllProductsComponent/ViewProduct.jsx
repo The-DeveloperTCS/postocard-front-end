@@ -11,21 +11,17 @@ const ViewProduct = () => {
   const allProduct = useSelector((state) => state.product.allproductforAdmin);
   const params = useParams();
 
-  console.log(allProduct);
-
-useEffect(()=> {
+  useEffect(() => {
     const selectedRow = allProduct?.filter((item) => item.id === parseInt(params.id));
     setSelectRow(selectedRow || {});
-}, [allProduct, params.id])
-console.log(allProduct);
-console.log(selectRow);
+  }, [allProduct, params.id])
 
 
   return (
     <div>
       <section class="relative pt-16 bg-blueGray-50">
         <div class="container mx-auto">
-        <h2 className="text-center mb-4 font-bold text-3xl">
+          <h2 className="text-center mb-4 font-bold text-3xl">
             View Product
           </h2>
           <div class="flex flex-wrap items-center">
@@ -39,45 +35,45 @@ console.log(selectRow);
               
               </div>
             </div> */}
-  <div class="w-full md:w-6/12 px-4">
+            <div class="w-full md:w-6/12 px-4">
               <div class="flex flex-wrap">
                 <div class="w-full md:w-6/12 px-4">
                   <div class="relative flex flex-col mt-4">
                     <div class="px-4 py-5 flex-auto">
-                    <img
-                  alt="..."
-                  src={selectRow[0]?.File1}
-                  class="w-full align-middle rounded-t-lg"
-                />
+                      <img
+                        alt="..."
+                        src={selectRow[0]?.File1}
+                        class="w-full align-middle rounded-t-lg"
+                      />
                     </div>
                   </div>
                   <div class="relative flex flex-col min-w-0">
                     <div class="px-4 py-5 flex-auto">
-                    <img
-                  alt="..."
-                  src={selectRow[0]?.File2}
-                  class="w-full align-middle rounded-t-lg"
-                />
+                      <img
+                        alt="..."
+                        src={selectRow[0]?.File2}
+                        class="w-full align-middle rounded-t-lg"
+                      />
                     </div>
                   </div>
                 </div>
                 <div class="w-full md:w-6/12 px-4">
                   <div class="relative flex flex-col min-w-0 mt-4">
                     <div class="px-4 py-5 flex-auto">
-                    <img
-                  alt="..."
-                  src={selectRow[0]?.File3}
-                  class="w-full align-middle rounded-t-lg"
-                />
+                      <img
+                        alt="..."
+                        src={selectRow[0]?.File3}
+                        class="w-full align-middle rounded-t-lg"
+                      />
                     </div>
                   </div>
                   <div class="relative flex flex-col mt-4">
                     <div class="px-4 py-5 flex-auto">
-                    <img
-                  alt="..."
-                  src={selectRow[0]?.File4}
-                  class="w-full align-middle rounded-t-lg"
-                />
+                      <img
+                        alt="..."
+                        src={selectRow[0]?.File4}
+                        class="w-full align-middle rounded-t-lg"
+                      />
                     </div>
                   </div>
                 </div>

@@ -60,7 +60,6 @@ const CreateProductcomp = () => {
     // File4: File4,
     SubCategory: subCategory,
   };
-  console.log(data);
   // ----------- usedisatch
 
   // -----------createproduct
@@ -91,14 +90,12 @@ const CreateProductcomp = () => {
           Authorization: "Bearer " + Cookies.get("ApiLoginToken"),
         },
       });
-      console.log(res.data);
       setGetArtists(res.data);
     } catch (error) {
       console.log(error.message);
     }
   };
 
-  console.log(getArtists);
 
   const handleSubCategoryChange = (e) => {
     const selectedOption = e.target.value;

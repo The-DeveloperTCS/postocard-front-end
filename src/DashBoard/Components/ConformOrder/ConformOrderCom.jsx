@@ -12,10 +12,6 @@ const ConformOrderCom = () => {
     const failed = useSelector((state)=> state.order.isFailed)
     const isSuccess = useSelector((state)=> state.order.isSuccess)
 
-    console.log(Loading);
-    console.log(failed);
-    console.log(isSuccess);
-
 
     return (
         <div className='ConformOrderCom'>

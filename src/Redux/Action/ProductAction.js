@@ -53,7 +53,6 @@ export const CreateProductFunc = (newdata, navigate) => async (dispatch) => {
 
     dispatch({ type: CREATE_PRODUCT_FAIL });
     const data = await res.json();
-    console.log(data);
     if (!data || res.status === 401) {
       return toast.error(data.message);
     } else if (res.status === 500) {
@@ -160,7 +159,6 @@ export const UpdateProductDiscount =
       });
       dispatch({ type: DISCOUNT_PRODUCT_FAIL });
       const data = await res.json();
-      console.log(data);
       if (!data || res.status === 401) {
         return toast.error(data.message);
       } else if (res.status === 500) {

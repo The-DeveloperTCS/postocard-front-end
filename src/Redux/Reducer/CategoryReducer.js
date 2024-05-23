@@ -75,12 +75,12 @@ const initialState = {
   isLoading: false,
   allParentCategory: [],
   allcategory: [],
-  allcategoryforuser: [],
   allsubcategory: [],
   parentCategorySpecific: null,
   categorySpecific: null,
   subCategorySpecific: null,
-
+  
+  allcategoryforuser: [],
 };
 
 export const CategoryReducer = createReducer(initialState, (builder) => {
@@ -111,7 +111,6 @@ export const CategoryReducer = createReducer(initialState, (builder) => {
       state.isLoading = false;
     })
     .addCase(GET_SPECIFIC_PARENT_CATEGORY_SUCCESS, (state, action) => {
-      console.log(action)
       state.isLoading = false;
       state.parentCategorySpecific = action.payload;
     })

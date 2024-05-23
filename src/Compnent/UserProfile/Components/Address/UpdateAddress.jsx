@@ -11,7 +11,6 @@ const UpdateAddress = ({ isEdit, id = 1 }) => {
   const loading = useSelector((state) => state.user.loading);
   const userAddress = useSelector((state) => state.user.userAddress);
   const [filtertheaddress, setFiltertheaddres] = useState([]);
-  console.log(id);
 
   const [firstName, setFirstName] = useState("");
   const [lastName, setLastName] = useState("");

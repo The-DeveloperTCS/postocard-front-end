@@ -108,7 +108,6 @@ export const LogedinUser = () => async (dispatch) => {
     });
     dispatch({ type: VALID_USER_FAIL });
     const data = await res.json();
-    console.log(data);
     if (!data || res.status === 400) {
       return console.log(data.message);
     } else if (res.status === 500) {
@@ -144,7 +143,6 @@ export const userRegistration =
       });
       dispatch({ type: REGISTRATION_USER_FAIL });
       const data = await res.json();
-      console.log(data);
       if (!data || res.status === 400) {
         return toast.error(data.message);
       } else if (res.status === 500) {
@@ -227,7 +225,6 @@ export const getuseraddress = () => async (dispatch) => {
 export const updateuseraddress = (Addressdata, id) => async (dispatch) => {
   try {
     dispatch({ type: UPDATE_ADDRESS_REQUEST });
-    console.log(id);
     const res = await fetch(`${server}/user-address/update/${id}`, {
       method: "PUT",
       headers: {
@@ -352,7 +349,6 @@ export const UpdateUserPassword =
   (old_password, new_password) => async (dispatch) => {
     try {
       dispatch({ type: PASSWORD_UPDATE_REQUEST });
-      console.log("ok");
       const res = await fetch(`${server}/user/update-password`, {
         method: "POST",
         headers: {
@@ -363,7 +359,6 @@ export const UpdateUserPassword =
       });
       dispatch({ type: PASSWORD_UPDATE_FAIL });
       const data = await res.json();
-      console.log(data);
       if (!data || res.status === 400) {
         return toast.error(data.message);
       } else {
@@ -379,7 +374,6 @@ export const UpdateUserPassword =
 export const ProfileUpdatte = (name, email) => async (dispatch) => {
   try {
     dispatch({ type: PROFILE_UPDATE_REQUEST });
-    console.log("ok");
     const res = await fetch(`${server}/user/update-profile`, {
       method: "POST",
       headers: {
@@ -390,7 +384,6 @@ export const ProfileUpdatte = (name, email) => async (dispatch) => {
     });
     dispatch({ type: PROFILE_UPDATE_FAIL });
     const data = await res.json();
-    console.log(data);
     if (!data || res.status === 400) {
       return toast.error(data.message);
     } else {
@@ -416,7 +409,6 @@ export const PackgaeCreateFunc = (packageData) => async (dispatch) => {
     });
     dispatch({ type: PACKAGE_CREATE_FAIL });
     const data = await res.json();
-    console.log(data);
     if (!data || res.status === 400) {
       return toast.error(data.message);
     } else {
@@ -443,7 +435,6 @@ export const editPackagefunction = (packageData, id) => async (dispatch) => {
     });
     dispatch({ type: PACKAGE_CREATE_FAIL });
     const data = await res.json();
-    console.log(data);
     if (!data || res.status === 400) {
       return toast.error(data.message);
     } else {

@@ -23,7 +23,6 @@ const OrderDetailesUser = () => {
   const UserOrders = useSelector((state) => state.order.UserOrders);
   const { id } = useParams();
   const filterOrder = UserOrders?.filter((item) => item.id == id);
-  console.log(filterOrder);
 
   return (
     <div className="px-[10px] py-[40px] bg-[#f5a95217] flex justify-start place-items-start gap-2">

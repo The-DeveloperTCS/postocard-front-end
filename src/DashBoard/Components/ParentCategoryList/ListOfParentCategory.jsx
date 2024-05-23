@@ -74,7 +74,7 @@ const ListOfParentCategory = ({ }) => {
             <div
               className={`product_list_header grid grid-cols-3 font-bold py-3 border-b-2 border-b-[gray]`}
             >
-              <h2>ID</h2>
+              <h2>Sr. No</h2>
               <h2>Category Name</h2>
               <h2>Action</h2>
             </div>
@@ -87,7 +87,7 @@ const ListOfParentCategory = ({ }) => {
                       key={index}
                       className={`product_list_main grid grid-cols-3 py-3 border-b-2`}
                     >
-                      <p>{item.id}</p>
+                      <p>{index + 1}</p>
                       <h2>
                         {item.name}
                       </h2>
@@ -131,7 +131,6 @@ const FilterHeader = ({ categoryName, setCategoryName, getParentCategories }) =>
             setCategoryName(e.target.value)
           }
           onKeyPress={(e) => {
-            console.log(e.key)
             if (e.key === 'Enter') {
               getParentCategories(categoryName)
             }

@@ -18,10 +18,8 @@ export const fetchAllOrders = () => async (dispatch) => {
         Authorization: `Bearer ${getToken}`,
       },
     });
-    console.log(response.data, "orders");
     dispatch({ type: Vendor_Order_REQUEST_FAIL });
     const data = response.data;
-    console.log(data, 'data')
     if (!data || response.status === 400) {
       return toast.error(data.message);
     } else {

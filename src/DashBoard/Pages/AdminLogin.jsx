@@ -15,7 +15,6 @@ const AdminLogin = () => {
           navigate("/admin/dashboard")
         }
      },[isAuthanticated,user])
-     console.log(user, "user");
   return (
     <div className='w-[100%] flex justify-center place-items-center'>
          <AdminuserCom/>

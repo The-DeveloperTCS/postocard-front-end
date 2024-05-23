@@ -45,7 +45,6 @@ const VendorLogin = () => {
             "Content-Type": "application/json",
           },
         });
-        console.log(response.data, "Data");
         toast.success(response.data.message);
         Cookies.set("vendorLoginToken", response.data.token, {
           expires: checkbox ? 7 : window.close(),
@@ -57,7 +56,6 @@ const VendorLogin = () => {
     }
   };
 
-  console.log(adminData.Email);
   //   // -------- loginadmin
   //   const loginadmin = async () => {
   //     if (!adminData.email || !adminData.password) {

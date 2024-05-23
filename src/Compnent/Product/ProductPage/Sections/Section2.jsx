@@ -77,7 +77,6 @@ const Section2 = () => {
       setCopyData(allProduct);
     }
   }, [search]);
-  console.log(slicedata, "slicedata");
   return (
     <div className="Product_Section2-main">
       {isLoading ? (

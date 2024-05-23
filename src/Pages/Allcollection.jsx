@@ -29,7 +29,6 @@ const Allcollection = () => {
   useEffect(() => {
     setSerach(all);
   }, [all]);
-console.log(allProduct, 'allProduct')
   const filterdata = () => {
     if (search === "all") {
       setCopyData(allProduct);

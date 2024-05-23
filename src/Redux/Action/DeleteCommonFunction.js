@@ -21,7 +21,6 @@ export const CommonPOSTCall = (v1,v2,v3,v4,bodydata,url) => async (dispatch)=>{
     })
     dispatch({type : v2})
     const data = await res.json()
-    console.log(data);
     if(res.status === 400 || !data){
         return toast.error(data.message)
     }else{

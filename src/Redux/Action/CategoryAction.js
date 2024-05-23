@@ -89,7 +89,6 @@ export const getallParentCategory = (categoryName) => async (dispatch) => {
     });
     dispatch({ type: GET_PARENT_CATEGORY_FAIL });
     const data = await res.json();
-    console.log(data, 'data')
     if (!data || res.status === 401) {
       return;
     } else if (res.status === 500) {
@@ -118,7 +117,6 @@ export const getSpecificParentCategory = (id) => async (dispatch) => {
     });
     dispatch({ type: GET_SPECIFIC_PARENT_CATEGORY_FAIL });
     const data = await res.json();
-    console.log(data, 'data')
     if (!data || res.status === 401) {
       return;
     } else if (res.status === 500) {
@@ -161,7 +159,6 @@ export const ParentCategoryCreateFunc = (parentCategoryData, navigate) => async 
 
 // ========= Update Parent Category =================================
 export const ParentCategoryUpdateFunc = (parentCategoryData, id, navigate) => async (dispatch) => {
-  console.log(parentCategoryData, 'parentCategoryData')
   try {
     dispatch({ type: PARENT_CATEGORY_UPDATE_REQUEST });
     const res = await fetch(`${server}/parentcategory/update/${id}`, {
@@ -231,7 +228,7 @@ export const getallCategory = (name) => async (dispatch) => {
     } else if (res.status === 500) {
       return alert("Internel Server Error new");
     } else {
-      dispatch({ type: GET_CATEGORY_SUCCESS, payload: data.data });
+      dispatch({ type: GET_CATEGORY_SUCCESS, payload: data.data.data });
     }
   } catch (error) {
     dispatch({ type: GET_CATEGORY_ERROR, payload: error.message });
@@ -264,32 +261,32 @@ export const getSpecificCategory = (id) => async (dispatch) => {
 };
 
 export const CreateCategoryFunc =
-(CategoryName, ParentItem, navigate) => async (dispatch) => {
-  try {
-    dispatch({ type: CREATE_CATEGORY_REQUEST });
-    const res = await fetch(`${server}/category/create`, {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-        Authorization: "Bearer " + Cookies.get("ApiLoginToken"),
-      },
-      body: JSON.stringify({ CategoryName, ParentItem }),
-    });
-    dispatch({ type: CREATE_CATEGORY_FAIL });
-    const data = await res.json();
-    if (!data || res.status === 400) {
-      return toast.error(data.message);
-    } else if (res.status === 500) {
-      return toast.error("Internel Server Error new");
-    } else {
-      dispatch({ type: CREATE_CATEGORY_SUCCESS });
-      toast.success(data.message);
-      // navigate("/admin/dashboard")
+  (category, navigate) => async (dispatch) => {
+    try {
+      dispatch({ type: CREATE_CATEGORY_REQUEST });
+      const res = await fetch(`${server}/category/create`, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          Authorization: "Bearer " + Cookies.get("ApiLoginToken"),
+        },
+        body: JSON.stringify(category),
+      });
+      dispatch({ type: CREATE_CATEGORY_FAIL });
+      const data = await res.json();
+      if (!data || res.status === 400) {
+        return toast.error(data.message);
+      } else if (res.status === 500) {
+        return toast.error("Internel Server Error new");
+      } else {
+        dispatch({ type: CREATE_CATEGORY_SUCCESS });
+        toast.success(data.message);
+        navigate("/admin/category/list")
+      }
+    } catch (error) {
+      dispatch({ type: CREATE_CATEGORY_ERROR, payload: error.message });
     }
-  } catch (error) {
-    dispatch({ type: CREATE_CATEGORY_ERROR, payload: error.message });
-  }
-};
+  };
 
 // ========
 export const UpdateCategoryActiveFunc =
@@ -306,7 +303,6 @@ export const UpdateCategoryActiveFunc =
       });
       dispatch({ type: EDIT_CATEGORY_FAIL });
       const data = await res.json();
-      console.log(data);
       if (!data || res.status === 400) {
         return toast.error(data.message);
       } else if (res.status === 500) {
@@ -314,7 +310,8 @@ export const UpdateCategoryActiveFunc =
       } else {
         dispatch({ type: EDIT_CATEGORY_SUCCESS });
         toast.success(data.message);
-        // navigate("/admin/dashboard")
+        navigate("/admin/category/list")
+
       }
     } catch (error) {
       dispatch({ type: EDIT_CATEGORY_ERROR, payload: error.message });
@@ -340,6 +337,7 @@ export const categoryDeleteFunc = (id) => async (dispatch) => {
       return toast.error(data.message);
     } else {
       toast.success(data.message);
+      dispatch(getallCategory(""))
       dispatch({ type: DELETE_CATEGORY_SUCCESS });
     }
   } catch (error) {
@@ -365,7 +363,7 @@ export const getallSubCategory = (name) => async (dispatch) => {
     } else if (res.status === 500) {
       return alert("Internel Server Error new");
     } else {
-      dispatch({ type: GET_SUB_CATEGORY_SUCCESS, payload: data.data });
+      dispatch({ type: GET_SUB_CATEGORY_SUCCESS, payload: data.data.data });
     }
   } catch (error) {
     dispatch({ type: GET_SUB_CATEGORY_ERROR, payload: error.message });
@@ -400,7 +398,7 @@ export const getSpecicificSubCategory = (id) => async (dispatch) => {
 
 // =========== create Sub Category
 export const CreateSubCategoryFunc =
-  (CategoryId, SubCategoryName, navigate) => async (dispatch) => {
+  (subCategory, navigate) => async (dispatch) => {
     try {
       dispatch({ type: CREATE_SUB_CATEGORY_REQUEST });
       const res = await fetch(`${server}/subcategory/create`, {
@@ -409,11 +407,10 @@ export const CreateSubCategoryFunc =
           "Content-Type": "application/json",
           Authorization: "Bearer " + Cookies.get("ApiLoginToken"),
         },
-        body: JSON.stringify({ CategoryId, SubCategoryName }),
+        body: JSON.stringify(subCategory),
       });
       dispatch({ type: CREATE_SUB_CATEGORY_FAIL });
       const data = await res.json();
-      console.log(data);
       if (!data || res.status === 401) {
         return toast.error(data.message);
       } else if (res.status === 500) {
@@ -421,7 +418,7 @@ export const CreateSubCategoryFunc =
       } else {
         dispatch({ type: CREATE_SUB_CATEGORY_SUCCESS });
         toast.success(data.message);
-        navigate("/admin/dashboard");
+        navigate("/admin/sub-category/list")
       }
     } catch (err) {
       dispatch({ type: CREATE_SUB_CATEGORY_ERROR, payload: err.message });
@@ -429,22 +426,20 @@ export const CreateSubCategoryFunc =
   };
 
 // ==== update or edit Subcategory 
-// ========
 export const UpdateSubCategoryActiveFunc =
-  (id, navigate) => async (dispatch) => {
+  (subCategory, navigate) => async (dispatch) => {
     try {
       dispatch({ type: EDIT_SUB_CATEGORY_REQUEST });
-      const res = await fetch(`${server}/subcategory/update/${id}`, {
-        method: "POST",
+      const res = await fetch(`${server}/subcategory/update/${subCategory.id}`, {
+        method: "PATCH",
         headers: {
           "Content-Type": "application/json",
           Authorization: "Bearer " + Cookies.get("ApiLoginToken"),
         },
-        body: JSON.stringify(id),
+        body: JSON.stringify(subCategory),
       });
       dispatch({ type: EDIT_SUB_CATEGORY_FAIL });
       const data = await res.json();
-      console.log(data);
       if (!data || res.status === 400) {
         return toast.error(data.message);
       } else if (res.status === 500) {
@@ -452,7 +447,7 @@ export const UpdateSubCategoryActiveFunc =
       } else {
         dispatch({ type: EDIT_SUB_CATEGORY_SUCCESS });
         toast.success(data.message);
-        // navigate("/admin/dashboard")
+        navigate("/admin/sub-category/list")
       }
     } catch (error) {
       dispatch({ type: EDIT_SUB_CATEGORY_ERROR, payload: error.message });
@@ -460,11 +455,11 @@ export const UpdateSubCategoryActiveFunc =
   };
 
 
-// ========= Delete Parent Category =================================
+// ========= Delete Sub Category =================================
 export const subCategoryDeleteFunc = (id) => async (dispatch) => {
   try {
     dispatch({ type: DELETE_SUB_CATEGORY_REQUEST });
-    const res = await fetch(`${server}/subcategory/delete/${id.id}`, {
+    const res = await fetch(`${server}/subcategory/delete/${id}`, {
       method: "DELETE",
       headers: {
         "Content-Type": "application/json",
@@ -479,19 +474,19 @@ export const subCategoryDeleteFunc = (id) => async (dispatch) => {
     } else {
       toast.success(data.message);
       dispatch({ type: DELETE_SUB_CATEGORY_SUCCESS });
+      dispatch(getallSubCategory(""))
     }
   } catch (error) {
     dispatch({ type: DELETE_SUB_CATEGORY_ERROR });
   }
 };
 
- 
+
 
 // ======== update product
 export const UpdateproductFunc =
   (categorydata, navigate) => async (dispatch) => {
     try {
-      console.log(categorydata);
       dispatch({ type: EDIT_PRODUCT_REQUEST });
       const res = await fetch(`${server}/product/edit`, {
         method: "POST",
@@ -503,7 +498,6 @@ export const UpdateproductFunc =
       });
       dispatch({ type: EDIT_PRODUCT_FAIL });
       const data = await res.json();
-      console.log(data);
       if (!data || res.status === 400) {
         return toast.error(data.message);
       } else if (res.status === 500) {

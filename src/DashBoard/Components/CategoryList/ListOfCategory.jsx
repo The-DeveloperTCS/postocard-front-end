@@ -1,8 +1,8 @@
 import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import {
-  getallParentCategory,
-  ParentCategoryDeleteFunc
+  getallCategory,
+  categoryDeleteFunc
 } from "../../../Redux/Action/CategoryAction";
 import Loading from "../../../Layout/Loading/Loading";
 import { AiOutlineDelete } from "react-icons/ai";
@@ -14,19 +14,18 @@ const ListOfCategory = ({ }) => {
   const dispatch = useDispatch();
   const isLoading = useSelector((state) => state.category.isLoading);
   const isLoadingp = useSelector((state) => state.product.isLoading);
-  const allParentCategory = useSelector((state) => state.category.allParentCategory)
+  const allcategory = useSelector((state) => state.category.allcategory)
   const [categoryName, setCategoryName] = useState("");
   const [selectedItem, setSelectedItem] = useState(null)
   const [showConfirm, setShowConfirm] = useState(false);
 
   useEffect(() => {
-    getParentCategories()
+    getCategories()
   }, [])
 
-  const getParentCategories = () => {
-    dispatch(getallParentCategory(categoryName));
+  const getCategories = () => {
+    dispatch(getallCategory(categoryName));
   }
-
 
   const onDelete = (item) => {
     setShowConfirm(true)
@@ -42,7 +41,7 @@ const ListOfCategory = ({ }) => {
           <FilterHeader
             categoryName={categoryName}
             setCategoryName={setCategoryName}
-            getParentCategories={getParentCategories}
+            getCategories={getCategories}
           />
           {/* ============== list of category  */}
           <div className="list_product_admin">
@@ -61,40 +60,43 @@ const ListOfCategory = ({ }) => {
               focusCancelBtn
               onConfirm={() => {
                 setShowConfirm(!showConfirm);
-                dispatch(ParentCategoryDeleteFunc(selectedItem))
+                dispatch(categoryDeleteFunc(selectedItem.id))
 
               }}
               onCancel={() => {
                 setShowConfirm(!showConfirm);
               }}
             >
-              You want to delete <b> parent category
+              You want to delete <b> category
               </b>
             </SweetAlert>
             <div
-              className={`product_list_header grid grid-cols-3 font-bold py-3 border-b-2 border-b-[gray]`}
+              className={`product_list_header grid grid-cols-4 font-bold py-3 border-b-2 border-b-[gray]`}
             >
-              <h2>ID</h2>
+              <h2>Sr. No</h2>
+              <h2>Parent Category</h2>
               <h2>Category Name</h2>
               <h2>Action</h2>
             </div>
             {/* ---------- category  */}
             <div className="list_main_box">
-              {allParentCategory &&
-                allParentCategory?.map((item, index) => {
+              {allcategory &&
+                allcategory?.map((item, index) => {
                   return (
                     <div
                       key={index}
-                      className={`product_list_main grid grid-cols-3 py-3 border-b-2`}
+                      className={`product_list_main grid grid-cols-4 py-3 border-b-2`}
                     >
-                      <p>{item.id}</p>
+                      <p>{index + 1}</p>
                       <h2>
-                        {item.name}
+                        {item.parent_category?.name}
                       </h2>
-
+                      <h2>
+                        {item.CategoryName}
+                      </h2>
                       <h2>
                         <p className="flex justify-start place-items-center gap-3 relative">
-                          <Link to={`/admin/parent-category/${item.id}`} >
+                          <Link to={`/admin/category/${item.id}`} >
                             <FaRegEdit
                               className="text-[green] cursor-pointer text-[20px]"
                             />
@@ -118,7 +120,7 @@ export default ListOfCategory;
 
 
 // ========================= haeder
-const FilterHeader = ({ categoryName, setCategoryName, getParentCategories }) => {
+const FilterHeader = ({ categoryName, setCategoryName, getCategories }) => {
   return (
     <div className="filter_header flex justify-between place-items-center">
       {/* ------------- name  */}
@@ -131,9 +133,8 @@ const FilterHeader = ({ categoryName, setCategoryName, getParentCategories }) =>
             setCategoryName(e.target.value)
           }
           onKeyPress={(e) => {
-            console.log(e.key)
             if (e.key === 'Enter') {
-              getParentCategories(categoryName)
+              getCategories(categoryName)
             }
           }}
         />

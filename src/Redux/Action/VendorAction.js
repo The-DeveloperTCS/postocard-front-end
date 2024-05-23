@@ -19,7 +19,6 @@ export const CreateVendor = (vdata) => async (dispatch)=>{
         });
         dispatch({type : CREATE_VENDOR_REQUEST_FAIL});
         const data = await res.json();
-        console.log(data);
          if(!data || res.status === 400 ){
             return toast.error(data.message)
          } else if (res.status === 500){
@@ -77,7 +76,6 @@ export const GetAllVendor = () => async (dispatch) => {
         });
         dispatch({type : ASSIGNED_VENDOR_REQUEST_FAIL});
         const data = await res.json();
-        console.log(data);
          if(!data || res.status === 400 ){
             return toast.error(data.message)
          } else if (res.status === 500){

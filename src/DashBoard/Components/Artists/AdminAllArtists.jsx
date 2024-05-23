@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import {
-  ActiveOrDeactiveUser,
   AdminAllUsersFunc,
 } from "../../../Redux/Action/UserAction";
 import "./AdminAllUsers.css";
@@ -19,7 +18,6 @@ const AdminAllArtists = () => {
   }, []);
   const AdminUsers = useSelector((state) => state.user.AdminUsers);
   const isloading = useSelector((state) => state.user.loading);
-  console.log(AdminUsers);
 
   const [showModal, setShowModal] = useState(false);
   const [updateButton, setUpdateButton] = useState(false);
@@ -46,7 +44,6 @@ const AdminAllArtists = () => {
           Authorization: "Bearer " + Cookies.get("ApiLoginToken"),
         },
       });
-      console.log(res.data);
       setShowModal(false);
       getArtists();
     } catch (error) {
@@ -70,7 +67,6 @@ const AdminAllArtists = () => {
           Authorization: "Bearer " + Cookies.get("ApiLoginToken"),
         },
       });
-      console.log(res.data);
       setArtists(res.data);
     } catch (error) {
       console.log(error.message);
@@ -84,7 +80,6 @@ const AdminAllArtists = () => {
           Authorization: "Bearer " + Cookies.get("ApiLoginToken"),
         },
       });
-      console.log(res.data);
       getArtists();
       toast.success("Artist Deleted Successfully");
     } catch (error) {
@@ -103,7 +98,6 @@ const AdminAllArtists = () => {
           Authorization: "Bearer " + Cookies.get("ApiLoginToken"),
         },
       });
-      console.log(res.data);
       const getSpecific = res.data;
       setCreateForm({
         ...createForm, // Spread the existing state
@@ -125,7 +119,6 @@ const AdminAllArtists = () => {
           Authorization: "Bearer " + Cookies.get("ApiLoginToken"),
         },
       });
-      console.log(res.data);
       toast.success("Artist Updated Successfully");
       setShowModal(false);
     } catch (error) {

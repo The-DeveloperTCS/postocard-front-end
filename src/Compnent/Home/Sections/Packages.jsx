@@ -16,7 +16,6 @@ const Packages = () => {
   const dispatch = useDispatch();
   const user = useSelector((state) => state.user.user);
   const isSuccess = useSelector((state) => state.order.isSuccess);
-  console.log(user);
   const verifyToken = Cookies.get("ApiLoginToken");
   const [getPackages, setGetPackages] = useState([]);
   const [showbtnpaypl, setshowbtnpaypl] = useState(false);
@@ -49,7 +48,6 @@ const Packages = () => {
 
   const buyPlanHandler = (id, price) => {
     setGetId(id);
-    console.log(id, "card id");
     if (!verifyToken) {
       return toast.error("Please login to continue.");
     }

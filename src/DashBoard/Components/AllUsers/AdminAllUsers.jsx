@@ -15,7 +15,6 @@ const AdminAllUsers = () => {
   }, []);
   const AdminUsers = useSelector((state) => state.user.AdminUsers);
   const isloading = useSelector((state) => state.user.loading);
-  console.log(AdminUsers);
   return (
     <>
       {isloading ? (

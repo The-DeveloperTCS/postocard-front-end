@@ -25,7 +25,7 @@ const AllProductscomp = () => {
 
   return (
     <div className='AllProductscomp_admin'>
-       <Header title={"Add Item"} link={"/admin/create/product"} functioncall={()=> dispatch(getallproductforAdmin())} />
+       <Header title={"Add Item"} link={"/admin/create/product"} />
        {/* ================== list all product  */}
        <ListofProducts name1={name1} name2={name2} name3={name3} name5={name5} name4={name4} artistName={artistName} allProduct={allProduct}/>
     </div>

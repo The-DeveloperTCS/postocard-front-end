@@ -4,7 +4,7 @@ import {
   Navigate,
   Outlet,
   Route,
-  Routes,
+  Routes
 } from "react-router-dom";
 import "react-toastify/dist/ReactToastify.css";
 import { useDispatch, useSelector } from "react-redux";
@@ -35,6 +35,9 @@ import Home from "./Pages/Home";
 import CreateProduct from "./DashBoard/Pages/CreateProduct";
 import ProductView from "./DashBoard/Pages/ProductView";
 
+import Artists from "./DashBoard/Pages/Artists";
+import CreateArtist from "./DashBoard/Pages/CreateArtist";
+import EditArtist from "./DashBoard/Pages/EditArtist";
 
 
 import SingleCard from "./Pages/SingleCard";
@@ -44,14 +47,9 @@ import Product from "./Pages/Product";
 import SingleProduct from "./Pages/SingleProduct";
 import Cart from "./Pages/Cart";
 import Payment from "./Pages/Payment";
-import OrderList from "./DashBoard/Pages/OrderList";
-import SingleOrder from "./DashBoard/Pages/SingleOrder";
 import ConformOrder from "./DashBoard/Pages/ConformOrder";
 import UserOrderDetails from "./Pages/UserOrderDetails";
-import Vindor from "./DashBoard/Pages/Vindor";
-import CreateVendor from "./DashBoard/Pages/CreateVendor";
-import SingleVendor from "./DashBoard/Pages/SingleVendor";
-// import { getallCategoryforuser } from "./Redux/Action/CategoryAction";
+
 import NotFound from "./Layout/NotFoundPage/NotFound";
 import Cookies from "js-cookie";
 import Allcollection from "./Pages/Allcollection";
@@ -64,6 +62,13 @@ import UserLogin from "./Pages/UserLogin";
 import Signup from "./Pages/Signup";
 import Profile from "./Pages/Profile";
 import AllUsers from "./DashBoard/Pages/AllUsers";
+
+import OrderList from "./DashBoard/Pages/OrderList";
+import SingleOrder from "./DashBoard/Pages/SingleOrder";
+import Vindor from "./DashBoard/Pages/Vindor";
+import CreateVendor from "./DashBoard/Pages/CreateVendor";
+import SingleVendor from "./DashBoard/Pages/SingleVendor";
+// import { getallCategoryforuser } from "./Redux/Action/CategoryAction";
 import UserAnalytics from "./DashBoard/Pages/UserAnalytics";
 import Discounts from "./DashBoard/Pages/Discounts";
 import CreatePackage from "./DashBoard/Pages/CreatePackage";
@@ -76,7 +81,8 @@ import PendingOrders from "./DashboardVendor/Views/PendingOrders";
 import CompletedOrders from "./DashboardVendor/Views/CompletedOrders";
 import RejectedOrders from "./DashboardVendor/Views/RejectedOrders";
 import EditPackage from "./DashBoard/Pages/EditPackage";
-import Artists from "./DashBoard/Pages/Artists";
+
+
 
 const App = () => {
   const user = useSelector((state) => state.user.user);
@@ -198,25 +204,39 @@ const App = () => {
           <Route path="/admin/sub-category/:id" element={<EditSubCategory />} />
         </Route>
 
-
-
-
-
-
-
-
         {/* ------- all product */}
         <Route path="/admin/products" element={<AdminPrivateRoute />}>
           <Route path="/admin/products" element={<AllProducts />} />
+        </Route>
+
+        {/* ------------- admin/create/product  */}
+        <Route path="/admin/create/product" element={<AdminPrivateRoute />}>
+          <Route path="/admin/create/product" element={<CreateProduct />} />
         </Route>
 
         <Route path="/admin/products/view/:id" element={<AdminPrivateRoute />}>
           <Route path="/admin/products/view/:id" element={<ProductView />} />
         </Route>
 
-        {/* ------------- admin/create/product  */}
-        <Route path="/admin/create/product" element={<AdminPrivateRoute />}>
-          <Route path="/admin/create/product" element={<CreateProduct />} />
+
+        {/* Get all artist */}
+        <Route path="/admin/artists" element={<AdminPrivateRoute />}>
+          <Route path="/admin/artists" element={<Artists />} />
+        </Route>
+
+        {/* Create Artist */}
+        <Route path="/admin/create/artists" element={<AdminPrivateRoute />}>
+          <Route path="/admin/create/artists" element={<CreateArtist />} />
+        </Route>
+
+        {/* Update Artist */}
+        <Route path="/admin/artists/:id" element={<AdminPrivateRoute />}>
+          <Route path="/admin/artists/:id" element={<EditArtist />} />
+        </Route>
+
+
+        <Route path="/admin/allusers" element={<AdminPrivateRoute />}>
+          <Route path="/admin/allusers" element={<AllUsers />} />
         </Route>
 
         {/* ------- sub category  */}
@@ -247,7 +267,9 @@ const App = () => {
           <Route path="/admin/vendor/detail/:id" element={<SingleVendor />} />
         </Route> */}
 
-        {/* <Route path="/admin/allusers" element={<AdminPrivateRoute />}>
+        {/* 
+        
+        <Route path="/admin/allusers" element={<AdminPrivateRoute />}>
           <Route path="/admin/allusers" element={<AllUsers />} />
         </Route>
 

@@ -32,15 +32,7 @@ const SubCategoryModal = ({ setModal }) => {
   // }, [parentCategory, allcategory]);
 
   // -------------- copycategoryoff
-  const copycategoryoff = (selectedId) => {
-    console.log("Selected Category ID:", selectedId);
-    setCategoryID(selectedId);
-    // setParentcategory(name);
-    setShowCategory(false);
-  };
-
-  console.log(copycategoryoff)
-  // -----createsubcategory
+    // -----createsubcategory
   const createsubcategory = () => {
     dispatch(CreateSubCategoryFunc(categoryID, subCategory));
   };

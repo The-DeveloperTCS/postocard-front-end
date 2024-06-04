@@ -1,118 +1,134 @@
 import React, { useEffect, useState } from "react";
 import "./Style/CreateProductcomp.css";
 import { useDispatch, useSelector } from "react-redux";
-import { CreateProductFunc } from "../../../Redux/Action/ProductAction";
-import { getallSubCategory } from "../../../Redux/Action/CategoryAction";
 import { useNavigate } from "react-router-dom";
-import axios from "axios";
-import Cookies from "js-cookie";
-import { server } from "../../../Setting/GlobalVariable";
-import Artists from "../../Pages/Artists";
-import { parse } from "date-fns";
+import {
+  getallArtist
+} from "../../../Redux/Action/ArtistAction";
+import {
+  getallParentCategory,
+  getallCategory,
+  getallSubCategory,
+} from "../../../Redux/Action/CategoryAction";
+import { Button, Spinner } from "react-bootstrap";
+import TextField from '@mui/material/TextField';
+import Autocomplete from '@mui/material/Autocomplete';
+
+// import { CreateProductFunc } from "../../../Redux/Action/ProductAction";
+// import axios from "axios";
+// import Cookies from "js-cookie";
+// import { server } from "../../../Setting/GlobalVariable";
+// import Artists from "../../Pages/Artists";
+// import { parse } from "date-fns";
 
 const CreateProductcomp = () => {
-  // ---- call to get all sub categoty
   const Navigate = useNavigate();
   const dispatch = useDispatch();
+
+  const allArtist = useSelector((state) => state.artist.allArtist);
+  const allParentCategory = useSelector((state) => state.category.allParentCategory)
+  const allCategory = useSelector((state) => state.category.allcategory)
+  const allSubCategory = useSelector((state) => state.category.allsubcategory)
+  const isLoading = useSelector((state) => state.product.isLoading);
+  const [selectedParentCategory, setSelectedParentCategory] = useState(null);
+  const [selectedCategory, setSelectedCategory] = useState(null);
+  const [selectedSubCategory, setSelectedSubCategory] = useState(null);
+  const [selectedArtisit, setSelectedArtisit] = useState(null);
+
+  const [productDetails, setProductDetails] = useState({
+    ProductName: "",
+    Price: 0,
+    File1: "",
+    File2: "",
+    SubCategory: "",
+    artist_id: "",
+    isActive: false
+  });
+
+
   useEffect(() => {
-    dispatch(getallSubCategory());
-    getArtist();
+    dispatch(getallArtist(""));
+    dispatch(getallParentCategory(""))
+    dispatch(getallCategory(""))
+    dispatch(getallSubCategory(""))
   }, []);
 
-  const subCategoryData = useSelector((state) => state.category.allsubcategory);
-  const isLoading = useSelector((state) => state.product.isLoading);
-  // console.log(subCategoryData)
+  // useEffect(() => {
+  //   const filteredCategories =
+  //     subCategoryData &&
+  //     subCategoryData.filter((item) =>
+  //       item.SubCategoryName.toLowerCase().includes(
+  //         subCategorysearch.toLowerCase()
+  //       )
+  //     );
+  //   setCopyCategory(filteredCategories);
+  // }, [subCategoryData, subCategorysearch]);
 
-  const [checkbox, setCheckbox] = useState(true);
-  const [ProductName, setProductName] = useState("");
-  const [subCategory, setSubCategory] = useState("");
-  const [subCategorysearch, setSubCategorysearch] = useState("");
-  const [showsubcategory, setshowsubcategory] = useState(true);
-  const [Artist, setArtist] = useState("");
-  const [Price, setPrice] = useState(0);
-  const [File1, setFile1] = useState(null);
-  const [File2, setFile2] = useState(null);
-  // const [File3, setFile3] = useState(null);
-  // const [File4, setFile4] = useState(null);
-  const [CopyCategory, setCopyCategory] = useState(subCategoryData);
-  const [getArtists, setGetArtists] = useState("");
+  // // --------- file2change
 
-  useEffect(() => {
-    const filteredCategories =
-      subCategoryData &&
-      subCategoryData.filter((item) =>
-        item.SubCategoryName.toLowerCase().includes(
-          subCategorysearch.toLowerCase()
-        )
-      );
-    setCopyCategory(filteredCategories);
-  }, [subCategoryData, subCategorysearch]);
+  // const data = {
+  //   productDetails: productDetails,
+  //   artist_id: parseInt(Artist),
+  //   Price: Price,
+  //   File1: File1,
+  //   File2: File2,
+  //   // File3: File3,
+  //   // File4: File4,
+  //   SubCategory: subCategory,
+  // };
+  // // ----------- usedisatch
 
-  // --------- file2change
+  // // -----------createproduct
+  // const createproduct = () => {
+  //   dispatch(CreateProductFunc(data, Navigate));
+  // };
 
-  const data = {
-    ProductName: ProductName,
-    artist_id: parseInt(Artist),
-    Price: Price,
-    File1: File1,
-    File2: File2,
-    // File3: File3,
-    // File4: File4,
-    SubCategory: subCategory,
-  };
-  // ----------- usedisatch
+  // // const addcategory = (id,name)=>{
+  // //   setProductDetails(id)
+  // //   setshowsubcategory(false)
+  // //   setSubCategorysearch(name)
+  // // }
 
-  // -----------createproduct
-  const createproduct = () => {
-    dispatch(CreateProductFunc(data, Navigate));
-  };
+  // // const subcategorychangevalue = (e)=>{
+  // //   setSubCategorysearch(e.target.value)
+  // //   console.log(subCategorysearch)
+  // //   setshowsubcategory(true)
+  // // }
 
-  // const addcategory = (id,name)=>{
-  //   setSubCategory(id)
-  //   setshowsubcategory(false)
-  //   setSubCategorysearch(name)
-  // }
+  // const saveArtistId = (id) => {
+  //   setArtist(id);
+  // };
 
-  // const subcategorychangevalue = (e)=>{
-  //   setSubCategorysearch(e.target.value)
-  //   console.log(subCategorysearch)
-  //   setshowsubcategory(true)
-  // }
-
-  const saveArtistId = (id) => {
-    setArtist(id);
-  };
-
-  const getArtist = async () => {
-    try {
-      const res = await axios.get(`${server}/artists`, {
-        headers: {
-          Authorization: "Bearer " + Cookies.get("ApiLoginToken"),
-        },
-      });
-      setGetArtists(res.data);
-    } catch (error) {
-      console.log(error.message);
-    }
-  };
+  // const getArtist = async () => {
+  //   try {
+  //     const res = await axios.get(`${server}/artists`, {
+  //       headers: {
+  //         Authorization: "Bearer " + Cookies.get("ApiLoginToken"),
+  //       },
+  //     });
+  //     setGetArtists(res.data);
+  //   } catch (error) {
+  //     console.log(error.message);
+  //   }
+  // };
 
 
-  const handleSubCategoryChange = (e) => {
-    const selectedOption = e.target.value;
+  // const handleSubCategoryChange = (e) => {
+  //   const selectedOption = e.target.value;
 
-    // Find the selected subcategory
-    const selectedSubCategory = subCategoryData.find(
-      (item) => item.SubCategoryName === selectedOption
-    );
+  //   // Find the selected subcategory
+  //   const selectedSubCategory = subCategoryData.find(
+  //     (item) => item.SubCategoryName === selectedOption
+  //   );
 
-    // Update state with the selected subcategory's id
-    if (selectedSubCategory) {
-      setSubCategory(selectedSubCategory.id);
-    } else {
-      // Handle the case where no matching subcategory is found
-      setSubCategory("");
-    }
-  };
+  //   // Update state with the selected subcategory's id
+  //   if (selectedSubCategory) {
+  //     setProductDetails(selectedSubCategory.id);
+  //   } else {
+  //     // Handle the case where no matching subcategory is found
+  //     setProductDetails("");
+  //   }
+  // };
 
   return (
     <>
@@ -130,8 +146,8 @@ const CreateProductcomp = () => {
               <input
                 type="text"
                 name="productname"
-                value={ProductName}
-                onChange={(e) => setProductName(e.target.value)}
+                value={productDetails.ProductName}
+                onChange={(e) => setProductDetails({ ...productDetails, ProductName: e.target.value })}
               />
             </div>
             {/* ----------- is active  */}
@@ -140,86 +156,154 @@ const CreateProductcomp = () => {
                 type="checkbox"
                 checked
                 disabled
-                value={checkbox}
-                onChange={(e) => setCheckbox(e.target.checked)}
+                value={productDetails.isActive}
+                onChange={(e) => setProductDetails({ ...productDetails, isActive: e.target.checked })}
               />
               <label htmlFor="f4">Is Active</label>
             </div>
+
             <div className="create_product_input">
-              <label htmlFor="productname">Select Artist</label>
-              <select
-                className="my-1 outline-none bg-[whitesmoke]"
-                onChange={(e) => saveArtistId(e.target.value)}
-              >
-                <option value="">Select Artist</option>
-                {getArtists &&
-                  getArtists.map((artist) => (
-                    <option key={artist.id} value={artist.id}>
-                      {artist.name}
-                    </option>
-                  ))}
-              </select>
+              {/* <label htmlFor="productname">Select Parent Category</label> */}
+              <Autocomplete
+                id="combo-box-demo"
+                options={allParentCategory}
+                getOptionLabel={option => option.name}
+                value={selectedParentCategory}
+                onChange={(e, value) => {
+                  if (value !== null) {
+                    setProductDetails({
+                      ...productDetails,
+                      parentCategory: value.id
+                    })
+                    setSelectedParentCategory(value)
+                  }
+                  else {
+                    setProductDetails({
+                      ...productDetails,
+                      category: null
+                    })
+                    setSelectedParentCategory(value)
+                  }
+                }}
+                renderInput={(params) =>
+                  <TextField
+                    {...params}
+                    variant="standard"
+                    label="Parent Category"
+                    placeholder="Select Category"
+                    margin="normal"
+                    fullWidth
+                    className="w-full border-[1px] border-[#8080803b] rounded-sm px-2 py-1 my-1 text-[17px] outline-none bg-[#8080803a]"
+                  />}
+              />
             </div>
 
-            {/* ------------- Artist Name */}
-            {/* <div className="create_product_input">
-              <label htmlFor="Artist Name">Artist Name</label>
-              <input
-                type="text"
-                name="Artistname"
-                value={Artist}
-                onChange={(e) => setArtist(e.target.value)}
+            <div className="create_product_input">
+              {/* <label htmlFor="productname">Select Parent Category</label> */}
+              <Autocomplete
+                id="combo-box-demo"
+                options={allCategory}
+                getOptionLabel={option => option.name}
+                value={selectedCategory}
+                onChange={(e, value) => {
+                  if (value !== null) {
+                    setProductDetails({
+                      ...productDetails,
+                      category: value.id
+                    })
+                    setSelectedCategory(value)
+                  }
+                  else {
+                    setProductDetails({
+                      ...productDetails,
+                      category: null
+                    })
+                    setSelectedCategory(value)
+                  }
+                }}
+                renderInput={(params) =>
+                  <TextField
+                    {...params}
+                    variant="standard"
+                    label="Category"
+                    placeholder="Select Category"
+                    margin="normal"
+                    fullWidth
+                    className="w-full border-[1px] border-[#8080803b] rounded-sm px-2 py-1 my-1 text-[17px] outline-none bg-[#8080803a]"
+                  />}
               />
-            </div> */}
-            {/* <div className="create_product_input">
-              <label htmlFor="Artist Name">Sub Category</label>
-              <input
-                type="text"
-                name="search"
-                value={subCategorysearch}
-                onChange={subcategorychangevalue}
-                autoComplete="off"
-              />
-              <div className="show_subcategory">
-                {subCategorysearch && showsubcategory && (
-                  <div className=" overflow-auto bg-white z-10 filter_category">
-                    {CopyCategory &&
-                      CopyCategory.map((item, index) => {
-                        return (
-                          <p
-                            onClick={
-                             ()=> addcategory(item.id,item.SubCategoryName)
-                            }
-                            key={index}
-                          >
-                            {item.SubCategoryName}
-                          </p>
-                        );
-                      })}
-                  </div>
-                )}
-              </div>
-            </div> */}
-            {/* ------------ price */}
+            </div>
 
-            <div className="create_product_input form-group my-2">
-              <label htmlFor="Artist Name">Sub Category</label>
-              <select
-                className="form-control"
-                value={
-                  subCategoryData.find((item) => item.id === subCategory)
-                    ?.SubCategoryName || ""
-                }
-                onChange={handleSubCategoryChange}
-              >
-                <option value="">Please Select SubCategory</option>
-                {subCategoryData &&
-                  subCategoryData.map((item, index) => (
-                    <option key={index} value={item.SubCategoryName}>
-                      {item.SubCategoryName}
-                    </option>
-                  ))}
-              </select>
+            <div className="create_product_input">
+              {/* <label htmlFor="productname">Select Parent Category</label> */}
+              <Autocomplete
+                id="combo-box-demo"
+                options={allSubCategory}
+                getOptionLabel={option => option.name}
+                value={selectedSubCategory}
+                onChange={(e, value) => {
+                  if (value !== null) {
+                    setProductDetails({
+                      ...productDetails,
+                      SubCategory: value.id
+                    })
+                    setSelectedSubCategory(value)
+                  }
+                  else {
+                    setProductDetails({
+                      ...productDetails,
+                      SubCategory: null
+                    })
+                    setSelectedSubCategory(value)
+                  }
+                }}
+                renderInput={(params) =>
+                  <TextField
+                    {...params}
+                    variant="standard"
+                    label="Sub Category"
+                    placeholder="Select Sub-Category"
+                    margin="normal"
+                    fullWidth
+                    className="w-full border-[1px] border-[#8080803b] rounded-sm px-2 py-1 my-1 text-[17px] outline-none bg-[#8080803a]"
+                  />}
+              />
+            </div>
+
+            <div className="create_product_input">
+              {/* <label htmlFor="productname">Select Parent Category</label> */}
+              <Autocomplete
+                id="combo-box-demo"
+                options={allArtist}
+                getOptionLabel={option => option.name}
+                value={selectedArtisit}
+                onChange={(e, value) => {
+                  if (value !== null) {
+                    setProductDetails({
+                      ...productDetails,
+                      artist_id: value.id
+                    })
+                    setSelectedArtisit(value)
+                  }
+                  else {
+                    setProductDetails({
+                      ...productDetails,
+                      artist_id: null
+                    })
+                    setSelectedArtisit(value)
+                  }
+                }}
+                renderInput={(params) =>
+                  <TextField
+                    {...params}
+                    variant="standard"
+                    label="Artist"
+                    placeholder="Select Artist"
+                    margin="normal"
+                    fullWidth
+                    className="w-full border-[1px] border-[#8080803b] rounded-sm px-2 py-1 my-1 text-[17px] outline-none bg-[#8080803a]"
+                  />}
+              />
             </div>
 
             <div className="create_product_input">
@@ -227,8 +311,8 @@ const CreateProductcomp = () => {
               <input
                 type="number"
                 name="price"
-                value={Price}
-                onChange={(e) => setPrice(e.target.value)}
+                value={productDetails.Price}
+                onChange={(e) => setProductDetails({ ...productDetails, Price: e.target.value })}
               />
             </div>
             {/* ------------ file 1 */}
@@ -238,7 +322,7 @@ const CreateProductcomp = () => {
                 type="file"
                 accept=".jpg, .jpeg, .png"
                 name="File1"
-                onChange={(e) => setFile1(e.target.files[0])}
+                onChange={(e) => setProductDetails({ ...productDetails, File1: e.target.files[0] })}
               />
             </div>
             {/* ------------ file 2 */}
@@ -248,33 +332,14 @@ const CreateProductcomp = () => {
                 type="file"
                 accept=".jpg, .jpeg, .png"
                 name="File2"
-                onChange={(e) => setFile2(e.target.files[0])}
+                onChange={(e) => setProductDetails({ ...productDetails, File2: e.target.files[0] })}
               />
             </div>
-            {/* ------------ file 3 */}
-            {/* <div className="create_product_input">
-              <label htmlFor="f3">File 3</label>
-              <input
-                type="file"
-                accept=".jpg, .jpeg, .png"
-                name="File3"
-                onChange={(e) => setFile3(e.target.files[0])}
-              />
-            </div> */}
-            {/* ------------ file 4 */}
-            {/* <div className="create_product_input">
-              <label htmlFor="f4">File 4</label>
-              <input
-                type="file"
-                accept=".jpg, .jpeg, .png"
-                name="File4"
-                onChange={(e) => setFile4(e.target.files[0])}
-              />
-            </div> */}
 
-            {/* ------button */}
           </div>
-          <button onClick={createproduct} className="btn_create_p">
+          <button
+            // onClick={createproduct}
+            className="btn_create_p">
             Create Product
           </button>
         </div>

@@ -6,6 +6,8 @@ import { CartReducer } from "./Reducer/CartReducer";
 import { OrderReducer } from "./Reducer/OrderReducer";
 import { VendorReducerA } from "./Reducer/VendorReducer";
 import { AllordersReducer } from "./Reducer/VendorOrderReducer";
+import { ArtistReducer } from "./Reducer/ArtistReducer";
+
 
 
 export const Store = configureStore({
@@ -16,6 +18,7 @@ export const Store = configureStore({
         cart : CartReducer,
         order : OrderReducer,
         vendor : VendorReducerA,
-        vendorOrders : AllordersReducer
+        vendorOrders : AllordersReducer,
+        artist :ArtistReducer
     }
 })

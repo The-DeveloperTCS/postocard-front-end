@@ -162,7 +162,7 @@ export const ParentCategoryUpdateFunc = (parentCategoryData, id, navigate) => as
   try {
     dispatch({ type: PARENT_CATEGORY_UPDATE_REQUEST });
     const res = await fetch(`${server}/parentcategory/update/${id}`, {
-      method: "PATCH",
+      method: "PUT",
       headers: {
         'Accept': 'application/json',
         "Content-Type": "application/json",
@@ -294,7 +294,7 @@ export const UpdateCategoryActiveFunc =
     try {
       dispatch({ type: EDIT_CATEGORY_REQUEST });
       const res = await fetch(`${server}/category/update/${id}`, {
-        method: "PATCH",
+        method: "PUT",
         headers: {
           "Content-Type": "application/json",
           Authorization: "Bearer " + Cookies.get("ApiLoginToken"),
@@ -431,7 +431,7 @@ export const UpdateSubCategoryActiveFunc =
     try {
       dispatch({ type: EDIT_SUB_CATEGORY_REQUEST });
       const res = await fetch(`${server}/subcategory/update/${subCategory.id}`, {
-        method: "PATCH",
+        method: "PUT",
         headers: {
           "Content-Type": "application/json",
           Authorization: "Bearer " + Cookies.get("ApiLoginToken"),

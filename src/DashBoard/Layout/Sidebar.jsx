@@ -59,11 +59,7 @@ const Sidebar = ({ show, setShow }) => {
               <NavLink to="/admin/vendor">
                 <li>Vendor List</li>
               </NavLink>
-              {/* <NavLink to="/admin/subcategory/list">
-            <li>
-              
-            </li>
-            </NavLink> */}
+            
             </ul>
           </li>
         </div>
@@ -73,7 +69,7 @@ const Sidebar = ({ show, setShow }) => {
         <NavLink to={"/admin/artists"}>
         <li>Artists</li>
         </NavLink>
-        <NavLink to={"/admin/user/Analytics"}>
+        {/* <NavLink to={"/admin/user/Analytics"}>
           <li>Users Analytics</li>
         </NavLink>
         <NavLink to={"/admin/product/discount"}>
@@ -81,7 +77,7 @@ const Sidebar = ({ show, setShow }) => {
         </NavLink>
         <NavLink to={"/admin/create/package"}>
           <li>Create Package</li>
-        </NavLink>
+        </NavLink> */}
       </ul>
     </div>
   );

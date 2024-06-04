@@ -24,6 +24,36 @@ import {
 } from "../Variables/UserVariables";
 import Cookies from "js-cookie";
 
+
+
+// =============== get all product  for admin
+
+export const getallproductforAdmin = (productName) => async (dispatch) => {
+  try {
+    dispatch({ type: GET_ADMIN_PRODUCT_REQUEST });
+    const res = await fetch(`${server}/product/adminlist?ProductName=${productName}&&Price=&&CategoryName=`, {
+      method: "GET",
+      headers: {
+        "Content-Type": "application/json",
+        Authorization: "Bearer " + Cookies.get("ApiLoginToken"),
+      },
+    });
+    const data = await res.json();
+    dispatch({ type: GET_ADMIN_PRODUCT_FAIL });
+    if (!data || res.status === 401) {
+      return;
+    } else if (res.status === 500) {
+      return toast.error("Internel Server Error new");
+    } else {
+      dispatch({ type: GET_ADMIN_PRODUCT_SUCCESS, payload: data.data.data });
+    }
+  } catch (error) {
+    dispatch({ type: GET_ADMIN_PRODUCT_ERROR, payload: error.message });
+  }
+};
+
+
+
 export const CreateProductFunc = (newdata, navigate) => async (dispatch) => {
   try {
     dispatch({ type: CREATE_PRODUCT_REQUEST });
@@ -93,31 +123,7 @@ export const getallproduct = () => async (dispatch) => {
     dispatch({ type: GET_PRODUCT_ERROR, payload: error.message });
   }
 };
-// =============== get all product  for admin
 
-export const getallproductforAdmin = (productName, price, categoryName) => async (dispatch) => {
-  try {
-    dispatch({ type: GET_ADMIN_PRODUCT_REQUEST });
-    const res = await fetch(`${server}/product/adminlist?ProductName=${productName}&&Price=${price}&&CategoryName=${categoryName}`, {
-      method: "GET",
-      headers: {
-        "Content-Type": "application/json",
-        Authorization: "Bearer " + Cookies.get("ApiLoginToken"),
-      },
-    });
-    const data = await res.json();
-    dispatch({ type: GET_ADMIN_PRODUCT_FAIL });
-    if (!data || res.status === 401) {
-      return;
-    } else if (res.status === 500) {
-      return toast.error("Internel Server Error new");
-    } else {
-      dispatch({ type: GET_ADMIN_PRODUCT_SUCCESS, payload: data.data });
-    }
-  } catch (error) {
-    dispatch({ type: GET_ADMIN_PRODUCT_ERROR, payload: error.message });
-  }
-};
 
 // --------- get single product
 export const getSingleProduct = (id) => async (dispatch) => {

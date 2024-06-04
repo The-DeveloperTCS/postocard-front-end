@@ -285,10 +285,11 @@ export const AdminAllUsersFunc = (id) => async (dispatch) => {
     });
     dispatch({ type: GET_ADMIN_ALL_FAIL });
     const data = await res.json();
+    console.log(data , 'data')
     if (!data || res.status === 400) {
       return;
     } else {
-      dispatch({ type: GET_ADMIN_ALL_SUCCESS, payload: data.userList });
+      dispatch({ type: GET_ADMIN_ALL_SUCCESS, payload: data.userList.data });
     }
   } catch (error) {
     dispatch({ type: GET_ADMIN_ALL_ERROR });
@@ -301,7 +302,7 @@ export const ActiveOrDeactiveUser = (id) => async (dispatch) => {
     dispatch({ type: ACTIVE_DEACTIVE_USER_REQUEST });
 
     const res = await fetch(`${server}/admin/users/${id}/toggleactivation`, {
-      method: "PATCH",
+      method: "PUT",
       headers: {
         "Content-Type": "application/json",
         Authorization: "Bearer " + Cookies.get("ApiLoginToken"),
@@ -314,6 +315,7 @@ export const ActiveOrDeactiveUser = (id) => async (dispatch) => {
     } else {
       dispatch({ type: ACTIVE_DEACTIVE_USER_SUCCESS });
       toast.success(data.message);
+      dispatch(AdminAllUsersFunc())
     }
   } catch (error) {
     dispatch({ type: ACTIVE_DEACTIVE_USER_ERROR });

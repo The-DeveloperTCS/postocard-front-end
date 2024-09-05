@@ -35,9 +35,9 @@ const Allcollection = () => {
     } else {
       const FilterDatabyName =
         allProduct &&
-        allProduct.filter((item) =>
-          item.ProductName.toLowerCase().includes(search.toLowerCase())
-        );
+        // allProduct.filter((item) =>
+        //   item.ProductName.toLowerCase().includes(search.toLowerCase())
+        // );
       setCopyData(FilterDatabyName);
     }
   };

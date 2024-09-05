@@ -55,6 +55,12 @@
 }
 
 /* accountsDetail-dashboard-main */
+/* .accountsDetail-dashboard-main {
+    border: 1px solid #30404D;
+    padding: 10px;
+    border-radius: 10px;
+} */
+
 .accountsDetail-dashboard-main h2 {
     color: #30404D;
     font-family: "Luckiest Guy", cursive;

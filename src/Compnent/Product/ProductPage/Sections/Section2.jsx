@@ -53,11 +53,11 @@ const Section2 = () => {
     } else {
       const FilterDatabyName =
         allProduct &&
-        allProduct.filter((item) =>
-          item.ProductName.toLocaleLowerCase().includes(
-            search.toLocaleLowerCase()
-          )
-        );
+        // allProduct.filter((item) =>
+        //   item.ProductName.toLocaleLowerCase().includes(
+        //     search.toLocaleLowerCase()
+        //   )
+        // );
       setCopyData(FilterDatabyName);
     }
   };

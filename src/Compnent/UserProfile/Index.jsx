@@ -15,8 +15,8 @@ const Index = () => {
   return (
     <ProfileAuth>
       <div
-        className="w-full relative parent min-h-[100vh]  flex justify-start place-items-start gap-2 my-3 px-[30px] "
-        style={{ marginTop: "90px" }}
+        className="w-full relative parent  flex justify-start place-items-start gap-2 my-3  "
+        style={{ marginTop: "90px", padding:"0px 20px" }}
       >
         <div className="arrow absolute top-[-10px] left-1">
           {active !== 1 && (
@@ -31,7 +31,7 @@ const Index = () => {
           <Sidebar active={active} setActive={setActive} />
         </div>
         {/* ---- content  */}
-        <div className="w-full user_profile_content px-[30px]">
+        <div className="w-full user_profile_content " style={{border:"1px solid #30404D", padding:"10px" ,borderRadius:"10px", background:"#A7EAFF"}}>
           {active === 1 && (
             <UserDashboard active={active} setActive={setActive} />
           )}

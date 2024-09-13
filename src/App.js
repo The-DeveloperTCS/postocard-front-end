@@ -45,15 +45,10 @@ const App = () => {
         <Route path="/privacypolicy" element={<PrivicyPolicy />} />
         <Route path="/termsconditions" element={<TermsAndConditions />} />
         <Route path="/refundpolicy" element={<RefundPolicy />} />
+        
         {/* ---- single card  */}
         <Route path="/singleCard/:id" element={<SingleCard />} />
         <Route path="/allcollection/:all" element={<Allcollection />} />
-
-        {/* ============ user route  */}
-        <Route path="/user/Login" element={<UserLogin />} />
-        <Route path="/user/signup" element={<Signup />} />
-        <Route path="/user/profile" element={<Profile />} />
-        <Route path="/user/order/details/:id" element={<UserOrderDetails />} />
 
         {/* -------- product Page  */}
         <Route exact path="/products/:category" element={<Product />} />
@@ -61,6 +56,13 @@ const App = () => {
         <Route exact path="/cart" element={<Cart />} />
         <Route exact path="/payment" element={<Payment />} />
         {/* <Route exact path="/conformOrder" element={<ConformOrder />} /> */}
+
+        {/* ============ user route  */}
+        <Route path="/user/Login" element={<UserLogin />} />
+        <Route path="/user/signup" element={<Signup />} />
+        <Route path="/user/profile" element={<Profile />} />
+        <Route path="/user/order/details/:id" element={<UserOrderDetails />} />
+
         {/* ===== page not found  */}
         <Route path="/*" element={<NotFound />} />
 

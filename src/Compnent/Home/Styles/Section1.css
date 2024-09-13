@@ -41,9 +41,10 @@
 }
 
 .section1-box1 img {
-  width: 100%;
+  width: 80px;
+ height:80px;
   margin: auto;
-  padding: 10px;
+  padding: 12px;
 }
 
 .for-box1-img {

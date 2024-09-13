@@ -22,7 +22,7 @@
 
 @media (max-width: 900px) {
   .user_profile_content {
-    padding: 10px 0px !important;
+    padding: 10px 10px !important;
   }
 
   .parent {

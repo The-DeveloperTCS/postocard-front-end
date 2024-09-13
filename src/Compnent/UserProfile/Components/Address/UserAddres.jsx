@@ -204,8 +204,8 @@ const UserAddres = () => {
 
       {/* ==================== create new address  */}
       {showmoadl && (
-        <div>
-          <div className="fixed left-0 top-0 flex h-full w-full items-center justify-center bg-black bg-opacity-50 ">
+        <div >
+          <div className="fixed left-0 top-0 flex h-full w-full items-center justify-center bg-black bg-opacity-50 " style={{zIndex:"99999"}}>
             <div
               className="max-h-full relative w-full max-w-3xl overflow-y-auto sm:rounded-2xl bg-white"
               style={{ padding: "0px 20px" }}

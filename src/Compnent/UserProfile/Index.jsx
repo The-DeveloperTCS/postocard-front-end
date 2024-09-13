@@ -31,7 +31,7 @@ const Index = () => {
           <Sidebar active={active} setActive={setActive} />
         </div>
         {/* ---- content  */}
-        <div className="w-full user_profile_content " style={{border:"1px solid #30404D", padding:"10px" ,borderRadius:"10px", background:"#A7EAFF"}}>
+        <div className="w-full h-100vh user_profile_content " style={{border:"1px solid #30404D", padding:"10px" ,borderRadius:"10px", background:"#A7EAFF"}}>
           {active === 1 && (
             <UserDashboard active={active} setActive={setActive} />
           )}

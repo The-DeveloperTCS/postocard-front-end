@@ -63,27 +63,6 @@ import Signup from "./Pages/Signup";
 import Profile from "./Pages/Profile";
 import AllUsers from "./DashBoard/Pages/AllUsers";
 
-import OrderList from "./DashBoard/Pages/OrderList";
-import SingleOrder from "./DashBoard/Pages/SingleOrder";
-import Vindor from "./DashBoard/Pages/Vindor";
-import CreateVendor from "./DashBoard/Pages/CreateVendor";
-import SingleVendor from "./DashBoard/Pages/SingleVendor";
-// import { getallCategoryforuser } from "./Redux/Action/CategoryAction";
-import UserAnalytics from "./DashBoard/Pages/UserAnalytics";
-import Discounts from "./DashBoard/Pages/Discounts";
-import CreatePackage from "./DashBoard/Pages/CreatePackage";
-
-import VendorDashBoard from "./DashboardVendor/Views/VendorDashBoard";
-import VendorLogin from "./DashboardVendor/Pages/VendorLogin";
-import VendorAuth from "./Hooks/VendorAuth";
-import Orders from "./DashboardVendor/Views/Orders";
-import PendingOrders from "./DashboardVendor/Views/PendingOrders";
-import CompletedOrders from "./DashboardVendor/Views/CompletedOrders";
-import RejectedOrders from "./DashboardVendor/Views/RejectedOrders";
-import EditPackage from "./DashBoard/Pages/EditPackage";
-
-
-
 const App = () => {
   const user = useSelector((state) => state.user.user);
   const isAuthantication = useSelector((state) => state.user.isAuthantication);

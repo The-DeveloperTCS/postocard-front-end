@@ -201,7 +201,7 @@ export const getuseraddress = () => async (dispatch) => {
   try {
     dispatch({ type: GET_ADDRESS_REQUEST });
 
-    const res = await fetch(`${server}/user/addresses`, {
+    const res = await fetch(`${server}/user/addresses/all`, {
       method: "GET",
       headers: {
         "Content-Type": "application/json",
@@ -285,7 +285,7 @@ export const AdminAllUsersFunc = (id) => async (dispatch) => {
     });
     dispatch({ type: GET_ADMIN_ALL_FAIL });
     const data = await res.json();
-    console.log(data , 'data')
+    console.log(data, 'data')
     if (!data || res.status === 400) {
       return;
     } else {
@@ -396,6 +396,28 @@ export const ProfileUpdatte = (name, email) => async (dispatch) => {
     dispatch({ type: PROFILE_UPDATE_ERROR });
   }
 };
+
+
+export const UserDetails = (user) => async (dispatch) => {
+  try {
+    dispatch({ type: ANALYTICS_USER_REQUEST });
+
+    const res = await fetch(`${server}/user/${user.userId}`, {
+      method: "GET",
+      headers: {
+        "Content-Type": "application/json",
+        Authorization: "Bearer " + Cookies.get("ApiLoginToken"),
+      },
+    });
+    dispatch({ type: ANALYTICS_USER_FAIL });
+    const data = await res.json();
+    return data;
+
+  } catch (error) {
+    dispatch({ type: ANALYTICS_USER_ERROR });
+  }
+};
+
 
 // ========= create Package =================================
 export const PackgaeCreateFunc = (packageData) => async (dispatch) => {

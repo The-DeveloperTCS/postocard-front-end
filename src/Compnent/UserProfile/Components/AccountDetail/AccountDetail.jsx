@@ -8,6 +8,8 @@ import {
 } from "../../../../Redux/Action/UserAction";
 import Loading from "../../../../Layout/Loading/Loading";
 import "../../Sidebar/style/stylishSidebar.css";
+import { server } from "../../../../Setting/GlobalVariable";
+import Cookies from "js-cookie";
 
 const AccountDetail = () => {
   const user = useSelector((state) => state.user.user);
@@ -20,6 +22,8 @@ const AccountDetail = () => {
   useEffect(() => {
     setname(user?.name ? user?.name : "");
     setemail(user?.email ? user?.email : "");
+    setUserName()
+
   }, []);
   const dispatch = useDispatch();
   const updatepassword = () => {
@@ -47,8 +51,24 @@ const AccountDetail = () => {
       return toast.error("please Enter your email");
     }
     dispatch(ProfileUpdatte(name, email));
+    setUserName()
   };
   const loading = useSelector((state) => state.user.loading);
+
+
+  const setUserName = async () => {
+    const res = await fetch(`${server}/user`, {
+      method: "GET",
+      headers: {
+        "Content-Type": "application/json",
+        Authorization: "Bearer " + Cookies.get("ApiLoginToken"),
+      },
+    });
+    const data = await res.json();
+    console.log(data, 'data')
+    setname(data?.user?.name)
+  }
+
 
   return (
     <>
@@ -67,7 +87,7 @@ const AccountDetail = () => {
                   htmlFor="Email"
                   className="block text-[15px] font-bold mb-1 px-[3px]"
                 >
-                  First Name
+                  Name
                 </label>
                 <input
                   type="text"
@@ -84,13 +104,16 @@ const AccountDetail = () => {
                   htmlFor="Email"
                   className="block text-[15px] font-bold mb-1 px-[3px]"
                 >
-                  Last Name
+                  Email Address
                 </label>
                 <input
-                  type="text"
-                  placeholder="Please enter your Last Name"
+                  type="email"
+                  readOnly
+                  value={email}
+                  onChange={(e) => setemail(e.target.value)}
+                  placeholder="Please enter your email"
                   className={`w-full border-[1px] border-[#dbdbdb] outline-none px-[5px] py-[8px] `}
-                  name="lastName"
+                  name="email"
                 />
               </div>
             </div>
@@ -108,23 +131,7 @@ const AccountDetail = () => {
             name="name"
           />
         </div> */}
-            <div className="my-2 w-full">
-              <label
-                htmlFor="Email"
-                className="block text-[15px] font-bold mb-1 px-[3px]"
-              >
-                Email Address
-              </label>
-              <input
-                type="email"
-                // readOnly
-                value={email}
-                onChange={(e) => setemail(e.target.value)}
-                placeholder="Please enter your email"
-                className={`w-full border-[1px] border-[#dbdbdb] outline-none px-[5px] py-[8px] `}
-                name="email"
-              />
-            </div>
+
             <button
               className="text-[17px] px-[30px] py-[8px] bg-[#F49E3F] text-[white] rounded-sm mt-1 mb-3"
               onClick={updateProfile}

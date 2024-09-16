@@ -9,34 +9,27 @@ import Loading from "../../../../Layout/Loading/Loading";
 const UpdateAddress = ({ isEdit, id = 1 }) => {
   const dispatch = useDispatch();
   const loading = useSelector((state) => state.user.loading);
+  const user = useSelector((state) => state.user.user);
   const userAddress = useSelector((state) => state.user.userAddress);
   const [filtertheaddress, setFiltertheaddres] = useState([]);
 
-  const [firstName, setFirstName] = useState("");
-  const [lastName, setLastName] = useState("");
-  const [country, setCountry] = useState("");
-  const [streetaddress, setStreetAddress] = useState("");
-  const [city, setCity] = useState("");
-  const [town, setTown] = useState("");
-  const [state, setState] = useState("");
-  const [postocode, setpostalCode] = useState(null);
-  const [phone, setPhone] = useState("");
-  const [addressName, setAddressName] = useState("");
+  const [address, setAddress] = useState({
+    full_name: "",
+    address_name: "",
+    phone: "",
 
-  const data = {
-    full_name: firstName + lastName,
-    country: country,
-    street_address: streetaddress,
-    City: city,
-    town: town,
-    state: state,
-    postal_code: postocode,
-    phone: phone,
-    address_name: addressName,
-  };
+    street_address: "",
+    town: "",
+
+    city: "",
+    postal_code: "",
+    state: "",
+    country: "",
+    user_id: user?.id,
+  });
 
   const UpdateAddress = async () => {
-    await dispatch(updateuseraddress(data, id));
+    await dispatch(updateuseraddress(address, id));
     dispatch(getuseraddress());
   };
 
@@ -50,17 +43,8 @@ const UpdateAddress = ({ isEdit, id = 1 }) => {
   }, [id]);
   useEffect(() => {
     if (filtertheaddress.length > 0) {
-      const address = filtertheaddress[0]; // Access the first (and only) item in the filtered array
-      setFirstName(address.full_name.split(" ")[0] || ""); // Split full_name into first and last names
-      setLastName(address.full_name.split(" ")[1] || "");
-      setCountry(address.country || "");
-      setStreetAddress(address.street_address || "");
-      setCity(address.city || "");
-      setTown(address.town || "");
-      setState(address.state || "");
-      setpostalCode(address.postal_code || null);
-      setPhone(address.phone || "");
-      setAddressName(address.address_name || "");
+      const addressDetail = filtertheaddress[0]; // Access the first (and only) item in the filtered array
+      setAddress(addressDetail)
     }
   }, [filtertheaddress]);
   return (
@@ -70,22 +54,6 @@ const UpdateAddress = ({ isEdit, id = 1 }) => {
       ) : (
         <>
           <div className="">
-            <div className="my-3 ">
-              <label
-                htmlFor=""
-                className="block my-1 px-1 text-[18px] font-bold"
-              >
-                Address Name
-              </label>
-              <input
-                type="text"
-                placeholder="Address Name"
-                value={addressName}
-                readOnly={!isEdit}
-                onChange={(e) => setAddressName(e.target.value)}
-                className="w-full  outline-none py-2 px-2 text-[16px] border-[1px] border-[#80808046]"
-              />
-            </div>
             <div className="my-2">
               <label
                 htmlFor=""
@@ -95,45 +63,44 @@ const UpdateAddress = ({ isEdit, id = 1 }) => {
               </label>
               <input
                 type="text"
-                placeholder="First Name"
-                value={firstName}
-                readOnly={!isEdit}
-                onChange={(e) => setFirstName(e.target.value)}
+                required
+                value={address.full_name}
+                onChange={(e) => setAddress({ ...address, full_name: e.target.value })}
                 className="w-full outline-none py-2 px-2 text-[16px] border-[1px] border-[#80808046]"
               />
             </div>
-            {/* <div className="my-2">
+            <div className="my-3 ">
               <label
                 htmlFor=""
-                className="block my-1 px-1 text-[15px] font-bold"
+                className="block my-1 px-1 text-[18px] font-bold"
               >
-                Last Name
+                Address Name
               </label>
               <input
                 type="text"
-                placeholder="Last Name"
-                value={lastName}
-                readOnly={!isEdit}
-                onChange={(e) => setLastName(e.target.value)}
+                required
+                value={address.address_name}
+                onChange={(e) => setAddress({ ...address, address_name: e.target.value })}
                 className="w-full outline-none py-2 px-2 text-[16px] border-[1px] border-[#80808046]"
               />
-            </div> */}
+            </div>
+
             <div className="my-2">
               <label
                 htmlFor=""
                 className="block my-1 px-1 text-[15px] font-bold"
               >
-                Country
+                Phone:
               </label>
               <input
-                type="text"
-                placeholder="Country"
-                value={country}
-                readOnly={!isEdit}
-                onChange={(e) => setCountry(e.target.value)}
+                type="number"
+                required
+                value={address.phone}
+                onChange={(e) => setAddress({ ...address, phone: e.target.value })}
                 className="w-full outline-none py-2 px-2 text-[16px] border-[1px] border-[#80808046]"
               />
             </div>
+
             <div className="my-2">
               <label
                 htmlFor=""
@@ -143,10 +110,27 @@ const UpdateAddress = ({ isEdit, id = 1 }) => {
               </label>
               <input
                 type="text"
-                placeholder="Street Address"
-                value={streetaddress}
-                readOnly={!isEdit}
-                onChange={(e) => setStreetAddress(e.target.value)}
+                required
+                value={address.street_address}
+                onChange={(e) => setAddress({ ...address, street_address: e.target.value })}
+                className="w-full outline-none py-2 px-2 text-[16px] border-[1px] border-[#80808046]"
+              />
+            </div>
+
+
+
+            <div className="my-2">
+              <label
+                htmlFor=""
+                className="block my-1 px-1 text-[15px] font-bold"
+              >
+                Town
+              </label>
+              <input
+                type="text"
+                required
+                value={address.town}
+                onChange={(e) => setAddress({ ...address, town: e.target.value })}
                 className="w-full outline-none py-2 px-2 text-[16px] border-[1px] border-[#80808046]"
               />
             </div>
@@ -159,26 +143,26 @@ const UpdateAddress = ({ isEdit, id = 1 }) => {
               </label>
               <input
                 type="text"
-                placeholder="City"
-                value={city}
-                readOnly={!isEdit}
-                onChange={(e) => setCity(e.target.value)}
+                required
+                value={address.city}
+                onChange={(e) => setAddress({ ...address, city: e.target.value })}
                 className="w-full outline-none py-2 px-2 text-[16px] border-[1px] border-[#80808046]"
               />
             </div>
+
+
             <div className="my-2">
               <label
                 htmlFor=""
                 className="block my-1 px-1 text-[15px] font-bold"
               >
-                Town
+                Postal Code
               </label>
               <input
-                type="text"
-                placeholder="Town"
-                value={town}
-                readOnly={!isEdit}
-                onChange={(e) => setTown(e.target.value)}
+                type="number"
+                required
+                value={address.postal_code}
+                onChange={(e) => setAddress({ ...address, postal_code: e.target.value })}
                 className="w-full outline-none py-2 px-2 text-[16px] border-[1px] border-[#80808046]"
               />
             </div>
@@ -191,10 +175,9 @@ const UpdateAddress = ({ isEdit, id = 1 }) => {
               </label>
               <input
                 type="text"
-                placeholder="State"
-                value={state}
-                readOnly={!isEdit}
-                onChange={(e) => setState(e.target.value)}
+                required
+                value={address.state}
+                onChange={(e) => setAddress({ ...address, state: e.target.value })}
                 className="w-full outline-none py-2 px-2 text-[16px] border-[1px] border-[#80808046]"
               />
             </div>
@@ -203,30 +186,13 @@ const UpdateAddress = ({ isEdit, id = 1 }) => {
                 htmlFor=""
                 className="block my-1 px-1 text-[15px] font-bold"
               >
-                Postal Code
+                Country
               </label>
               <input
                 type="text"
-                placeholder="Postal Code"
-                value={postocode}
-                readOnly={!isEdit}
-                onChange={(e) => setpostalCode(e.target.value)}
-                className="w-full outline-none py-2 px-2 text-[16px] border-[1px] border-[#80808046]"
-              />
-            </div>
-            <div className="my-2">
-              <label
-                htmlFor=""
-                className="block my-1 px-1 text-[15px] font-bold"
-              >
-                Phone Number
-              </label>
-              <input
-                type="text"
-                placeholder="Phone Number"
-                value={phone}
-                readOnly={!isEdit}
-                onChange={(e) => setPhone(e.target.value)}
+                required
+                value={address.country}
+                onChange={(e) => setAddress({ ...address, country: e.target.value })}
                 className="w-full outline-none py-2 px-2 text-[16px] border-[1px] border-[#80808046]"
               />
             </div>

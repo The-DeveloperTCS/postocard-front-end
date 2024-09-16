@@ -9,7 +9,6 @@ import { LuFolderSymlink } from "react-icons/lu";
 import { MdKeyboardBackspace } from "react-icons/md";
 import UpdateAddress from "./UpdateAddress";
 import { RxCross1 } from "react-icons/rx";
-import { toast } from "react-toastify";
 import Loading from "../../../../Layout/Loading/Loading";
 import { MdDeleteOutline } from "react-icons/md";
 import "../../Sidebar/style/stylishSidebar.css";
@@ -24,48 +23,25 @@ const UserAddres = () => {
   const [showmoadl, setShowMoadl] = useState(false);
 
   // ==============================
-  const [firstName, setFirstName] = useState("");
-  const [lastName, setLastName] = useState("");
-  const [country, setCountry] = useState("");
-  const [streetaddress, setStreetAddress] = useState("");
-  const [city, setCity] = useState("");
-  const [town, setTown] = useState("");
-  const [state, setState] = useState("");
-  const [postocode, setpostalCode] = useState(null);
-  const [phone, setPhone] = useState("");
-  const [addressName, setAddressName] = useState("");
+  const [address, setAddress] = useState({
+    full_name: "",
+    address_name: "",
+    phone: "",
+
+    street_address: "",
+    town: "",
+
+    city: "",
+    postal_code: "",
+    state: "",
+    country: "",
+    user_id: user?.id,
+  });
   // ---
   const [id, setId] = useState(null);
 
-  const data = {
-    user_id: user?.id,
-    full_name: firstName + lastName,
-    country: country,
-    street_address: streetaddress,
-    city: city,
-    town: town,
-    state: state,
-    postal_code: postocode,
-    phone: phone,
-    address_name: addressName,
-  };
-
   const createuseraddress = async () => {
-    if (
-      !firstName ||
-      !lastName ||
-      !country ||
-      !streetaddress ||
-      !city ||
-      !state ||
-      !postocode ||
-      !town ||
-      !phone ||
-      !addressName
-    ) {
-      return toast.error("Plaese Enter All Fields");
-    }
-    await dispatch(CreateAddress(data));
+    await dispatch(CreateAddress(address));
     dispatch(getuseraddress());
     setShowMoadl(false);
   };
@@ -94,45 +70,6 @@ const UserAddres = () => {
           >
             {!isEdit ? "Edit" : "ReadOnly"}
           </h2>
-          {/* <div className="addres_user border-[1px] border-[#D4D4D4]">
-            <div className="flex  px-[20px] py-[10px] justify-between place-items-center border-b-[1px] border-b-[#D4D4D4]">
-              <p>First Name</p>
-              <p>Ali</p>
-            </div>
-            <div className="flex px-[20px] py-[10px] justify-between place-items-center border-b-[1px] border-b-[#D4D4D4]">
-              <p>Last Name</p>
-              <p>Ali</p>
-            </div>
-            <div className="flex px-[20px] py-[10px] justify-between place-items-center border-b-[1px] border-b-[#D4D4D4]">
-              <p>Country</p>
-              <p>Pakistan</p>
-            </div>
-            <div className="flex px-[20px] py-[10px] justify-between place-items-center border-b-[1px] border-b-[#D4D4D4]">
-              <p>Street Address</p>
-              <p>Pakistan</p>
-            </div>
-            <div className="flex px-[20px] py-[10px] justify-between place-items-center border-b-[1px] border-b-[#D4D4D4]">
-              <p>Town</p>
-              <p>Pakistan</p>
-            </div>
-            <div className="flex px-[20px] py-[10px] justify-between place-items-center border-b-[1px] border-b-[#D4D4D4]">
-              <p>State</p>
-              <p>Pakistan</p>
-            </div>
-            <div className="flex px-[20px] py-[10px] justify-between place-items-center border-b-[1px] border-b-[#D4D4D4]">
-              <p>Postal Code</p>
-              <p>Pakistan</p>
-            </div>
-            <div className="flex px-[20px] py-[10px] justify-between place-items-center border-b-[1px] border-b-[#D4D4D4]">
-              <p>Phone</p>
-              <p>Pakistan</p>
-            </div>
-            <div className="flex px-[20px] py-[10px] justify-between place-items-center border-b-[1px] border-b-[#D4D4D4]">
-              <p>Email Address</p>
-              <p>Pakistan</p>
-            </div>
-          </div> */}
-          {/* -----------  */}
           <UpdateAddress isEdit={isEdit} id={id} />
         </>
       )}
@@ -160,9 +97,8 @@ const UserAddres = () => {
                   return (
                     <div
                       key={index}
-                      className={`flex justify-between place-items-center  mb-1 py-3 px-2 border-[1px] border-[#80808085] ${
-                        index % 2 !== 0 ? "bg-[#FCE4CA]" : "bg-[white]"
-                      }`}
+                      className={`flex justify-between place-items-center  mb-1 py-3 px-2 border-[1px] border-[#80808085] ${index % 2 !== 0 ? "bg-[#FCE4CA]" : "bg-[white]"
+                        }`}
                     >
                       <p className="text-[20px]">{item?.address_name}</p>
                       <p className="flex justify-center place-items-center gap-2">
@@ -227,13 +163,13 @@ const UserAddres = () => {
                             color: "#30404D",
                           }}
                         >
-                          First Name
+                          Full Name
                         </label>
                         <input
                           type="text"
                           required
-                          value={firstName}
-                          onChange={(e) => setFirstName(e.target.value)}
+                          value={address.full_name}
+                          onChange={(e) => setAddress({ ...address, full_name: e.target.value })}
                           className="w-full outline-none py-2 px-2 text-[16px] border-[1px] border-[#80808046]"
                         />
                       </div>
@@ -242,13 +178,111 @@ const UserAddres = () => {
                           htmlFor=""
                           className="block my-1 px-1 text-[15px] font-bold"
                         >
-                          Last Name
+                          Address Name:
                         </label>
                         <input
                           type="text"
                           required
-                          value={lastName}
-                          onChange={(e) => setLastName(e.target.value)}
+                          value={address.address_name}
+                          onChange={(e) => setAddress({ ...address, address_name: e.target.value })}
+                          className="w-full outline-none py-2 px-2 text-[16px] border-[1px] border-[#80808046]"
+                        />
+                      </div>
+                    </div>
+                    <div className="flex flex-wrap -mx-2">
+                      <div className="w-full sm:w-1/2 px-2 my-2 label-input-styling">
+                        <label
+                          htmlFor=""
+                          className="block my-1 px-1 text-[15px] font-bold"
+                        >
+                          Phone:
+                        </label>
+                        <input
+                          type="number"
+                          required
+                          value={address.phone}
+                          onChange={(e) => setAddress({ ...address, phone: e.target.value })}
+                          className="w-full outline-none py-2 px-2 text-[16px] border-[1px] border-[#80808046]"
+                        />
+                      </div>
+
+                      <div className="w-full sm:w-1/2 px-2 my-2 label-input-styling">
+                        <label
+                          htmlFor=""
+                          className="block my-1 px-1 text-[18px] font-bold"
+                        >
+                          Street Name
+                        </label>
+                        <input
+                          type="text"
+                          required
+                          value={address.street_address}
+                          onChange={(e) => setAddress({ ...address, street_address: e.target.value })}
+                          className="w-full outline-none py-2 px-2 text-[16px] border-[1px] border-[#80808046]"
+                        />
+                      </div>
+                    </div>
+                    <div className="flex flex-wrap -mx-2">
+
+                      <div className="w-full sm:w-1/2 px-2 my-2 label-input-styling">
+                        <label
+                          htmlFor=""
+                          className="block my-1 px-1 text-[18px] font-bold"
+                        >
+                          Town
+                        </label>
+                        <input
+                          type="text"
+                          required
+                          value={address.town}
+                          onChange={(e) => setAddress({ ...address, town: e.target.value })}
+                          className="w-full outline-none py-2 px-2 text-[16px] border-[1px] border-[#80808046]"
+                        />
+                      </div>
+                      <div className="w-full sm:w-1/2 px-2 my-2 label-input-styling">
+                        <label
+                          htmlFor=""
+                          className="block my-1 px-1 text-[15px] font-bold"
+                        >
+                          City
+                        </label>
+                        <input
+                          type="text"
+                          required
+                          value={address.city}
+                          onChange={(e) => setAddress({ ...address, city: e.target.value })}
+                          className="w-full outline-none py-2 px-2 text-[16px] border-[1px] border-[#80808046]"
+                        />
+                      </div>
+                    </div>
+                    <div className="flex flex-wrap -mx-2">
+                      <div className="w-full sm:w-1/2 px-2 my-2 label-input-styling">
+                        <label
+                          htmlFor=""
+                          className="block my-1 px-1 text-[15px] font-bold"
+                        >
+                          Postal Code
+                        </label>
+                        <input
+                          type="number"
+                          required
+                          value={address.postal_code}
+                          onChange={(e) => setAddress({ ...address, postal_code: e.target.value })}
+                          className="w-full outline-none py-2 px-2 text-[16px] border-[1px] border-[#80808046]"
+                        />
+                      </div>
+                      <div className="w-full sm:w-1/2 px-2 my-2 label-input-styling">
+                        <label
+                          htmlFor=""
+                          className="block my-1 px-1 text-[15px] font-bold"
+                        >
+                          State
+                        </label>
+                        <input
+                          type="text"
+                          required
+                          value={address.state}
+                          onChange={(e) => setAddress({ ...address, state: e.target.value })}
                           className="w-full outline-none py-2 px-2 text-[16px] border-[1px] border-[#80808046]"
                         />
                       </div>
@@ -264,70 +298,8 @@ const UserAddres = () => {
                         <input
                           type="text"
                           required
-                          value={country}
-                          onChange={(e) => setCountry(e.target.value)}
-                          className="w-full outline-none py-2 px-2 text-[16px] border-[1px] border-[#80808046]"
-                        />
-                      </div>
-                      <div className="w-full sm:w-1/2 px-2 my-2 label-input-styling">
-                        <label
-                          htmlFor=""
-                          className="block my-1 px-1 text-[15px] font-bold"
-                        >
-                          City
-                        </label>
-                        <input
-                          type="text"
-                          required
-                          value={streetaddress}
-                          onChange={(e) => setStreetAddress(e.target.value)}
-                          className="w-full outline-none py-2 px-2 text-[16px] border-[1px] border-[#80808046]"
-                        />
-                      </div>
-                    </div>
-                    <div className="my-3 label-input-styling">
-                      <label
-                        htmlFor=""
-                        className="block my-1 px-1 text-[18px] font-bold"
-                      >
-                        Street Name
-                      </label>
-                      <input
-                        type="text"
-                        required
-                        value={addressName}
-                        onChange={(e) => setAddressName(e.target.value)}
-                        className="w-full outline-none py-2 px-2 text-[16px] border-[1px] border-[#80808046]"
-                      />
-                    </div>
-                    <div className="flex flex-wrap -mx-2">
-                      <div className="w-full sm:w-1/2 px-2 my-2 label-input-styling">
-                        <label
-                          htmlFor=""
-                          className="block my-1 px-1 text-[15px] font-bold"
-                        >
-                          State
-                        </label>
-                        <input
-                          type="text"
-                          required
-                          value={country}
-                          onChange={(e) => setCountry(e.target.value)}
-                          className="w-full outline-none py-2 px-2 text-[16px] border-[1px] border-[#80808046]"
-                        />
-                      </div>
-                      <div className="w-full sm:w-1/2 px-2 my-2 label-input-styling">
-                        <label
-                          htmlFor=""
-                          className="block my-1 px-1 text-[15px] font-bold"
-                        >
-                          Phone
-                        </label>
-                        <input
-                          type="text"
-                          required
-                          value={streetaddress}
-                          onChange={(e) => setStreetAddress(e.target.value)}
+                          value={address.country}
+                          onChange={(e) => setAddress({ ...address, country: e.target.value })}
                           className="w-full outline-none py-2 px-2 text-[16px] border-[1px] border-[#80808046]"
                         />
                       </div>

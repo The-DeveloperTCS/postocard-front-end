@@ -1,15 +1,13 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import Slider from "react-slick";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import { GrNext } from "react-icons/gr";
 import { MdArrowBackIosNew } from "react-icons/md";
-import wed from "../../../Assets/images/Wedding Card2.png";
-import newbd from "../../../Assets/images/newbdc.png";
 import "../Styles/Carousel4.css";
-import { IoStarSharp } from "react-icons/io5";
 
-function Carousel4() {
+
+function Carousel4({ featuredProducts }) {
   const PrevArrow = (props) => {
     const { onClick } = props;
     return (
@@ -58,106 +56,31 @@ function Carousel4() {
   return (
     <div className="slider-container4">
       <Slider {...settings}>
-        <div className="carousel4-main-slider">
-          <div className="carousel4-img">
-            <img src={wed} alt="" />
-          </div>
-          <div className="carousel4-text">
-            <h2>Wedding Card</h2>
-            <p>15+ stock</p>
-            <span>
-              <IoStarSharp /> 4.5
-            </span>
-            <div className="carousel4-price-main">
-              <div className="forcarousel4-price">
-                <p>20$</p>
+        {featuredProducts.length > 0 && featuredProducts.map((fp, i) => {
+
+          return (
+            <div className="carousel4-main-slider">
+              <div className="carousel4-img">
+                <img src={fp.File1} alt="img" />
               </div>
-              <div className="Confiqure-care">
-                <p>Confiqure care</p>
-              </div>
-            </div>
-          </div>
-        </div>
-        <div className="carousel4-main-slider">
-          <div className="carousel4-img">
-            <img src={newbd} alt="" style={{ width: "55%" }} />
-          </div>
-          <div className="carousel4-text">
-            <h2>Wedding Card</h2>
-            <p>15+ stock</p>
-            <span>
-              <IoStarSharp /> 4.5
-            </span>
-            <div className="carousel4-price-main">
-              <div className="forcarousel4-price">
-                <p>20$</p>
-              </div>
-              <div className="Confiqure-care">
-                <p>Confiqure care</p>
+              <div className="carousel4-text">
+                <h2>{fp.ProductName}</h2>
+                <p>{fp.quantity}+ stock</p>
+                {/* <span>
+                  <IoStarSharp /> 4.5
+                </span> */}
+                <div className="carousel4-price-main">
+                  <div className="forcarousel4-price">
+                    <p>${fp.Price}</p>
+                  </div>
+                  <div className="Confiqure-care">
+                    <p>Confiqure care</p>
+                  </div>
+                </div>
               </div>
             </div>
-          </div>
-        </div>
-        <div className="carousel4-main-slider">
-          <div className="carousel4-img">
-            <img src={wed} alt="" />
-          </div>
-          <div className="carousel4-text">
-            <h2>Wedding Card</h2>
-            <p>15+ stock</p>
-            <span>
-              <IoStarSharp /> 4.5
-            </span>
-            <div className="carousel4-price-main">
-              <div className="forcarousel4-price">
-                <p>20$</p>
-              </div>
-              <div className="Confiqure-care">
-                <p>Confiqure care</p>
-              </div>
-            </div>
-          </div>
-        </div>
-        <div className="carousel4-main-slider">
-          <div className="carousel4-img">
-            <img src={newbd} alt="" style={{ width: "55%" }} />
-          </div>
-          <div className="carousel4-text">
-            <h2>Wedding Card</h2>
-            <p>15+ stock</p>
-            <span>
-              <IoStarSharp /> 4.5
-            </span>
-            <div className="carousel4-price-main">
-              <div className="forcarousel4-price">
-                <p>20$</p>
-              </div>
-              <div className="Confiqure-care">
-                <p>Confiqure care</p>
-              </div>
-            </div>
-          </div>
-        </div>
-        <div className="carousel4-main-slider">
-          <div className="carousel4-img">
-            <img src={wed} alt="" />
-          </div>
-          <div className="carousel4-text">
-            <h2>Wedding Card</h2>
-            <p>15+ stock</p>
-            <span>
-              <IoStarSharp /> 4.5
-            </span>
-            <div className="carousel4-price-main">
-              <div className="forcarousel4-price">
-                <p>20$</p>
-              </div>
-              <div className="Confiqure-care">
-                <p>Confiqure care</p>
-              </div>
-            </div>
-          </div>
-        </div>
+          )
+        })}
       </Slider>
     </div>
   );

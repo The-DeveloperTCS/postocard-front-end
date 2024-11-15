@@ -13,7 +13,6 @@ const ListofProducts = () => {
   const allProduct = useSelector((state) => state.product.allproductforAdmin);
   const [productName, setProductName] = useState("");
 
-  console.log(allProduct, 'allproductforAdmin')
 
   useEffect(() => {
     dispatch(getallproductforAdmin(productName))

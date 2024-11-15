@@ -109,7 +109,6 @@ export const LogedinUser = () => async (dispatch) => {
     dispatch({ type: VALID_USER_FAIL });
     const data = await res.json();
     if (!data || res.status === 400) {
-      return console.log(data.message);
     } else if (res.status === 500) {
       alert("Internal Server Error");
       return console.log(data.message);
@@ -285,7 +284,6 @@ export const AdminAllUsersFunc = (id) => async (dispatch) => {
     });
     dispatch({ type: GET_ADMIN_ALL_FAIL });
     const data = await res.json();
-    console.log(data, 'data')
     if (!data || res.status === 400) {
       return;
     } else {

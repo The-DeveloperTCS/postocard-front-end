@@ -1,5 +1,4 @@
 import React, { useEffect, useRef, useState } from "react";
-import { AiOutlineSearch, AiOutlineShoppingCart } from "react-icons/ai";
 import "./CartSidebar.jsx";
 import CartSidebar from "./CartSidebar.jsx";
 import { IoMenuSharp } from "react-icons/io5";
@@ -7,18 +6,20 @@ import { NavLink, useNavigate } from "react-router-dom";
 import { useSelector } from "react-redux";
 import { toast } from "react-toastify";
 import logo from "../../././../Assets/logo 1 (2).png";
-import { MdOutlineAccountCircle } from "react-icons/md";
 import SpinnerLoading from "../../Loading/SpinnerLoading.jsx";
-import { RxCross2 } from "react-icons/rx";
 import BottomBottomHeader from "./BottomBottomHeader";
 import profileimg from "../../../Assets/images/profile.png";
 import cartimg from "../../../Assets/images/cart.png";
+import axios from "axios";
+import { server } from "../../../Setting/GlobalVariable";
+import Cookies from "js-cookie";
 
 const TopBottomHeader = () => {
   const [search, setSearch] = useState("");
   const [show, setShow] = useState(false);
   const [showSearch, setShowSearch] = useState(false);
   const [showheader, setshowheader] = useState(false); // Define showheader state
+  const [categories , setCategories]= useState([])
   const cart = useSelector((state) => state.cart.cart);
   const navigate = useNavigate();
 
@@ -49,12 +50,28 @@ const TopBottomHeader = () => {
   };
 
   useEffect(() => {
+    fetchCategories()
     document.addEventListener("click", handleDocumentClick);
 
     return () => {
       document.removeEventListener("click", handleDocumentClick);
     };
   }, []);
+
+  const fetchCategories = async () => {
+    try {
+      const response = await axios.get(`${server}/parentCategory/categoryAndChild`, {
+        headers: {
+          "Content-Type": "application/json",
+          Authorization: "Bearer " + Cookies.get("ApiLoginToken"),
+        },
+      });
+      setCategories(response.data.data);
+    } catch (error) {
+      console.log(error.message);
+    }
+  };
+
 
   return (
     <div className="top_bottom_header" ref={searchRef}>
@@ -73,7 +90,7 @@ const TopBottomHeader = () => {
         />
       </NavLink>
 
-      <div className="flex justify-center place-items-center gap-[8px]  ">
+      {/* <div className="flex justify-center place-items-center gap-[8px]  ">
         <div className="flex justify-start place-items-center">
           <div className={showSearch ? "sercarbox sercarboxhide" : "sercarbox"}>
             <input
@@ -103,11 +120,12 @@ const TopBottomHeader = () => {
             onClick={() => setShowSearch(true)}
           />
         </div>
-      </div>
+      </div> */}
 
       <BottomBottomHeader
         showheader={showheader}
         setshowheader={setshowheader}
+        categories={categories}
       />
 
       <div className="right_bottom_header flex justify-center place-items-center  gap-[15px]">

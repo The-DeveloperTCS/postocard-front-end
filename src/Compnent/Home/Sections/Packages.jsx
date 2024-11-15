@@ -40,7 +40,6 @@ const Packages = () => {
       });
 
       setGetPackages(response.data.data);
-      console.log(response.data, "user packages");
     } catch (error) {
       console.log(error.message);
     }

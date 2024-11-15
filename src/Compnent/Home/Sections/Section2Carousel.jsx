@@ -5,13 +5,9 @@ import "slick-carousel/slick/slick-theme.css";
 import "../Styles/Section2Carousel.css";
 import { GrNext } from "react-icons/gr";
 import { MdArrowBackIosNew } from "react-icons/md";
-import { IoStarSharp } from "react-icons/io5";
-import wedimg from "../../../Assets/images/Wedding Card.png";
-import bdimg from "../../../Assets/images/Birthday Card.png";
-import crisimg from "../../../Assets/images/christmas Card.png";
 import "../Styles/Section2.css";
 
-function Section2Carousel() {
+function Section2Carousel({ discountProducts }) {
   const PrevArrow = (props) => {
     const { onClick } = props;
     return (
@@ -61,115 +57,37 @@ function Section2Carousel() {
       },
     ],
   };
-
+  
   return (
     <div className="slider-container">
       <Slider {...settings}>
-        {/* slid2 */}
-        <div className="Discounted-slide1-main">
-          <div className="slide1-inner">
-            <div className="slide1-text">
-              <h2>Wedding Card</h2>
-              <span className="strike-through">$30</span>
-              <h1>$20</h1>
-              <h3>
+
+        {discountProducts.map((dp, i) => {
+          return (
+            <div className="Discounted-slide1-main">
+              <div className="slide1-inner">
+                <div className="slide1-text">
+                  <h2>{dp.ProductName}</h2>
+                  <span className="strike-through">${dp.Price}</span>
+                  <h1>${Number(dp.Price) - Number(dp.Discount)}</h1>
+                  {/* <h3>
                 {" "}
                 <IoStarSharp />
                 <IoStarSharp />
                 <IoStarSharp />
                 <IoStarSharp />
                 <IoStarSharp />
-              </h3>
+              </h3> */}
+                </div>
+                <div className="slide1-img">
+                  <img src={dp.File1} alt="" />
+                </div>
+              </div>
             </div>
-            <div className="slide1-img">
-              <img src={wedimg} alt="" />
-            </div>
-          </div>
-        </div>
-        {/* slid2 */}
-        <div className="Discounted-slide1-main">
-          <div className="slide1-inner">
-            <div className="slide1-text">
-              <h2>Birthday Card</h2>
-              <span className="strike-through">$30</span>
-              <h1>$20</h1>
-              <h3>
-                {" "}
-                <IoStarSharp />
-                <IoStarSharp />
-                <IoStarSharp />
-                <IoStarSharp />
-                <IoStarSharp />
-              </h3>
-            </div>
-            <div className="slide1-img">
-              <img src={bdimg} alt="" />
-            </div>
-          </div>
-        </div>
-        {/* slid2 */}
-        <div className="Discounted-slide1-main">
-          <div className="slide1-inner">
-            <div className="slide1-text">
-              <h2>christmas Card</h2>
-              <span className="strike-through">$30</span>
-              <h1>$20</h1>
-              <h3>
-                {" "}
-                <IoStarSharp />
-                <IoStarSharp />
-                <IoStarSharp />
-                <IoStarSharp />
-                <IoStarSharp />
-              </h3>
-            </div>
-            <div className="slide1-img">
-              <img src={crisimg} alt="" />
-            </div>
-          </div>
-        </div>
-        {/* slid2 */}
-        <div className="Discounted-slide1-main">
-          <div className="slide1-inner">
-            <div className="slide1-text">
-              <h2>Wedding Card</h2>
-              <span className="strike-through">$30</span>
-              <h1>$20</h1>
-              <h3>
-                {" "}
-                <IoStarSharp />
-                <IoStarSharp />
-                <IoStarSharp />
-                <IoStarSharp />
-                <IoStarSharp />
-              </h3>
-            </div>
-            <div className="slide1-img">
-              <img src={wedimg} alt="" />
-            </div>
-          </div>
-        </div>
-        {/* slid2 */}
-        <div className="Discounted-slide1-main">
-          <div className="slide1-inner">
-            <div className="slide1-text">
-              <h2>Wedding Card</h2>
-              <span className="strike-through">$30</span>
-              <h1>$20</h1>
-              <h3>
-                {" "}
-                <IoStarSharp />
-                <IoStarSharp />
-                <IoStarSharp />
-                <IoStarSharp />
-                <IoStarSharp />
-              </h3>
-            </div>
-            <div className="slide1-img">
-              <img src={wedimg} alt="" />
-            </div>
-          </div>
-        </div>
+          )
+        })}
+
+
       </Slider>
     </div>
   );

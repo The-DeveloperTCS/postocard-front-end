@@ -14,7 +14,7 @@ const AdminUserAnalytics = () => {
   }, []);
   const UserAnalyticsdata = useSelector((state) => state.user.UserAnalytics);
   const isloading = useSelector((state) => state.user.loading);
-  console.log(UserAnalyticsdata);
+  
   return (
     <div className="dashboard_common">
       {/* ==================== sidebard dashboard  */}

@@ -191,21 +191,17 @@ const SingleCardCompo = () => {
   const decrease = () => {
     if (check >= 0) {
       toggleTimeline();
-      console.log(check);
       setCXheck(check - 1);
-      console.log(check + "inner");
     }
   };
 
   const increase = () => {
     if (check <= 3) {
       setCXheck(check + 1);
-      console.log(check + "inner");
       toggleTimeline();
     }
   };
 
-  // console.log(check);
 
   const container = useRef();
   const tl = useRef();

@@ -83,18 +83,7 @@ const App = () => {
       dispatch(LogedinUser());
     }
     dispatch(getallproduct());
-    // dispatch(getallCategoryforuser());
   }, []);
-
-  // useEffect(() => {
-  //   if (Cookies.get("ApiLoginToken")) {
-  //     dispatch(LogedinUser());
-  //   }
-  // }, [user]);
-
-  // useEffect(() => {
-  //   document.addEventListener("contextmenu", (event) => event.preventDefault());
-  // }, []);
 
   return (
     <BrowserRouter>

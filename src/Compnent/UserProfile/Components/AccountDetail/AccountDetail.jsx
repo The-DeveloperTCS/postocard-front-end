@@ -65,7 +65,6 @@ const AccountDetail = () => {
       },
     });
     const data = await res.json();
-    console.log(data, 'data')
     setname(data?.user?.name)
   }
 

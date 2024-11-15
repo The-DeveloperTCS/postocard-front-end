@@ -132,9 +132,9 @@ const Section2 = () => {
             <div className="">
               <div className="section2-text-btn" style={{ width: "95%" }}>
                 <h2>Discounted offer</h2>
-                <NavLink to={"/allcollection/all"}>
+                {/* <NavLink to={"/allcollection/all"}>
                   <button className="rounded-md">View All</button>
-                </NavLink>
+                </NavLink> */}
               </div>
             </div>
             <Section2Carousel />

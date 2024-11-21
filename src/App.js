@@ -12,45 +12,16 @@ import { ToastContainer } from "react-toastify";
 import { ScrollToTop } from "react-router-scroll-to-top";
 
 import { LogedinUser } from "./Redux/Action/UserAction";
-import AdminLogin from "./DashBoard/Accounts/AdminLogin";
-
-import DashBoardIndex from "./DashBoard/DashBoardIndex";
-
-import ParentCategoryList from "./DashBoard/Pages/ParentCategoryList";
-import CreateParentCategory from "./DashBoard/Pages/CreateParentCategory";
-import EditParentCategory from "./DashBoard/Pages/EditParentCategory";
-
-import CategoryList from "./DashBoard/Pages/CategoryList";
-import CreateCategory from "./DashBoard/Pages/CreateCategory";
-import EditCreateCategory from "./DashBoard/Pages/EditCategory";
-
-import SubCategoryList from "./DashBoard/Pages/SubCategoryList";
-import CreateSubCategory from "./DashBoard/Pages/CreateSubCategory";
-import EditSubCategory from "./DashBoard/Pages/EditSubCategory";
-
 
 import { getallproduct } from "./Redux/Action/ProductAction";
-import AllProducts from "./DashBoard/Pages/AllProducts";
 import Home from "./Pages/Home";
-import CreateProduct from "./DashBoard/Pages/CreateProduct";
-import ProductView from "./DashBoard/Pages/ProductView";
-
-import Artists from "./DashBoard/Pages/Artists";
-import CreateArtist from "./DashBoard/Pages/CreateArtist";
-import EditArtist from "./DashBoard/Pages/EditArtist";
-
 
 import SingleCard from "./Pages/SingleCard";
-import Index from "./Layout/Index";
-import Footer from "./Layout/Footer/Footer";
-import Product from "./Pages/Product";
-import SingleProduct from "./Pages/SingleProduct";
-import Cart from "./Pages/Cart";
 import Payment from "./Pages/Payment";
-import ConformOrder from "./DashBoard/Pages/ConformOrder";
 import UserOrderDetails from "./Pages/UserOrderDetails";
 
-import NotFound from "./Layout/NotFoundPage/NotFound";
+import Index from "./Layout/Index";
+import Footer from "./Layout/Footer/Footer";
 import Cookies from "js-cookie";
 import Allcollection from "./Pages/Allcollection";
 import ContactUs from "./Pages/ContactUs";
@@ -61,7 +32,40 @@ import RefundPolicy from "./Pages/RefundPolicy";
 import UserLogin from "./Pages/UserLogin";
 import Signup from "./Pages/Signup";
 import Profile from "./Pages/Profile";
-import AllUsers from "./DashBoard/Pages/AllUsers";
+import NotFound from "./Layout/NotFoundPage/NotFound";
+
+
+
+// import AllProducts from "./DashBoard/Pages/AllProducts";
+// import Product from "./Pages/Product";
+// import SingleProduct from "./Pages/SingleProduct";
+// import Cart from "./Pages/Cart";
+// import ConformOrder from "./DashBoard/Pages/ConformOrder";
+
+// import AdminLogin from "./DashBoard/Accounts/AdminLogin";
+
+// import DashBoardIndex from "./DashBoard/DashBoardIndex";
+
+// import ParentCategoryList from "./DashBoard/Pages/ParentCategoryList";
+// import CreateParentCategory from "./DashBoard/Pages/CreateParentCategory";
+// import EditParentCategory from "./DashBoard/Pages/EditParentCategory";
+
+// import CategoryList from "./DashBoard/Pages/CategoryList";
+// import CreateCategory from "./DashBoard/Pages/CreateCategory";
+// import EditCreateCategory from "./DashBoard/Pages/EditCategory";
+
+// import SubCategoryList from "./DashBoard/Pages/SubCategoryList";
+// import CreateSubCategory from "./DashBoard/Pages/CreateSubCategory";
+// import EditSubCategory from "./DashBoard/Pages/EditSubCategory";
+
+// import CreateProduct from "./DashBoard/Pages/CreateProduct";
+// import ProductView from "./DashBoard/Pages/ProductView";
+
+// import Artists from "./DashBoard/Pages/Artists";
+// import CreateArtist from "./DashBoard/Pages/CreateArtist";
+// import EditArtist from "./DashBoard/Pages/EditArtist";
+
+// import AllUsers from "./DashBoard/Pages/AllUsers";
 
 const App = () => {
   const user = useSelector((state) => state.user.user);
@@ -94,14 +98,12 @@ const App = () => {
       {/* ========================== */}
       <Routes>
         <Route path="/" element={<Home />} />
-        <Route path="/contactus" element={<ContactUs />} />
-        <Route path="/aboutus" element={<About />} />
-        <Route path="/privacypolicy" element={<PrivicyPolicy />} />
-        <Route path="/termsconditions" element={<TermsAndConditions />} />
-        <Route path="/refundpolicy" element={<RefundPolicy />} />
-        {/* ---- single card  */}
+
+
+        {/* ---- Card  */}
         <Route path="/singleCard/:id" element={<SingleCard />} />
         <Route path="/allcollection/:all" element={<Allcollection />} />
+        <Route exact path="/checkout" element={<Payment />} />
 
         {/* ============ user route  */}
         <Route path="/user/Login" element={<UserLogin />} />
@@ -109,103 +111,115 @@ const App = () => {
         <Route path="/user/profile" element={<Profile />} />
         <Route path="/user/order/details/:id" element={<UserOrderDetails />} />
 
-        {/* -------- product Page  */}
-        <Route exact path="/products/:category" element={<Product />} />
-        <Route exact path="/product/:id" element={<SingleProduct />} />
-        <Route exact path="/cart" element={<Cart />} />
-        <Route exact path="/payment" element={<Payment />} />
-        <Route exact path="/conformOrder" element={<ConformOrder />} />
+        {/* static pages */}
+        <Route path="/contactus" element={<ContactUs />} />
+        <Route path="/aboutus" element={<About />} />
+        <Route path="/privacypolicy" element={<PrivicyPolicy />} />
+        <Route path="/termsconditions" element={<TermsAndConditions />} />
+        <Route path="/refundpolicy" element={<RefundPolicy />} />
+
         {/* ===== page not found  */}
         <Route path="/*" element={<NotFound />} />
 
+
+
+
+
+        {/* -------- product Page  */}
+        {/* <Route exact path="/products/:category" element={<Product />} />
+        <Route exact path="/product/:id" element={<SingleProduct />} />
+        <Route exact path="/cart" element={<Cart />} /> */}
+        {/* <Route exact path="/conformOrder" element={<ConformOrder />} /> */}
+
+
         {/* Admin Portal Routes */}
         {/* ---------- login  */}
-        <Route path="/login" element={<AdminLogin />} />
+        {/* <Route path="/login" element={<AdminLogin />} /> */}
 
         {/* ----------admin Route  */}
-        <Route path="/admin/dashboard" element={<AdminPrivateRoute />}>
+        {/* <Route path="/admin/dashboard" element={<AdminPrivateRoute />}>
           <Route path="/admin/dashboard" element={<DashBoardIndex />} />
-        </Route>
+        </Route> */}
 
         {/* ----------- Parent Category List  */}
-        <Route path="/admin/parent-category/list" element={<AdminPrivateRoute />}>
+        {/* <Route path="/admin/parent-category/list" element={<AdminPrivateRoute />}>
           <Route path="/admin/parent-category/list" element={<ParentCategoryList />} />
-        </Route>
+        </Route> */}
 
         {/* Create Parent Category */}
-        <Route path="/admin/create/parent-category" element={<AdminPrivateRoute />}>
+        {/* <Route path="/admin/create/parent-category" element={<AdminPrivateRoute />}>
           <Route path="/admin/create/parent-category" element={<CreateParentCategory />} />
-        </Route>
+        </Route> */}
 
         {/* Update Parent Category */}
-        <Route path="/admin/parent-category/:id" element={<AdminPrivateRoute />}>
+        {/* <Route path="/admin/parent-category/:id" element={<AdminPrivateRoute />}>
           <Route path="/admin/parent-category/:id" element={<EditParentCategory />} />
-        </Route>
+        </Route> */}
 
         {/* ----------- Category List  */}
-        <Route path="/admin/category/list" element={<AdminPrivateRoute />}>
+        {/* <Route path="/admin/category/list" element={<AdminPrivateRoute />}>
           <Route path="/admin/category/list" element={<CategoryList />} />
-        </Route>
+        </Route> */}
 
         {/* Create Category */}
-        <Route path="/admin/create/category" element={<AdminPrivateRoute />}>
+        {/* <Route path="/admin/create/category" element={<AdminPrivateRoute />}>
           <Route path="/admin/create/category" element={<CreateCategory />} />
-        </Route>
+        </Route> */}
 
         {/* Update Category */}
-        <Route path="/admin/category/:id" element={<AdminPrivateRoute />}>
+        {/* <Route path="/admin/category/:id" element={<AdminPrivateRoute />}>
           <Route path="/admin/category/:id" element={<EditCreateCategory />} />
-        </Route>
+        </Route> */}
 
         {/* ----------- Sub Category List  */}
-        <Route path="/admin/sub-category/list" element={<AdminPrivateRoute />}>
+        {/* <Route path="/admin/sub-category/list" element={<AdminPrivateRoute />}>
           <Route path="/admin/sub-category/list" element={<SubCategoryList />} />
-        </Route>
+        </Route> */}
 
         {/* Create Sub Category */}
-        <Route path="/admin/create/sub-category" element={<AdminPrivateRoute />}>
+        {/* <Route path="/admin/create/sub-category" element={<AdminPrivateRoute />}>
           <Route path="/admin/create/sub-category" element={<CreateSubCategory />} />
-        </Route>
+        </Route> */}
 
         {/* Update Sub Category */}
-        <Route path="/admin/sub-category/:id" element={<AdminPrivateRoute />}>
+        {/* <Route path="/admin/sub-category/:id" element={<AdminPrivateRoute />}>
           <Route path="/admin/sub-category/:id" element={<EditSubCategory />} />
-        </Route>
+        </Route> */}
 
         {/* ------- all product */}
-        <Route path="/admin/products" element={<AdminPrivateRoute />}>
+        {/* <Route path="/admin/products" element={<AdminPrivateRoute />}>
           <Route path="/admin/products" element={<AllProducts />} />
-        </Route>
+        </Route> */}
 
         {/* ------------- admin/create/product  */}
-        <Route path="/admin/create/product" element={<AdminPrivateRoute />}>
+        {/* <Route path="/admin/create/product" element={<AdminPrivateRoute />}>
           <Route path="/admin/create/product" element={<CreateProduct />} />
-        </Route>
+        </Route> */}
 
-        <Route path="/admin/products/view/:id" element={<AdminPrivateRoute />}>
+        {/* <Route path="/admin/products/view/:id" element={<AdminPrivateRoute />}>
           <Route path="/admin/products/view/:id" element={<ProductView />} />
-        </Route>
+        </Route> */}
 
 
         {/* Get all artist */}
-        <Route path="/admin/artists" element={<AdminPrivateRoute />}>
+        {/* <Route path="/admin/artists" element={<AdminPrivateRoute />}>
           <Route path="/admin/artists" element={<Artists />} />
-        </Route>
+        </Route> */}
 
         {/* Create Artist */}
-        <Route path="/admin/create/artists" element={<AdminPrivateRoute />}>
+        {/* <Route path="/admin/create/artists" element={<AdminPrivateRoute />}>
           <Route path="/admin/create/artists" element={<CreateArtist />} />
-        </Route>
+        </Route> */}
 
         {/* Update Artist */}
-        <Route path="/admin/artists/:id" element={<AdminPrivateRoute />}>
+        {/* <Route path="/admin/artists/:id" element={<AdminPrivateRoute />}>
           <Route path="/admin/artists/:id" element={<EditArtist />} />
-        </Route>
+        </Route> */}
 
 
-        <Route path="/admin/allusers" element={<AdminPrivateRoute />}>
+        {/* <Route path="/admin/allusers" element={<AdminPrivateRoute />}>
           <Route path="/admin/allusers" element={<AllUsers />} />
-        </Route>
+        </Route> */}
 
         {/* ------- sub category  */}
 

@@ -64,23 +64,6 @@
   color: #30404D;
 }
 
-/* ------------ section1 */
-
-
-.section1 h2 {
-  /* color: var(--Dark-Primary, #2a254b);
-  font-family: 'Poppins';
-  font-size: 27px;
-  font-weight: bold;
-  font-style: normal;
-  text-align: center;
-  line-height: 140%;
-  /* 33.6px */
-
-}
-
-*/
-
 /* ------------ section1_box_parent */
 .section1_box_parent {
   display: flex;

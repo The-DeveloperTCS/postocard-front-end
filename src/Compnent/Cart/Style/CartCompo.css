@@ -48,8 +48,9 @@
 }
 
 .cart_data_image img {
-  width: 350px;
-  height: 350px;
+  width: 100%;
+  max-width: 350px;
+  height: auto;
   flex-shrink: 0;
 }
 
@@ -177,8 +178,10 @@
   }
 
   .cart_data_image img {
-    min-width: 300px;
-    height: 300px;
+    width: 100%;
+    max-width: 300px;
+    height: auto;
+    min-width: unset;
   }
 
 

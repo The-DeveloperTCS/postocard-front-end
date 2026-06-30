@@ -189,5 +189,17 @@
 @media(max-width : 500px) {
   .cartSiebar {
     width: 100%;
+    max-width: 100vw;
+  }
+
+  .checkout {
+    width: calc(100% - 24px);
+    right: 12px;
+    left: 12px;
+  }
+
+  .cart_sidebar_button {
+    width: 100%;
+    max-width: 160px;
   }
 }

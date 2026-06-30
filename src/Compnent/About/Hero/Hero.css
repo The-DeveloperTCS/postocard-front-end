@@ -23,7 +23,18 @@
 
 @media(max-width:600px){
     .about_hero{
-        height: 250px;
+        height: 200px;
         margin-bottom: 0px;
+        padding: 12px;
+    }
+
+    .about_hero h2{
+        font-size: 36px;
+    }
+}
+
+@media(max-width:374px){
+    .about_hero h2{
+        font-size: 28px;
     }
 }

@@ -90,8 +90,7 @@
   }
 
   .slider-container4 {
-    margin-left: 20px;
-
+    margin-left: 0;
   }
 
   /* Styles for small tablets */
@@ -102,7 +101,7 @@
   .section-4right {
     width: 100%;
     padding: 20px 0px;
-margin-left: -16px;
+    margin-left: 0;
   }
 }
 

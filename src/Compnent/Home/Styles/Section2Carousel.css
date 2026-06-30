@@ -1,121 +1,244 @@
-.Discounted-slide1-main {
-    background-color: #FDECD9;
-    width: 95% !important;
-    padding: 10px;
-}
-
-.next-arrow svg {
-    font-size: 20px;
-    position: absolute;
-    right: -30px;
-    top: 45%;
-    bottom: 50%;
-}
-
-.prev-arrow svg {
-    font-size: 20px;
-    position: absolute;
-    left: -74px;
-    top: 45%;
-    bottom: 50%;
+.section2-carousel-wrapper {
+  width: 100%;
+  padding: 0 8px;
 }
 
 .slider-container {
-    position: relative;
-    margin-left: 50px;
+  position: relative;
+  width: 100%;
+  max-width: 100%;
+  margin: 0 auto;
+  padding: 0 8px;
 }
 
-.slide1-text {
-    width: 50%;
+.slider-container .slick-slider {
+  position: relative;
+  padding-bottom: 52px;
 }
 
-.slide1-img {
-    width: 50%;
+.slider-container .slick-arrow::before {
+  display: none;
 }
 
-.slide1-img img {
-    width: 135px;
-    margin: auto 0px auto auto;
+.slider-container .slick-list {
+  margin: 0 -10px;
+}
+
+.slider-container .slick-slide > div {
+  padding: 0 10px;
+}
+
+.Discounted-slide1-main {
+  background-color: #fdecd9;
+  width: 100% !important;
+  min-height: 168px;
+  padding: 20px 18px;
+  border-radius: 10px;
+  box-sizing: border-box;
 }
 
 .slide1-inner {
-    display: flex;
-    justify-content: space-between;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 12px;
+  height: 100%;
 }
 
-.slide1-text h1 {
-    font-size: 30px;
-    font-weight: 500;
-    font-family: "Poppins", sans-serif;
+.slide1-text {
+  width: 52%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 4px;
 }
 
 .slide1-text h2 {
-    font-size: 20px;
-    font-weight: 500;
-    font-family: "Poppins", sans-serif;
-    text-transform: uppercase;
+  font-size: 18px;
+  font-weight: 600;
+  font-family: "Poppins", sans-serif;
+  text-transform: uppercase;
+  color: #30404d;
+  line-height: 1.2;
+  margin: 0;
 }
 
-.slide1-text h3 {
-    display: flex;
-}
-
-.slide1-text svg {
-    color: #FF9900;
+.slide1-price {
+  font-size: 30px;
+  font-weight: 600;
+  font-family: "Poppins", sans-serif;
+  color: #30404d;
+  line-height: 1;
+  margin: 0;
 }
 
 .slide1-text span {
-    font-size: 16px;
-    font-weight: 500;
-    font-family: "Poppins", sans-serif;
-    text-transform: uppercase;
-    color: #C4BBB2;
+  font-size: 16px;
+  font-weight: 500;
+  font-family: "Poppins", sans-serif;
+  color: #c4bbb2;
+  line-height: 1.2;
 }
 
 .strike-through {
-    position: relative;
+  position: relative;
+  display: inline-block;
+  width: fit-content;
 }
 
 .strike-through::after {
-    content: '';
-    position: absolute;
-    top: 50%;
-    left: 0;
-    width: 100%;
-    height: 1px;
-    background-color: #C4BBB2;
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: 0;
+  width: 100%;
+  height: 1px;
+  background-color: #c4bbb2;
 }
 
+.slide1-img {
+  width: 48%;
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+}
+
+.slide1-img img {
+  width: auto;
+  max-width: 100%;
+  max-height: 128px;
+  object-fit: contain;
+  margin: 0;
+}
+
+.slide1-img-tilted {
+  transform: rotate(-8deg);
+}
+
+.slider-container .slick-prev,
+.slider-container .slick-next,
+.slider-container .section2-carousel-arrow {
+  top: auto !important;
+  bottom: 0 !important;
+}
+
+.section2-carousel-arrow {
+  position: absolute;
+  z-index: 2;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 36px;
+  height: 36px;
+  border: 2px solid #30404d;
+  border-radius: 50%;
+  background: #ffffff;
+  color: #30404d;
+  cursor: pointer;
+  padding: 0;
+  font-size: 16px;
+  line-height: 1;
+  transform: translateX(-50%);
+}
+
+.section2-carousel-arrow--prev {
+  left: 16.66%;
+}
+
+.section2-carousel-arrow--next {
+  left: 83.33%;
+}
+
+.section2-carousel-arrow svg {
+  font-size: 16px;
+}
+
+.section2-carousel-arrow:hover {
+  background: #fdecd9;
+}
+
+.slider-container .slick-arrow.slick-disabled {
+  opacity: 0.35;
+  cursor: not-allowed;
+}
 
 @media only screen and (max-width: 1080px) {
-    .Discounted-slide1-main {
-        width: 100% !important;
-    }
+  .section2-carousel-arrow--prev {
+    left: 25%;
+  }
 
-    .prev-arrow svg {
-        display: none;
-    }
+  .section2-carousel-arrow--next {
+    left: 75%;
+  }
 
-    .next-arrow svg {
-        display: none;
+  .Discounted-slide1-main {
+    min-height: 156px;
+    padding: 16px 14px;
+  }
 
-    }
-   
+  .slide1-text h2 {
+    font-size: 16px;
+  }
+
+  .slide1-price {
+    font-size: 26px;
+  }
 }
 
-@media only screen and (max-width: 786px) {
-    .slide1-img img {
-        width: 135px;
-        margin: auto 0px auto auto;
-    }
-    .slide1-text h1 {
-        font-size: 18px;
-    }
-    
-    .slide1-text h2 {
-        font-size: 18px;
- 
-    }
-    
+@media only screen and (max-width: 768px) {
+  .slider-container .slick-slider {
+    padding-bottom: 48px;
+  }
+
+  .slide1-inner {
+    gap: 10px;
+  }
+
+  .slide1-img img {
+    max-height: 110px;
+  }
+
+  .section2-carousel-arrow {
+    width: 32px;
+    height: 32px;
+  }
+
+  .section2-carousel-arrow--prev {
+    left: 35%;
+  }
+
+  .section2-carousel-arrow--next {
+    left: 65%;
+  }
 }
 
+@media only screen and (max-width: 480px) {
+  .Discounted-slide1-main {
+    min-height: 140px;
+    padding: 14px 12px;
+  }
+
+  .slide1-text h2 {
+    font-size: 14px;
+  }
+
+  .slide1-price {
+    font-size: 22px;
+  }
+
+  .slide1-text span {
+    font-size: 14px;
+  }
+
+  .slide1-img img {
+    max-height: 96px;
+  }
+
+  .section2-carousel-arrow--prev {
+    left: 30%;
+  }
+
+  .section2-carousel-arrow--next {
+    left: 70%;
+  }
+}

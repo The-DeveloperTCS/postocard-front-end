@@ -56,7 +56,7 @@
 
 
 
-@media only screen and (max-width: 1080) {
+@media only screen and (max-width: 1080px) {
 
     .login-h2-text h2 {
         font-family: "Luckiest Guy";

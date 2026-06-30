@@ -128,7 +128,10 @@ const TopBottomHeader = () => {
             <SpinnerLoading />
           </p>
         ) : isAuthantication && user ? (
-          <NavLink to={"/user/profile"}>
+          <NavLink
+            to={"/user/profile"}
+            className={({ isActive }) => (isActive ? "nav-link-active" : "")}
+          >
             <p
               className="uppercase border-[1px]  
           !text-[#F49E3F] font-bold w-[30px] h-[30px] border-[#E61D79] p-2 rounded-full flex justify-center place-items-center"

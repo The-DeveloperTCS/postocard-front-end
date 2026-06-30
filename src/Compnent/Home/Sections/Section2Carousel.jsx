@@ -5,46 +5,49 @@ import "slick-carousel/slick/slick-theme.css";
 import "../Styles/Section2Carousel.css";
 import { GrNext } from "react-icons/gr";
 import { MdArrowBackIosNew } from "react-icons/md";
-import { IoStarSharp } from "react-icons/io5";
 import wedimg from "../../../Assets/images/Wedding Card.png";
 import bdimg from "../../../Assets/images/Birthday Card.png";
 import crisimg from "../../../Assets/images/christmas Card.png";
-import "../Styles/Section2.css";
+
+const slides = [
+  { title: "Wedding Card", image: wedimg, tilt: true },
+  { title: "Birthday Card", image: bdimg, tilt: false },
+  { title: "christmas Card", image: crisimg, tilt: true },
+];
 
 function Section2Carousel() {
-  const PrevArrow = (props) => {
-    const { onClick } = props;
-    return (
-      <button className="prev-arrow" onClick={onClick}>
-        <MdArrowBackIosNew />
-      </button>
-    );
-  };
+  const PrevArrow = ({ onClick }) => (
+    <button
+      type="button"
+      className="section2-carousel-arrow section2-carousel-arrow--prev"
+      onClick={onClick}
+      aria-label="Previous slide"
+    >
+      <MdArrowBackIosNew />
+    </button>
+  );
 
-  const NextArrow = (props) => {
-    const { onClick } = props;
-    return (
-      <button className="next-arrow" onClick={onClick}>
-        <GrNext />
-      </button>
-    );
-  };
+  const NextArrow = ({ onClick }) => (
+    <button
+      type="button"
+      className="section2-carousel-arrow section2-carousel-arrow--next"
+      onClick={onClick}
+      aria-label="Next slide"
+    >
+      <GrNext />
+    </button>
+  );
 
   const settings = {
     dots: false,
     infinite: true,
     speed: 500,
     arrows: true,
+    slidesToShow: 3,
+    slidesToScroll: 1,
     prevArrow: <PrevArrow />,
     nextArrow: <NextArrow />,
     responsive: [
-      {
-        breakpoint: 1980,
-        settings: {
-          slidesToShow: 3,
-          slidesToScroll: 3,
-        },
-      },
       {
         breakpoint: 1080,
         settings: {
@@ -53,124 +56,42 @@ function Section2Carousel() {
         },
       },
       {
-        breakpoint: 880,
+        breakpoint: 768,
         settings: {
           slidesToShow: 1,
           slidesToScroll: 1,
+          arrows: true,
         },
       },
     ],
   };
 
   return (
-    <div className="slider-container">
-      <Slider {...settings}>
-        {/* slid2 */}
-        <div className="Discounted-slide1-main">
-          <div className="slide1-inner">
-            <div className="slide1-text">
-              <h2>Wedding Card</h2>
-              <span className="strike-through">$30</span>
-              <h1>$20</h1>
-              <h3>
-                {" "}
-                <IoStarSharp />
-                <IoStarSharp />
-                <IoStarSharp />
-                <IoStarSharp />
-                <IoStarSharp />
-              </h3>
+    <div className="section2-carousel-wrapper">
+      <div className="slider-container">
+        <Slider {...settings}>
+          {slides.map((slide, index) => (
+            <div key={`${slide.title}-${index}`}>
+              <div className="Discounted-slide1-main">
+                <div className="slide1-inner">
+                  <div className="slide1-text">
+                    <h2>{slide.title}</h2>
+                    <span className="strike-through">$30</span>
+                    <p className="slide1-price">$20</p>
+                  </div>
+                  <div className="slide1-img">
+                    <img
+                      src={slide.image}
+                      alt={slide.title}
+                      className={slide.tilt ? "slide1-img-tilted" : ""}
+                    />
+                  </div>
+                </div>
+              </div>
             </div>
-            <div className="slide1-img">
-              <img src={wedimg} alt="" />
-            </div>
-          </div>
-        </div>
-        {/* slid2 */}
-        <div className="Discounted-slide1-main">
-          <div className="slide1-inner">
-            <div className="slide1-text">
-              <h2>Birthday Card</h2>
-              <span className="strike-through">$30</span>
-              <h1>$20</h1>
-              <h3>
-                {" "}
-                <IoStarSharp />
-                <IoStarSharp />
-                <IoStarSharp />
-                <IoStarSharp />
-                <IoStarSharp />
-              </h3>
-            </div>
-            <div className="slide1-img">
-              <img src={bdimg} alt="" />
-            </div>
-          </div>
-        </div>
-        {/* slid2 */}
-        <div className="Discounted-slide1-main">
-          <div className="slide1-inner">
-            <div className="slide1-text">
-              <h2>christmas Card</h2>
-              <span className="strike-through">$30</span>
-              <h1>$20</h1>
-              <h3>
-                {" "}
-                <IoStarSharp />
-                <IoStarSharp />
-                <IoStarSharp />
-                <IoStarSharp />
-                <IoStarSharp />
-              </h3>
-            </div>
-            <div className="slide1-img">
-              <img src={crisimg} alt="" />
-            </div>
-          </div>
-        </div>
-        {/* slid2 */}
-        <div className="Discounted-slide1-main">
-          <div className="slide1-inner">
-            <div className="slide1-text">
-              <h2>Wedding Card</h2>
-              <span className="strike-through">$30</span>
-              <h1>$20</h1>
-              <h3>
-                {" "}
-                <IoStarSharp />
-                <IoStarSharp />
-                <IoStarSharp />
-                <IoStarSharp />
-                <IoStarSharp />
-              </h3>
-            </div>
-            <div className="slide1-img">
-              <img src={wedimg} alt="" />
-            </div>
-          </div>
-        </div>
-        {/* slid2 */}
-        <div className="Discounted-slide1-main">
-          <div className="slide1-inner">
-            <div className="slide1-text">
-              <h2>Wedding Card</h2>
-              <span className="strike-through">$30</span>
-              <h1>$20</h1>
-              <h3>
-                {" "}
-                <IoStarSharp />
-                <IoStarSharp />
-                <IoStarSharp />
-                <IoStarSharp />
-                <IoStarSharp />
-              </h3>
-            </div>
-            <div className="slide1-img">
-              <img src={wedimg} alt="" />
-            </div>
-          </div>
-        </div>
-      </Slider>
+          ))}
+        </Slider>
+      </div>
     </div>
   );
 }

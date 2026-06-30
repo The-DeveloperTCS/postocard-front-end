@@ -374,7 +374,6 @@
 
 /* Medium tablets and laptops (992px and up) */
 @media only screen and (max-width: 786px) {
-  /* Styles for medium tablets and laptops */
   .main-product-img img {
     width: 100%;
   }
@@ -383,13 +382,18 @@
     text-align: start;
 }
 .product-on-top{
-  padding: 30px 10px;
+  padding: 30px 12px;
 }
 .payment-top-Carousel {
   width: 100%;
   margin: auto;
-  padding: 0px 0px 0px 0px;
-  margin-left: -16px;
+  padding: 0;
+  margin-left: 0;
+}
+.inputs_box {
+  grid-template-columns: 1fr;
+  padding: 60px 16px 40px;
+  gap: 16px;
 }
 }
 

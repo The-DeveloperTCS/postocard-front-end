@@ -1,0 +1,389 @@
+/* Global responsive fixes — preserves desktop design, improves smaller screens */
+
+html,
+body,
+#root {
+  overflow-x: hidden;
+  max-width: 100%;
+}
+
+img {
+  max-width: 100%;
+  height: auto;
+}
+
+/* Active navigation highlight */
+.nav-link-active,
+.nav-link-active li,
+.footer-links-right a.nav-link-active,
+.footer-links-left a.nav-link-active,
+.desktop_nav_links a.nav-link-active,
+.mobile_nav_links a.nav-link-active {
+  color: #14bda5 !important;
+}
+
+.footer-links-right a,
+.footer-links-left a {
+  color: inherit;
+  text-decoration: none;
+  display: block;
+  padding: 2px 0;
+}
+
+.footer-links-right a:hover,
+.footer-links-left a:hover,
+.desktop_nav_links a:hover,
+.mobile_nav_links a:hover {
+  color: #14bda5;
+}
+
+/* Payment page */
+@media (max-width: 1024px) {
+  .inputs_box {
+    grid-template-columns: 1fr;
+    gap: 24px;
+    padding: 80px 32px 60px;
+  }
+
+  .payment_methods {
+    padding: 32px 24px;
+  }
+
+  .error_touched_div {
+    margin: 10px 24px;
+  }
+}
+
+@media (max-width: 768px) {
+  .inputs_box {
+    padding: 60px 16px 40px;
+    gap: 16px;
+  }
+
+  .inputs_box input {
+    margin-bottom: 16px;
+    padding: 12px 10px;
+  }
+
+  .payment_methods {
+    padding: 24px 16px;
+  }
+
+  .error_touched_div {
+    margin: 10px 16px;
+  }
+
+  .right_payment h2 {
+    font-size: 28px;
+    line-height: 1.3;
+  }
+}
+
+/* Product grid cards */
+@media (max-width: 640px) {
+  .main_product {
+    width: 100%;
+    max-width: 280px;
+  }
+
+  .main_product img,
+  .swiper,
+  .swiper-slide img {
+    width: 100%;
+    max-width: 280px;
+    height: auto;
+    min-height: 280px;
+    object-fit: cover;
+  }
+}
+
+@media (max-width: 374px) {
+  .main_product,
+  .main_product img,
+  .swiper,
+  .swiper-slide img {
+    max-width: 100%;
+  }
+}
+
+/* Section 1 — tablet grid */
+@media (min-width: 481px) and (max-width: 1080px) {
+  .section1-box-main {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 16px;
+    width: 95%;
+  }
+
+  .section1-box1 {
+    width: calc(50% - 16px);
+    height: auto;
+    min-height: 220px;
+  }
+}
+
+@media (max-width: 480px) {
+  .section1 {
+    padding: 40px 0 24px;
+    margin-top: -80px;
+  }
+
+  .section1 h2 {
+    font-size: 28px;
+    margin-top: 40px;
+    padding: 0 12px;
+  }
+
+  .section1-box1 {
+    height: auto;
+    min-height: 200px;
+    padding: 0 12px;
+  }
+}
+
+/* Hero — small phones */
+@media (max-width: 480px) {
+  .hero {
+    padding: 40px 16px 10px;
+  }
+
+  .left_hero {
+    height: auto;
+    min-height: 180px;
+    padding: 16px 0;
+  }
+
+  .left_hero h2 {
+    font-size: 28px;
+    margin-bottom: 12px;
+  }
+
+  .left_hero p {
+    font-size: 14px;
+    padding: 8px 0 24px;
+  }
+
+  .left_hero button {
+    font-size: 14px;
+    padding: 6px 20px;
+  }
+}
+
+@media (max-width: 374px) {
+  .left_hero h2 {
+    font-size: 24px;
+  }
+}
+
+/* Section 2 & 4 headings */
+@media (max-width: 480px) {
+  .section2-text-btn h2,
+  .section-4left h1,
+  .section3-right-text h2 {
+    font-size: 26px;
+    margin-bottom: 12px;
+  }
+
+  .section2-text-btn {
+    padding: 16px 12px;
+  }
+
+  .for-section2-caroudel {
+    padding: 24px 12px;
+  }
+}
+
+/* Carousel negative margin fixes */
+@media (max-width: 768px) {
+  .for-section2-caroudel,
+  .slider-container,
+  .slider-container4,
+  .slider-container41,
+  .payment-top-Carousel {
+    margin-left: 0 !important;
+  }
+
+  .section-4right {
+    margin-left: 0 !important;
+  }
+}
+
+/* About page */
+@media (max-width: 768px) {
+  .about_container1 {
+    flex-direction: column;
+    align-items: center;
+    gap: 24px;
+    padding: 0 12px;
+  }
+
+  .about_container2_content h2,
+  .about_container3_content h2 {
+    font-size: 28px;
+  }
+}
+
+@media (max-width: 480px) {
+  .About_Content {
+    padding: 12px;
+  }
+}
+
+/* Contact page */
+@media (max-width: 480px) {
+  .contact_us_content h2 {
+    font-size: 32px;
+  }
+
+  .conatct_us_main {
+    margin: 12px 0 40px;
+    padding: 16px 12px;
+  }
+}
+
+/* Cart page */
+@media (max-width: 480px) {
+  .cartcomponenet-main {
+    padding: 100px 12px 24px;
+  }
+
+  .main-text-cart h1 {
+    font-size: 26px;
+  }
+
+  .cart_data_image img {
+    min-width: unset !important;
+    width: 100%;
+    max-width: 280px;
+    height: auto;
+  }
+
+  .prodcut-name-cart h1 {
+    font-size: 22px;
+  }
+
+  .cart-btn-out {
+    justify-content: center;
+  }
+
+  .cart-btn-out button {
+    width: 100%;
+    max-width: 200px;
+  }
+}
+
+@media (max-width: 374px) {
+  .cart-btn-out button {
+    max-width: 100%;
+  }
+}
+
+/* Product listing page */
+@media (max-width: 768px) {
+  .Product_Section2-flex {
+    padding: 120px 12px 40px;
+  }
+
+  .sidebar_search_bar {
+    width: 100%;
+    max-width: 100%;
+  }
+
+  .Product_Section2 {
+    padding: 10px 12px;
+  }
+}
+
+@media (max-width: 480px) {
+  .product_section2_sidebar_box h3 {
+    font-size: 28px;
+  }
+}
+
+/* Single product page */
+@media (max-width: 480px) {
+  .IndexCom_cartSidebar {
+    padding: 40px 12px 240px;
+  }
+}
+
+/* User profile */
+@media (max-width: 480px) {
+  .parent {
+    padding: 8px !important;
+  }
+}
+
+/* Footer — tablet two-column layout */
+@media (min-width: 481px) and (max-width: 1080px) {
+  .footer-main-inner {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 24px 32px;
+    width: 95%;
+    padding: 30px 24px;
+  }
+
+  .footer-logo-text {
+    grid-column: 1 / -1;
+    width: 100%;
+    padding: 0 0 12px;
+  }
+
+  .footer-links-left,
+  .footer-links-right {
+    width: 100%;
+    text-align: left;
+    padding: 12px 0;
+  }
+
+  .footer-media {
+    grid-column: 1 / -1;
+    width: 100%;
+    justify-content: center;
+  }
+}
+
+@media (max-width: 480px) {
+  .footer-main-inner {
+    padding: 24px 16px;
+  }
+
+  .footer-logo-text img {
+    width: 40%;
+    max-width: 140px;
+  }
+
+  .footer-media svg {
+    font-size: 32px;
+  }
+
+  .footer-bootm p {
+    font-size: 14px;
+    padding: 12px 8px;
+  }
+}
+
+/* Laptop fine-tuning (1024–1280) */
+@media (min-width: 1024px) and (max-width: 1280px) {
+  .bottom_header {
+    padding: 5px 40px;
+  }
+
+  .main-logo {
+    left: 40px;
+  }
+
+  .section2-text-btn,
+  .for-section2-caroudel {
+    width: 90%;
+  }
+}
+
+/* Large desktop centering */
+@media (min-width: 1920px) {
+  .footer-main-inner {
+    max-width: 1600px;
+  }
+}

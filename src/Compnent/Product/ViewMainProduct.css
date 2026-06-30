@@ -9,9 +9,9 @@
 
 .main_product {
   cursor: pointer;
-  /* border: 1px solid rgba(184, 182, 182, 0.555); */
   padding-bottom: 10px;
   width: 280px;
+  max-width: 100%;
   overflow: hidden;
   border-radius: 10px;
   position: relative;
@@ -34,7 +34,8 @@
 }
 
 .main_product img {
-  width: 280px;
+  width: 100%;
+  max-width: 280px;
   height: 371px;
   object-fit: cover;
   border-radius: 10px;
@@ -162,7 +163,8 @@
 /* ==================== swiper ================================= */
 
 .swiper {
-  width: 280px;
+  width: 100%;
+  max-width: 280px;
   height: 371px;
 }
 
@@ -177,11 +179,11 @@
 }
 
 .swiper-slide img {
-  width: 280px;
+  width: 100%;
+  max-width: 280px;
   height: 371px;
   object-fit: cover;
   border-radius: 10px;
-  /* border: 2px solid red; */
 }
 
 .swiper-button-next {

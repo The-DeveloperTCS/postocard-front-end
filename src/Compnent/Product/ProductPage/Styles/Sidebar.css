@@ -30,7 +30,7 @@
   display: grid;
   grid-template-columns: 0.3fr 1fr;
   justify-content: center;
-  align-items: start;
+  align-items: flex-start;
   position: relative;
 }
 
@@ -38,7 +38,7 @@
   display: inline-flex;
   padding: 16px 32px;
   align-items: flex-start;
-  align-items: start;
+  align-items: flex-start;
   gap: 10px;
   background: #f49e3f;
   color: #2a254b;

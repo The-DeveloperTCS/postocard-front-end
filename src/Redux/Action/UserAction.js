@@ -56,7 +56,6 @@ import {
 } from "../Variables/UserVariables";
 import Cookies from "js-cookie";
 import { tryDevLogin, restoreDevSession, clearDevSession } from "../../utils/devAuth";
-import { getAllCatalogProducts } from "../../utils/catalogProducts";
 // ================= login
 export const UserLoginAction =
   (email, password, navigate, checkbox) => async (dispatch) => {

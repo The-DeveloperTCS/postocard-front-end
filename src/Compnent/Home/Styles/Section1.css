@@ -90,7 +90,7 @@
   height: 260px;
   display: flex;
   justify-content: center;
-  align-items: start;
+  align-items: flex-start;
   padding: 5px 10px;
   flex-direction: column;
 }

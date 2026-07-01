@@ -1,32 +1,98 @@
+.product-detail-page {
+  width: 100%;
+  overflow-x: hidden;
+}
+
+.product-detail-hero {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 40px;
+  width: 100%;
+  padding: 120px 80px 180px;
+  background-image: url(../../../../Assets/images/Edit\ your\ cardBackground.png);
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: bottom center;
+  box-sizing: border-box;
+}
+
+.product-detail-left {
+  width: 42%;
+  max-width: 520px;
+}
+
+.product-detail-right {
+  width: 52%;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+}
+
+.product-detail-meta {
+  margin-top: 32px;
+  padding: 0 5px;
+}
+
+.product-detail-meta h2 {
+  font-family: "Luckiest Guy", cursive;
+  color: #30404d;
+  font-size: 35px;
+  font-weight: 400;
+  line-height: 1.1;
+  margin: 0 0 16px;
+  text-transform: uppercase;
+}
+
+.product-detail-meta p {
+  font-family: "Poppins", sans-serif;
+  color: #30404d;
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 1.6;
+  margin: 0;
+}
+
+@media (max-width: 1250px) {
+  .product-detail-hero {
+    padding: 110px 40px 160px;
+    gap: 28px;
+  }
+}
+
+@media (max-width: 1000px) {
+  .product-detail-hero {
+    flex-direction: column;
+    align-items: center;
+    padding: 100px 20px 140px;
+  }
+
+  .product-detail-left,
+  .product-detail-right {
+    width: 100%;
+    max-width: 640px;
+  }
+
+  .product-detail-right {
+    align-items: center;
+  }
+
+  .product-detail-meta {
+    text-align: center;
+  }
+}
+
+@media (max-width: 480px) {
+  .product-detail-hero {
+    padding: 90px 16px 120px;
+  }
+
+  .product-detail-meta h2 {
+    font-size: 28px;
+  }
+}
+
+/* Legacy class kept for compatibility */
 .IndexCom_cartSidebar {
-    padding: 50px 190px 320px 100px;
-    display: flex;
-    justify-content: space-between;
-    align-items: flex-start;
-    background-image: url(../../../../Assets/images/Edit\ your\ cardBackground.png);
-    background-repeat: no-repeat;
-    background-size: cover;
-    background-position: bottom;
-width: 100%;
-
-}
-
-@media(max-width: 1000px) {
-    .IndexCom_cartSidebar {
-        flex-direction: column;
-        margin-left: 0px;
-        align-items: center;
-        padding: 47px 10px 340px 10px;
-    }
-
-}
-
-@media(max-width: 1250px) {
-    .IndexCom_cartSidebar {
-        padding: 47px 10px 340px 10px;
-        justify-content: space-around;
-        gap: 30px;
-    }
- 
-
+  display: contents;
 }

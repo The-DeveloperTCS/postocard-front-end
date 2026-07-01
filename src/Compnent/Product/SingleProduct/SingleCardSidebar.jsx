@@ -1,47 +1,39 @@
-import React, { useState, useRef } from "react";
-import JoditEditor from "jodit-react";
+import React from "react";
 import "./Styles/SingleCardSidebar.css";
-import { useSelector } from "react-redux";
 
-const SingleCardSidebar = ({ setContenttext, setName, name }) => {
-  const editor = useRef();
-  const [content, setContent] = useState("");
-  const config = {
-    toolbarButtonSize: "middle",
-
-    buttons:
-      "bold,italic,fontsize,|,insertformatblock,|,alignleft,aligncenter,alignright",
-  };
-
+const SingleCardSidebar = ({
+  firstName,
+  lastName,
+  setFirstName,
+  setLastName,
+  setContent,
+  productName,
+}) => {
   return (
     <div className="SingleCardSidebar">
-      <h2>Edit Your Card</h2>
+      <h2>EDIT YOUR CARD</h2>
       <div className="SingleCardSidebar_inputs">
-        <div className="SC_input">
-          {/* <label>Card Message</label> */}
-          {/* <JoditEditor
-            ref={editor}
-            value={content}
-            onBlur={(newContent) => setContent(newContent)}
-            onChange={(newContent) => setContenttext(newContent)}
-          /> */}
-
-          <div className="SC_input">
-            <input
-              type="text"
-              placeholder="Your Name"
-              value={name}
-              onChange={(e) => setName(e.target.value)}
-            />
-          </div>
-          <textarea
-            placeholder="Enter Your Message"
-            onChange={(e) => setContenttext(e.target.value)}
-            cols={7}
-            rows={7}
-          />
-        </div>
+        <input
+          type="text"
+          placeholder="First Name"
+          value={firstName}
+          onChange={(e) => setFirstName(e.target.value)}
+        />
+        <input
+          type="text"
+          placeholder="Last Name"
+          value={lastName}
+          onChange={(e) => setLastName(e.target.value)}
+        />
+        <textarea
+          placeholder="Message"
+          onChange={(e) => setContent(e.target.value)}
+          rows={7}
+        />
       </div>
+      {productName ? (
+        <h3 className="SingleCardSidebar__product-name">{productName}</h3>
+      ) : null}
     </div>
   );
 };

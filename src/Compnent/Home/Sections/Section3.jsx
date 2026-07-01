@@ -3,6 +3,7 @@ import "../Styles/Section3.css";
 import happimg from "../../../Assets/images/HappyBirthday.png";
 import Section3Carousel from "./Section3Carousel";
 import { IoStarSharp } from "react-icons/io5";
+import ConfigureCardLink from "../../shared/ConfigureCardLink";
 
 const Section3 = () => {
   return (
@@ -36,7 +37,13 @@ const Section3 = () => {
             </p>
           </div>
           <div className="Configure-card">
-            <button>Configure card</button>
+            <ConfigureCardLink
+              title="Birthday Card"
+              fallbackIndex={0}
+              className="configure-card-link configure-card-link--section3"
+            >
+              Configure card
+            </ConfigureCardLink>
           </div>
         </div>
         <div

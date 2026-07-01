@@ -7,6 +7,8 @@ import { FaInstagram } from "react-icons/fa6";
 import { FaSkype } from "react-icons/fa";
 import { FaSquareXTwitter } from "react-icons/fa6";
 import { FaPinterest } from "react-icons/fa";
+import { getCategoryCollectionPath } from "../../utils/productCatalog";
+import { CARD_CATEGORIES } from "../../data/cardCategories";
 import "./Footer.css";
 
 const companyLinks = [
@@ -16,17 +18,6 @@ const companyLinks = [
   { to: "/privacypolicy", label: "Privacy-policy" },
   { to: "/termsconditions", label: "terms-conditions" },
   { to: "/refundpolicy", label: "Refund-Policy" },
-];
-
-const categoryLinks = [
-  "Wedding card",
-  "Birthday card",
-  "Christamas card",
-  "Valentine card",
-  "anniversary Card",
-  "Engagment Card",
-  "Party Card",
-  "Best Wishes card",
 ];
 
 const Footer = () => {
@@ -45,9 +36,11 @@ const Footer = () => {
         <div className="footer-links-left">
           <h2>Categories </h2>
           <ul>
-            {categoryLinks.map((label) => (
-              <li key={label}>
-                <NavLink to="/allcollection/all">{label}</NavLink>
+            {CARD_CATEGORIES.map((category) => (
+              <li key={category.slug}>
+                <NavLink to={getCategoryCollectionPath(category.slug)}>
+                  {category.name}
+                </NavLink>
               </li>
             ))}
           </ul>

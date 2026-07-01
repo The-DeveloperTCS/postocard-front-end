@@ -6,6 +6,9 @@ import { toast } from "react-toastify";
 import Loading from "../../Layout/Loading/Loading";
 import AdminVerify from "../../Hooks/AdminVerify";
 import AdminLoading from "../../Layout/Loading/AdminLoading";
+import TestLoginPanel from "../../Compnent/shared/TestLoginPanel";
+import { applyDevLogin } from "../../utils/devAuth";
+import "../../Layout/Header/Styles/UserLogin.css";
 
 const AdminLogin = () => {
   // -------redux
@@ -38,14 +41,28 @@ const AdminLogin = () => {
     if (!adminData.email || !adminData.password) {
       return toast.error("Plaese Enter Email or Password");
     }
-    setAdminData({
-      email: "",
-      password: "",
-    });
     await dispatch(
       UserLoginAction(adminData.email, adminData.password, navigate, checkbox)
     );
     dispatch(LogedinUser());
+  };
+
+  const handleOfflineLogin = (role) => {
+    applyDevLogin(role, navigate, checkbox, dispatch);
+    dispatch(LogedinUser());
+  };
+
+  const handleTestAccount = (account, submitNow) => {
+    setAdminData({
+      email: account.email,
+      password: account.password,
+    });
+
+    if (submitNow) {
+      dispatch(
+        UserLoginAction(account.email, account.password, navigate, checkbox)
+      ).then(() => dispatch(LogedinUser()));
+    }
   };
 
   useEffect(() => {
@@ -71,6 +88,11 @@ const AdminLogin = () => {
                   </h1>
                   <div className="bg-white shadow w-full rounded-lg divide-y divide-gray-200">
                     <div className="px-5 py-7">
+                      <TestLoginPanel
+                        onUseAccount={handleTestAccount}
+                        onOfflineLogin={handleOfflineLogin}
+                        role="admin"
+                      />
                       <label className="font-semibold text-sm text-gray-600 pb-1 block">
                         E-mail
                       </label>

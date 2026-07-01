@@ -55,6 +55,7 @@ import {
   VALID_USER_SUCCESS,
 } from "../Variables/UserVariables";
 import Cookies from "js-cookie";
+import { tryDevLogin, restoreDevSession, clearDevSession } from "../../utils/devAuth";
 // ================= login
 export const UserLoginAction =
   (email, password, navigate, checkbox) => async (dispatch) => {
@@ -70,33 +71,54 @@ export const UserLoginAction =
           password,
         }),
       });
-      dispatch({ type: LOGIN_USER_FAIL });
       const data = await res.json();
+
       if (!data || res.status === 401) {
-        return toast.error(data.message);
-      } else if (res.status === 500) {
-        toast.error("Internal Server Error");
-        //   return toast.error(data.message);
-      } else {
-        toast.success(data.message);
-        Cookies.set("ApiLoginToken", data.token, {
-          expires: checkbox ? 7 : window.close(),
-        });
-        if (data?.user?.IsAdmin === 0) {
-          navigate("/");
-        } else {
-          navigate("/admin/dashboard");
+        if (tryDevLogin(email, password, navigate, checkbox, dispatch)) {
+          return;
         }
-        dispatch({ type: LOGIN_USER_SUCCESS, payload: data.user });
+        dispatch({ type: LOGIN_USER_FAIL });
+        return toast.error(data?.message || "Invalid email or password");
       }
+
+      if (res.status === 500) {
+        if (tryDevLogin(email, password, navigate, checkbox, dispatch)) {
+          return;
+        }
+        dispatch({ type: LOGIN_USER_FAIL });
+        return toast.error("Internal Server Error");
+      }
+
+      const cookieOptions = checkbox ? { expires: 7 } : undefined;
+      Cookies.set("ApiLoginToken", data.token, cookieOptions);
+      clearDevSession();
+      toast.success(data.message || "Login successful");
+
+      if (data?.user?.IsAdmin === 0) {
+        navigate("/");
+      } else {
+        navigate("/admin/dashboard");
+      }
+      dispatch({ type: LOGIN_USER_SUCCESS, payload: data.user });
     } catch (error) {
+      if (tryDevLogin(email, password, navigate, checkbox, dispatch)) {
+        return;
+      }
       dispatch({ type: LOGIN_USER_ERROR, payload: error.message });
+      toast.error(
+        "Cannot reach login server. Use offline test login below or check your API URL.",
+        { toastId: "login-server-error" }
+      );
     }
   };
 
 // ========== login user
 
 export const LogedinUser = () => async (dispatch) => {
+  if (restoreDevSession(dispatch)) {
+    return;
+  }
+
   try {
     dispatch({ type: VALID_USER_REQUEST });
     const res = await fetch(`${server}/user`, {
@@ -167,6 +189,7 @@ export const userRegistration =
 export const LOGOUTUSER = (navigate) => (dispatch) => {
   dispatch({ type: LOGIN_USER_REQUEST });
   Cookies.remove("ApiLoginToken");
+  clearDevSession();
   navigate("/");
   toast.success("Logout Successfully");
   dispatch({ type: LOGIN_USER_SUCCESS });

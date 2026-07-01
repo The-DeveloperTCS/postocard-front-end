@@ -1,16 +1,20 @@
-.single_card_main {
-    display: flex;
-    flex-direction: row;
-    /* Align children horizontally */
-    justify-content: flex-end;
-    /* Align children to the end of the container */
-    gap: 4rem;
-    /* Adjust gap between elements if needed */
-    border: 2px solid rgb(255, 255, 255);
-    padding: 60px;
-    border-radius: 24px;
-    width: 100%;
+.single_card {
+  width: 100%;
+  max-width: 520px;
+}
 
+.single_card_main {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 1rem;
+  border: 2px solid #ffffff;
+  padding: 48px 40px;
+  border-radius: 24px;
+  width: 100%;
+  background: rgba(255, 255, 255, 0.35);
+  box-sizing: border-box;
 }
 
 
@@ -27,14 +31,13 @@
 
 /* --------- butoon_editing */
 .butoon_editing {
-    margin: 10px 0px;
-    margin-top: 34px;
-    width: 100%;
-    display: flex;
-    justify-content: end;
-    align-items: center;
-    /* gap: 30px; */
-    padding: 5px;
+  margin-top: 20px;
+  width: 100%;
+  max-width: 200px;
+  display: flex;
+  justify-content: center;
+  align-items: stretch;
+  padding: 0;
 }
 
 .butoon_editing button {
@@ -67,15 +70,14 @@
     background-color: purple;
 }
 
-@media(max-width: 1000px) {
-    .single_card{
-     width: 100%;
-     margin-top: -190px;
-    }
-    .single_card_main{
-        padding: 20px;
-    }
-    .butoon_editing button{
-        display: none;
-    }
+@media (max-width: 1000px) {
+  .single_card {
+    width: 100%;
+    max-width: 100%;
+    margin-top: 0;
+  }
+
+  .single_card_main {
+    padding: 28px 20px;
+  }
 }

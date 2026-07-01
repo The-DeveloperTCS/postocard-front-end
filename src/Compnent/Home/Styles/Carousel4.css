@@ -23,7 +23,14 @@
 }
 
 .slider-container4 .slick-slide > div {
-  padding: 0 8px;
+  padding: 0 10px;
+  display: flex;
+  width: 100%;
+  height: 100%;
+}
+
+.slider-container4 .product-card {
+  margin-bottom: 8px;
 }
 
 .carousel4-main-slider {
@@ -143,10 +150,37 @@
   font-weight: 600;
 }
 
-.Confiqure-care p {
+.configure-card-link:hover,
+.configure-card-link:hover p {
+  color: #14bda5;
+}
+
+.configure-card-link {
+  text-decoration: none;
+  color: inherit;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  background: transparent;
+  border: none;
+  font: inherit;
+  padding: 0;
+  width: 100%;
+}
+
+.configure-card-link--section3 {
+  border: 1px solid #30404d;
+  border-radius: 30px;
+  padding: 5px 10px;
+  margin-top: 40px;
+  font-size: 16px;
   font-weight: 500;
-  font-size: 14px;
-  text-align: center;
+  font-family: "Poppins", sans-serif;
+  color: #30404d;
+  text-transform: none;
+  width: auto;
+  display: inline-flex;
 }
 
 .slider-container4 .slick-prev,

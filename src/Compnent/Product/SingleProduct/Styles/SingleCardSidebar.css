@@ -1,21 +1,19 @@
 .SingleCardSidebar {
-  width: 500px;
-  /* border-right: 1px solid rgba(128, 128, 128, 0.507); */
-  height: 550px;
-  margin-top: 75px;
-  /* padding-top: 60px; */
-  /* background-color: #F5A852; */
+  width: 100%;
+  max-width: 500px;
+  margin-top: 0;
 }
 
 .SingleCardSidebar h2 {
-  font-family: "Luckiest Guy";
-  color: #30404D;
+  font-family: "Luckiest Guy", cursive;
+  color: #30404d;
   font-size: 35px;
   font-style: normal;
   font-weight: 400;
   line-height: normal;
-  padding: 0px 5px;
+  padding: 0 5px;
   margin-bottom: 20px;
+  text-transform: uppercase;
 }
 
 .SingleCardSidebar label {
@@ -85,6 +83,17 @@
   border-radius: 6px;
   font-family: "Poppins", sans-serif;
 
+}
+
+.SingleCardSidebar__product-name {
+  font-family: "Luckiest Guy", cursive;
+  color: #30404d;
+  font-size: 32px;
+  font-weight: 400;
+  line-height: 1.1;
+  margin: 28px 0 0;
+  padding: 0 5px;
+  text-transform: uppercase;
 }
 
 @media(max-width : 1000px) {

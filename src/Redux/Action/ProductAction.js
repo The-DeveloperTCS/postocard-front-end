@@ -23,6 +23,17 @@ import {
   GET_SINGLE_PRODUCT_SUCCESS,
 } from "../Variables/UserVariables";
 import Cookies from "js-cookie";
+import {
+  getAllCatalogProducts,
+  getCatalogProductById,
+  isCatalogProductId,
+} from "../../utils/catalogProducts";
+
+const useCatalogProductFallback = (dispatch) => {
+  const products = getAllCatalogProducts();
+  dispatch({ type: GET_PRODUCT_SUCCESS, payload: products });
+  return products;
+};
 
 export const CreateProductFunc = (newdata, navigate) => async (dispatch) => {
   try {
@@ -82,16 +93,28 @@ export const getallproduct = () => async (dispatch) => {
       },
     });
     const data = await res.json();
-    dispatch({ type: GET_PRODUCT_FAIL });
+
     if (!data || res.status === 401) {
-      return;
-    } else if (res.status === 500) {
-      return toast.error("Internel Server Error new");
-    } else {
-      dispatch({ type: GET_PRODUCT_SUCCESS, payload: data.data });
+      dispatch({ type: GET_PRODUCT_FAIL });
+      return useCatalogProductFallback(dispatch);
     }
+
+    if (res.status === 500) {
+      dispatch({ type: GET_PRODUCT_FAIL });
+      toast.error("Internel Server Error new");
+      return useCatalogProductFallback(dispatch);
+    }
+
+    const products = Array.isArray(data.data) ? data.data : [];
+    if (!products.length) {
+      return useCatalogProductFallback(dispatch);
+    }
+
+    dispatch({ type: GET_PRODUCT_SUCCESS, payload: products });
+    return products;
   } catch (error) {
     dispatch({ type: GET_PRODUCT_ERROR, payload: error.message });
+    return useCatalogProductFallback(dispatch);
   }
 };
 // =============== get all product  for admin
@@ -122,6 +145,14 @@ export const getallproductforAdmin = (productName, price, categoryName) => async
 
 // --------- get single product
 export const getSingleProduct = (id) => async (dispatch) => {
+  if (isCatalogProductId(id)) {
+    const catalogProduct = getCatalogProductById(id);
+    if (catalogProduct) {
+      dispatch({ type: GET_SINGLE_PRODUCT_SUCCESS, payload: catalogProduct });
+      return catalogProduct;
+    }
+  }
+
   try {
     dispatch({ type: GET_SINGLE_PRODUCT_REQUEST });
     const res = await fetch(`${server}/product/${id}`, {
@@ -131,17 +162,27 @@ export const getSingleProduct = (id) => async (dispatch) => {
         Authorization: "Bearer " + Cookies.get("ApiLoginToken"),
       },
     });
-    dispatch({ type: GET_SINGLE_PRODUCT_FAIL });
     const data = await res.json();
-    if (!data || res.status === 401) {
+
+    if (!data || res.status === 401 || res.status === 500) {
+      dispatch({ type: GET_SINGLE_PRODUCT_FAIL });
+      const catalogProduct = getCatalogProductById(id);
+      if (catalogProduct) {
+        dispatch({ type: GET_SINGLE_PRODUCT_SUCCESS, payload: catalogProduct });
+        return catalogProduct;
+      }
       return;
-    } else if (res.status === 500) {
-      return toast.error("Internel Server Error new");
-    } else {
-      dispatch({ type: GET_SINGLE_PRODUCT_SUCCESS, payload: data.data });
     }
+
+    dispatch({ type: GET_SINGLE_PRODUCT_SUCCESS, payload: data.data });
+    return data.data;
   } catch (error) {
     dispatch({ type: GET_SINGLE_PRODUCT_ERROR, payload: error.message });
+    const catalogProduct = getCatalogProductById(id);
+    if (catalogProduct) {
+      dispatch({ type: GET_SINGLE_PRODUCT_SUCCESS, payload: catalogProduct });
+      return catalogProduct;
+    }
   }
 };
 

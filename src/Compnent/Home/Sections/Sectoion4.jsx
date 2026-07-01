@@ -1,6 +1,8 @@
 import React from "react";
 import "../Styles/Section4.css";
+import { NavLink } from "react-router-dom";
 import Carousel4 from "./Carousel4";
+
 const Sectoion4 = () => {
   return (
     <div className="section4">
@@ -17,14 +19,14 @@ const Sectoion4 = () => {
           trusted companion in the journey of childhood. Come, explore, and
           embrace the magic at TiatailToys – where playtime dreams come true
         </p>
-        <button>
-          {" "}
-          <h2>View all</h2>{" "}
-        </button>
+        <NavLink to="/allcollection/all">
+          <button type="button">
+            <h2>View all</h2>
+          </button>
+        </NavLink>
       </div>
       <div className="section-4right">
-      <Carousel4 slidesToShow={2} />
-
+        <Carousel4 />
       </div>
     </div>
   );

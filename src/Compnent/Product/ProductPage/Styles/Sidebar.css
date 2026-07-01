@@ -153,15 +153,50 @@
   font-size: 16px;
   font-family: "Poppins", sans-serif;
   color: #30404D;
-  font-family: "Poppins", sans-serif;
   font-style: normal;
   line-height: 24px;
-  /* 171.429% */
   letter-spacing: 0.2px;
   padding: 5px 0px;
   font-weight: 500;
   cursor: pointer;
   margin: 2px 0px;
+}
+
+.sidebar_filter_by_category ul li a {
+  color: inherit;
+  text-decoration: none;
+  display: block;
+  width: 100%;
+}
+
+.sidebar_filter_by_category ul li.sidebar-category-active,
+.sidebar_filter_by_category ul li.sidebar-category-active a {
+  color: #14bda5;
+  font-weight: 600;
+}
+
+.collection-load-more {
+  display: flex;
+  justify-content: center;
+  margin-top: 32px;
+}
+
+.collection-load-more button {
+  border: 1px solid #30404d;
+  background: #fdecd9;
+  color: #30404d;
+  border-radius: 30px;
+  padding: 12px 28px;
+  font-family: "Poppins", sans-serif;
+  font-size: 16px;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.collection-load-more button:hover {
+  background: #14bda5;
+  color: #fff;
+  border-color: #14bda5;
 }
 
 /* --------------------------------- */

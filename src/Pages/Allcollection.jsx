@@ -1,80 +1,63 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useMemo, useState } from "react";
 import Sidebar from "../Compnent/Product/ProductPage/Component/Sidebar.jsx";
 import ViewMainProduct from "../Compnent/Product/ViewMainProduct.jsx";
 import "../Compnent/Product/ProductPage/Styles/Sidebar.css";
 import { useDispatch, useSelector } from "react-redux";
-import { useParams } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import { AiOutlineFilter } from "react-icons/ai";
 import Loading from "../Layout/Loading/Loading.jsx";
 import SVGGET from "../Layout/Loading/notfound.json";
 import AnimateLoading from "../Layout/Loading/AnimateLoading.jsx";
 import { getallproduct } from "../Redux/Action/ProductAction";
-import { getallSubCategory } from "../Redux/Action/CategoryAction.js";
+import {
+  filterProductsBySearch,
+  mergeCatalogWithApi,
+} from "../utils/productCatalog";
 
 const Allcollection = () => {
   const [filtershow, setFilterShow] = useState(false);
   const allProduct = useSelector((state) => state.product.allProduct);
-  const [copyData, setCopyData] = useState(null);
   const isLoading = useSelector((state) => state.product.isLoading);
   const { all } = useParams();
-
-  // ========== slice the data
-  const [count, setCount] = useState(1);
-  const slicedata = copyData?.slice(0, count * 12);
-
-  //   ---- search by seacr input
-  const [search, setSerach] = useState(all);
-  const [price, setprice] = useState(0);
-
-  useEffect(() => {
-    setSerach(all);
-  }, [all]);
-console.log(allProduct, 'allProduct')
-  const filterdata = () => {
-    if (search === "all") {
-      setCopyData(allProduct);
-    } else {
-      const FilterDatabyName =
-        allProduct &&
-        allProduct.filter((item) =>
-          item.ProductName.toLowerCase().includes(search.toLowerCase())
-        );
-      setCopyData(FilterDatabyName);
-    }
-  };
-
+  const navigate = useNavigate();
   const dispatch = useDispatch();
+
+  const [search, setSerach] = useState(all || "all");
+  const [count, setCount] = useState(1);
+
+  const catalogProducts = useMemo(
+    () => mergeCatalogWithApi(allProduct),
+    [allProduct]
+  );
+
+  const filteredProducts = useMemo(
+    () => filterProductsBySearch(catalogProducts, search),
+    [catalogProducts, search]
+  );
+
+  const slicedata = filteredProducts?.slice(0, count * 12);
+
   useEffect(() => {
     dispatch(getallproduct());
-  }, []);
+  }, [dispatch]);
+
   useEffect(() => {
-    if (search === "all") {
-      setCopyData(allProduct);
+    setSerach(all || "all");
+    setCount(1);
+  }, [all]);
+
+  const filterdata = () => {
+    const term = String(search || "all").trim().toLowerCase();
+    if (term === "all") {
+      navigate("/allcollection/all");
+      return;
     }
-  }, [allProduct, all]);
-
-  useEffect(() => {
-    setSerach(all);
-    filterdata();
-  }, [all, search]);
-
-  // ====================
-
-  useEffect(() => {
-    dispatch(getallproduct());
-  }, []);
+    navigate(`/allcollection/${encodeURIComponent(term)}`);
+  };
 
   return (
     <>
-      <div className="paroduct_hero">
-        {/* <img src="./data/product/productpage.png" alt="" /> */}
-        <img
-          src="https://images.pexels.com/photos/9429448/pexels-photo-9429448.jpeg?auto=compress&cs=tinysrgb&w=1260&h=1200&dpr=1"
-          style={{ margin: "auto", width: "100%" }}
-          alt=""
-        />
-      </div>
-      {isLoading ? (
+      {isLoading && !catalogProducts.length ? (
         <Loading />
       ) : (
         <>
@@ -90,27 +73,20 @@ console.log(allProduct, 'allProduct')
                   filterdata={filterdata}
                   setshowfilter={setFilterShow}
                   showfilter={filtershow}
-                  setprice={setprice}
-                  price={price}
                 />
               </div>
             </div>
-            {/* -------- */}
             <div className="abc2">
               {slicedata?.length > 0 ? (
-                // <div className="pro flex justify-center flex-col place-items-center">
                 <div className="also_like11">
-                  {/* {
-                  SliceFilterSubCategory && SliceFilterSubCategory.map((item,index)=>{
-                    return (
-                      <div className="" key={index}>
-                            <p className="text-2xl">{item?.SubCategoryName}</p>
-                        </div>
-                    )
-                  })
-                } */}
                   <ViewMainProduct data={slicedata} />
-                  {/* <button onClick={() => setCount(count + 1)}>Load more</button> */}
+                  {slicedata.length < filteredProducts.length && (
+                    <div className="collection-load-more">
+                      <button type="button" onClick={() => setCount(count + 1)}>
+                        Load more
+                      </button>
+                    </div>
+                  )}
                 </div>
               ) : (
                 <div className="">

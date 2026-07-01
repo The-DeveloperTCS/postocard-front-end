@@ -1,41 +1,49 @@
-import React, { useEffect, useState } from "react";
-import SingleCardCompo from "../../Card/SingleCardCompo";
+import React, { useState } from "react";
+import InteractiveCardPreview from "./InteractiveCardPreview";
 import SingleCardSidebar from "./SingleCardSidebar";
-import "./Styles/IndexCom.css";
-import Tabs from "./Tabs";
+import ProductDetailPricing from "./ProductDetailPricing";
 import CardPricingData from "./CardPricingData";
 import Jointheclub from "./Jointheclub";
-import { useDispatch, useSelector } from "react-redux";
-import Loading from "../../../Layout/Loading/Loading";
-import { useParams } from "react-router-dom";
-import { getSingleProduct } from "../../../Redux/Action/ProductAction";
-import FullCardComponent from "../../Card/FullCardComponent";
+import { useSelector } from "react-redux";
+import "./Styles/IndexCom.css";
 
 const IndexCom = () => {
-  const [active, setActive] = useState(1);
+  const [firstName, setFirstName] = useState("");
+  const [lastName, setLastName] = useState("");
   const [content, setContent] = useState("");
-  const [name, setName] = useState("");
-  const isLoading = useSelector((state) => state.product.singleProductLoad);
-  return (
-      <>
-    {/* //  { */}
-    {/* //   isLoading ? <Loading/> : */}
+  const singleproduct = useSelector((state) => state.product.singleproduct);
+  const displayName = `${firstName} ${lastName}`.trim();
 
-    {/* <div> */}
-      <div className="IndexCom_cartSidebar">
-        <SingleCardSidebar setContenttext={setContent} setName={setName} />
-        <SingleCardCompo content={content} namedata={name} />
-        {/* <FullCardComponent/> */}
-      </div>
-      {/* ------ tabs  */}
-      {/* <Tabs active={active} setActive={setActive}/> */}
-      {/* ------ card pricing data  */}
-      <CardPricingData active={active} name={name} content={content} />
-      {/* ------ Join the club */}
+  return (
+    <div className="product-detail-page">
+      <section className="product-detail-hero">
+        <div className="product-detail-left">
+          <SingleCardSidebar
+            firstName={firstName}
+            lastName={lastName}
+            setFirstName={setFirstName}
+            setLastName={setLastName}
+            setContent={setContent}
+            productName={singleproduct?.ProductName}
+          />
+          <div className="product-detail-meta">
+            <h2>{singleproduct?.ProductName || "Your card"}</h2>
+            <p>
+              Personalize your card with a name and message, then press Next to
+              open it and preview the inside before adding to cart.
+            </p>
+          </div>
+        </div>
+
+        <div className="product-detail-right">
+          <InteractiveCardPreview content={content} displayName={displayName} />
+          <ProductDetailPricing name={displayName} content={content} />
+        </div>
+      </section>
+
+      <CardPricingData content={content} name={displayName} />
       <Jointheclub />
-    {/* </div> */}
-    {/* //  } */}
-     </>
+    </div>
   );
 };
 

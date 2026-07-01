@@ -78,7 +78,7 @@ const App = () => {
   const dispatch = useDispatch();
 
   useEffect(() => {
-    if (Cookies.get("ApiLoginTokenjkhjkhkjh")) {
+    if (Cookies.get("ApiLoginToken")) {
       dispatch(LogedinUser());
     }
     dispatch(getallproduct());
@@ -115,6 +115,7 @@ const App = () => {
 
         {/* ============ user route  */}
         <Route path="/user/Login" element={<UserLogin />} />
+        <Route path="/user/login" element={<UserLogin />} />
         <Route path="/user/signup" element={<Signup />} />
         <Route path="/user/profile" element={<Profile />} />
         <Route path="/user/order/details/:id" element={<UserOrderDetails />} />

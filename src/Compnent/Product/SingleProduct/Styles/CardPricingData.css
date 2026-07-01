@@ -1,310 +1,74 @@
-.CardPricingData_parent {
+.also-like-section {
+  background-color: #fdecd9;
+  padding: 80px 80px 100px;
+  margin-top: -60px;
   position: relative;
-}
-
-.cardpricingdatanew {
-  margin-top: 0;
-  position: relative; /* Change position to relative */
-  top: -440px; /* Remove the top offset */
-  width: 100%;
-  padding: 10% 0; /* Adjust padding for responsiveness */
-}
-
-.CardPricingData h2 {
-  color: #30404D;
-  font-size: 35px;
-  font-style: normal;
-  font-weight: 400;
-  line-height: normal;
-  font-family: "Luckiest Guy";
-
-}
-
-.CardPricingData p {
-  color: #30404D;
-  font-style: normal;
-  font-weight: 600;
-  line-height: normal;
-  font-family: "Poppins", sans-serif;
-  text-transform: uppercase;
-  padding: 0px 0px
-}
-
-/* edit-prodcut-ad */
-.edit-prodcut-ad span{
-  font-size: 16px;
-  font-weight: 600;
-  color: #30404D;
-  font-family: "Poppins", sans-serif;
-  text-transform: uppercase;
-}
-.edit-prodcut-ad p{
-  font-size: 30px;
-}
-.CardPricingDatafortext-main{
-display: flex;
-justify-content: space-around;
-width: 100%;
-padding: 0px 137px 0px 52px;
-}
-.CardPricingDatafortext{
-  width: 50%;
-}
-.CardPricingDatafortext p {
-  color: #30404D;
-  font-size: 16px;
-  font-family: "Poppins", sans-serif;
-  font-weight: 400;
-  text-transform: lowercase;
-  margin-left: -8px;
-}
-
-.price font {
-  color: gray;
-  font-size: 20px;
-  font-style: normal;
-  font-weight: 400;
-  line-height: normal;
-  margin-top: 10px;
-  padding: 5px;
-  margin-right: 15px;
-  position: relative;
-}
-
-.price font::before {
-  content: "";
-  position: absolute;
-  left: 0;
-  top: 16px;
-  width: 100%;
-  height: 1px;
-  background-color: rgba(83, 83, 83, 0.562);
   z-index: 1;
 }
 
-.price .sold {
-  display: inline-flex;
-  padding: 5px 18px 5px 18px;
-  border-radius: 20px;
-  background: #14BDA5;
-  justify-content: flex-end;
-  align-items: center;
-  color: var(--light-text-color, #FFF);
-  font-size: 12px;
-  font-style: normal;
-  font-weight: 400;
-  line-height: 16px;
-  /* 133.333% */
-  letter-spacing: 0.2px;
-}
-
-.CardPricingData button {
-  display: inline-flex;
-  padding: 5px 19px;
-  align-items: flex-start;
-  gap: 10px;
-  color: #30404D;
-  cursor: pointer;
-  font-size: 14px;
-  font-style: normal;
-  font-weight: 500;
-  /* line-height: 107%; */
-  border: 2px solid #30404D;
-  border-radius: 24px;
-  margin-bottom: -50px;
-  font-family: "Poppins", sans-serif;
-  text-transform: uppercase;
-}
-
-.CardPricingData button:disabled {
-  display: inline-flex;
-  cursor: not-allowed !important;
-  padding: 16px 32px;
-  align-items: flex-start;
-  gap: 10px;
-  background: #f49d3f98;
-  color: var(--White, #FFF);
-  cursor: pointer;
-  font-size: 16px;
-  font-style: normal;
-  font-weight: 400;
-  line-height: 150%;
-  /* 24px */
-}
-
-/* ------------ CardPricingData_description */
-.CardPricingData_description {
-  margin: 40px 0px;
-  text-align: justify;
-}
-
-.CardPricingData_description h2 {
-  color: var(--text-color, #252b42);
-  font-size: 24px;
-  font-style: normal;
-  font-weight: 700;
-  line-height: 32px;
-  /* 133.333% */
-  letter-spacing: 0.1px;
-  margin-bottom: 12px;
-}
-
-.CardPricingData_description p {
-  color: #2a254b;
-  font-size: 16px;
-  word-spacing: 0.5px;
-  line-height: normal;
-}
-
-/* --------- also_like */
-.also_like {
-  margin: 65px 75px;
-  }
-
-.also_likenew {
-  margin: 65px 0px;
+.also-like-header {
   display: flex;
-  flex-direction: column;
-  margin-top: -300px;
-  padding: 0px 53px;
-}
-.also_likenew  p{
-  width: 50%;
+  justify-content: space-between;
+  align-items: flex-start;
+  margin-bottom: 24px;
+  position: relative;
 }
 
-.also_likenew  h2 {
-  /* margin-left: 50px; */
+.also-like-header__text {
+  max-width: 55%;
+}
+
+.also-like-header__text h2 {
   font-size: 35px;
   font-family: "Luckiest Guy", cursive;
-  color: #30404D;
-}
-
-.also_like h2 {
-  color: #2a254b;
-  font-size: 32px;
-  font-style: normal;
+  color: #30404d;
   font-weight: 400;
-  line-height: normal;
-  margin-bottom: 12px;
+  line-height: 1.1;
+  margin: 0 0 12px;
+  text-transform: uppercase;
 }
 
-/* product-id-button */
-.product-id-button{
-  width: 100%;
-  display: flex;
-  justify-content: flex-end;
-  align-items: center;
-  padding: 0px;
+.also-like-header__text p {
+  font-family: "Poppins", sans-serif;
+  color: #30404d;
+  font-size: 16px;
+  line-height: 1.5;
+  margin: 0;
 }
 
-@media(max-width: 1250px) {
+.also-like-empty,
+.also-like-loading {
+  font-family: "Poppins", sans-serif;
+  color: #30404d;
+  padding: 24px 0;
+}
 
-  .CardPricingDatafortext-main {
-      display: flex;
-      justify-content: space-around;
-      width: 100%;
-      padding: 0px 16px 0px 25px;
+@media (max-width: 1000px) {
+  .also-like-section {
+    padding: 60px 24px 80px;
+    margin-top: 0;
   }
 
-}
-
-
-@media(max-width : 1000px) {
-  /* .CardPricingData {
-    flex-direction: column;
-    gap: 25px;
-    justify-content: flex-start;
-    align-items: flex-start;
-  } */
-  .cardpricingdatanew {
-    top: -360px;
-    width: 100%;
-    padding: 0px 61px 0px 0px;
-    gap: 25px;
-
+  .also-like-header__text {
+    max-width: 100%;
+    padding-right: 88px;
   }
-  .CardPricingDatafortext-main{
-    flex-direction: column;
-    }
-    .CardPricingDatafortext{
-      width: 100%;
-    }
-    .also_likenew  p{
-      width: 100%;
-    }
-    .also_likenew  h2 {
-      margin-left: 0px;
-    
-    }
-    .also_likenew{
-margin-top: -200px;
-    }
-}
 
-@media(max-width : 786px) {
-  .CardPricingData_parent {
-    padding: 10px 20px !important;
+  .also-like-header__text h2 {
+    font-size: 28px;
   }
-  .cardpricingdatanew {
-    top: -360px;
-    width: 100%;
-    padding: 0px 0px 0px 0px;
-    gap: 25px;
+}
 
+@media (max-width: 480px) {
+  .also-like-section {
+    padding: 48px 16px 72px;
   }
-  .CardPricingDatafortext-main {
-    display: flex;
-    justify-content: space-around;
-    width: 100%;
-    padding: 0px 10px 0px 0px;
-}
-}
-.cardpricing-parent select {
-  width: 100%;
-  padding: 30px 10px !important;
-  flex-shrink: 0;
-  border: 1px solid var(--devider-devider, #ebebeb) !important;
-  background: #fff;
-  font-family: "Poppins";
-  outline: none;
-}
-.edit-prodcut-ad {
-  width: 50%;
-}
-.centered-text {
-  position: relative;
-  text-align: end;
-}
 
-.text-with-line-equal {
-  position: relative;
-  z-index: 1;
-  display: inline-block;
-  text-align: center;
-  padding: 0 4px;
-}
+  .also-like-header__text {
+    padding-right: 0;
+  }
 
-.text-with-line-equal:before {
-  content: "";
-  border-top: 2px solid #9D9292;
-  width: 100%;
-  position: absolute;
-  z-index: -1;
-  top: 50%;
-  margin-top: -1px;
-  left: 0;
-  right: 0;
-  margin-left: auto;
-  margin-right: auto;
+  .also-like-header__text h2 {
+    font-size: 24px;
+  }
 }
-
-
-@media(max-width : 1000px) {
-  .edit-prodcut-ad {
-    width: 100%;
-    display: flex;
-    margin-top: 10px;
-    align-items: center;
-}
-}
-

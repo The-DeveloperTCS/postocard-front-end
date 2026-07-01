@@ -1,0 +1,134 @@
+.related-products-carousel {
+
+  width: 100%;
+
+  position: relative;
+
+  padding-top: 8px;
+
+}
+
+
+
+.related-products-carousel .slick-slider {
+
+  padding-bottom: 0;
+
+}
+
+
+
+.related-products-carousel .slick-list {
+
+  margin: 0 -8px;
+
+}
+
+
+
+.related-carousel-arrow {
+
+  position: absolute;
+
+  top: -72px;
+
+  z-index: 2;
+
+  display: flex;
+
+  align-items: center;
+
+  justify-content: center;
+
+  width: 36px;
+
+  height: 36px;
+
+  border: 2px solid #30404d;
+
+  border-radius: 50%;
+
+  background: #ffffff;
+
+  color: #30404d;
+
+  cursor: pointer;
+
+  padding: 0;
+
+  font-size: 16px;
+
+}
+
+
+
+.related-carousel-arrow--prev {
+
+  right: 48px;
+
+  left: auto;
+
+}
+
+
+
+.related-carousel-arrow--next {
+
+  right: 0;
+
+}
+
+
+
+.related-carousel-arrow:hover {
+
+  background: #fdecd9;
+
+}
+
+
+
+@media (max-width: 768px) {
+
+  .related-carousel-arrow {
+
+    top: auto;
+
+    bottom: -48px;
+
+  }
+
+
+
+  .related-carousel-arrow--prev {
+
+    right: auto;
+
+    left: 35%;
+
+    transform: translateX(-50%);
+
+  }
+
+
+
+  .related-carousel-arrow--next {
+
+    right: auto;
+
+    left: 65%;
+
+    transform: translateX(-50%);
+
+  }
+
+
+
+  .related-products-carousel {
+
+    padding-bottom: 56px;
+
+  }
+
+}
+

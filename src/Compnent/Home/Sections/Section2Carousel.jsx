@@ -2,18 +2,13 @@ import React from "react";
 import Slider from "react-slick";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
-import "../Styles/Section2Carousel.css";
 import { GrNext } from "react-icons/gr";
 import { MdArrowBackIosNew } from "react-icons/md";
-import wedimg from "../../../Assets/images/Wedding Card.png";
-import bdimg from "../../../Assets/images/Birthday Card.png";
-import crisimg from "../../../Assets/images/christmas Card.png";
-
-const slides = [
-  { title: "Wedding Card", image: wedimg, tilt: true },
-  { title: "Birthday Card", image: bdimg, tilt: false },
-  { title: "christmas Card", image: crisimg, tilt: true },
-];
+import { IoStarSharp } from "react-icons/io5";
+import { NavLink } from "react-router-dom";
+import "../Styles/Section2Carousel.css";
+import { CARD_CATEGORIES } from "../../../data/cardCategories";
+import { getCategoryCollectionPath } from "../../../utils/productCatalog";
 
 function Section2Carousel() {
   const PrevArrow = ({ onClick }) => (
@@ -70,24 +65,36 @@ function Section2Carousel() {
     <div className="section2-carousel-wrapper">
       <div className="slider-container">
         <Slider {...settings}>
-          {slides.map((slide, index) => (
-            <div key={`${slide.title}-${index}`}>
-              <div className="Discounted-slide1-main">
-                <div className="slide1-inner">
-                  <div className="slide1-text">
-                    <h2>{slide.title}</h2>
-                    <span className="strike-through">$30</span>
-                    <p className="slide1-price">$20</p>
-                  </div>
-                  <div className="slide1-img">
-                    <img
-                      src={slide.image}
-                      alt={slide.title}
-                      className={slide.tilt ? "slide1-img-tilted" : ""}
-                    />
+          {CARD_CATEGORIES.map((category) => (
+            <div key={category.slug}>
+              <NavLink
+                to={getCategoryCollectionPath(category.slug)}
+                className="discounted-offer-card-link"
+              >
+                <div className="Discounted-slide1-main">
+                  <div className="slide1-inner">
+                    <div className="slide1-text">
+                      <h2>{category.name}</h2>
+                      <span className="strike-through">
+                        ${category.originalPrice}
+                      </span>
+                      <p className="slide1-price">${category.price}</p>
+                      <div className="slide1-stars" aria-hidden="true">
+                        {Array.from({ length: 5 }).map((_, index) => (
+                          <IoStarSharp key={index} />
+                        ))}
+                      </div>
+                    </div>
+                    <div className="slide1-img">
+                      <img
+                        src={category.image}
+                        alt={category.name}
+                        className={category.imageClass || ""}
+                      />
+                    </div>
                   </div>
                 </div>
-              </div>
+              </NavLink>
             </div>
           ))}
         </Slider>

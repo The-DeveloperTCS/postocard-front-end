@@ -4,43 +4,9 @@ import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import { GrNext } from "react-icons/gr";
 import { MdArrowBackIosNew } from "react-icons/md";
-import wed from "../../../Assets/images/Wedding Card2.png";
-import newbd from "../../../Assets/images/newbdc.png";
 import "../Styles/Carousel4.css";
-import { IoStarSharp } from "react-icons/io5";
-
-const products = [
-  { title: "Wedding Card", image: wed, imageClass: "" },
-  { title: "Birthday Card", image: newbd, imageClass: "carousel4-img-photo" },
-  { title: "Wedding Card", image: wed, imageClass: "" },
-  { title: "Birthday Card", image: newbd, imageClass: "carousel4-img-photo" },
-  { title: "Wedding Card", image: wed, imageClass: "" },
-];
-
-const FeaturedProductCard = ({ title, image, imageClass }) => (
-  <div className="carousel4-main-slider">
-    <div className="carousel4-img">
-      <img src={image} alt={title} className={imageClass} />
-    </div>
-    <div className="carousel4-text">
-      <h2>{title}</h2>
-      <div className="carousel4-meta">
-        <p className="carousel4-stock">15+ stock</p>
-        <span className="carousel4-rating">
-          <IoStarSharp /> 4.5
-        </span>
-      </div>
-      <div className="carousel4-price-main">
-        <div className="forcarousel4-price">
-          <p>$20</p>
-        </div>
-        <div className="Confiqure-care">
-          <p>Configure card</p>
-        </div>
-      </div>
-    </div>
-  </div>
-);
+import { CARD_CATEGORIES } from "../../../data/cardCategories";
+import ProductGridCard from "../../shared/ProductGridCard";
 
 function Carousel4() {
   const PrevArrow = ({ onClick }) => (
@@ -92,13 +58,23 @@ function Carousel4() {
     ],
   };
 
+  const carouselProducts = CARD_CATEGORIES.map((category, index) => ({
+    id: `catalog-${category.slug}`,
+    ProductName: category.name,
+    Price: category.price,
+    Discount: category.originalPrice - category.price,
+    File1: category.image,
+    _imageClass: category.imageClass || "",
+    _fallbackIndex: index,
+  }));
+
   return (
     <div className="carousel4-wrapper">
       <div className="slider-container4">
         <Slider {...settings}>
-          {products.map((product, index) => (
-            <div key={`${product.title}-${index}`}>
-              <FeaturedProductCard {...product} />
+          {carouselProducts.map((product, index) => (
+            <div key={product.id}>
+              <ProductGridCard item={product} index={index} />
             </div>
           ))}
         </Slider>

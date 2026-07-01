@@ -8,15 +8,13 @@
 }
 
 .Jointheclub h2 {
-    color: #30404D;
-    text-align: center;
-    font-size: 35px;
-    font-style: normal;
-    font-weight: 400;
-    line-height: 140%;
-    font-family: "Luckiest Guy", cursive;
-
-    /* 50.4px */
+  color: #30404d;
+  text-align: center;
+  font-size: 35px;
+  font-weight: 400;
+  line-height: 1.3;
+  font-family: "Luckiest Guy", cursive;
+  text-transform: uppercase;
 }
 
 .Jointheclub p {
@@ -34,53 +32,42 @@
 }
 
 .club_email_box {
-    width: 400px !important;
-    display: grid;
-    grid-template-columns: 1fr .3fr;
-    position: relative;
+  width: 100%;
+  max-width: 480px;
+  display: flex;
+  position: relative;
+  border-radius: 8px;
+  overflow: hidden;
+  border: 1px solid #30404d;
 }
 
 .club_email_box input {
-    color: #30404D;
-    font-size: 14px;
-    font-style: normal;
-    font-weight: 400;
-    line-height: normal;
-    width: 100%;
-    padding: 15px 10px;
-    border: 1px solid #30404D;
-    outline: none;
-    border-radius: 5px;
-    font-family: "Poppins", sans-serif;
-    border-right: none;
-}
-
-.club_email_box ::placeholder {
-    color: #30404D;
-
+  color: #30404d;
+  font-size: 14px;
+  font-family: "Poppins", sans-serif;
+  width: 100%;
+  padding: 16px 14px;
+  border: none;
+  outline: none;
+  border-radius: 0;
+  flex: 1;
+  background: #fff;
 }
 
 .club_email_box button {
-    display: flex;
-    padding: 10px 20px;
-    text-align: center;
-    background: #30404D;
-    color: var(--White, #FFF);
-    font-size: 14px;
-    font-style: normal;
-    font-weight: 400;
-    line-height: 150%;
-    /* 24px */
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    font-family: "Poppins", sans-serif;
-    text-transform: uppercase;
-    position: absolute;
-    right: 3px;
-    height: 54px;
-    border-top-right-radius: 5px;
-    border-bottom-right-radius: 5px;
+  display: flex;
+  padding: 16px 24px;
+  background: #30404d;
+  color: #fff;
+  font-size: 14px;
+  font-family: "Poppins", sans-serif;
+  text-transform: uppercase;
+  border: none;
+  cursor: pointer;
+  white-space: nowrap;
+  position: static;
+  height: auto;
+  border-radius: 0;
 }
 
 

@@ -1,10 +1,17 @@
-import React, { useEffect, useState } from "react";
+import React, { Suspense, useEffect, useMemo, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useParams } from "react-router-dom";
 import { getSingleProduct } from "../../../Redux/Action/ProductAction";
+import GreetingCardScene from "./GreetingCard3D/GreetingCardScene";
+import {
+  getShowcaseImageForName,
+  resolveCardImages,
+  SHOWCASE_CARD,
+} from "./GreetingCard3D/cardImages";
 import "./Styles/InteractiveCardPreview.css";
 
-const STEP_LABELS = ["Front cover", "Open inside"];
+const STEP_LABELS = ["Front cover", "Opening", "Inside message"];
+const MAX_STEP = STEP_LABELS.length - 1;
 
 const InteractiveCardPreview = ({ content = "", displayName = "" }) => {
   const { id } = useParams();
@@ -23,60 +30,42 @@ const InteractiveCardPreview = ({ content = "", displayName = "" }) => {
     setStep(0);
   }, [id, singleproduct?.id, singleproduct?.ProductName]);
 
-  const coverImage = singleproduct?.File1;
-  const insideImage = singleproduct?.File2 || singleproduct?.File3 || coverImage;
-  const isOpen = step >= 1;
+  const images = useMemo(() => {
+    if (singleproduct?.File1) {
+      return resolveCardImages(singleproduct);
+    }
+    return getShowcaseImageForName(singleproduct?.ProductName) || SHOWCASE_CARD;
+  }, [singleproduct]);
 
   const handlePrev = () => setStep((current) => Math.max(current - 1, 0));
-  const handleNext = () => setStep((current) => Math.min(current + 1, 1));
+  const handleNext = () => setStep((current) => Math.min(current + 1, MAX_STEP));
+
+  const ready = Boolean(images.cover);
 
   return (
     <div className="interactive-card">
       <div className="interactive-card__frame">
         <div className="interactive-card__stage">
-          {isLoading && !coverImage ? (
+          {isLoading && !singleproduct?.File1 ? (
             <div className="interactive-card__loading">Loading your card...</div>
-          ) : (
-            <div
-              className={`interactive-card__book${isOpen ? " is-open" : ""}`}
-              aria-live="polite"
+          ) : ready ? (
+            <Suspense
+              fallback={
+                <div className="interactive-card__loading">Preparing 3D preview...</div>
+              }
             >
-              <div className="interactive-card__spread">
-                <div className="interactive-card__page interactive-card__page--left">
-                  {insideImage ? (
-                    <img src={insideImage} alt="" />
-                  ) : (
-                    <div className="interactive-card__page-fallback" />
-                  )}
-                </div>
-                <div className="interactive-card__page interactive-card__page--right">
-                  <div className="interactive-card__message">
-                    <p>
-                      {content ||
-                        "Write your message on the left — it will appear inside the card."}
-                    </p>
-                    {displayName ? (
-                      <p className="interactive-card__signature">{displayName}</p>
-                    ) : null}
-                  </div>
-                </div>
-              </div>
-
-              <div className="interactive-card__cover">
-                {coverImage ? (
-                  <img
-                    src={coverImage}
-                    alt={singleproduct?.ProductName || "Card cover"}
-                  />
-                ) : (
-                  <div className="interactive-card__placeholder">
-                    <span>Card preview</span>
-                  </div>
-                )}
-              </div>
-            </div>
+              <GreetingCardScene
+                step={step}
+                images={images}
+                content={content}
+                displayName={displayName}
+              />
+            </Suspense>
+          ) : (
+            <div className="interactive-card__loading">Card preview unavailable</div>
           )}
         </div>
+        <p className="interactive-card__hint">Drag to rotate the card</p>
       </div>
 
       <div className="interactive-card__nav">
@@ -93,7 +82,7 @@ const InteractiveCardPreview = ({ content = "", displayName = "" }) => {
           type="button"
           className="interactive-card__nav-btn interactive-card__nav-btn--next"
           onClick={handleNext}
-          disabled={step === 1 || !coverImage}
+          disabled={step === MAX_STEP || !ready}
         >
           Next
         </button>

@@ -21,6 +21,7 @@ const IndexCom = () => {
           <SingleCardSidebar
             firstName={firstName}
             lastName={lastName}
+            content={content}
             setFirstName={setFirstName}
             setLastName={setLastName}
             setContent={setContent}
@@ -30,7 +31,7 @@ const IndexCom = () => {
             <h2>{singleproduct?.ProductName || "Your card"}</h2>
             <p>
               Personalize your card with a name and message, then press Next to
-              open it and preview the inside before adding to cart.
+              open it page by page — like a real greeting card.
             </p>
           </div>
         </div>

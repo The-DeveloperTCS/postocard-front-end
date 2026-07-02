@@ -4,6 +4,7 @@ import "./Styles/SingleCardSidebar.css";
 const SingleCardSidebar = ({
   firstName,
   lastName,
+  content,
   setFirstName,
   setLastName,
   setContent,
@@ -27,6 +28,7 @@ const SingleCardSidebar = ({
         />
         <textarea
           placeholder="Message"
+          value={content}
           onChange={(e) => setContent(e.target.value)}
           rows={7}
         />

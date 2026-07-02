@@ -15,6 +15,7 @@ import {
 } from "../utils/productCatalog";
 
 const Allcollection = () => {
+  const MAX_COLLECTION_CARDS = 6;
   const [filtershow, setFilterShow] = useState(false);
   const allProduct = useSelector((state) => state.product.allProduct);
   const isLoading = useSelector((state) => state.product.isLoading);
@@ -23,7 +24,6 @@ const Allcollection = () => {
   const dispatch = useDispatch();
 
   const [search, setSerach] = useState(all || "all");
-  const [count, setCount] = useState(1);
 
   const catalogProducts = useMemo(
     () => mergeCatalogWithApi(allProduct),
@@ -35,7 +35,7 @@ const Allcollection = () => {
     [catalogProducts, search]
   );
 
-  const slicedata = filteredProducts?.slice(0, count * 12);
+  const slicedata = filteredProducts?.slice(0, MAX_COLLECTION_CARDS);
 
   useEffect(() => {
     dispatch(getallproduct());
@@ -43,7 +43,6 @@ const Allcollection = () => {
 
   useEffect(() => {
     setSerach(all || "all");
-    setCount(1);
   }, [all]);
 
   const filterdata = () => {
@@ -80,13 +79,6 @@ const Allcollection = () => {
               {slicedata?.length > 0 ? (
                 <div className="also_like11">
                   <ViewMainProduct data={slicedata} />
-                  {slicedata.length < filteredProducts.length && (
-                    <div className="collection-load-more">
-                      <button type="button" onClick={() => setCount(count + 1)}>
-                        Load more
-                      </button>
-                    </div>
-                  )}
                 </div>
               ) : (
                 <div className="">

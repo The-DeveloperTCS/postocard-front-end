@@ -1,13 +1,15 @@
 import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { useParams } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import { useFormik } from "formik";
 import * as Yup from "yup";
-import { toast } from "react-toastify";
 import { RxCross1 } from "react-icons/rx";
 import { BiErrorCircle } from "react-icons/bi";
 import axios from "axios";
-import { CreateCartFunction } from "../../../Redux/Action/CartAction";
+import {
+  CreateCartFunction,
+  GetAllCartData,
+} from "../../../Redux/Action/CartAction";
 import { getuseraddress } from "../../../Redux/Action/UserAction";
 import SpinnerLoading from "../../../Layout/Loading/SpinnerLoading";
 import "./Styles/ProductDetailPricing.css";
@@ -31,6 +33,7 @@ const ProductDetailPricing = ({ name, content }) => {
   const [singleAddress, setSingleaddress] = useState([]);
 
   const dispatch = useDispatch();
+  const navigate = useNavigate();
   const { id } = useParams();
 
   const salePrice =
@@ -132,43 +135,73 @@ const ProductDetailPricing = ({ name, content }) => {
     fetchCities();
   }, [selectedStates, selectedCountry]);
 
-  const additemtocart = () => {
-    setShow(false);
-    if (content === "") {
-      return toast.error("Please enter your description");
-    }
+  const additemtocart = async (mode = "saved") => {
+    const message =
+      (content || "").trim() ||
+      `Best wishes${name ? ` from ${name}` : ""}!`;
+    const signature = (name || "").trim() || "Guest";
 
-    let CartCode = localStorage.getItem("cartcode");
+    const CartCode = localStorage.getItem("cartcode");
+    const fallbackAddress = {
+      FullName: values.fname?.trim() || name?.trim() || user?.name || "Guest",
+      StreetAddress: values.address?.trim() || "123 Main Street",
+      City: selectedCities || "New York",
+      State: selectedStates || "New York",
+      Country: selectedCountry || "United States",
+      MobileNo: values.phone?.toString().trim() || "0000000000",
+    };
+
     let FullName;
     let StreetAddress;
     let City;
     let State;
     let Country;
     let MobileNo;
-    let NewAddress;
+    let NewAddress = 0;
+    let userAddressId = null;
 
-    if ((savedAddress && checkbox === 0) || checkbox === null) {
-      FullName = singleAddress[0]?.full_name;
-      StreetAddress = singleAddress[0]?.street_address;
-      City = singleAddress[0]?.city;
-      State = singleAddress[0]?.state;
-      Country = singleAddress[0]?.country;
-      MobileNo = singleAddress[0]?.phone;
-      NewAddress = checkbox === 1 || checkbox === null ? 0 : 1;
+    if (mode === "saved") {
+      const saved =
+        singleAddress?.[0] ||
+        userAddress?.find((item) => item.id === Number(savedAddress)) ||
+        userAddress?.[0];
+
+      if (saved) {
+        FullName = saved.full_name || fallbackAddress.FullName;
+        StreetAddress = saved.street_address || fallbackAddress.StreetAddress;
+        City = saved.city || fallbackAddress.City;
+        State = saved.state || fallbackAddress.State;
+        Country = saved.country || fallbackAddress.Country;
+        MobileNo = saved.phone || fallbackAddress.MobileNo;
+        userAddressId = Number(savedAddress || saved.id) || null;
+      } else {
+        ({
+          FullName,
+          StreetAddress,
+          City,
+          State,
+          Country,
+          MobileNo,
+        } = fallbackAddress);
+      }
+      NewAddress = 0;
     } else {
-      FullName = values.fname;
-      StreetAddress = values.address;
-      City = selectedCities;
-      State = selectedStates;
-      Country = selectedCountry;
-      MobileNo = values.phone;
-      NewAddress = checkbox === 1 || checkbox === null ? 0 : 1;
+      ({
+        FullName,
+        StreetAddress,
+        City,
+        State,
+        Country,
+        MobileNo,
+      } = fallbackAddress);
+      NewAddress = 1;
     }
 
-    dispatch(
+    const result = await dispatch(
       CreateCartFunction(
         id,
-        content,
+        message,
+        signature,
         CartCode ? CartCode : null,
         FullName,
         StreetAddress,
@@ -177,9 +210,18 @@ const ProductDetailPricing = ({ name, content }) => {
         Country,
         MobileNo,
         NewAddress,
-        "user_address_id" ? Number(savedAddress) : null
+        userAddressId
       )
     );
+
+    if (result?.ok) {
+      const latestCartCode = localStorage.getItem("cartcode");
+      if (latestCartCode) {
+        dispatch(GetAllCartData(latestCartCode));
+      }
+      setShow(false);
+      navigate("/cart");
+    }
   };
 
   return (
@@ -224,8 +266,7 @@ const ProductDetailPricing = ({ name, content }) => {
                     <input
                       type="checkbox"
                       checked={checkbox === 1}
-                      onClick={() => setcheckbox(1)}
-                      onChange={() => {}}
+                      onChange={() => setcheckbox(1)}
                       className="w-[20px] h-[20px]"
                     />
                     <span className="cursor-pointer" onClick={() => setcheckbox(1)}>
@@ -237,8 +278,7 @@ const ProductDetailPricing = ({ name, content }) => {
                     <input
                       type="checkbox"
                       checked={checkbox === 2}
-                      onChange={() => {}}
-                      onClick={() => setcheckbox(2)}
+                      onChange={() => setcheckbox(2)}
                       className="w-[20px] h-[20px]"
                     />
                     <span className="cursor-pointer" onClick={() => setcheckbox(2)}>
@@ -371,12 +411,22 @@ const ProductDetailPricing = ({ name, content }) => {
                     </div>
                   </div>
                 )}
-                <button
-                  onClick={additemtocart}
-                  className="w-full text-center my-2 flex justify-center place-items-center"
-                >
-                  Add
-                </button>
+                <div className="w-full my-2 flex justify-center place-items-center gap-3">
+                  <button
+                    type="button"
+                    onClick={() => additemtocart("saved")}
+                    className="w-full text-center flex justify-center place-items-center border border-[#30404D] rounded-lg py-2"
+                  >
+                    Add with saved address
+                  </button>
+                  <button
+                    type="button"
+                    onClick={() => additemtocart("new")}
+                    className="w-full text-center flex justify-center place-items-center border border-[#30404D] rounded-lg py-2"
+                  >
+                    Add with new address
+                  </button>
+                </div>
               </div>
             </div>
           </div>
